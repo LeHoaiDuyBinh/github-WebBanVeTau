@@ -36,27 +36,31 @@ gaDen.addEventListener('change', function() {
 });
 
 //Bắt sự kiện thời gian đi và thời gian quay về
-
 const ticketTypeInputs = document.getElementsByName('ticket-type');
 let departureDateInput = document.querySelector('#departure-date');
 let returnDateInput = document.querySelector('#return-date');
 returnDateInput.disabled = true;
 // Lấy ngày hiện tại và định dạng lại định dạng ngày tháng năm
 let currentDate = new Date().toISOString().slice(0,10);
+
 // Thiết lập thuộc tính min cho thời gian đi, để ẩn các ngày trước ngày hiện tại
 departureDateInput.min = currentDate;
+
 // Bắt sự kiện khi ngày đi thay đổi
 departureDateInput.addEventListener('change', () => {
   returnDateInput.min = departureDateInput.value;
-  returnDateInput.disabled = false;
+  returnDateInput.disabled = true;
 });
+
 ticketTypeInputs.forEach(ticketTypeInput => {
   ticketTypeInput.addEventListener('click', () => {
-    if (ticketTypeInput.value === 'one-way') {
-        returnDateInput.disabled = true;
+    if (ticketTypeInput.value === 'round-trip') {
+        returnDateInput.disabled = false;
     } 
   });
 });
+
+
 // Bắt sự kiện khi ngày quay về thay đổi
 returnDateInput.addEventListener('change', () => {
   // Lấy giá trị ngày đi và ngày quay về
