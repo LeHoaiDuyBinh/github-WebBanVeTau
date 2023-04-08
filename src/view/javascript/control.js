@@ -56,7 +56,9 @@ ticketTypeInputs.forEach(ticketTypeInput => {
   ticketTypeInput.addEventListener('click', () => {
     if (ticketTypeInput.value === 'round-trip') {
         returnDateInput.disabled = false;
-    } 
+    }else{
+      returnDateInput.disabled = true;
+    }
   });
 });
 
