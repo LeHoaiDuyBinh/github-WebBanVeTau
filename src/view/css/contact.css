@@ -1,0 +1,95 @@
+/* Responsive riêng cho contact */
+@media (min-width: 992px) {
+    .rightFinalFoot{
+        right: 148px !important;
+    }
+
+    .rightFinalIcon{
+        right: 170px !important;
+    }
+}
+
+/* Tạo background cho section */
+.section {
+    background-color: white;
+  }
+  
+  /* Căn giữa các cột trên màn hình */
+  .row {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Thiết kế box hiển thị thông tin liên lạc */
+  .box-contacts {
+    background-color: white;
+    padding: 30px;
+    height: 280px;
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,.1);
+  }
+  
+  /* Tạo margin giữa các box */
+  .col-sm-8 {
+    margin-bottom: 30px;
+  }
+  
+  /* Thiết kế icon */
+  .box-contacts-icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #01b3a7;
+  }
+
+  /* Hiệu ứng card */
+  .box-contacts-body {
+    transition: all 0.3s ease-out;
+  }
+  
+  .box-contacts-body:hover {
+    transform: scale(1.15);
+    opacity: 0.8;
+  }
+  
+  /* Thiết kế đường viền xung quanh box */
+  .box-contacts-decor {
+    height: 1px;
+    background-color: #e5e5e5;
+    margin-bottom: 30px;
+  }
+  
+  /* Thiết kế link cho thông tin liên lạc */
+  .box-contacts-link a {
+    font-size: 20px;
+    font-family: "Montserrat", sans-serif, Arial, sans-serif;
+    text-decoration: none;
+    color: rgba(52, 50, 50, 0.808) !important;
+
+  }
+  
+  /* Thiết kế link khi rê chuột */
+  .box-contacts-link a:hover {
+    color: #000000;
+  }
+
+  /*Form liên lạc */
+   button[type="submit"]:hover {
+    transition: all 0.5s ease;
+    opacity: 0.6;
+   }
+
+   /* Viết lại giao diện type text */
+   input[type="text"] {
+    border-radius: 5px !important;
+    border: 1px solid #ced4da !important;
+    padding: 10px !important;
+    font-size: 16px !important;
+    background-color: white !important;
+    color: #333 !important;
+  }
+  
+  
+
+  
+  
+  
