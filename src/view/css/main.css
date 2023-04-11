@@ -286,6 +286,13 @@ dl, ol, ul {
   color: #01b3a7;
 }
 
+/* Responsive riêng cho trang chủ */
+@media (min-width: 992px) {
+  .rightFinalFoot{
+      right: -42px;
+  }
+}
+
 #back-to-top-btn {
   display: none;
   position: fixed;
