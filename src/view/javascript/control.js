@@ -76,69 +76,33 @@ returnDateInput.addEventListener('change', () => {
 
 
 // Phân trang 
-const pagination = document.querySelector('.pagination');
-const pageLinks = pagination.querySelectorAll('.page-link');
-const totalPages = 10;
-const currentPage = 1;
+var reviewsPerPage = 4; 
+var currentPage = 1; 
 
-function generatePaginationLinks(totalPages, currentPage) {
-  let startPage, endPage;
-  const maxVisibleLinks = 5;
-  
-  if (totalPages <= maxVisibleLinks) {
-    startPage = 1;
-    endPage = totalPages;
-  } else {
-    const maxHalfVisibleLinks = Math.floor(maxVisibleLinks / 2);
-    if (currentPage <= maxHalfVisibleLinks) {
-      startPage = 1;
-      endPage = maxVisibleLinks;
-    } else if (currentPage + maxHalfVisibleLinks >= totalPages) {
-      startPage = totalPages - maxVisibleLinks + 1;
-      endPage = totalPages;
-    } else {
-      startPage = currentPage - maxHalfVisibleLinks;
-      endPage = currentPage + maxHalfVisibleLinks;
-    }
+function showReviews() {
+  var startIndex = (currentPage - 1) * reviewsPerPage;
+  var endIndex = startIndex + reviewsPerPage;
+
+  var reviews = $('.review-list .review');
+  reviews.hide();
+
+  for (var i = startIndex; i < endIndex; i++) {
+    $(reviews[i]).show();
   }
-  
-  const linksHtml = [];
-  
-  if (currentPage > 1) {
-    linksHtml.push(`<li class="page-item"><a class="page-link" href="?page=${currentPage - 1}"><i class="fas fa-chevron-left"></i></a></li>`);
-  } else {
-    linksHtml.push('<li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-left"></i></span></li>');
-  }
-  
-  if (startPage > 1) {
-    linksHtml.push('<li class="page-item"><a class="page-link" href="?page=1">1</a></li>');
-    if (startPage > 2) {
-      linksHtml.push('<li class="page-item disabled"><span class="page-link">...</span></li>');
-    }
-  }
-  
-  for (let i = startPage; i <= endPage; i++) {
-    const isActive = i === currentPage ? 'active' : '';
-    linksHtml.push(`<li class="page-item ${isActive}"><a class="page-link" href="?page=${i}">${i}</a></li>`);
-  }
-  
-  if (endPage < totalPages) {
-    if (endPage < totalPages - 1) {
-      linksHtml.push('<li class="page-item disabled"><span class="page-link">...</span></li>');
-    }
-    linksHtml.push(`<li class="page-item"><a class="page-link" href="?page=${totalPages}">${totalPages}</a></li>`);
-  }
-  
-  if (currentPage < totalPages) {
-    linksHtml.push(`<li class="page-item"><a class="page-link" href="?page=${currentPage + 1}"><i class="fas fa-chevron-right"></i></a></li>`);
-  } else {
-    linksHtml.push('<li class="page-item disabled"><span class="page-link"><i class="fas fa-chevron-right"></i></span></li>');
-  }
-  
-  return linksHtml.join('');
 }
 
-pagination.innerHTML = generatePaginationLinks(totalPages, currentPage);
+$('.pagination li').click(function() {
+  event.preventDefault();
+  var page = parseInt($(this).find('a').text());
+  if (page != currentPage) {
+    currentPage = page;
+    $('.pagination li').removeClass('active');
+    $(this).addClass('active');
+    showReviews();
+  }
+});
+
+showReviews();
 
 //Scroll chuột hiển thị button
 var backToTopButton = document.querySelector("#back-to-top-btn");
