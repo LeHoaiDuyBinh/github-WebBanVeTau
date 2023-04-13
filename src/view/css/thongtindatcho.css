@@ -1,0 +1,158 @@
+
+#content {
+    background-color: #ffffff;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.thongtin {
+    margin-top: 150px;
+}
+
+#btnSearch, #changePaymentMethod {
+    width: 49% !important;
+    margin-left: 59px !important;
+    text-align: center !important;
+}
+
+#confirmPaymentBtn {
+    margin-top: 20px !important;
+    width: 49% !important;
+    margin-left: 59px !important;
+    text-align: center !important;
+
+}
+/* Container bao ngoài */
+.container2 {
+    width: 900px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 20px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+.booking-table h1 {
+    color: #01b3a7;
+    text-align: center;
+}
+
+/* Khung mã đặt chỗ */
+#bookingCode,
+#cccd,
+#email,
+#phoneNumber {
+    border: 1px solid rgb(147, 143, 143);
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+    height: 70%;
+}
+
+input, button {
+    display: block;
+    margin-bottom: 8px;
+    width: 100%;
+    padding: 5px; /* Định dạng lại khoảng cách lề trong các input */
+    border: none;
+    border-radius: 3px;
+}
+
+/* Định dạng nút "Tra cứu" */
+.button-tra-cuu {
+    background-color: #01b3a7;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+    
+}
+
+/* Định dạng nút "Tra cứu" khi hover*/
+.button-tra-cuu:hover {
+    background-color: #01b3a7;
+}
+
+/* Định dạng chữ "Quên mã đặt chỗ" */
+.quen-ma-dat-cho {
+    color: #01b3a7;
+    text-decoration: underline;
+    cursor: pointer;
+    text-align: center;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+
+h1 {
+    text-align: center;
+    margin-top: 0;
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#btnSearch,
+#changePaymentMethod {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #01b3a7;
+    color: #ffffff;
+    cursor: pointer;
+}
+#confirmPaymentBtn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: #01b3a7;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Kết quả tìm kiếm */
+#bookingCodeResult,
+#fullNameResult,
+#emailResult,
+#phoneNumberResult,
+#cccdResult {
+    margin-top: 0;
+}
+.processing-transactions {
+    font-size: 16px; /* Kích thước chữ gốc */
+    color: red;
+  }
+  
+  .smaller-text {
+    font-size: 12px; /* Kích thước chữ nhỏ lại */
+    
+  }
+  .payment-method-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #01b3a7;
+  }
+  #paymentMethod option {
+    /* text-align: center;  */
+    text-align: left;
+}
+.booking-info-table{
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+}
