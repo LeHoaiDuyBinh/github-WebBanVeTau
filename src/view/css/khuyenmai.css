@@ -1,0 +1,53 @@
+.container-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    width: 100%;
+}
+
+.coupon {
+    border-radius: 15px;
+    box-shadow: 5px 8px 10px #53535333;
+    width: 300px;
+    aspect-ratio: 2/1;
+    /* margin: 0.5rem;
+    Tạo khoảng cách giữa các coupon */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+body {
+    background: #ffffff !important
+}
+
+body {
+    background: rgb(251, 253, 255)
+}
+
+.code:hover {
+    background: #6fb5ed;
+    color: #fff;
+    cursor: pointer
+}
+
+.kich-thuoc-voucher {
+    max-width: 100%;
+    max-height: 200px;
+}
+
+.coupon-container {
+    position: relative;
+}
+
+.copyCode {
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-65%);
+}
+
+  
+  
