@@ -13,6 +13,8 @@ services:
       - MYSQL_DATABASE=myDB
       - MYSQL_USER=db_user
       - MYSQL_PASSWORD=db_password
+      - LANG=C.UTF-8
+      - LC_ALL=C.UTF-8
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
     container_name: pma
