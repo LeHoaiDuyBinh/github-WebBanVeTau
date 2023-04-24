@@ -167,6 +167,10 @@ h1 {
     text-align: right
 }
 
+.btn:hover {
+    opacity: 0.8 !important;
+}
+
 .fieldlabels {
     color: gray;
     text-align: left
@@ -328,7 +332,7 @@ footer {
 }
 
 .footer-corporate .footer-contacts a:hover {
-    color: #f0bc23;
+    color: #01b3a7;
 }
 
 .footer-corporate h6 {
@@ -354,7 +358,17 @@ footer {
 }
 
 .footer-corporate .post-minimal-2-title a:hover {
-    color: #f0bc23;
+    color: #01b3a7;
+    list-style: none;
+}
+
+.footer-corporate a:hover {
+    color: #01b3a7 !important;
+    text-decoration: none !important;
+}
+
+.footer-corporate .bottom a:hover{
+    color: #01b3a7;
 }
 
 .footer-corporate .post-minimal-2-time {
