@@ -87,7 +87,18 @@
     background-color: white !important;
     color: #333 !important;
   }
-  
+
+  @media (max-width: 576px){
+      .section{
+        margin-top: -114px;
+      }
+      .container .btn{
+        width: 34% !important;
+      }
+      footer{
+        height: 657px !important;
+    }
+  }
   
 
   
