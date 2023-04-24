@@ -41,6 +41,25 @@
     text-align: center;
 }
 
+button[type="submit"]{
+    background-color: #01b3a7 !important;
+    margin-left: 28% !important;
+    width: 49% !important;
+}
+
+
+
+@media (min-width: 992px) {
+    .quen-ma-dat-cho{
+        margin-left: 5%;
+    }
+
+    #btnSearch, #changePaymentMethod {
+        margin-top: 20px;
+        margin-bottom: 20px;    
+    }
+}
+
 /* Khung mã đặt chỗ */
 #bookingCode,
 #cccd,
