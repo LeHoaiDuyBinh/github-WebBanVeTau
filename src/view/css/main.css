@@ -40,7 +40,7 @@ dl, ol, ul {
     width: 109px;
     height: 85px;
     background-color: transparent !important;
-    margin-right: 24px;
+    margin-right: 40px;
 
 }
 
@@ -311,6 +311,12 @@ dl, ol, ul {
 
 #back-to-top-btn:hover {
   background-color: #333;
+}
+
+@media (max-width: 576px){
+  footer{
+    height: 659px !important;
+}
 }
 
 

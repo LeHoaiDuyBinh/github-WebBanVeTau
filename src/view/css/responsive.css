@@ -7,7 +7,7 @@
         width: 100%;
         z-index: 9999;  
     }
-
+    
     .bottom {
         margin-bottom: 5px !important;
     }
@@ -21,16 +21,33 @@
         position: relative;
     }
 
+    .navbar-nav .navbar-item a {
+        width: 100px;
+    }
+
     .navbar-nav .nav-item {
         margin-right: 40px;
     }
 
-    .navbar-nav .nav-item .nav-link {
-        border-right: 1px solid white;
-        border-width: 2px;
-        border-right-width: 10% !important;
-        padding-left: 100px;
-    }
+    .navbar {
+        background-color: #F8F9FA; 
+        font-size: 16px;
+        font-weight: 600;
+      }
+      
+      .nav-link {
+        color: #343A40; 
+        margin-right: 40px; 
+        padding: 10px; 
+        border-bottom: 3px solid transparent; 
+        transition: border-color 0.3s ease-in-out; 
+      }
+      
+      .nav-link:hover {
+        color: white !important; 
+        border-color: #01b3a7 !important; 
+      }
+      
 
     .navbar-expand-lg .navbar-nav .nav-link {
         padding-right: 1.5rem !important;
@@ -131,5 +148,17 @@
 
     .container .card {
         margin-top: 10px;
+    }
+
+    .footer-contacts {
+        margin-left: -38px;
+    }
+
+    .left{
+        margin-left: -38px;
+    }
+
+    footer{
+        height: 634px;
     }
 }
