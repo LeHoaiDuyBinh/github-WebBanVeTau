@@ -68,6 +68,13 @@
             </div>          
         </div>
 
+<!-- Animation Header -->
+<script>
+const link = document.querySelector('.nav-link.quydinh');
+  link.style.borderBottom = '3px solid transparent';
+  link.style.transition = 'border-color 0.3s ease-in-out';
+  link.style.borderColor = '#01b3a7';
+</script>
 
 
 
