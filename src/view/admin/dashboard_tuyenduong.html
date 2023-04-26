@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin</title>
+	<meta charset="utf-8">
+	
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="./css/dashboard.css">
+    
+</head>
+<body>
+
+
+<div id="page_wrapper">
+  <div id="sidenav" class="sidenav">
+    <div class="sidenav_header">
+      <div class="logo_section">
+        
+        <h3>PTIT-Train</h3>
+      </div>
+      
+      <a href="./dashboard.html" class="sidenav_link">
+        <i class='bx bx-home'></i>
+        <h3>Ga</h3>
+      </a>
+      
+      <a href="#" class="sidenav_link active">
+        <i class='bx bx-briefcase'></i>
+        <h3>Tuyến đường</h3>
+      </a>
+      
+      <a href="./dashboard_toa.html" class="sidenav_link">
+        <i class='bx bx-cable-car'></i>
+        <h3>Toa</h3>
+      </a>
+
+      <a href="./dashboard_loaitoa.html" class="sidenav_link">
+        <i class='bx bx-file'></i>
+        <h3>Loại toa</h3>
+      </a>
+
+      <a href="./dashboard_tau.html" class="sidenav_link">
+        <i class='bx bx-train'></i>
+        <h3>Tàu</h3>
+      </a>
+      
+      <a href="./dashboard_chuyentau.html" class="sidenav_link">
+        <i class='bx bx-calendar'></i>
+        <h3>Chuyến tàu</h3>
+      </a>
+
+      <a href="./dashboard_bangve.html" class="sidenav_link">
+        <i class='bx bx-receipt'></i>
+        <h3>Bảng vé</h3>
+      </a>
+
+    </div>
+    <div class="sidenav_footer">
+      <a href="./dashboard_lienhe.html" class="sidenav_link">
+        <i class='bx bx-rocket'></i>
+        <h3>Liên hệ</h3>
+      </a>
+    </div>
+    
+      <button id="nav_collapse_btn">
+        <i class='bx bxs-chevrons-left'></i>
+      </button>
+    </div>
+  
+    
+  <main>
+    <header>
+      <div class="text">
+        <h2>Danh sách tuyến đường</h2> 
+        
+<table id="myTable">
+  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm tuyến đường</button>
+  <thead>
+    <tr>
+      <th scope="col" width="80px">Mã tuyến</th>
+      <th scope="col" width="100px">Ga xuất phát</th>
+      <th scope="col" width="100px">Ga đến</th>
+      <th scope="col" width="50px">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <form>
+    <tr>
+        <td data-label="LineCode">CH1001</td>
+        <td data-label="StartStation">TP.Hồ Chí Minh</td>
+        <td data-label="ToStation">Hà Nội</td>
+        <td data-label="Period">
+          <i class="fa fa-trash ticon"></i>
+          <i class="fa fa-pencil"></i>
+      </tr>
+    </form>
+  </tbody>
+</table>
+
+<div id="myModal" class="modal" style="display: none;">
+  <div class="modal-content">
+    <form>
+      <label for="code">Mã tuyến:</label>
+      <input type="text" id="code" name="code" required>
+      <label for="name">Ga xuất phát:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="name2">Ga đến:</label>
+      <input type="text" id="name2" name="name2" required>
+      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="button" id="submitBtn">Thêm</button>
+      <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
+    </form>
+  </div>
+</div>
+      </div>
+      <div>
+        <button id="theme_switch">
+          <i class='bx bx-sun'></i>
+        </button>
+      </div>
+      <div>
+        <button class="log" id="theme_switch">
+          <i style="margin-left: 8px;" class='bx bx-power-off'></i>
+        </button>
+      </div>
+    </header>
+    
+    
+  </main>
+  
+  
+</div>
+<script>
+  // Thêm dữ liệu
+  const addBtn = document.getElementById('addBtn');
+  const modal = document.getElementById('myModal');
+  const submitBtn = document.getElementById('submitBtn');
+  const cancelBtn = document.getElementById('cancelBtn');
+  const tableBody = document.querySelector('#myTable tbody');
+  
+  addBtn.addEventListener('click', function() {
+    modal.style.display = "block";
+  });
+  
+  submitBtn.addEventListener('click', function() {
+    const code = document.getElementById('code').value;
+    const name = document.getElementById('name').value;
+    const name2 = document.getElementById('name2').value;
+    
+    if (code.trim() && name.trim()) {
+      const newRow = tableBody.insertRow(0);
+      const codeCell = newRow.insertCell(0);
+      const nameCell = newRow.insertCell(1);
+      const name2Cell = newRow.insertCell(2);
+      const periodCell = newRow.insertCell(3);
+      codeCell.innerHTML = code;
+      nameCell.innerHTML = name;
+      name2Cell.innerHTML = name2;
+      periodCell.innerHTML = '<i class="fa fa-trash ticon"></i> <i class="fa fa-pencil"></i>';
+      modal.style.display = "none";
+    }
+  });
+  
+  cancelBtn.addEventListener('click', function() {
+    modal.style.display = "none";
+  });
+  //Sửa dữ liệu
+
+</script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="./javascript/dashboard.js"></script>
+<script src="./javascript/PaginationDashboard.js"></script>
+</body>
+</html>

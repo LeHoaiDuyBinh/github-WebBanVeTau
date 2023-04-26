@@ -5,11 +5,6 @@
     margin: 0 auto;
     padding: 20px;
 }
-
-.thongtin {
-    margin-top: 150px;
-}
-
 #btnSearch, #changePaymentMethod {
     width: 49% !important;
     margin-left: 59px !important;
@@ -175,4 +170,11 @@ label {
     display: block;
     width: 100%;
     overflow-x: auto;
+}
+
+/*Responvie thongtin */
+@media (min-width: 992px) {
+    .top{
+        margin-top: 150px !important;
+    }
 }

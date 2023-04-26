@@ -2,21 +2,7 @@
     text-align: center;
     color: #01b3a7;
 }
-.quydinh {
-    margin-top: 150px;
-}
-.container3 {
-    width: 900px;
-    margin: 0 auto;
-    background-color: #ffffff;
-    padding: 20px;
-    /* border: 1px solid #000000; */
-    border-radius: 5px;
-    display: grid;
-    grid-template-rows: auto 1fr;
-    box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
-    color: gray;
-}
+
 .h1, h1 {
     font-size: 4rem;
   }
