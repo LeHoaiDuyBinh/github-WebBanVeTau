@@ -1,6 +1,5 @@
 <?php
-    if(isset(($_GET['action']))){
-        
+    if(isset($_GET['action'])){        
         if($_GET['action'] != 'login'){
             require_once './view/header.php';
             switch($_GET['action']){
@@ -26,7 +25,7 @@
              require_once './view/footer.php';
         }
         else {
-            header("Location: ./view/admin/login.php");
+            header("Location: /view/admin/login.html");
         }
     }
     else {

@@ -117,8 +117,8 @@ DROP TABLE IF EXISTS `User`;
 CREATE TABLE User(
   `ID_User` INT PRIMARY KEY AUTO_INCREMENT,
   `Email` VARCHAR(30),
-  `MatKhau` VARCHAR(100),
+  `Password` VARCHAR(100),
   `ChucVu` NVARCHAR(50)
 );
 
-INSERT INTO `User`(`Email`, `MatKhau`, `ChucVu`) VALUES('tandat@gmail.com', '123', 'Quản lý')
+INSERT INTO `User`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '123', 'Quản lý')

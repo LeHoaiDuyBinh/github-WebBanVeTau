@@ -1,16 +1,22 @@
 version: "3.6"
 
 services:
+  MysqlData:
+    image: busybox
+    volumes:
+      - ./database/mysql-data:/var/lib/mysql
   db:
     build: ./database
     command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8 --collation-server=utf8_unicode_ci
     restart: unless-stopped
     expose:
         - 3306
+    volumes_from:
+      - "MysqlData"
     environment:
       # These password and stuff is not neccesarry too secret
       - MYSQL_ROOT_PASSWORD=45299417d86f231f6a58434488edb763
-      - MYSQL_DATABASE=myDB
+      - MYSQL_DATABASE=train_ticket
       - MYSQL_USER=db_user
       - MYSQL_PASSWORD=db_password
       - LANG=C.UTF-8
@@ -33,6 +39,11 @@ services:
     ports:
       - "8090:80"
     environment:
-      MYSQL_ROOT_PASSWORD: 45299417d86f231f6a58434488edb763
+      # These password and stuff is not neccesarry too secret
+      - MYSQL_HOSTNAME=db
+      - MYSQL_ROOT_PASSWORD=45299417d86f231f6a584d1488edb763
+      - MYSQL_DATABASE=train_ticket
+      - MYSQL_USER=db_user
+      - MYSQL_PASSWORD=db_password
     volumes:
       - "./src:/var/www/html/"
