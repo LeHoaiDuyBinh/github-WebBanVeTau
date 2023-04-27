@@ -25,7 +25,7 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 try {
                     include "db.php";
-                    $sql = "select * from User where Email=? and MatKhau=?";
+                    $sql = "select * from User where Email=? and Password=?";
                     $sth = $conn->prepare($sql);
                     $sth->execute(array($_POST['Email'], $_POST['password']));
                     $sth->setFetchMode(PDO::FETCH_ASSOC);
