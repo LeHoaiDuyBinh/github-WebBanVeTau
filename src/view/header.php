@@ -34,7 +34,7 @@
     
     <header class="menu">
       <nav class="navbar navbar-expand-lg navbar-light">
-      <a class="navbar-brand" href="?action=">
+      <a class="navbar-brand" href="?page=">
         <img class="logo" src="./view/image/tauhoa.png" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -43,22 +43,22 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a style="border-bottom: 3px solid transparent; transition: border-color 0.3s ease-in-out; border-color: #01b3a7 !important;" class="nav-link trangchu" href="?action=">Trang chủ</a>
+            <a style="border-bottom: 3px solid transparent; transition: border-color 0.3s ease-in-out; border-color: #01b3a7 !important;" class="nav-link trangchu" href="?page=">Trang chủ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link trave" href="?action=trave">Trả vé</a>
+            <a class="nav-link trave" href="?page=trave">Trả vé</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link thongtin" href="?action=thongtindatcho">Thông tin đặt chỗ</a>
+            <a class="nav-link thongtin" href="?page=thongtindatcho">Thông tin đặt chỗ</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link khuyenmai" href="?action=khuyenmai">Khuyến mãi</a>
+            <a class="nav-link khuyenmai" href="?page=khuyenmai">Khuyến mãi</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link quydinh" href="?action=quydinhchung">Quy định chung</a>
+            <a class="nav-link quydinh" href="?page=quydinhchung">Quy định chung</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link lienhe" href="?action=lienhe">Liên hệ</a>
+            <a class="nav-link lienhe" href="?page=lienhe">Liên hệ</a>
           </li>
         </ul>
       </div>
