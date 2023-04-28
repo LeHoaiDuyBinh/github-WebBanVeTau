@@ -113,10 +113,13 @@
   cancelBtn.addEventListener('click', function() {
     modal.style.display = "none";
   });
-  //Sửa dữ liệu
+  
+  // Active
+const link = document.querySelector(".sidenav_link.chuyentau");
+link.classList.add('active');
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./javascript/dashboard.js"></script>
-<script src="./javascript/PaginationDashboard.js"></script>
+<script src="/view/javascript/dashboard.js"></script>
+<script src="/view/javascript/PaginationDashboard.js"></script>
 </body>
 </html>
