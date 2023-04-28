@@ -16,8 +16,8 @@
                     case 'lienhe_admin':
                         require './view/admin/dashboard_lienhe.php';
                         break;
-                    case 'loaitau':
-                        require './view/admin/dashboard_loaitau.php';
+                    case 'loaitoa':
+                        require './view/admin/dashboard_loaitoa.php';
                         break;
                     case 'tau':
                         require './view/admin/dashboard_tau.php';
@@ -27,6 +27,9 @@
                         break;
                     case 'tuyenduong':
                         require './view/admin/dashboard_tuyenduong.php';
+                        break;
+                    case 'home':
+                        require './view/admin/dashboard_home.php';
                         break;
                     default:
                         require './view/admin/dashboard_ga.php';
