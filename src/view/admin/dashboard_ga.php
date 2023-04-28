@@ -99,8 +99,8 @@
     if (code.trim() && name.trim()) {
       const newRow = tableBody.insertRow(0);
       const codeCell = newRow.insertCell(0);
-      const nameCell = newRow.insertCell(2);
-      const periodCell = newRow.insertCell(3);
+      const nameCell = newRow.insertCell(1);
+      const periodCell = newRow.insertCell(2);
       codeCell.innerHTML = code;
       nameCell.innerHTML = name;
       periodCell.innerHTML = '<i class="fa fa-trash ticon"></i> <i class="fa fa-pencil"></i>';
@@ -198,9 +198,13 @@ cancelBtn2.addEventListener('click', function() {
   modal2.style.display = "none";
 });
 
+// Active
+const link = document.querySelector(".sidenav_link.ga");
+link.classList.add('active');
+
 </script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./javascript/dashboard.js"></script>
-<script src="./javascript/PaginationDashboard.js"></script>
+<script src="/view/javascript/dashboard.js"></script>
+<script src="/view/javascript/PaginationDashboard.js"></script>
 </body>
 </html>
