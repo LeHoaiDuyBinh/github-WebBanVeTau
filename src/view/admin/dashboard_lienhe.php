@@ -102,12 +102,16 @@
     
     
   </main>
-  
-  
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="./javascript/dashboard.js"></script>
-<script src="./javascript/PaginationDashboardLienHe.js"></script>
+<script src="/view/javascript/dashboard.js"></script>
+<script src="/view/javascript/PaginationDashboardLienHe.js"></script>
 </body>
 </html>
+
+<script>
+  // Active
+const link = document.querySelector(".sidenav_link.lienhe");
+link.classList.add('active');
+</script>
