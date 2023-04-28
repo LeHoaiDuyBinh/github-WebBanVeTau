@@ -313,7 +313,19 @@ dl, ol, ul {
   background-color: #333;
 }
 
+@media (min-width: 992px){
+  .form-check-input {
+    margin-top: 0.3rem !important;
+    margin-left: -18.25rem !important;
+  }
+}
+
 @media (max-width: 576px){
+  .form-check-input {
+    margin-top: 0.38rem !important;
+    margin-left: -11.85rem !important;
+  }
+
   footer{
     height: 659px !important;
 }
