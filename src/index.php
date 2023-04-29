@@ -1,3 +1,3 @@
 <?php
-    require 'controller/index.php';
+    require 'route.php';
 ?>
