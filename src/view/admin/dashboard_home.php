@@ -6,7 +6,6 @@
         <h2>Home</h2> 
         
 <table id="myTable">
-  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm chuyến tàu</button>
   <thead>
   </thead>
   <tbody>

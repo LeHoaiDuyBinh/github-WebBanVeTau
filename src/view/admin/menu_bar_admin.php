@@ -20,7 +20,7 @@
         <h3>PTIT-Train</h3>
       </div>
 
-      <a href="?type=admin&page=home" class="sidenav_link home">
+      <a href="?type=admin&page=home_admin" class="sidenav_link home">
         <i class='bx bx-home'></i>
         <h3>Home</h3>
       </a>

@@ -28,22 +28,22 @@
                     case 'tuyenduong':
                         require './view/admin/dashboard_tuyenduong.php';
                         break;
-                    case 'home':
+                    case 'home_admin':
                         require './view/admin/dashboard_home.php';
                         break;
                     default:
-                        require './view/admin/dashboard_ga.php';
+                        require './view/admin/dashboard_home.php';
                         break;
                 }
             }
             else {
                 require_once './view/admin/menu_bar_admin.php';
-                require './view/admin/dashboard_ga.php';
+                require './view/admin/dashboard_home.php';
             }
         }
         else {
             require_once './view/admin/menu_bar_admin.php';
-            require './view/admin/dashboard_ga.php';
+            require './view/admin/dashboard_home.php';
         }
     }
         else{
