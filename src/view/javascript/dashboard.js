@@ -31,18 +31,18 @@ toggleBtn.addEventListener('click', ()=>{
 
 
 /*Xóa thông tin*/
-const tab = document.querySelector('#myTable');
+// const tab = document.querySelector('#myTable');
 
-tab.addEventListener('click', function(event) {
-  if (event.target.classList.contains('fa-trash')) {
-    if (confirm("Bạn có chắc muốn xóa dữ liệu này?")) {
-      const row = event.target.closest('tr');
-      row.remove();
-    } else {
-      event.stopPropagation(); // ngăn chặn hành động mặc định của sự kiện
-    }
-  }
-});
+// tab.addEventListener('click', function(event) {
+//   if (event.target.classList.contains('fa-trash')) {
+//     if (confirm("Bạn có chắc muốn xóa dữ liệu này?")) {
+//       const row = event.target.closest('tr');
+//       row.remove();
+//     } else {
+//       event.stopPropagation(); // ngăn chặn hành động mặc định của sự kiện
+//     }
+//   }
+// });
 
 //Log out về admin
 const themeSwitch = document.querySelector(".log");

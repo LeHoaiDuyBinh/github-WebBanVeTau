@@ -1,6 +1,4 @@
-  
-    
-  <main>
+ <main>
     <header>
       <div class="text">
         <h2>Danh sách ga</h2> 
@@ -15,35 +13,28 @@
     </tr>
   </thead>
   <tbody>
+    <?php foreach($arr as $each): ?>
     <form>
       <tr>
-        <td data-label="StationCode">TP1001</td>
-        <td data-label="StationName">TP.Hồ Chí Minh</td>
+        <td id="MaGa" data-label="StationCode" ><?php echo $each->getMaGa(); ?></td>
+        <td data-label="StationName"><?php echo $each->getTenGa(); ?></td>
         <td data-label="Period">
-          <i class="fa fa-trash ticon"></i>
+          <i id = "trash" class="fa fa-trash ticon" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" > </i>
           <i id="pencil" class="fa fa-pencil"></i>
       </tr>
     </form>
-    <form>
-      <tr>
-        <td data-label="StationCode">TP1002</td>
-        <td data-label="StationName">Hà Nội</td>
-        <td data-label="Period">
-          <i class="fa fa-trash ticon"></i>
-          <i id="pencil" class="fa fa-pencil"></i>
-      </tr>
-    </form>
+    <?php endforeach; ?>
   </tbody>
 </table>
 
 <div id="myModal" class="modal" style="display: none;">
   <div class="modal-content">
-    <form>
+    <form id="GaForm">
       <label for="code">Mã ga:</label>
-      <input type="text" id="code" name="code" required>
+      <input type="text" id="code" name="MaGa" required>
       <label for="name">Tên ga:</label>
-      <input type="text" id="name" name="name" required>
-      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="button" id="submitBtn">Thêm</button>
+      <input type="text" id="name" name="TenGa" required>
+      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
   </div>
@@ -51,12 +42,12 @@
 
 <div id="myModal2" class="modal" style="display: none;">
   <div class="modal-content">
-    <form>
+    <form id="GaEditForm">
       <label for="codeEdit">Mã ga:</label>
-      <input type="text" id="codeEdit" name="codeEdit" required>
+      <input style="background-color: #adb5bdfc" readonly type="text" id="codeEdit" name="MaGa" required>
       <label for="nameEdit">Tên ga:</label>
-      <input type="text" id="nameEdit" name="nameEdit" required>
-      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="button" id="submitBtn2">Lưu</button>
+      <input type="text" id="nameEdit" name="TenGa" required>
+      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn2">Lưu</button>
       <button style="background-color: red; color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn2">Hủy</button>
     </form>
   </div>
@@ -72,6 +63,24 @@
         <button class="log" id="theme_switch">
           <i style="margin-left: 8px;" class='bx bx-power-off'></i>
         </button>
+      </div>
+
+      <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa Ga</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              Bạn có chắc chắn muốn xóa Ga này không?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+              <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
     
@@ -92,60 +101,32 @@
     modal.style.display = "block";
   });
   
-  submitBtn.addEventListener('click', function() {
-    const code = document.getElementById('code').value;
-    const name = document.getElementById('name').value;
-    
-    if (code.trim() && name.trim()) {
-      const newRow = tableBody.insertRow(0);
-      const codeCell = newRow.insertCell(0);
-      const nameCell = newRow.insertCell(1);
-      const periodCell = newRow.insertCell(2);
-      codeCell.innerHTML = code;
-      nameCell.innerHTML = name;
-      periodCell.innerHTML = '<i class="fa fa-trash ticon"></i> <i class="fa fa-pencil"></i>';
-      modal.style.display = "none";
+  $('#cancelBtn').click(function() {
+    $('#GaForm').find('.alert-danger').remove();
+    $('#myModal').hide();
+    $('#GaForm input[type=text]').val('');
+  });
+
+  $('#GaForm').submit(function(e){
+		e.preventDefault()
+		$.ajax({
+			url:'/?type=admin&page=ga&action=create',
+			method:'POST',
+			data:$(this).serialize(),
+			error:err=>{
+				console.log(err)
+			},
+			success:function(resp){
+        console.log(resp);
+				if(resp.trim() == "done"){
+            window.location.href = '/?type=admin&page=ga';
+            alert_toast("Data successfully created","success");
+				}else{
+					$('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+				}
     }
-  });
-  
-  cancelBtn.addEventListener('click', function() {
-    modal.style.display = "none";
-  });
-
-  //Sửa dữ liệu
-// const pencilIcon = document.getElementById('pencil');
-// const modal2 = document.getElementById('myModal2');
-// const submitBtn2 = document.getElementById('submitBtn2');
-// const cancelBtn2 = document.getElementById('cancelBtn2');
-// const codeEdit = modal2.querySelector('#codeEdit');
-// const nameEdit = modal2.querySelector('#nameEdit');
-
-// pencilIcon.addEventListener('click', () => {
-//   const row = pencilIcon.parentNode.parentNode;
-//   const code = row.querySelector('[data-label="StationCode"]').textContent;
-//   const name = row.querySelector('[data-label="StationName"]').textContent;
-
-//   codeEdit.value = code;
-//   nameEdit.value = name;
-//   modal2.style.display = 'block';
-// });
-
-// submitBtn2.addEventListener('click', () => {
-//   const form = modal2.querySelector('form');
-//   const stationCode = codeEdit.value;
-//   const stationName = nameEdit.value;
-
-//   const row = pencilIcon.parentNode.parentNode;
-//   row.querySelector('[data-label="StationCode"]').textContent = stationCode;
-//   row.querySelector('[data-label="StationName"]').textContent = stationName;
-
-//   modal2.style.display = 'none';
-//   form.reset();
-// });
-
-// cancelBtn2.addEventListener('click', () => {
-//   modal2.style.display = 'none';
-// });
+		})
+	});
 
 // Lấy danh sách tất cả các icon pencil trong bảng và đăng ký sự kiện click cho chúng
 const table2 = document.querySelector('#myTable');
@@ -171,32 +152,63 @@ table2.addEventListener('click', function(event) {
   }
 });
 
-submitBtn2.addEventListener('click', function() {
-  const code = codeEdit.value.trim();
-  const name = nameEdit.value.trim();
-
-  if (code && name) {
-    const rows = document.querySelectorAll("tr td:nth-child(1)");
-    for (let i = 0; i < rows.length; i++) {
-      const cell = rows[i];
-      if (cell.textContent === code) {
-        const row = cell.parentNode;
-        row.cells[0].textContent = code;
-        row.cells[1].textContent = name;
-      }
+  $('#GaEditForm').submit(function(e){
+		e.preventDefault()
+		$.ajax({
+			url:'/?type=admin&page=ga&action=edit',
+			method:'POST',
+			data:$(this).serialize(),
+			error:err=>{
+				console.log(err)
+			},
+			success:function(resp){
+				if(resp.trim() == "done"){
+            window.location.href = '/?type=admin&page=ga';
+            alert_toast("Data successfully saved","success");
+				}else{
+					$('#GaEditForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+				}
     }
-    modal2.style.display = "none";
-  } else {
-    alert('Vui lòng nhập đầy đủ thông tin');
+		})
+	});
+
+  $('#cancelBtn2').click(function() {
+    $('#GaEditForm').find('.alert-danger').remove();
+    $('#myModal2').hide();
+    $('#GaEditForm input[type=text]').val('');
+  });
+
+
+// xóa
+
+table2.addEventListener('click', function(event) {
+  if (event.target.classList.contains('fa-trash')) {
+    const row = event.target.closest('tr');
+    const MaGa = row.cells[0].textContent;
+    $('#confirmDeleteBtn').click(function() {
+      // Gửi request xóa Ga đến server
+      $.ajax({
+        url: 'index.php/?type=admin&page=ga&action=delete',
+        type: 'POST',
+        data: { MaGa: MaGa },
+        success: function(response) {
+          if (response.trim() == "done") {
+            // Nếu xóa Ga thành công thì chuyển hướng đến trang danh sách Ga
+            window.location.href = '/?type=admin&page=ga';
+          } else {
+            // Nếu có lỗi thì hiển thị thông báo lỗi
+            $('#deleteErrorModal').modal('show');
+          }
+        },
+      });
+    });
   }
 });
 
-
-
-cancelBtn2.addEventListener('click', function() {
-  // Xử lý khi người dùng bấm nút hủy
-  modal2.style.display = "none";
-});
+// Xóa modal xác nhận khi ẩn
+// $('#confirmDeleteModal').on('hidden.bs.modal', function (e) {
+//   $(this).find('form')[0].reset();
+// });
 
 // Active
 const link = document.querySelector(".sidenav_link.ga");

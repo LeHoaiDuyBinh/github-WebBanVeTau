@@ -1,8 +1,8 @@
 <?php 
     class UserObject{
-        private String $Email;
-        private String $Password;
-        private String $ChucVu;
+        private $Email;
+        private $Password;
+        private $ChucVu;
 
         public function __construct($row)
         {

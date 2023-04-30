@@ -27,7 +27,7 @@
 				$message = $user->checkAccount($Email, $password);
 			}
 			if($message ==="Successful"){
-				header("Location: /?type=admin&page=");
+				header("Location: /?type=admin&page=dashboard_home");
 			}
 			else {
 				if($message != "")

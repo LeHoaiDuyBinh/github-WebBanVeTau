@@ -1,7 +1,7 @@
 <?php 
     class GaObject{
-        private String $MaGa;
-        private String $TenGa;
+        private $MaGa;
+        private $TenGa;
 
         public function __construct($row)
         {

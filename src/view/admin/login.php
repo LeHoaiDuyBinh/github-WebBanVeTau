@@ -34,7 +34,7 @@ session_start();
             <form id="form-login" method="POST"  action="/?action=login">
                 <h1 class="form-heading">LOGIN ADMIN</h1>
                 <?php if(isset($_SESSION['message'])): ?>
-                  <div style="width: 43vh; left: -1vh;" class="alert alert-danger"><?php echo $_SESSION['message']; ?></div>
+                  <div style="width: 45vh; text-align: center; left: 2vh;" class="alert alert-danger"><?php echo $_SESSION['message']; ?></div>
                   <?php unset($_SESSION['message']); ?>
                 <?php endif; ?>
                 <div class="form-group">

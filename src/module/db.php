@@ -23,7 +23,6 @@
             return $res;
         }
 
-        // chưa dùng // xài cho updata, del, insert
         public function execute($sql, $params){
             $connect = $this->conn();
             $res = $connect->prepare($sql);
