@@ -32,8 +32,9 @@
 			else {
 				if($message != "")
 					$_SESSION['message'] = $message;
-				$this->index();
+				header("Location: /login.php");
 			}
+			exit();
 		}
 	}
 ?>
