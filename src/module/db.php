@@ -9,12 +9,17 @@
             return $conn;
         }
 
-        public function select($sql, $params)
+        public function select($sql, $params = null)
         {
             $connect = $this->conn();
-            $res = $connect->prepare($sql);
+            if($params != null){
+                $res = $connect->prepare($sql);
+                $res->execute($params);
+            }
+            else {
+                $res = $connect->query($sql);
+            }
             $res->setFetchMode(PDO::FETCH_ASSOC);
-            $res->execute($params);
             return $res;
         }
 

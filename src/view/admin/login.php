@@ -34,10 +34,9 @@ session_start();
             <form id="form-login" method="POST"  action="/?action=login">
                 <h1 class="form-heading">LOGIN ADMIN</h1>
                 <?php if(isset($_SESSION['message'])): ?>
-                  <p><?php echo $_SESSION['message']; ?></p>
+                  <div style="width: 43vh; left: -1vh;" class="alert alert-danger"><?php echo $_SESSION['message']; ?></div>
                   <?php unset($_SESSION['message']); ?>
                 <?php endif; ?>
-                <div style="width: 43vh; left: -1vh;" class="alert alert-danger">Username or password is incorrect.</div>
                 <div class="form-group">
                     <i class="far fa-user"></i> 
                     <input type="email" class="form-input" placeholder="Email" name="Email">
