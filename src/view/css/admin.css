@@ -13,9 +13,10 @@ body{
     justify-content: center;
     align-items: center;
 }
+
 #form-login{
-    max-width: 300px;
-    height: 200px;
+    max-width: 368px;
+    height: auto;
     background: rgb(101, 94, 94);
     flex-grow: 1;
     padding: 30px 30px 40px;
