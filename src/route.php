@@ -7,7 +7,7 @@
    }
    
    $publicPages = ['home', 'trave', 'thongtindatcho', 'khuyenmai', 'quydinhchung', 'lienhe'];
-   $adminPages = ['ga', 'bangve', 'chuyentau', 'lienhe_admin', 'loaitoa', 'tau', 'toa', 'tuyenduong'];
+   $adminPages = ['ga', 'bangve', 'chuyentau', 'lienhe', 'loaitoa', 'tau', 'toa', 'tuyenduong'];
    
    if (isset($_GET['type']) && $_GET['type'] == 'admin') {
            require_once 'view/admin/menu_bar_admin.php';

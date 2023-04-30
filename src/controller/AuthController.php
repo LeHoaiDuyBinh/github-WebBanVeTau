@@ -15,20 +15,23 @@
 
 	class AuthController {
 		public function index(){
-			include './view/admin/login.html';
+			include './view/admin/login.php';
 		}
 
 		public function login(){
-			include './module/User.php';
-			$user = new User();
-			$Email = $_POST['Email'];
-			$password = $_POST['password'];
-			$message = $user->checkAccount($Email, $password);
+			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				include './module/User.php';
+				$user = new User();
+				$Email = $_POST['Email'];
+				$password = $_POST['password'];
+				$message = $user->checkAccount($Email, $password);
+			}
 			if($message ==="Successful"){
 				header("Location: /?type=admin&page=");
 			}
 			else {
-				echo $message;
+				if($message != "")
+					$_SESSION['message'] = $message;
 				$this->index();
 			}
 		}

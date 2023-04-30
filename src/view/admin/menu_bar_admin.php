@@ -62,7 +62,7 @@
 
     </div>
     <div class="sidenav_footer">
-      <a href="?type=admin&page=lienhe_admin" class="sidenav_link lienhe">
+      <a href="?type=admin&page=lienhe" class="sidenav_link lienhe">
         <i class='bx bx-rocket'></i>
         <h3>Liên hệ</h3>
       </a>
