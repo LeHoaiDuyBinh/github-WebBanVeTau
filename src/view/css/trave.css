@@ -463,7 +463,7 @@ footer {
 /* nút regex */
 .input-row {
     position: relative;
-    margin-bottom: 1.5rem;
+    margin-bottom: -1.5rem;
 }
 
 .input-row:last-child {
@@ -531,4 +531,12 @@ footer {
     position: relative;
     z-index: 20;
     overflow: hidden;
+}
+
+/* Res mobile */
+@media (max-width: 576px){
+    .fs-title {
+        font-size: 15px !important;
+        margin-left: -39% !important;
+    }
 }
