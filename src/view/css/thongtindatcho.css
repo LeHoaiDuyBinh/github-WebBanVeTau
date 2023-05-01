@@ -182,7 +182,7 @@ label {
 @media (max-width: 576px){
     #btnSearch, #changePaymentMethod {
         margin-left: 29px !important;
-        margin-bottom: 10px !important;
+        margin-bottom: 20px !important;
         width: 51% !important;
     }
 
@@ -190,6 +190,42 @@ label {
         margin-left: 35px !important;
         width: 51% !important;
     }
+
+    #booking-info-table .et-table-header th{
+        display: block !important;
+    }
+
+    #booking-info-table {
+        width: 100% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(1){
+        width: 15% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(2){
+        width: 18% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(3){
+        width: 27% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(4){
+        width: 15% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(5){
+        width: 29% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(6){
+        width: 12% !important;
+    }
+
+    #booking-info-table .et-table-header th:nth-child(7){
+        width: 14% !important;
+        margin-bottom: 20px;
+    }
+    
 }
-
-
