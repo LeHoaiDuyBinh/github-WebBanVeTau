@@ -98,8 +98,9 @@ require_once 'controller/Controller.php';
                         break;
                     default:
                         (new Controller)->home();
-                    (new Controller)->footer();
+                        break;
 			    }
+                (new Controller)->footer();
            }
            else {
                 (new AuthController)->login();

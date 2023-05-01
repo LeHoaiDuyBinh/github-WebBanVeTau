@@ -2,10 +2,11 @@
 include "db.php";
 include "GaObject.php";
     class Ga{
+        private $table = "Ga";
         function load(){
             try {
                 $db = new DB();
-                $sql = "select * from Ga";
+                $sql = "select * from $this->table";
                 $sth = $db->select($sql);
                 $arr = [];
                 while($row = $sth->fetch()) {
@@ -19,11 +20,10 @@ include "GaObject.php";
             }
         }
 
-        function create($MaGa, $TenGa){
+        function create($params){
             try {
                 $db = new DB();
-                $sql = "insert into Ga (MaGa, TenGa) values(?, ?)";
-                $params = array($MaGa,$TenGa);
+                $sql = "insert into $this->table (MaGa, TenGa) values(?, ?)";
                 $db->execute($sql, $params);
                 return "done";
                 }
@@ -36,7 +36,7 @@ include "GaObject.php";
         function edit($MaGa, $TenGa){
             try {
                 $db = new DB();
-                $sql = "update Ga set TenGa = ? where MaGa = ?";
+                $sql = "update $this->table set TenGa = ? where MaGa = ?";
                 $params = array($TenGa, $MaGa);
                 $db->execute($sql, $params);
                 return "done";
@@ -49,7 +49,7 @@ include "GaObject.php";
         function remove($MaGa){
             try {
                 $db = new DB();
-                $sql = "delete from Ga where MaGa = ?";
+                $sql = "delete from $this->table where MaGa = ?";
                 $params = array($MaGa);
                 $db->execute($sql, $params);
                 return "done";
