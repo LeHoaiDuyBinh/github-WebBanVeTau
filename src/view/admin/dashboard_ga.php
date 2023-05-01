@@ -19,7 +19,7 @@
         <td id="MaGa" data-label="StationCode" ><?php echo $each->getMaGa(); ?></td>
         <td data-label="StationName"><?php echo $each->getTenGa(); ?></td>
         <td data-label="Period">
-          <i id = "trash" class="fa fa-trash ticon" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#confirmDeleteModal" > </i>
+          <i id = "trash" class="fa fa-trash ticon" > </i>
           <i id="pencil" class="fa fa-pencil"></i>
       </tr>
     </form>
@@ -65,23 +65,6 @@
         </button>
       </div>
 
-      <div class="modal fade" id="confirmDeleteModal" tabindex="-1" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="confirmDeleteModalLabel">Xác nhận xóa Ga</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              Bạn có chắc chắn muốn xóa Ga này không?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
-              <button type="button" class="btn btn-danger" id="confirmDeleteBtn">Xóa</button>
-            </div>
-          </div>
-        </div>
-      </div>
     </header>
     
     
@@ -119,8 +102,14 @@
 			success:function(resp){
         console.log(resp);
 				if(resp.trim() == "done"){
-            window.location.href = '/?type=admin&page=ga';
-            alert_toast("Data successfully created","success");
+          Swal.fire(
+              'Completed!',
+              'Bạn đã thêm ga thành công!',
+              'success'
+            )
+          setTimeout(function() {
+              location.reload();
+          }, 1000); 
 				}else{
 					$('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -163,8 +152,14 @@ table2.addEventListener('click', function(event) {
 			},
 			success:function(resp){
 				if(resp.trim() == "done"){
-            window.location.href = '/?type=admin&page=ga';
-            alert_toast("Data successfully saved","success");
+          Swal.fire(
+              'Completed!',
+              'Bạn đã sửa ga thành công!',
+              'success'
+            )
+          setTimeout(function() {
+              location.reload();
+          }, 1000); 
 				}else{
 					$('#GaEditForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -180,35 +175,50 @@ table2.addEventListener('click', function(event) {
 
 
 // xóa
-
 table2.addEventListener('click', function(event) {
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
     const MaGa = row.cells[0].textContent;
-    $('#confirmDeleteBtn').click(function() {
-      // Gửi request xóa Ga đến server
+  Swal.fire({
+      title: 'Bạn có chắc là muốn xóa ga này không?',
+      text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Vẫn xóa',
+      cancelButtonText: 'Hủy'
+  }).then((result) => {
+    if (result.isConfirmed) {
       $.ajax({
         url: 'index.php/?type=admin&page=ga&action=delete',
         type: 'POST',
         data: { MaGa: MaGa },
         success: function(response) {
           if (response.trim() == "done") {
-            // Nếu xóa Ga thành công thì chuyển hướng đến trang danh sách Ga
-            window.location.href = '/?type=admin&page=ga';
+            Swal.fire(
+              'Completed!',
+              'Bạn đã xóa ga thành công!',
+              'success'
+            )
+            // sau 2 giây sẽ tải lại trang
+            setTimeout(function() {
+                location.reload();
+            }, 1000); 
           } else {
             // Nếu có lỗi thì hiển thị thông báo lỗi
-            $('#deleteErrorModal').modal('show');
+            Swal.fire(
+              'Oops...',
+              'Đã có lỗi xảy ra!',
+              'error'
+            )
           }
         },
       });
-    });
-  }
+    }
+  })
+}
 });
-
-// Xóa modal xác nhận khi ẩn
-// $('#confirmDeleteModal').on('hidden.bs.modal', function (e) {
-//   $(this).find('form')[0].reset();
-// });
 
 // Active
 const link = document.querySelector(".sidenav_link.ga");
