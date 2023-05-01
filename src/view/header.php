@@ -43,7 +43,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item active">
-            <a style="border-bottom: 3px solid transparent; transition: border-color 0.3s ease-in-out; border-color: #01b3a7 !important;" class="nav-link trangchu" href="?page=">Trang chủ</a>
+            <a class="nav-link trangchu" href="?page=">Trang chủ</a>
           </li>
           <li class="nav-item">
             <a class="nav-link trave" href="?page=trave">Trả vé</a>
