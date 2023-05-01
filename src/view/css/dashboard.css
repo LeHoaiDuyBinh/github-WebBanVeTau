@@ -319,6 +319,12 @@ button:hover {
   opacity: 0.8;
 }
 
+/* chỉnh màu khi biến input thành readonly */
+.readonly {
+  background-color: #adb5bdfc !important;
+  color: #777;
+}
+
 
 
 

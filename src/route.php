@@ -2,6 +2,7 @@
 require_once 'controller/Controller.php';
    require_once 'controller/AuthController.php';
    require_once 'controller/GaController.php';
+   require_once 'controller/TuyenController.php';
    
 //    if (isset($_GET['action']) && $_GET['action'] == 'login') {
 //        (new AuthController)->login();
@@ -59,6 +60,23 @@ require_once 'controller/Controller.php';
                             break;
 					}
                     break;
+                case 'tuyenduong':
+                    switch($action){
+                        case 'index':
+                            (new Controller)->menu_bar();
+                            (new TuyenController)->index();
+                            break;
+                        case 'create':
+                            (new TuyenController)->create();
+                            break;
+                        case 'edit':
+                            (new TuyenController)->edit();
+                            break;
+                        case 'delete':
+                            (new TuyenController)->remove();
+                            break;
+                    }
+                    break;    
 				// case 'tuyen':
 				// 	switch($action){
 				// 		case 'index':

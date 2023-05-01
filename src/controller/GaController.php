@@ -8,8 +8,9 @@
 
         public function create(){
             include './module/Ga.php';
-            $params = array($_POST['MaGa'], $_POST['TenGa']);
-            $check = (new Ga)->create($params);
+            $MaGa = $_POST['MaGa'];
+            $TenGa = $_POST['TenGa'];
+            $check = (new Ga)->create($MaGa, $TenGa);
             echo $check;
         }
 

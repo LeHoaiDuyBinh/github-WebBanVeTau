@@ -1,5 +1,5 @@
 <?php 
-include "db.php";
+include_once "db.php";
 include "GaObject.php";
     class Ga{
         private $table = "Ga";
@@ -20,10 +20,11 @@ include "GaObject.php";
             }
         }
 
-        function create($params){
+        function create($MaGa, $TenGa){
             try {
                 $db = new DB();
                 $sql = "insert into $this->table (MaGa, TenGa) values(?, ?)";
+                $params = array($MaGa, $TenGa);
                 $db->execute($sql, $params);
                 return "done";
                 }

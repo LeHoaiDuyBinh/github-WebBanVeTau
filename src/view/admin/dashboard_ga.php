@@ -39,20 +39,6 @@
     </form>
   </div>
 </div>
-
-<div id="myModal2" class="modal" style="display: none;">
-  <div class="modal-content">
-    <form id="GaEditForm">
-      <label for="codeEdit">Mã ga:</label>
-      <input style="background-color: #adb5bdfc" readonly type="text" id="codeEdit" name="MaGa" required>
-      <label for="nameEdit">Tên ga:</label>
-      <input type="text" id="nameEdit" name="TenGa" required>
-      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn2">Lưu</button>
-      <button style="background-color: red; color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn2">Hủy</button>
-    </form>
-  </div>
-</div>
-
       </div>
       <div>
         <button id="theme_switch">
@@ -73,106 +59,87 @@
   
 </div>
 <script>
-  // Thêm dữ liệu
+  // khai báo các phần cần sử dụng
+  var action = '';
   const addBtn = document.getElementById('addBtn');
   const modal = document.getElementById('myModal');
   const submitBtn = document.getElementById('submitBtn');
   const cancelBtn = document.getElementById('cancelBtn');
   const tableBody = document.querySelector('#myTable tbody');
+
+  const table2 = document.querySelector('#myTable');
+  const form = document.querySelector('#myModal form');
+  const code = modal.querySelector('#code');
+  const name = modal.querySelector('#name');
+  const editBtn = document.querySelectorAll('.fa-pencil');
   
+  // khi nhấn thêm
   addBtn.addEventListener('click', function() {
     modal.style.display = "block";
+    action = 'create';
+    $('#GaForm #submitBtn').text('Thêm');
   });
+
+  // khi nhấn sửa
+  table2.addEventListener('click', function(event) {
+  if (event.target.classList.contains('fa-pencil')) {
+    action = 'edit';
+    $('#GaForm #submitBtn').text('Lưu');
+    const row = event.target.closest('tr');
+    const code_table = row.cells[0].textContent;
+    const name_table = row.cells[1].textContent;
+    console.log(code);
+    // Điền dữ liệu vào form
+    code.value = code_table;
+    name.value = name_table;
+
+    // biến thành readonly
+    code.setAttribute('readonly', true);
+
+    // thêm màu cho input readonly
+    code.classList.add("readonly");
+    // Hiển thị form
+    modal.style.display = "block";
+  }
+});
   
+// khi nhấn hủy
   $('#cancelBtn').click(function() {
     $('#GaForm').find('.alert-danger').remove();
     $('#myModal').hide();
     $('#GaForm input[type=text]').val('');
+    $('#GaForm input[type=text]').removeAttr('readonly').removeClass('readonly');
   });
 
+  // truyền data tới DB và nhận response
   $('#GaForm').submit(function(e){
 		e.preventDefault()
 		$.ajax({
-			url:'/?type=admin&page=ga&action=create',
+			url:'/?type=admin&page=ga&action='+action,
 			method:'POST',
 			data:$(this).serialize(),
 			error:err=>{
 				console.log(err)
 			},
 			success:function(resp){
-        console.log(resp);
+        action = action == 'create' ? 'thêm' : 'sửa';
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
-              'Bạn đã thêm ga thành công!',
+              'Bạn đã '+ action +' ga thành công!',
               'success'
             )
           setTimeout(function() {
               location.reload();
-          }, 1000); 
+          }, 1000);
+          $('#myModal').hide();
+          $('#GaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
 					$('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})
 	});
-
-// Lấy danh sách tất cả các icon pencil trong bảng và đăng ký sự kiện click cho chúng
-const table2 = document.querySelector('#myTable');
-const modal2 = document.getElementById('myModal2');
-const form = document.querySelector('#myModal2 form');
-const submitBtn2 = document.getElementById('submitBtn2');
-const cancelBtn2 = document.getElementById('cancelBtn2');
-const codeEdit = modal2.querySelector('#codeEdit');
-const nameEdit = modal2.querySelector('#nameEdit');
-const editBtn = document.querySelectorAll('.fa-pencil');
- 
-table2.addEventListener('click', function(event) {
-  if (event.target.classList.contains('fa-pencil')) {
-    const row = event.target.closest('tr');
-    const code = row.cells[0].textContent;
-    const name = row.cells[1].textContent;
-    
-    // Điền dữ liệu vào form
-    codeEdit.value = code;
-    nameEdit.value = name;
-    // Hiển thị form
-    modal2.style.display = "block";
-  }
-});
-
-  $('#GaEditForm').submit(function(e){
-		e.preventDefault()
-		$.ajax({
-			url:'/?type=admin&page=ga&action=edit',
-			method:'POST',
-			data:$(this).serialize(),
-			error:err=>{
-				console.log(err)
-			},
-			success:function(resp){
-				if(resp.trim() == "done"){
-          Swal.fire(
-              'Completed!',
-              'Bạn đã sửa ga thành công!',
-              'success'
-            )
-          setTimeout(function() {
-              location.reload();
-          }, 1000); 
-				}else{
-					$('#GaEditForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
-				}
-    }
-		})
-	});
-
-  $('#cancelBtn2').click(function() {
-    $('#GaEditForm').find('.alert-danger').remove();
-    $('#myModal2').hide();
-    $('#GaEditForm input[type=text]').val('');
-  });
-
 
 // xóa
 table2.addEventListener('click', function(event) {
