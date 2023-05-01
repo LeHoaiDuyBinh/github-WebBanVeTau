@@ -1,5 +1,5 @@
     <!-- Google-Map -->
-    <section class="section section-fluid">
+    <section class="section section-fluid fixMap">
         <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3919.2862771023138!2d106.69859351474905!3d10.789372192312733!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x317528b545b5903b%3A0x2381a6fe3f690419!2zSOG7jWMgdmnhu4duIEPDtG5nIG5naOG7hyBCxrB1IGNow61uaCBWaeG7hW4gdGjDtG5nIEPGoSBz4bufIHThuqFpIFRQLiBI4buTIENow60gTWluaA!5e0!3m2!1svi!2s!4v1681178623123!5m2!1svi!2s" width="100%" height="450" style="border:0; margin-top: 115px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </section>
     
@@ -59,10 +59,10 @@
                 </div>
               </div>
               <div class="form-group">
-                <label for="message">Nội dung:<span style="font-style: italic; color: rgb(198, 193, 193);"> *Không vượt quá 150 ký tự</span></label>
+                <label class="mess" for="message">Nội dung:<span style="font-style: italic; color: rgb(198, 193, 193);"> *Không vượt quá 150 ký tự</span></label>
                 <textarea class="form-control" id="message" rows="5" required></textarea>
               </div>
-              <button style="width: 30%; height: 60px; background-color: #01b3a7;  " type="submit" class="btn btn-primary ml-auto">Gửi câu hỏi</button>
+              <button style="width: 30%; height: 60px; background-color: #01b3a7; margin-left: 0px !important;  " type="submit" class="btn btn-primary ml-auto">Gửi câu hỏi</button>
             </form>
           </div>
         </div>
