@@ -9,3 +9,11 @@
 .quydinh i {
     color: #01b3a7;
 }
+
+/* Res mobile */
+@media (max-width: 576px){
+    .container3{
+        margin-right: 37px !important;
+        margin-left: -21px !important;
+    }
+}

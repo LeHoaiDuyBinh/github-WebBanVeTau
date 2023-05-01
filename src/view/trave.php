@@ -20,7 +20,7 @@
               <div class="form-card">
                 <div class="row">
                   <div class="col-7">
-                    <h2 class="fs-title"> Vui lòng điền chính xác 3 thông tin dưới đây để hiển thị các vé cần trả </h2>
+                      <p style="margin-left: 19%;" class="fs-title">Điền đầy đủ và chính xác thông tin dưới đây<p>
                   </div>
                 </div>
                 <div class="input-row">
@@ -49,7 +49,7 @@
                 <div id="have-data" style="display:none;">
                   <div class="row">
                     <div class="col-7">
-                      <h2 class="fs-title"> Các giao dịch thành công </h2>
+                      <h2 class="fs-title top"> Các giao dịch thành công </h2>
                     </div>
                   </div>
                   <div class="col-md-12 table-responsive list-ticket-desktop">

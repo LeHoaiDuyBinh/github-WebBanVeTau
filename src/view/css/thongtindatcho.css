@@ -64,7 +64,7 @@ button[type="submit"]{
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
-    height: 70%;
+    height: 53%;
 }
 
 input, button {
@@ -178,3 +178,18 @@ label {
         margin-top: 150px !important;
     }
 }
+
+@media (max-width: 576px){
+    #btnSearch, #changePaymentMethod {
+        margin-left: 29px !important;
+        margin-bottom: 10px !important;
+        width: 51% !important;
+    }
+
+    #confirmPaymentBtn{
+        margin-left: 35px !important;
+        width: 51% !important;
+    }
+}
+
+

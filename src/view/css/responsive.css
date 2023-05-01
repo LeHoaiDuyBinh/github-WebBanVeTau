@@ -138,6 +138,11 @@
     .list-inline {
         margin-left: 160px;
     }
+
+    /* footer */
+    .left{
+        left: -245px;
+    }
 }
 
 /* Mobile */

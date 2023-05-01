@@ -318,7 +318,10 @@ dl, ol, ul {
     margin-top: 0.3rem !important;
     margin-left: -18.25rem !important;
   }
+
+
 }
+
 
 @media (max-width: 576px){
   .form-check-input {
@@ -326,9 +329,17 @@ dl, ol, ul {
     margin-left: -11.85rem !important;
   }
 
+  .carousel-control-next {
+    left: 150px;
+  }
+
+  .section{
+    margin-top: 10px !important;
+  }
+
   footer{
     height: 659px !important;
-}
+  }
 }
 
 
