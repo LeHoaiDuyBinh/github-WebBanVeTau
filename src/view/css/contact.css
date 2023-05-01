@@ -66,6 +66,10 @@
     color: rgba(52, 50, 50, 0.808) !important;
 
   }
+
+  .mess {
+    width: 236px !important;
+  }
   
   /* Thiết kế link khi rê chuột */
   .box-contacts-link a:hover {
@@ -89,11 +93,12 @@
   }
 
   @media (max-width: 576px){
-      .section{
-        margin-top: -114px;
+      .section.fixMap{
+        margin-top: -114px !important;
       }
       .container .btn{
-        width: 34% !important;
+        width: 37% !important;
+        margin-left: 0px !important;
       }
       footer{
         height: 657px !important;
