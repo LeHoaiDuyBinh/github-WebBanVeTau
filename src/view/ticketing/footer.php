@@ -99,6 +99,7 @@
 <!-- Code JavaScript -->
 <script src="/view/javascript/control.js"></script>
 <script src="/view/javascript/khuyenmai.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/view/javascript/sroll.js"></script>
 <script src="/view/javascript/lienhe.js"></script>
 <Script src="/view/javascript/thongtindatcho.js"></Script>
