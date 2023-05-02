@@ -322,7 +322,26 @@ dl, ol, ul {
 
 }
 
+/*Tablet*/
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+  .carousel-control-prev-icon {
+    display: none;
+  }
 
+  .carousel-control-next {
+    left: 150px;
+  }
+
+  .container .card img:nth-child(1){
+    height: 84px;
+  }
+
+  .container .card img:nth-child(3){
+    height: 84px;
+  }
+}
+
+/*Mobile*/
 @media (max-width: 576px){
   .form-check-input {
     margin-top: 0.38rem !important;
@@ -341,7 +360,3 @@ dl, ol, ul {
     height: 659px !important;
   }
 }
-
-
-  
-
