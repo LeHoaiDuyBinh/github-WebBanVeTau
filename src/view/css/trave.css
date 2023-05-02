@@ -52,8 +52,8 @@ h1 {
     padding: 8px 15px 8px 15px;
     border: 1px solid #ccc;
     border-radius: 0px;
-    margin-bottom: 15px;
-    margin-top: 2px;
+    margin-bottom: 25px;
+    margin-top: 4px;
     width: 100%;
     box-sizing: border-box;
     font-family: montserrat;
@@ -481,7 +481,7 @@ footer {
 .input-row small {
     color: #e74c3c;
     position: absolute;
-    bottom: -20px;
+    bottom: 27px;
     left: 0;
     visibility: hidden;
     font-size: 12px;
