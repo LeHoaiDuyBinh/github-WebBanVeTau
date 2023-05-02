@@ -533,6 +533,13 @@ footer {
     overflow: hidden;
 }
 
+/*Res tablet*/
+@media only screen and (min-width: 768px) and (max-width: 1024px){
+    .form-card .row p {
+        margin-left: -20% !important;
+    }
+}
+
 /* Res mobile */
 @media (max-width: 576px){
     .fs-title {
