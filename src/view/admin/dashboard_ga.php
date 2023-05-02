@@ -16,8 +16,12 @@
     <?php foreach($arr as $each): ?>
     <form>
       <tr>
-        <td id="MaGa" data-label="StationCode" ><?php echo $each->getMaGa(); ?></td>
-        <td data-label="StationName"><?php echo $each->getTenGa(); ?></td>
+        <td id="MaGa" data-label="StationCode" >
+          <?php echo $each->getMaGa(); ?>
+        </td>
+        <td data-label="StationName">
+          <?php echo $each->getTenGa(); ?>
+        </td>
         <td data-label="Period">
           <i id = "trash" class="fa fa-trash ticon" > </i>
           <i id="pencil" class="fa fa-pencil"></i>
@@ -86,8 +90,8 @@
     action = 'edit';
     $('#GaForm #submitBtn').text('Lưu');
     const row = event.target.closest('tr');
-    const code_table = row.cells[0].textContent;
-    const name_table = row.cells[1].textContent;
+    const code_table = row.cells[0].textContent.trim();
+    const name_table = row.cells[1].textContent.trim();
     console.log(code);
     // Điền dữ liệu vào form
     code.value = code_table;
@@ -145,7 +149,7 @@
 table2.addEventListener('click', function(event) {
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
-    const MaGa = row.cells[0].textContent;
+    const MaGa = row.cells[0].textContent.trim();
   Swal.fire({
       title: 'Bạn có chắc là muốn xóa ga này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",

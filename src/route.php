@@ -1,8 +1,10 @@
 <?php
-require_once 'controller/Controller.php';
+   require_once 'controller/Controller.php';
    require_once 'controller/AuthController.php';
    require_once 'controller/GaController.php';
    require_once 'controller/TuyenController.php';
+   require_once 'controller/TauController.php';
+   require_once 'controller/LoaiToaController.php';
    
 //    if (isset($_GET['action']) && $_GET['action'] == 'login') {
 //        (new AuthController)->login();
@@ -77,15 +79,40 @@ require_once 'controller/Controller.php';
                             break;
                     }
                     break;    
-				// case 'tuyen':
-				// 	switch($action){
-				// 		case 'index':
-				// 			(new TuyenController)->index();
-				// 			break;
-				// 		case 'create':
-				// 			(new TuyenController)->create();
-				// 			break;
-				// 	}
+                case 'tau':
+                    switch($action){
+                        case 'index':
+                            (new Controller)->menu_bar();
+                            (new TauController)->index();
+                            break;
+                        case 'create':
+                            (new TauController)->create();
+                            break;
+                        case 'edit':
+                            (new TauController)->edit();
+                            break;
+                        case 'delete':
+                            (new TauController)->remove();
+                            break;
+                    }
+                    break;
+                case 'loaitoa':
+                    switch($action){
+                        case 'index':
+                            (new Controller)->menu_bar();
+                            (new LoaiToaController)->index();
+                            break;
+                        case 'create':
+                            (new LoaiToaController)->create();
+                            break;
+                        case 'edit':
+                            (new LoaiToaController)->edit();
+                            break;
+                        case 'delete':
+                            (new LoaiToaController)->remove();
+                            break;
+                    }
+                    break;    
                 default:
                     (new Controller)->menu_bar();
                     (new Controller)->dashboard_home();

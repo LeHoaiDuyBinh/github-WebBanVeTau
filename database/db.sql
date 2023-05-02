@@ -21,7 +21,7 @@ DROP TABLE IF EXISTS `Tau`;
 CREATE TABLE Tau(
   `MaTau` VARCHAR(20) PRIMARY KEY,
   `GaHienTai` VARCHAR(20),
-  `TrangThai` VARCHAR(20),
+  `TrangThai` TINYINT,
   FOREIGN KEY (`GaHienTai`) REFERENCES `Ga`(`MaGa`)
 );
 DROP TABLE IF EXISTS `Chuyen`;
@@ -41,7 +41,8 @@ DROP TABLE IF EXISTS `LoaiToa`;
 CREATE TABLE LoaiToa(
   `MaLoaiToa` VARCHAR(20) PRIMARY KEY,
   `TenLoaiToa` NVARCHAR(100),
-  `Gia` DECIMAL(18, 2)
+  `Gia` DECIMAL(18, 2),
+  `MoTa` TEXT
 );
 DROP TABLE IF EXISTS `Toa`;
 

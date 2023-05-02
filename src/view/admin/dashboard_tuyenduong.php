@@ -18,9 +18,15 @@
     <?php foreach($arrTuyen as $each): ?>
     <form>
     <tr>
-        <td data-label="LineCode" ><?php echo $each->getMaTuyen(); ?></td>
-        <td data-label="StartStation" value ="<?php echo $each->getXuatPhat(); ?>"><?php echo $each->getTenGaXuatPhat(); ?></td>
-        <td data-label="ToStation" value="<?php echo $each->getDiemDen(); ?>"><?php echo $each->getTenGaDiemDen(); ?></td>
+        <td data-label="LineCode" >
+          <?php echo $each->getMaTuyen(); ?>
+        </td>
+        <td data-label="StartStation" value ="<?php echo $each->getXuatPhat(); ?>">
+          <?php echo $each->getTenGaXuatPhat(); ?>
+        </td>
+        <td data-label="ToStation" value="<?php echo $each->getDiemDen(); ?>">
+          <?php echo $each->getTenGaDiemDen(); ?>
+        </td>
         <td data-label="Period">
           <i class="fa fa-trash ticon"></i>
           <i class="fa fa-pencil"></i>
@@ -135,9 +141,9 @@ diemDenSelect.addEventListener("change", function() {
     action = 'edit';
     $('#TuyenForm #submitBtn').text('Lưu');
     const row = event.target.closest('tr');
-    const MaTuyen_table = row.cells[0].textContent;
-    const XuatPhat_table = row.cells[1].getAttribute('value');;
-    const DiemDen_table = row.cells[2].getAttribute('value');;
+    const MaTuyen_table = row.cells[0].textContent.trim();
+    const XuatPhat_table = row.cells[1].getAttribute('value').trim();
+    const DiemDen_table = row.cells[2].getAttribute('value').trim();
     console.log(XuatPhat_table);
     // Điền dữ liệu vào form
     MaTuyen.value = MaTuyen_table;
@@ -190,7 +196,7 @@ diemDenSelect.addEventListener("change", function() {
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
-              'Bạn đã thêm ' + action + ' thành công!',
+              'Bạn đã' + action + ' tuyến thành công!',
               'success'
             )
           setTimeout(function() {
@@ -209,7 +215,7 @@ diemDenSelect.addEventListener("change", function() {
 table2.addEventListener('click', function(event) {
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
-    const MaTuyen = row.cells[0].textContent;
+    const MaTuyen = row.cells[0].textContent.trim();
   Swal.fire({
       title: 'Bạn có chắc là muốn xóa tuyến này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
