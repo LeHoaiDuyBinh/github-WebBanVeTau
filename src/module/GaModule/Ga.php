@@ -1,5 +1,5 @@
 <?php 
-include_once "db.php";
+include_once "./module/db.php";
 include "GaObject.php";
     class Ga{
         private $table = "Ga";

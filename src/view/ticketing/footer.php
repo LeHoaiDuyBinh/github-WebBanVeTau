@@ -97,9 +97,9 @@
 
 
 <!-- Code JavaScript -->
-<script src="./view/javascript/control.js"></script>
-<script src="./view/javascript/khuyenmai.js"></script>
-<script src="./view/javascript/sroll.js"></script>
-<script src="./view/javascript/lienhe.js"></script>
-<Script src="./view/javascript/thongtindatcho.js"></Script>
-<script src="./view/javascript/trave.js"></script>
+<script src="/view/javascript/control.js"></script>
+<script src="/view/javascript/khuyenmai.js"></script>
+<script src="/view/javascript/sroll.js"></script>
+<script src="/view/javascript/lienhe.js"></script>
+<Script src="/view/javascript/thongtindatcho.js"></Script>
+<script src="/view/javascript/trave.js"></script>

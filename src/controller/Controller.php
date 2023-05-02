@@ -1,28 +1,28 @@
 <?php 
     class Controller{
         public function header(){
-            include 'view/header.php';
+            include 'view/ticketing/header.php';
         }
         public function footer(){
-            include 'view/footer.php';
+            include 'view/ticketing/footer.php';
         }
         public function home(){
-            include 'view/home.php';
+            include 'view/ticketing/home.php';
         }
         public function trave(){
-            include 'view/trave.php';
+            include 'view/ticketing/trave.php';
         }
         public function khuyenmai(){
-            include 'view/khuyenmai.php';
+            include 'view/ticketing/khuyenmai.php';
         }
         public function lienhe(){
-            include 'view/lienhe.php';
+            include 'view/ticketing/lienhe.php';
         }
         public function quydinhchung(){
-            include 'view/quydinhchung.php';
+            include 'view/ticketing/quydinhchung.php';
         }
         public function thongtindatcho(){
-            include 'view/thongtindatcho.php';
+            include 'view/ticketing/thongtindatcho.php';
         }
         public function menu_bar(){
             include 'view/admin/menu_bar_admin.php';

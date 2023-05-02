@@ -1,5 +1,5 @@
 <?php
-    include_once "db.php";
+    include_once "./module/db.php";
     include "TuyenObject.php";
         class Tuyen{
             private $table = "Tuyen";

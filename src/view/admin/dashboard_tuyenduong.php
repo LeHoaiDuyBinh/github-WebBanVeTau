@@ -33,8 +33,6 @@
 <div id="myModal" class="modal" style="display: none;">
   <div class="modal-content">
     <form id=TuyenForm>
-      <!-- Báo trùng mã  -->
-      <div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">Mã tuyến này đã tồn tại, vui lòng nhập mã tuyến khác</div>
       <label for="MaTuyen">Mã tuyến:</label>
       <input type="text" id="MaTuyen" name="MaTuyen" required>
       <label for="XuatPhat">Ga xuất phát:</label>
@@ -201,7 +199,7 @@ diemDenSelect.addEventListener("change", function() {
           $('#myModal').hide();
           $('#TuyenForm input[type=text]').removeAttr('readonly').removeClass('readonly');
 				}else{
-					$('#TuyenForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+					$('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})

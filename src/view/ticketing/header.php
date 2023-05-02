@@ -7,17 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="shortcut icon" type="image/png" href="./view/image/PTITIcon.png">
-    <link rel="stylesheet" href="./view/css/quydinhchung.css">
-    <link rel="stylesheet" href="./view/css/trave.css">
-    <link rel="stylesheet" href="./view/css/thongtindatcho.css">
-    <link rel="stylesheet" href="./view/css/khuyenmai.css">
-    <link rel="stylesheet" href="./view/css/trave.css">
-    <link rel="stylesheet" href="./view/css/contact.css"> 
-    <link rel="stylesheet" href="./view/css/animation.css">
+    <link rel="shortcut icon" type="image/png" href="/view/image/PTITIcon.png">
+    <link rel="stylesheet" href="/view/css/quydinhchung.css">
+    <link rel="stylesheet" href="/view/css/trave.css">
+    <link rel="stylesheet" href="/view/css/thongtindatcho.css">
+    <link rel="stylesheet" href="/view/css/khuyenmai.css">
+    <link rel="stylesheet" href="/view/css/trave.css">
+    <link rel="stylesheet" href="/view/css/contact.css"> 
+    <link rel="stylesheet" href="/view/css/animation.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./view/css/main.css">
-    <link rel="stylesheet" href="./view/css/responsive.css">
+    <link rel="stylesheet" href="/view/css/main.css">
+    <link rel="stylesheet" href="/view/css/responsive.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
     
@@ -35,7 +35,7 @@
     <header class="menu">
       <nav class="navbar navbar-expand-lg navbar-light">
       <a class="navbar-brand" href="?page=">
-        <img class="logo" src="./view/image/tauhoa.png" alt="Logo">
+        <img class="logo" src="/view/image/tauhoa.png" alt="Logo">
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>

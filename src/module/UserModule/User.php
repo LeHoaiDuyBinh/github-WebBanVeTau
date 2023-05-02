@@ -1,5 +1,5 @@
 <?php
-include "db.php";
+include_once "./module/db.php";
     Class User{
         function checkAccount($Email, $password){
                 try {

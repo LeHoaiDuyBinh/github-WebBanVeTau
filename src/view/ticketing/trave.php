@@ -25,7 +25,7 @@
                 </div>
                 <div class="input-row">
                   <label class="fieldlabels"> Mã đặt chỗ * </label>
-                  <input type="text" name="code" placeholder="Code" id="code" required />
+                  <input type="text" name="code" placeholder="Code" id="code" required>
                   <small>Mã đặt chỗ không được để trống</small> </br>
                 </div>
                 <div class="input-row">
