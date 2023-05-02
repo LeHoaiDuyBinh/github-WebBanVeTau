@@ -31,7 +31,7 @@
                 </div>
               </div>
               <div class="col-sm-6 col-md-5 col-lg-3 col-xl-4 right">
-                <div class="oh-desktop">
+                <div class="oh-desktop newTablet">
                   <div class="wow slideInDown" data-wow-delay="0s">
                     <h6 style="margin-left: 0px;" class="text-spacing-100 animated-text text-uppercase">TIN TỨC PHỔ BIẾN</h6>
                     <!-- Post Minimal 2-->
@@ -52,7 +52,7 @@
                 </div>
               </div>
               <div class="col-sm-11 col-md-7 col-lg-5 col-xl-3">
-                <div class="oh-desktop">
+                <div class="oh-desktop generalityTablet">
                   <div class="wow slideInLeft" data-wow-delay="0s">
                     <h6 class="text-spacing-100 text-uppercase animated-text">TỔNG QUÁT</h6>
                     <ul style="list-style: none;" class="left row-6 list-0 list-marked list-marked-md list-marked-secondary list-custom-2 animated-text">
