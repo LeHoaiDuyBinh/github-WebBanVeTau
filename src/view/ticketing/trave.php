@@ -20,7 +20,7 @@
               <div class="form-card">
                 <div class="row">
                   <div class="col-7">
-                      <p style="margin-left: 19%;" class="fs-title">Điền đầy đủ và chính xác thông tin dưới đây<p>
+                      <p style="margin-left: 11%;" class="fs-title">Điền đầy đủ và chính xác thông tin dưới đây<p>
                   </div>
                 </div>
                 <div class="input-row">
