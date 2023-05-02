@@ -327,7 +327,12 @@ dl, ol, ul {
   .carousel-control-prev-icon {
     display: none;
   }
-
+    
+  .form-check-input {
+    margin-top: 0.5rem !important;
+    margin-left: -17.75rem !important;
+  }
+    
   .carousel-control-next {
     left: 150px;
   }
