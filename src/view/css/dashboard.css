@@ -325,7 +325,19 @@ button:hover {
   color: #777;
 }
 
+/*dashboard tuyến đường */
+#XuatPhat {
+  font-size: 16px;
+  border-radius: 4px;
+  width: 100%;
+  height: 51.2px;
+  margin-bottom: 10px;
+}
 
-
-
-
+#DiemDen {
+  font-size: 16px;
+  border-radius: 4px;
+  width: 100%;
+  height: 51.2px;
+  margin-bottom: 10px;
+}
