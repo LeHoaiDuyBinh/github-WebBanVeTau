@@ -28,13 +28,13 @@
 
       </div>
       <div>
-        <button id="theme_switch">
+        <button style="position: absolute; top: 21px; right: 60px;" id="theme_switch">
           <i class='bx bx-sun'></i>
         </button>
       </div>
       <div>
         <button class="log" id="theme_switch">
-          <i style="margin-left: 8px;" class='bx bx-power-off'></i>
+          <i style="margin-left: 8px; position: absolute; margin-left: 8px;top: 24px;right: 23px;" class='bx bx-power-off'></i>
         </button>
       </div>
     </header>
