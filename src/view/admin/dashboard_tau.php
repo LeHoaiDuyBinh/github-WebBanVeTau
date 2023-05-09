@@ -179,11 +179,11 @@
 				console.log(err)
 			},
 			success:function(resp){
-        action = action == 'create' ? 'thêm' : 'sửa';
+        actiontext = action == 'create' ? 'thêm' : 'sửa';
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
-              'Bạn đã ' + action + ' tàu thành công!',
+              'Bạn đã ' + actiontext + ' tàu thành công!',
               'success'
             )
           setTimeout(function() {
@@ -260,7 +260,6 @@
 const link = document.querySelector(".sidenav_link.tau");
 link.classList.add('active');
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/view/javascript/dashboard.js"></script>
 <script src="/view/javascript/PaginationDashboard.js"></script>
 </body>

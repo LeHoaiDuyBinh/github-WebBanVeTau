@@ -189,7 +189,7 @@
             <label class="form-check-label">Khứ hồi</label>
           </div>
         </div>
-        <button type="submit"  class="btn btn-primary">Đặt vé</button>
+        <button type="submit"  class="btn btn-primary">Tìm vé</button>
        </form>
       </div>
     

@@ -8,24 +8,28 @@
   <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm tuyến đường</button>
   <thead>
     <tr>
-      <th scope="col" width="80px">Mã tuyến</th>
-      <th scope="col" width="100px">Ga xuất phát</th>
-      <th scope="col" width="100px">Ga đến</th>
+      <th scope="col" width="70px">Mã tuyến</th>
+      <th scope="col" width="70px">Ga xuất phát</th>
+      <th scope="col" width="70px">Ga đến</th>
+      <th scope="col" width="70px">Thời gian chạy</th>
       <th scope="col" width="50px">Action</th>
     </tr>
   </thead>
   <tbody>
-    <?php foreach($arrTuyen as $each): ?>
+    <?php foreach($arrTuyenDuong as $each): ?>
     <form>
     <tr>
         <td data-label="LineCode" >
-          <?php echo $each->getMaTuyen(); ?>
+          <?php echo $each->getMaTuyenDuong(); ?>
         </td>
         <td data-label="StartStation" value ="<?php echo $each->getXuatPhat(); ?>">
           <?php echo $each->getTenGaXuatPhat(); ?>
         </td>
         <td data-label="ToStation" value="<?php echo $each->getDiemDen(); ?>">
           <?php echo $each->getTenGaDiemDen(); ?>
+        </td>
+        <td data-label="Time2Run">
+          <?php echo $each->getThoiGianChay(); ?>
         </td>
         <td data-label="Period">
           <i class="fa fa-trash ticon"></i>
@@ -39,8 +43,8 @@
 <div id="myModal" class="modal" style="display: none;">
   <div class="modal-content">
     <form id=TuyenForm>
-      <label for="MaTuyen">Mã tuyến:</label>
-      <input type="text" id="MaTuyen" name="MaTuyen" required>
+      <label for="MaTuyenDuong">Mã tuyến:</label>
+      <input type="text" id="MaTuyenDuong" name="MaTuyenDuong" required>
       <label for="XuatPhat">Ga xuất phát:</label>
       <select id="XuatPhat" name="XuatPhat" required>
         <option value=""></option>
@@ -59,6 +63,10 @@
           </option>
         <?php endforeach; ?>
       </select>
+      <label for="ThoiGianChay">Thời gian chạy:</label>
+      <input type="text" id="Gio" class="Gio" name="Gio" pattern="\d{2}" maxlength="2" required placeholder="HH">
+      :
+      <input type="text" id="Phut" class="Phut" name="Phut" pattern="\d{2}" maxlength="2" required placeholder="MM">
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
@@ -120,11 +128,13 @@ diemDenSelect.addEventListener("change", function() {
 
   const table2 = document.querySelector('#myTable');
   const form = document.querySelector('#myModal form');
-  const MaTuyen = modal.querySelector('#MaTuyen');
+  const MaTuyenDuong = modal.querySelector('#MaTuyenDuong');
   const XuatPhat = modal.querySelector('#XuatPhat');
   const optionXuatPhat = XuatPhat.querySelectorAll('option');
   const DiemDen = modal.querySelector('#DiemDen');
   const optionDiemDen = DiemDen.querySelectorAll('option');
+  const Gio = modal.querySelector('#Gio');
+  const Phut = modal.querySelector('#Phut');
   const editBtn = document.querySelectorAll('.fa-pencil');
   
   
@@ -141,12 +151,15 @@ diemDenSelect.addEventListener("change", function() {
     action = 'edit';
     $('#TuyenForm #submitBtn').text('Lưu');
     const row = event.target.closest('tr');
-    const MaTuyen_table = row.cells[0].textContent.trim();
+    const MaTuyenDuong_table = row.cells[0].textContent.trim();
     const XuatPhat_table = row.cells[1].getAttribute('value').trim();
     const DiemDen_table = row.cells[2].getAttribute('value').trim();
-    console.log(XuatPhat_table);
+    const ThoiGianChay_table = row.cells[3].textContent.trim();
+    const TG = ThoiGianChay_table.split(":");
+    const Gio_table = TG[0];
+    const Phut_table = TG[1];
     // Điền dữ liệu vào form
-    MaTuyen.value = MaTuyen_table;
+    MaTuyenDuong.value = MaTuyenDuong_table;
     for (let i = 0; i < optionDiemDen.length; i++) {
       if (optionDiemDen[i].value === DiemDen_table) {
         optionDiemDen[i].selected = true;
@@ -161,12 +174,13 @@ diemDenSelect.addEventListener("change", function() {
         break;
       }
     }
-
+    Gio.value = Gio_table;
+    Phut.value = Phut_table;
         // biến thành readonly
-    MaTuyen.setAttribute('readonly', true);
+    MaTuyenDuong.setAttribute('readonly', true);
 
       // thêm màu cho input readonly
-    MaTuyen.classList.add("readonly");
+    MaTuyenDuong.classList.add("readonly");
     // Hiển thị form
     modal.style.display = "block";
   }
@@ -180,10 +194,11 @@ diemDenSelect.addEventListener("change", function() {
     $('#TuyenForm select').val([]);
     $('#TuyenForm input[type=text]').removeAttr('readonly').removeClass('readonly');
   });
-
+  $('#TuyenForm').find('input:not(.hour .minute)').serialize()
   // xử lý các data và nhận resp
   $('#TuyenForm').submit(function(e){
-		e.preventDefault()
+    console.log($(this).serialize());
+		e.preventDefault();
 		$.ajax({
 			url:'/?type=admin&page=tuyenduong&action=' + action,
 			method:'POST',
@@ -192,11 +207,11 @@ diemDenSelect.addEventListener("change", function() {
 				console.log(err)
 			},
 			success:function(resp){
-        action = action == 'create' ? 'thêm' : 'sửa';
+        actiontext = action == 'create' ? 'thêm' : 'sửa';
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
-              'Bạn đã' + action + ' tuyến thành công!',
+              'Bạn đã' + actiontext + ' tuyến thành công!',
               'success'
             )
           setTimeout(function() {
@@ -215,7 +230,7 @@ diemDenSelect.addEventListener("change", function() {
 table2.addEventListener('click', function(event) {
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
-    const MaTuyen = row.cells[0].textContent.trim();
+    const MaTuyenDuong = row.cells[0].textContent.trim();
   Swal.fire({
       title: 'Bạn có chắc là muốn xóa tuyến này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
@@ -230,7 +245,7 @@ table2.addEventListener('click', function(event) {
       $.ajax({
         url: 'index.php/?type=admin&page=tuyenduong&action=delete',
         type: 'POST',
-        data: { MaTuyen: MaTuyen },
+        data: { MaTuyenDuong: MaTuyenDuong },
         success: function(response) {
           if (response.trim() == "done") {
             Swal.fire(
@@ -256,13 +271,11 @@ table2.addEventListener('click', function(event) {
   })
 }
 });
-  
   // Active
 const link = document.querySelector(".sidenav_link.tuyenduong");
 link.classList.add('active');
 
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/view/javascript/dashboard.js"></script>
 <script src="/view/javascript/PaginationDashboard.js"></script>
 </body>

@@ -2,10 +2,11 @@
    require_once 'controller/Controller.php';
    require_once 'controller/AuthController.php';
    require_once 'controller/GaController.php';
-   require_once 'controller/TuyenController.php';
+   require_once 'controller/TuyenDuongController.php';
    require_once 'controller/TauController.php';
    require_once 'controller/LoaiToaController.php';
    require_once 'controller/ToaController.php';
+   require_once 'controller/DatVeController.php';
 
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
@@ -39,16 +40,16 @@
                     switch($action){
                         case 'index':
                             (new Controller)->menu_bar();
-                            (new TuyenController)->index();
+                            (new TuyenDuongController)->index();
                             break;
                         case 'create':
-                            (new TuyenController)->create();
+                            (new TuyenDuongController)->create();
                             break;
                         case 'edit':
-                            (new TuyenController)->edit();
+                            (new TuyenDuongController)->edit();
                             break;
                         case 'delete':
-                            (new TuyenController)->remove();
+                            (new TuyenDuongController)->remove();
                             break;
                     }
                     break;    
@@ -130,6 +131,9 @@
                         break;
                     case 'thongtindatcho':
                         (new Controller)->thongtindatcho();
+                        break;
+                    case 'ketquatimve':
+                        (new DatVeController)->index();
                         break;
                     default:
                         (new Controller)->home();

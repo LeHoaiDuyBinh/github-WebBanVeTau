@@ -133,7 +133,6 @@ const link = document.querySelector(".sidenav_link.home");
 link.classList.add('active');
 
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="/view/javascript/dashboard.js"></script>
 <script src="/view/javascript/PaginationDashboard.js"></script>
 </body>

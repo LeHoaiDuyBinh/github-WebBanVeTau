@@ -126,11 +126,11 @@
 				console.log(err)
 			},
 			success:function(resp){
-        action = action == 'create' ? 'thêm' : 'sửa';
+        var actionText = action == 'create' ? 'thêm' : 'sửa';
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
-              'Bạn đã '+ action +' ga thành công!',
+              'Bạn đã '+ actionText +' ga thành công!',
               'success'
             )
           setTimeout(function() {

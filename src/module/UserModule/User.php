@@ -4,7 +4,7 @@ include_once "./module/db.php";
         function checkAccount($Email, $password){
                 try {
                     $db = new DB();
-                    $sql = "select * from User where Email=? and Password=?";
+                    $sql = "select * from Users where Email=? and Password=?";
                     $params = array($Email,$password);
                     $sth = $db->select($sql, $params);
                     // die($password);

@@ -4,6 +4,7 @@
         private $SoChoNgoi;
         private $MaTau;
         private $MaLoaiToa;
+        private $ThuTuToa;
         private $LoaiToa;
 
         public function __construct($row)
@@ -13,6 +14,7 @@
             $this->MaTau = $row['MaTau'];
             $this->MaLoaiToa = $row['MaLoaiToa'];
             $this->LoaiToa = $row['LoaiToa'];
+            $this->ThuTuToa = $row['ThuTuToa'];
         }
 
         public function getMaToa()
@@ -58,6 +60,16 @@
         public function getLoaiToa()
         {
                 return $this->LoaiToa;
+        }
+        
+        public function getThuTuToa()
+        {
+                return $this->ThuTuToa;
+        }
+
+        public function setThuTuToa($ThuTuToa)
+        {
+                $this->ThuTuToa = $ThuTuToa;
         }
     }
 ?>

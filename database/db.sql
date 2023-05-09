@@ -7,12 +7,13 @@ CREATE TABLE Ga (
   `TenGa` NVARCHAR(100),
   PRIMARY KEY (`MaGa`)
 );
-DROP TABLE IF EXISTS `Tuyen`;
+DROP TABLE IF EXISTS `TuyenDuong`;
 
-CREATE TABLE Tuyen(
-  `MaTuyen` VARCHAR(20) PRIMARY KEY,
+CREATE TABLE TuyenDuong(
+  `MaTuyenDuong` VARCHAR(20) PRIMARY KEY,
   `XuatPhat` VARCHAR(20),
   `DiemDen` VARCHAR(20),
+  `ThoiGianChay` TIME,
   FOREIGN KEY (`XuatPhat`) REFERENCES `Ga`(`MaGa`),
   FOREIGN KEY (`DiemDen`) REFERENCES `Ga`(`MaGa`)
 );
@@ -24,16 +25,15 @@ CREATE TABLE Tau(
   `TrangThai` TINYINT,
   FOREIGN KEY (`GaHienTai`) REFERENCES `Ga`(`MaGa`)
 );
-DROP TABLE IF EXISTS `Chuyen`;
+DROP TABLE IF EXISTS `ChuyenTau`;
 
-CREATE TABLE Chuyen(
-  `MaChuyen` VARCHAR(20) PRIMARY KEY,
-  `MaTuyen` VARCHAR(20),
+CREATE TABLE ChuyenTau(
+  `MaChuyenTau` VARCHAR(20) PRIMARY KEY,
+  `MaTuyenDuong` VARCHAR(20),
   `MaTau` VARCHAR(20),
   `ThoiGianXuatPhat` DATETIME,
-  `ThoiGianDenNoi` DATETIME,
-  `TrangThai` VARCHAR(20),
-  FOREIGN KEY (`MaTuyen`) REFERENCES `Tuyen`(`MaTuyen`),
+  `TrangThai` TINYINT,
+  FOREIGN KEY (`MaTuyenDuong`) REFERENCES `TuyenDuong`(`MaTuyenDuong`),
   FOREIGN KEY (`MaTau`) REFERENCES `Tau`(`MaTau`)
 );
 DROP TABLE IF EXISTS `LoaiToa`;
@@ -51,6 +51,7 @@ CREATE TABLE Toa(
   `SoChoNgoi` SMALLINT,
   `MaTau` VARCHAR(20),
   `MaLoaiToa` VARCHAR(20),
+  `ThuTuToa` SMALLINT,
   FOREIGN KEY (`MaTau`) REFERENCES `Tau`(`MaTau`),
   FOREIGN KEY (`MaLoaiToa`) REFERENCES `LoaiToa`(`MaLoaiToa`)
 );
@@ -59,7 +60,7 @@ DROP TABLE IF EXISTS `ChoNgoi`;
 CREATE TABLE ChoNgoi(
   `MaChoNgoi` VARCHAR(20) PRIMARY KEY,
   `MaToa` VARCHAR(20),
-  `GhiChu` NVARCHAR(100),
+  `TrangThai` TINYINT,
   FOREIGN KEY (`MaToa`) REFERENCES `Toa`(`MaToa`)
 );
 DROP TABLE IF EXISTS `KhachHang`;
@@ -69,11 +70,11 @@ CREATE TABLE KhachHang(
   `CCCD`VARCHAR(20),
   `SDT` VARCHAR(20),
   `Email` VARCHAR(100),
-  `Tuoi` SMALLINT
+  `NgaySinh` DATETIME
 );
-DROP TABLE IF EXISTS `DatCho`;
+DROP TABLE IF EXISTS `ThongTinDatCho`;
 
-CREATE TABLE DatCho(
+CREATE TABLE ThongTinDatCho(
   `MaDatCho` VARCHAR(20) PRIMARY KEY,
   `ID_KhachHang` INT,
   `NgayDatCho` DATETIME,
@@ -86,40 +87,27 @@ DROP TABLE IF EXISTS `Ve`;
 
 CREATE TABLE Ve(
   `MaVe` VARCHAR(20) PRIMARY KEY,
-  `MaDatCho` VARCHAR(20),
-  `MaChuyen` VARCHAR(20),
+  `MaChuyenTau` VARCHAR(20),
   `MaChoNgoi` VARCHAR(20),
-  FOREIGN KEY (`MaDatCho`) REFERENCES `DatCho`(`MaDatCho`),
-  FOREIGN KEY (`MaChuyen`) REFERENCES `Chuyen`(`MaChuyen`),
+  FOREIGN KEY (`MaChuyenTau`) REFERENCES `ChuyenTau`(`MaChuyenTau`),
   FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`)
 );
 DROP TABLE IF EXISTS `ThanhToan`;
 
 CREATE TABLE ThanhToan(
-  `MaThanhToan` VARCHAR(20) PRIMARY KEY,
   `MaDatCho` VARCHAR(20),
   `NgayThanhToan` DATETIME,
   `TongTien` DECIMAL(18, 2),
   `LoaiThanhToan` VARCHAR(20),
-  `TrangThai` BOOLEAN,
-  FOREIGN KEY (`MaDatCho`) REFERENCES `DatCho`(`MaDatCho`)
+  FOREIGN KEY (`MaDatCho`) REFERENCES `ThongTinDatCho`(`MaDatCho`)
 );
-DROP TABLE IF EXISTS `XacNhanDatCho`;
+DROP TABLE IF EXISTS `Users`;
 
-CREATE TABLE XacNhanDatCho(
-  `ID_XacNhan` INT PRIMARY KEY AUTO_INCREMENT,
-  `MaDatCho` VARCHAR(20),
-  `NgayXacNhan` DATETIME,
-  `TrangThaiXacNhan` BOOLEAN,
-  FOREIGN KEY (`MaDatCho`) REFERENCES `DatCho`(`MaDatCho`)
-);
-
-DROP TABLE IF EXISTS `User`;
-CREATE TABLE User(
+CREATE TABLE Users(
   `ID_User` INT PRIMARY KEY AUTO_INCREMENT,
   `Email` VARCHAR(30),
   `Password` VARCHAR(100),
-  `ChucVu` NVARCHAR(50)
+  `ChucVu` TINYINT
 );
 
-INSERT INTO `User`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '123', 'Quản lý')
+INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '123', 1)

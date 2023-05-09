@@ -257,7 +257,7 @@ table th {
 /* Định dạng phần nội dung của modal */
 .modal-content {
   background-color:var(--accent-clr);
-  margin: 15% auto;
+  margin: 7% auto;
   padding: 20px;
   border: 1px solid #888;
   width: 50%;

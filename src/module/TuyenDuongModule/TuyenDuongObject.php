@@ -1,18 +1,20 @@
 <?php
-    class TuyenObject{
-        private $MaTuyen;
+    class TuyenDuongObject{
+        private $MaTuyenDuong;
         private $XuatPhat;
         private $DiemDen;
         private $TenGaXuatPhat;
         private $TenGaDiemDen;
+        private $ThoiGianChay;
         
         public function __construct($row)
         {
-            $this->MaTuyen = $row['MaTuyen'];
+            $this->MaTuyenDuong = $row['MaTuyenDuong'];
             $this->XuatPhat = $row['XuatPhat'];
             $this->DiemDen = $row['DiemDen'];
             $this->TenGaXuatPhat = $row['TenGaXuatPhat'];
             $this->TenGaDiemDen = $row['TenGaDiemDen'];
+            $this->ThoiGianChay = $row['ThoiGianChay'];
         }
 
         public function getDiemDen()
@@ -35,14 +37,14 @@
                 $this->XuatPhat = $XuatPhat;
         }
 
-        public function getMaTuyen()
+        public function getMaTuyenDuong()
         {
-                return $this->MaTuyen;
+                return $this->MaTuyenDuong;
         }
 
-        public function setMaTuyen($MaTuyen)
+        public function setMaTuyenDuong($MaTuyenDuong)
         {
-                $this->MaTuyen = $MaTuyen;
+                $this->MaTuyenDuong = $MaTuyenDuong;
         }
 
         public function getTenGaXuatPhat()
@@ -63,6 +65,16 @@
         public function setTenGaDiemDen($TenGaDiemDen)
         {
                 $this->TenGaDiemDen = $TenGaDiemDen;
+        }
+
+        public function getThoiGianChay()
+        {
+                return $this->ThoiGianChay;
+        }
+
+        public function setThoiGianChay($ThoiGianChay)
+        {
+                $this->ThoiGianChay = $ThoiGianChay;
         }
     }
 ?>
