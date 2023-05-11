@@ -170,7 +170,9 @@
 
 // submit data đi và nhận resp
   $('#TauForm').submit(function(e){
-		e.preventDefault()
+		e.preventDefault();
+    var $form = $(this);
+    var $alert = $form.find('.alert');
 		$.ajax({
 			url:'/?type=admin&page=tau&action=' + action,
 			method:'POST',
@@ -194,7 +196,8 @@
 
           removeAttrHiddenOption();
 				}else{
-					$('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+          if($alert.length === 0)
+					  $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})

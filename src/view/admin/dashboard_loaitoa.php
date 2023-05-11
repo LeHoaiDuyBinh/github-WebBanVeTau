@@ -11,6 +11,7 @@
       <th scope="col" width="50px">Mã loại toa</th>
       <th scope="col" width="80px">Tên loại toa</th>
       <th scope="col" width="50px">Giá</th>
+      <th scope="col" width="30px">Số Chổ ngồi</th>
       <th scope="col" width="50px">Mô Tả</th>
       <th scope="col" width="50px">Action</th>
     </tr>
@@ -21,6 +22,7 @@
       <td data-label="CarriageCode"><?php echo $each->getMaLoaiToa(); ?></td>
       <td data-label="NameCarriage"><?php echo $each->getTenLoaiToa(); ?></td>
       <td data-label="Price"><?php echo $each->getGia(); ?></td>
+      <td data-label="Description"><?php echo $each->getSoChoNgoi(); ?></td>
       <td data-label="Description"><?php echo $each->getMoTa(); ?></td>
       <td data-label="Period">
         <i class="fa fa-trash ticon"></i>
@@ -38,6 +40,8 @@
       <input type="text" id="TenLoaiToa" name="TenLoaiToa" required>
       <label for="Gia">Giá:</label>
       <input type="text" id="Gia" name="Gia" required>
+      <label for="SoChoNgoi">Số chổ ngồi:</label>
+      <input type="text" id="SoChoNgoi" name="SoChoNgoi" required>
       <label for="MoTa">Mô tả:</label>
       <input type="text" id="MoTa" name="MoTa" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
@@ -77,6 +81,7 @@
   const MaLoaiToa = modal.querySelector('#MaLoaiToa');
   const TenLoaiToa = modal.querySelector('#TenLoaiToa');
   const Gia = modal.querySelector('#Gia');
+  const SoChoNgoi = modal.querySelector('#SoChoNgoi');
   const MoTa = modal.querySelector('#MoTa');
   const editBtn = document.querySelectorAll('.fa-pencil');
   
@@ -94,11 +99,13 @@
     const MaLoaiToa_table = row.cells[0].textContent.trim();
     const TenLoaiToa_table = row.cells[1].textContent.trim();
     const Gia_table = row.cells[2].textContent.trim();
-    const MoTa_table = row.cells[3].textContent.trim();
+    const SoChoNgoi_table = row.cells[3].textContent.trim();
+    const MoTa_table = row.cells[4].textContent.trim();
     // Điền dữ liệu vào form
     MaLoaiToa.value = MaLoaiToa_table;
     TenLoaiToa.value = TenLoaiToa_table;
     Gia.value = Gia_table;
+    SoChoNgoi.value = SoChoNgoi_table;
     MoTa.value = MoTa_table
 
     // biến thành readonly
@@ -112,7 +119,9 @@
 });
 
   $('#LoaiToaForm').submit(function(e){
-		e.preventDefault()
+		e.preventDefault();
+    var $form = $(this);
+    var $alert = $form.find('.alert');
 		$.ajax({
 			url:'/?type=admin&page=loaitoa&action='+action,
 			method:'POST',
@@ -134,7 +143,8 @@
           $('#myModal').hide();
           $('#LoaiToaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
-					$('#LoaiToaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+          if($alert.length === 0)
+					  $('#LoaiToaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})

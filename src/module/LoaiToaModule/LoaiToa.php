@@ -20,11 +20,11 @@
                 }
             }
     
-            function create($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa){
+            function create($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa, $SoChoNgoi){
                 try {
                     $db = new DB();
-                    $sql = "insert into $this->table (MaLoaiToa, TenLoaiToa , Gia, MoTa) values(?, ?, ?, ?)";
-                    $params = array($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa);
+                    $sql = "insert into $this->table (MaLoaiToa, TenLoaiToa , Gia, MoTa, SoChoNgoi) values(?, ?, ?, ?, ?)";
+                    $params = array($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa, $SoChoNgoi);
                     $db->execute($sql, $params);
                     return "done";
                     }
@@ -34,11 +34,11 @@
                 }
             }
     
-            function edit($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa){
+            function edit($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa, $SoChoNgoi){
                 try {
                     $db = new DB();
-                    $sql = "update $this->table set TenLoaiToa = ?, Gia = ?, MoTa = ? where MaLoaiToa = ?";
-                    $params = array($TenLoaiToa , $Gia, $MoTa, $MaLoaiToa);
+                    $sql = "update $this->table set TenLoaiToa = ?, Gia = ?, MoTa = ?, SoChoNgoi = ? where MaLoaiToa = ?";
+                    $params = array($TenLoaiToa , $Gia, $MoTa, $SoChoNgoi, $MaLoaiToa);
                     $db->execute($sql, $params);
                     return "done";
                     }

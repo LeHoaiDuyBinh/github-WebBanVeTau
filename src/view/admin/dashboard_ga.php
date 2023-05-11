@@ -117,7 +117,9 @@
 
   // truyền data tới DB và nhận response
   $('#GaForm').submit(function(e){
-		e.preventDefault()
+		e.preventDefault();
+    var $form = $(this);
+    var $alert = $form.find('.alert');
 		$.ajax({
 			url:'/?type=admin&page=ga&action='+action,
 			method:'POST',
@@ -139,7 +141,8 @@
           $('#myModal').hide();
           $('#GaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
-					$('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+          if($alert.length === 0)
+					  $('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})

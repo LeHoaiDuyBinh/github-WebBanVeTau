@@ -4,6 +4,7 @@
         private $GaHienTai;
         private $TrangThai;
         private $TenGa;
+        private $DS_Toa;
 
         public function __construct($row)
         {
@@ -46,6 +47,16 @@
         public function getTenGa()
         {
                 return $this->TenGa;
+        }
+
+        public function getDS_Toa()
+        {
+                return $this->DS_Toa;
+        }
+
+        public function setDS_Toa($DS_Toa)
+        {
+                $this->DS_Toa = $DS_Toa;
         }
     }
 ?>

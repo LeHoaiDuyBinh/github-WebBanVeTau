@@ -4,6 +4,7 @@
         private $TenLoaiToa;
         private $Gia;
         private $MoTa;
+        private $SoChoNgoi;
 
         public function __construct($row)
         {
@@ -11,6 +12,7 @@
             $this->TenLoaiToa = $row['TenLoaiToa'];
             $this->Gia = $row['Gia'];
             $this->MoTa = $row['MoTa'];
+            $this->SoChoNgoi = $row['SoChoNgoi'];
         }
 
         public function getMaLoaiToa()
@@ -51,6 +53,16 @@
         public function setMoTa($MoTa)
         {
                 $this->MoTa = $MoTa;
+        }
+
+        public function getSoChoNgoi()
+        {
+                return $this->SoChoNgoi;
+        }
+
+        public function setSoChoNgoi($SoChoNgoi)
+        {
+                $this->SoChoNgoi = $SoChoNgoi;
         }
     }
 ?>

@@ -13,7 +13,8 @@
             $TenLoaiToa = $_POST['TenLoaiToa'];
             $Gia = $_POST['Gia'];
             $MoTa = $_POST['MoTa'];
-            $check = (new LoaiToa)->create($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa);
+            $SoChoNgoi =$_POST['SoChoNgoi'];
+            $check = (new LoaiToa)->create($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa, $SoChoNgoi);
             echo $check;
         }
 
@@ -23,7 +24,8 @@
             $TenLoaiToa = $_POST['TenLoaiToa'];
             $Gia = $_POST['Gia'];
             $MoTa = $_POST['MoTa'];
-            $check = (new LoaiToa)->edit($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa);
+            $SoChoNgoi =$_POST['SoChoNgoi'];
+            $check = (new LoaiToa)->edit($MaLoaiToa, $TenLoaiToa , $Gia, $MoTa, $SoChoNgoi);
             echo $check;
         }
 

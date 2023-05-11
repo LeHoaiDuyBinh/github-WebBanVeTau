@@ -93,15 +93,15 @@
                             (new Controller)->menu_bar();
                             (new ToaController)->index();
                             break;
-                        // case 'create':
-                        //     (new ToaController)->create();
-                        //     break;
-                        // case 'edit':
-                        //     (new ToaController)->edit();
-                        //     break;
-                        // case 'delete':
-                        //     (new ToaController)->remove();
-                        //     break;
+                        case 'create':
+                            (new ToaController)->create();
+                            break;
+                        case 'edit':
+                            (new ToaController)->edit();
+                            break;
+                        case 'delete':
+                            (new ToaController)->remove();
+                            break;
                     }
                     break;   
                 default:

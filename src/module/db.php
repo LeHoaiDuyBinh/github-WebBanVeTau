@@ -20,6 +20,7 @@
                 $res = $connect->query($sql);
             }
             $res->setFetchMode(PDO::FETCH_ASSOC);
+            $connect = null;
             return $res;
         }
 
@@ -27,6 +28,7 @@
             $connect = $this->conn();
             $res = $connect->prepare($sql);
             $res->execute($params);
+            $connect = null;
         }
     }
 ?>

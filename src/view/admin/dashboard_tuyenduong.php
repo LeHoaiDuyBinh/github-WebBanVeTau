@@ -197,8 +197,9 @@ diemDenSelect.addEventListener("change", function() {
   $('#TuyenForm').find('input:not(.hour .minute)').serialize()
   // xử lý các data và nhận resp
   $('#TuyenForm').submit(function(e){
-    console.log($(this).serialize());
 		e.preventDefault();
+    var $form = $(this);
+    var $alert = $form.find('.alert');
 		$.ajax({
 			url:'/?type=admin&page=tuyenduong&action=' + action,
 			method:'POST',
@@ -220,7 +221,8 @@ diemDenSelect.addEventListener("change", function() {
           $('#myModal').hide();
           $('#TuyenForm input[type=text]').removeAttr('readonly').removeClass('readonly');
 				}else{
-					$('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+          if($alert.length === 0)
+					  $('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
     }
 		})

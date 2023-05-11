@@ -41,6 +41,7 @@ DROP TABLE IF EXISTS `LoaiToa`;
 CREATE TABLE LoaiToa(
   `MaLoaiToa` VARCHAR(20) PRIMARY KEY,
   `TenLoaiToa` NVARCHAR(100),
+  `SoChoNgoi` SMALLINT,
   `Gia` DECIMAL(18, 2),
   `MoTa` TEXT
 );
@@ -48,7 +49,6 @@ DROP TABLE IF EXISTS `Toa`;
 
 CREATE TABLE Toa(
   `MaToa` VARCHAR(20) PRIMARY KEY,
-  `SoChoNgoi` SMALLINT,
   `MaTau` VARCHAR(20),
   `MaLoaiToa` VARCHAR(20),
   `ThuTuToa` SMALLINT,
