@@ -1,0 +1,144 @@
+/* Menu */
+.navbar {
+    background-image: none !important;
+    background-color: #162e44 !important;
+    background-image: none !important;
+    background-repeat: no-repeat !important;
+    border-bottom: none !important;
+    filter: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+    position: none !important ;
+    min-height: 0px !important;
+    margin-bottom: 0px !important;
+    border: none !important;
+    padding: 0.5rem 1rem !important;
+}
+
+.navbar .logo {
+    width: 109px !important;
+    height: 85px !important;
+    background-color: transparent !important;
+    margin-right: 24px !important;
+}
+
+.navbar-brand {
+    float: none !important;
+    /* padding: 0 !important; */
+    height: 100px !important;
+    display: inline-block !important;
+    padding-top: 0.3125rem !important;
+    padding-bottom: 0.3125rem !important;
+    margin-right: 1rem !important;
+    font-size: 1.25rem !important;
+    line-height: inherit !important;
+    white-space: nowrap !important;
+}
+
+.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, 
+.clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, 
+.dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, 
+.modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before,
+.navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+    content: none !important;
+    display: table;
+}
+
+.navbar-nav {
+    display: flex !important;
+    float: left !important;
+    text-align: left !important;
+    flex-direction: column;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+
+@media (min-width: 992px) {
+    .navbar-expand-lg .navbar-nav {
+        flex-direction: row;
+    }
+    .navbar-expand-lg {
+        -ms-flex-flow: row nowrap;
+        flex-flow: row nowrap;
+        -ms-flex-pack: start;
+        justify-content: flex-start;
+    }
+    .navbar-nav .nav-item {
+        margin-right: 40px;
+    }
+
+
+    .navbar-collapse.collapse {
+        display: block!important;
+        height: auto!important;
+        padding-bottom: 0;
+        overflow: visible!important;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: baseline;
+    }
+    .collapse.show {
+        display: block !important;
+    }
+}
+
+/* Body */
+.body-page {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: auto;
+    margin-top: 110px;
+    height:fit-content;
+    flex-wrap: nowrap;
+    width: 90%;
+}
+
+/* Hình các toa tàu */
+.colume1 {
+    width: 80%;
+    margin-right: 10px;
+    padding: 25px;
+}
+
+/* giỏ vé và thông tin hành trình */
+.colume2 {
+    width: 20%;
+    margin-left: 10px;
+    flex-wrap: nowrap;
+}
+
+/* form thông tin hành trình */
+.form-check {
+    display: inline-block !important;
+    vertical-align: middle !important;
+  }
+  
+.form-check-input {
+    margin-right: 5px !important;
+    text-align: right !important;
+    float: right !important;
+    position:relative !important;
+}
+.data-ticket {
+    width: 100% !important;
+    /* float: left; */
+    min-height: 1px;
+    text-align: left; 
+    font-size: 15px; 
+    padding-left: 5px !important;
+}
+
+/* Chỗ đã chọn */
+.sit-selected {
+    background-color: #a6b727;
+    color: #fff;
+}
+
+.et-sit-selected {
+    background-color: #a6b727;
+    color: #fff;
+}
