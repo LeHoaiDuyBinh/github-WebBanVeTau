@@ -142,7 +142,7 @@ diemDenSelect.addEventListener("change", function() {
   addBtn.addEventListener('click', function() {
     modal.style.display = "block";
     action = 'create';
-    $('#GaForm #submitBtn').text('Thêm');
+    $('#TuyenForm #submitBtn').text('Thêm');
   });
 
   // khi bấm sửa
@@ -194,7 +194,7 @@ diemDenSelect.addEventListener("change", function() {
     $('#TuyenForm select').val([]);
     $('#TuyenForm input[type=text]').removeAttr('readonly').removeClass('readonly');
   });
-  $('#TuyenForm').find('input:not(.hour .minute)').serialize()
+
   // xử lý các data và nhận resp
   $('#TuyenForm').submit(function(e){
 		e.preventDefault();

@@ -58,7 +58,7 @@ CREATE TABLE Toa(
 DROP TABLE IF EXISTS `ChoNgoi`;
 
 CREATE TABLE ChoNgoi(
-  `MaChoNgoi` VARCHAR(20) PRIMARY KEY,
+  `ID_ChoNgoi` INT PRIMARY KEY AUTO_INCREMENT,
   `MaToa` VARCHAR(20),
   `TrangThai` TINYINT,
   FOREIGN KEY (`MaToa`) REFERENCES `Toa`(`MaToa`)
@@ -79,18 +79,18 @@ CREATE TABLE ThongTinDatCho(
   `ID_KhachHang` INT,
   `NgayDatCho` DATETIME,
   `TrangThai` BOOLEAN,
-  `MaChoNgoi` VARCHAR(20),
+  `ID_ChoNgoi` INT,
   FOREIGN KEY (`ID_KhachHang`) REFERENCES `KhachHang`(`ID_KhachHang`),
-  FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`)
+  FOREIGN KEY (`ID_ChoNgoi`) REFERENCES `ChoNgoi`(`ID_ChoNgoi`)
 );
 DROP TABLE IF EXISTS `Ve`;
 
 CREATE TABLE Ve(
   `MaVe` VARCHAR(20) PRIMARY KEY,
   `MaChuyenTau` VARCHAR(20),
-  `MaChoNgoi` VARCHAR(20),
+  `ID_ChoNgoi` INT,
   FOREIGN KEY (`MaChuyenTau`) REFERENCES `ChuyenTau`(`MaChuyenTau`),
-  FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`)
+  FOREIGN KEY (`ID_ChoNgoi`) REFERENCES `ChoNgoi`(`ID_ChoNgoi`)
 );
 DROP TABLE IF EXISTS `ThanhToan`;
 
@@ -111,3 +111,6 @@ CREATE TABLE Users(
 );
 
 INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '123', 1)
+INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT001','Ngồi mềm điều hòa', 64 ,100000,'Toa ngồi có đệm mềm với điều hòa dễ chịu.')
+INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT002','Giường Nằm 6', 42 ,150000,'Toa giường nằm, mỗi toa có 6 giường với điều hòa dễ chịu.')
+INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT003','Giường Nằm 4', 42 ,200000,'Toa giường nằm, mỗi toa có 4 giường với điều hòa dễ chịu.')

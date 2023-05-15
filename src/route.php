@@ -7,6 +7,7 @@
    require_once 'controller/LoaiToaController.php';
    require_once 'controller/ToaController.php';
    require_once 'controller/DatVeController.php';
+   require_once 'controller/ChuyenTauController.php';
 
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
@@ -103,7 +104,24 @@
                             (new ToaController)->remove();
                             break;
                     }
-                    break;   
+                    break;
+                case 'chuyentau':
+                    switch($action){
+                        case 'index':
+                            (new Controller)->menu_bar();
+                            (new ChuyenTauController)->index();
+                            break;
+                        case 'create':
+                            (new ChuyenTauController)->create();
+                            break;
+                        case 'edit':
+                            (new ChuyenTauController)->edit();
+                            break;
+                        case 'delete':
+                            (new ChuyenTauController)->remove();
+                            break;
+                    }
+                    break;       
                 default:
                     (new Controller)->menu_bar();
                     (new Controller)->dashboard_home();

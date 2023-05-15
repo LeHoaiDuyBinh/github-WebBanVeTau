@@ -51,6 +51,21 @@
                     return  $sql . "<br>" . $e->getMessage();
                 }
             }
+
+            function addChoNgoi($MaToa, $max){
+                try{
+                    $db = new DB();
+                    for ($i = 1; $i <= $max; $i++) {
+                        $sqlChoNgoi = "insert into ChoNgoi (MaToa, TrangThai) values (?, ?)";
+                        $paramsChoNgoi = array($MaToa, 0);
+                        $db->execute($sqlChoNgoi, $paramsChoNgoi);
+                    }
+                }
+                catch (PDOException $e) {
+                    // Xử lý ngoại lệ tại chỗ
+                    return "Lỗi khi thêm Chỗ ngồi: " . $e->getMessage();
+                }
+            }
     
             function create($MaToa, $MaTau , $MaLoaiToa){
                 try {
@@ -59,7 +74,14 @@
                     $sql = "insert into $this->table (MaToa, MaTau, MaLoaiToa, ThuTuToa) values(?, ?, ?, ?)";
                     $params = array($MaToa, $MaTau, $MaLoaiToa, $stt);
                     $db->execute($sql, $params);
-                    return "done";
+                    if ($MaLoaiToa == 'LT001' || $MaLoaiToa == 'LT003') {
+                        $error = $this->addChoNgoi($MaToa, 42, $db);
+                    }
+                    elseif ($MaLoaiToa == 'LT002') {
+                        $error = $this->addChoNgoi($MaToa, 64, $db);
+                    }
+                    if($error == NULL)
+                        return "done";
                     }
                 catch (PDOException $e) {
                     // return $e->getMessage();
@@ -80,8 +102,23 @@
                     return "Lỗi";
                 }
             }
+
+            function removeChoNgoi($MaToa){
+                try{
+                    $db = new DB();
+                    $sqlChoNgoi = "delete from ChoNgoi where ChoNgoi.MaToa = ?";
+                    $paramsChoNgoi = array($MaToa);
+                    $db->execute($sqlChoNgoi, $paramsChoNgoi);
+                }
+                catch (PDOException $e) {
+                    // Xử lý ngoại lệ tại chỗ
+                    return "Lỗi khi xóa Chỗ ngồi: " . $e->getMessage();
+                }
+            }
+
             function remove($MaToa, $ThuTuToa, $MaTau){
                 try {
+                    $this->removeChoNgoi($MaToa);
                     $db = new DB();
                     $sql = "delete from $this->table where MaToa = ?";
                     $params = array($MaToa);
@@ -89,6 +126,7 @@
                     $sql = "update $this->table set ThuTuToa = ThuTuToa - 1 where ThuTuToa > ? and MaTau = ?";
                     $params = array($ThuTuToa, $MaTau);
                     $db->execute($sql, $params);
+                    $this->removeChoNgoi($MaToa);
                     return "done";
                     }
                 catch (PDOException $e) {

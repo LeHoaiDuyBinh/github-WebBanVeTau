@@ -9,8 +9,9 @@
   <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm chuyến tàu</button>
   <thead>
     <tr>
-      <th scope="col" width="80px">Mã chuyến</th>
-      <th scope="col" width="80px">Mã tuyến</th>
+      <th scope="col" width="80px">Mã chuyến tàu</th>
+      <th scope="col" width="60px">Ga xuất phát</th>
+      <th scope="col" width="60px">Ga đến</th>
       <th scope="col" width="80px">Mã tàu</th>
       <th scope="col" width="100px">Thời gian xuất phát</th>
       <th scope="col" width="100px">Thời gian đến nơi</th>
@@ -19,35 +20,54 @@
     </tr>
   </thead>
   <tbody>
+    <?php foreach($arrChuyenTau as $each): ?>
     <tr>
-      <td data-label="TripCode">TH303</td>
-      <td data-label="LineCode">TH100</td>
-      <td data-label="TrainCode">Th1020</td>
-      <td data-label="TimeStart">30/03/2023</td>
-      <td data-label="EndTime">1/4/2023</td>
-      <td data-label="Status">Hoạt động</td>
+      <td data-label="TripCode"><?php echo $each->getMaChuyenTau(); ?></td>
+      <td data-label="GaXuatPhat" value="<?php echo $each->getXuatPhat(); ?>" data-ma-tuyen="<?php echo $each->getMaTuyenDuong(); ?>"><?php echo $each->getTenGaXuatPhat(); ?></td>
+      <td data-label="GaDen" value="<?php echo $each->getDiemDen(); ?>"><?php echo $each->getTenGaDiemDen(); ?></td>
+      <td data-label="TrainCode"><?php echo $each->getMaTau(); ?></td>
+      <td data-label="TimeStart"><?php echo $each->getThoiGianXuatPhat(); ?></td>
+      <td data-label="EndTime"><?php echo $each->getThoiGianDenNoi(); ?></td>
+      <td data-label="Status" value="<?php echo $each->getTrangThai(); ?>"><?php echo $each->getTrangThaitxt(); ?></td>
       <td data-label="Period">
         <i class="fa fa-trash ticon"></i>
         <i class="fa fa-pencil"></i>
     </tr>
+    <?php endforeach; ?>
   </tbody>
 </table>
 <div id="myModal" class="modal" style="display: none;">
   <div class="modal-content">
-    <form>
-      <label for="code">Mã chuyến:</label>
-      <input type="text" id="code" name="code" required>
-      <label for="lineCode">Mã tuyến:</label>
-      <input type="text" id="lineCode" name="lineCode" required>
-      <label for="trainCode">Mã tàu:</label>
-      <input type="text" id="trainCode" name="trainCode" required>
-      <label for="startTime">Thời gian xuất phát:</label>
-      <input style="width: 99%; height: 41px; border-radius: 4px; border: 2px solid #ccc" type="date" id="startTime" name="startTime" required>
-      <label for="endTime">Thời gian xuất phát:</label>
-      <input style="width: 99%; height: 41px; border-radius: 4px; border: 2px solid #ccc" type="date" id="endTime" name="endTime" required>
-      <label for="status">Trạng thái:</label>
-      <input type="text" id="status" name="status" required>
-      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="button" id="submitBtn">Thêm</button>
+    <form id="ChuyenTauForm">
+      <label for="MaChuyenTau">Mã chuyến tàu:</label>
+      <input type="text" id="MaChuyenTau" name="MaChuyenTau" required>
+      <label for="MaTuyenDuong">Mã tuyến:</label>
+      <select name="MaTuyenDuong" id="MaTuyenDuong" required  >
+      <option value=""></option>
+      <?php foreach($arrTuyenDuong as $each): ?>
+        <option value="<?php echo $each->getMaTuyenDuong(); ?>" data-xuat-phat="<?php echo $each->getXuatPhat(); ?>">
+              <?php echo $each->getTenGaXuatPhat() . " - " . $each->getTenGaDiemDen();?>
+        </option>
+      <?php endforeach; ?>
+      </select>
+      <label for="MaTau">Mã tàu:</label>
+      <select name="MaTau" id="MaTau" required>
+        <option value=""></option>
+      <?php foreach($arrTau as $each): ?>
+        <option value="<?php echo $each->getMaTau(); ?>" data-ga-hien-tai="<?php echo $each->getGaHienTai(); ?>">
+              <?php echo $each->getMaTau();?>
+        </option>
+      <?php endforeach; ?>
+      </select>
+      <label for="ThoiGianXuatPhat">Thời gian xuất phát:</label>
+      <input style="width: 99%; height: 41px; border-radius: 4px; border: 2px solid #ccc" type="datetime-local" id="ThoiGianXuatPhat" name="ThoiGianXuatPhat" required>
+      <label for="TrangThai">Trạng thái:</label>
+      <select name="TrangThai" id="TrangThai" required>
+        <option value=""></option>
+        <option value="0">Sẵn sàng hoạt động</option>
+        <option value="1">Đang gặp sự cố</option>
+      </select>
+      <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
   </div>
@@ -72,47 +92,190 @@
 </div>
 <script>
   // Thêm dữ liệu
+  var action = '';
   const addBtn = document.getElementById('addBtn');
   const modal = document.getElementById('myModal');
   const submitBtn = document.getElementById('submitBtn');
   const cancelBtn = document.getElementById('cancelBtn');
   const tableBody = document.querySelector('#myTable tbody');
+
+  const table2 = document.querySelector('#myTable');
+  const form = document.querySelector('#myModal form');
+  const MaChuyenTau = modal.querySelector('#MaChuyenTau');
+  const MaTuyenDuong = modal.querySelector('#MaTuyenDuong');
+  const optionMaTuyenDuong = MaTuyenDuong.querySelectorAll('option');
+  const MaTau = modal.querySelector('#MaTau');
+  const optionMaTau= MaTau.querySelectorAll('option');
+  const ThoiGianXuatPhat = modal.querySelector('#ThoiGianXuatPhat');
+  const TrangThai = modal.querySelector('#TrangThai');
+  const optionTrangThai= TrangThai.querySelectorAll('option');
+  const editBtn = document.querySelectorAll('.fa-pencil');
+
+// hiển thị tàu theo tuyến
+MaTuyenDuong.addEventListener('change', function() {
+  // Lấy giá trị XuatPhat của tuyến duong được chọn
+  var xuatPhat = this.options[this.selectedIndex].dataset.xuatPhat;
+  for (let i = 0; i < optionMaTau.length; i++) {
+      optionMaTau[0].selected = true;
+      if (optionMaTau[i].dataset.gaHienTai == xuatPhat)
+        optionMaTau[i].style.display = "block";
+      else
+      optionMaTau[i].style.display = "none";
+    }
+});
+
+function removeAttrHiddenOption(){
+    for (let i = 0; i < optionTrangThai.length; i++) {
+      optionTrangThai[i].hidden = false;
+    }
+  }
   
   addBtn.addEventListener('click', function() {
     modal.style.display = "block";
+    action = 'create';
+    $('#ChuyenTauForm #submitBtn').text('Thêm');
+    optionTrangThai[2].hidden = true;
   });
-  
-  submitBtn.addEventListener('click', function() {
-    const code             = document.getElementById('code').value;
-    const lineCode         = document.getElementById('lineCode').value;
-    const trainCode        = document.getElementById('trainCode').value;
-    const startTime        = document.getElementById('startTime').value;
-    const endTime          = document.getElementById('endTime').value;
-    const status           = document.getElementById('status').value;
-   
-    if (code.trim() && lineCode.trim() && trainCode.trim() && startTime.trim() && endTime.trim() && status.trim()) {
-      const newRow = tableBody.insertRow(0);
-      const codeCell = newRow.insertCell(0);
-      const lineCodeCell = newRow.insertCell(1);
-      const trainCodeCell = newRow.insertCell(2);
-      const startTimeCell = newRow.insertCell(3);
-      const endTimeCell = newRow.insertCell(4);
-      const statusCell = newRow.insertCell(5);
-      const periodCell = newRow.insertCell(6);
-      codeCell.innerHTML = code;
-      lineCodeCell.innerHTML = lineCode;
-      trainCodeCell.innerHTML = trainCode;
-      startTimeCell.innerHTML = startTime;
-      endTimeCell.innerHTML   = endTime;
-      statusCell.innerHTML = status;
-      periodCell.innerHTML = '<i class="fa fa-trash ticon"></i> <i class="fa fa-pencil"></i>';
-      modal.style.display = "none";
+
+  $('#cancelBtn').click(function() {
+    $('#ChuyenTauForm').find('.alert-danger').remove();
+    $('#myModal').hide();
+    $('#ChuyenTauForm input[type=text]').val('');
+    $('#ChuyenTauForm select').val([]);
+    $('#ChuyenTauForm input[type=datetime-local]').val([]);
+    $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
+  });
+
+  table2.addEventListener('click', function(event) {
+  if (event.target.classList.contains('fa-pencil')) {
+    action = 'edit';
+    $('#ChuyenTauForm #submitBtn').text('Lưu');
+    const row = event.target.closest('tr');
+    const MaChuyenTau_table = row.cells[0].textContent.trim();
+    const MaTuyen_table = row.cells[1].getAttribute('data-ma-tuyen');
+    const MaTau_table = row.cells[3].textContent.trim();
+    const ThoiGianXuatPhat_table = row.cells[4].textContent.trim();
+    const TrangThai_table = row.cells[6].getAttribute('value').trim();
+    // Điền dữ liệu vào form
+    MaChuyenTau.value = MaChuyenTau_table;
+    for (let i = 0; i < optionMaTuyenDuong.length; i++) {
+      if (optionMaTuyenDuong[i].value === MaTuyen_table) {
+        optionMaTuyenDuong[i].selected = true;
+        break;
+      }
     }
-  });
-  
-  cancelBtn.addEventListener('click', function() {
-    modal.style.display = "none";
-  });
+    for (let i = 0; i < optionMaTau.length; i++) {
+      if (optionMaTau[i].value === MaTau_table) {
+        optionMaTau[i].selected = true;
+      }
+    }
+
+    // chuẩn hóa thời gian để đưa vào thẻ input
+    var [ngay, gio] = ThoiGianXuatPhat_table.split(' ');
+
+    // Tách ngày thành các thành phần ngày, tháng, năm
+    var [ngayValue, thangValue, namValue] = ngay.split('-');
+
+    // Tách giờ thành các thành phần giờ, phút, giây
+    var [gioValue, phutValue, giayValue] = gio.split(':');
+
+    // Định dạng chuỗi thời gian phù hợp với input datetime-local (Y-m-d\TH:i:s)
+    var thoiGianFormatted = `${namValue}-${thangValue}-${ngayValue}T${gioValue}:${phutValue}:${giayValue}`; 
+
+    ThoiGianXuatPhat.value = thoiGianFormatted;
+    removeAttrHiddenOption();
+    for (let i = 0; i < optionTrangThai.length; i++) {
+      if (optionTrangThai[i].value === TrangThai_table) {
+        optionTrangThai[i].selected = true;
+      }
+    }
+        // biến thành readonly
+      MaChuyenTau.setAttribute('readonly', true);
+
+      // thêm màu cho input readonly
+      MaChuyenTau.classList.add("readonly");
+    // Hiển thị form
+    modal.style.display = "block";
+  }
+});
+
+  $('#ChuyenTauForm').submit(function(e){
+		e.preventDefault();
+    var $form = $(this);
+    var $alert = $form.find('.alert');
+		$.ajax({
+			url:'/?type=admin&page=chuyentau&action=' + action,
+			method:'POST',
+			data:$(this).serialize(),
+			error:err=>{
+				console.log(err)
+			},
+			success:function(resp){
+        actiontext = action == 'create' ? 'thêm' : 'sửa';
+				if(resp.trim() == "done"){
+          Swal.fire(
+              'Completed!',
+              'Bạn đã' + actiontext + ' chuyến tàu thành công!',
+              'success'
+            )
+          setTimeout(function() {
+              location.reload();
+          }, 1000); 
+          $('#myModal').hide();
+          $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
+				}else{
+          if($alert.length === 0)
+					  $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+				}
+    }
+		})
+	});
+
+  table2.addEventListener('click', function(event) {
+  if (event.target.classList.contains('fa-trash')) {
+    const row = event.target.closest('tr');
+    const MaChuyenTau = row.cells[0].textContent.trim();
+  Swal.fire({
+      title: 'Bạn có chắc là muốn xóa chuyến tàu này không?',
+      text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Vẫn xóa',
+      cancelButtonText: 'Hủy'
+  }).then((result) => {
+    if (result.isConfirmed) {
+      $.ajax({
+        url: 'index.php/?type=admin&page=chuyentau&action=delete',
+        type: 'POST',
+        data: { MaChuyenTau: MaChuyenTau },
+        success: function(response) {
+          if (response.trim() == "done") {
+            Swal.fire(
+              'Completed!',
+              'Bạn đã xóa chuyến tàu thành công!',
+              'success'
+            )
+            // sau 2 giây sẽ tải lại trang
+            setTimeout(function() {
+                location.reload();
+            }, 1000); 
+          } else {
+            // Nếu có lỗi thì hiển thị thông báo lỗi
+            Swal.fire(
+              'Oops...',
+              'Đã có lỗi xảy ra!',
+              'error'
+            )
+          }
+        },
+      });
+    }
+  })
+}
+});
+
   
   // Active
 const link = document.querySelector(".sidenav_link.chuyentau");
