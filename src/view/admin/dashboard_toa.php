@@ -1841,6 +1841,21 @@
   const optionMaLoaiToa= MaLoaiToa.querySelectorAll('option');
   const MaTau = modal.querySelector('#MaTau');
   const optionMaTau= MaTau.querySelectorAll('option');
+
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
+
   function clearAll(){
    $('#ToaForm').find('.alert-danger').remove();
     $('#myModal').hide();
@@ -1868,8 +1883,9 @@
 
 $('#ToaForm').submit(function(e){
 		e.preventDefault();
-      var $form = $(this);
-      var $alert = $form.find('.alert');
+      var form = $(this);
+      var alert = form.find('.alert');
+      var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=toa&action=' + action,
 			method:'POST',
@@ -1878,7 +1894,7 @@ $('#ToaForm').submit(function(e){
 				console.log(err)
 			},
 			success:function(resp){
-        actiontext = action == 'create' ? 'thêm' : 'sửa';
+         actiontext = action == 'create' ? 'thêm' : 'sửa';
 				if(resp.trim() == "done"){
           Swal.fire(
               'Completed!',
@@ -1891,7 +1907,8 @@ $('#ToaForm').submit(function(e){
           $('#myModal').hide();
           clearAll();
 				}else{
-               if ($alert.length === 0) 
+               sw.close();
+               if (alert.length === 0) 
 					   $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
 				}
     }
@@ -2013,6 +2030,7 @@ document.getElementById('RemoveBtn').addEventListener('click', function() {
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=toa&action=delete',
         type: 'POST',
@@ -2060,6 +2078,7 @@ document.getElementById('RemoveBtn').addEventListener('click', function() {
                khoang.style.display = 'none';
                });
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',

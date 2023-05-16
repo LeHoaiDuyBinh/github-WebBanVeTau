@@ -76,6 +76,19 @@
   const code = modal.querySelector('#code');
   const name = modal.querySelector('#name');
   const editBtn = document.querySelectorAll('.fa-pencil');
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
   
   // khi nhấn thêm
   addBtn.addEventListener('click', function() {
@@ -120,6 +133,7 @@
 		e.preventDefault();
     var $form = $(this);
     var $alert = $form.find('.alert');
+    var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=ga&action='+action,
 			method:'POST',
@@ -141,6 +155,7 @@
           $('#myModal').hide();
           $('#GaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
+          sw.close();
           if($alert.length === 0)
 					  $('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -164,6 +179,7 @@ table2.addEventListener('click', function(event) {
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=ga&action=delete',
         type: 'POST',
@@ -180,6 +196,7 @@ table2.addEventListener('click', function(event) {
                 location.reload();
             }, 1000); 
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',

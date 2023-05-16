@@ -105,6 +105,20 @@
   const optionGaHienTai = GaHienTai.querySelectorAll('option');
   const editBtn = document.querySelectorAll('.fa-pencil');
 
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
+
   // các hàm ẩn Trạng Thái
   function addAttrHiddenOption(){
     for (let i = 0; i < optionTrangThai.length; i++) {
@@ -173,6 +187,7 @@
 		e.preventDefault();
     var $form = $(this);
     var $alert = $form.find('.alert');
+    var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=tau&action=' + action,
 			method:'POST',
@@ -196,6 +211,7 @@
 
           removeAttrHiddenOption();
 				}else{
+          sw.close();
           if($alert.length === 0)
 					  $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -229,6 +245,7 @@
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=tau&action=delete',
         type: 'POST',
@@ -245,6 +262,7 @@
                 location.reload();
             }, 1000); 
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',

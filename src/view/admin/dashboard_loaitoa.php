@@ -84,6 +84,20 @@
   const SoChoNgoi = modal.querySelector('#SoChoNgoi');
   const MoTa = modal.querySelector('#MoTa');
   const editBtn = document.querySelectorAll('.fa-pencil');
+
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
   
   addBtn.addEventListener('click', function() {
     modal.style.display = "block";
@@ -122,6 +136,7 @@
 		e.preventDefault();
     var $form = $(this);
     var $alert = $form.find('.alert');
+    var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=loaitoa&action='+action,
 			method:'POST',
@@ -143,6 +158,7 @@
           $('#myModal').hide();
           $('#LoaiToaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
+          sw.close();
           if($alert.length === 0)
 					  $('#LoaiToaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -165,6 +181,7 @@
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=loaitoa&action=delete',
         type: 'POST',
@@ -181,6 +198,7 @@
                 location.reload();
             }, 1000); 
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',

@@ -136,6 +136,20 @@ diemDenSelect.addEventListener("change", function() {
   const Gio = modal.querySelector('#Gio');
   const Phut = modal.querySelector('#Phut');
   const editBtn = document.querySelectorAll('.fa-pencil');
+
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
   
   
   // khi nhấn Thêm tuyến
@@ -200,6 +214,7 @@ diemDenSelect.addEventListener("change", function() {
 		e.preventDefault();
     var $form = $(this);
     var $alert = $form.find('.alert');
+    var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=tuyenduong&action=' + action,
 			method:'POST',
@@ -221,6 +236,7 @@ diemDenSelect.addEventListener("change", function() {
           $('#myModal').hide();
           $('#TuyenForm input[type=text]').removeAttr('readonly').removeClass('readonly');
 				}else{
+          sw.close();
           if($alert.length === 0)
 					  $('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -244,6 +260,7 @@ table2.addEventListener('click', function(event) {
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=tuyenduong&action=delete',
         type: 'POST',
@@ -260,6 +277,7 @@ table2.addEventListener('click', function(event) {
                 location.reload();
             }, 1000); 
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',

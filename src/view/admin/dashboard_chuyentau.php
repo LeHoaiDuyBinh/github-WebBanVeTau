@@ -111,10 +111,23 @@
   const optionTrangThai= TrangThai.querySelectorAll('option');
   const editBtn = document.querySelectorAll('.fa-pencil');
 
-// hiển thị tàu theo tuyến
-MaTuyenDuong.addEventListener('change', function() {
+  function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 2000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
+}
+
+function hienThiTauHopLe(){
   // Lấy giá trị XuatPhat của tuyến duong được chọn
-  var xuatPhat = this.options[this.selectedIndex].dataset.xuatPhat;
+  var xuatPhat = MaTuyenDuong.options[MaTuyenDuong.selectedIndex].dataset.xuatPhat;
   for (let i = 0; i < optionMaTau.length; i++) {
       optionMaTau[0].selected = true;
       if (optionMaTau[i].dataset.gaHienTai == xuatPhat)
@@ -122,6 +135,11 @@ MaTuyenDuong.addEventListener('change', function() {
       else
       optionMaTau[i].style.display = "none";
     }
+}
+
+// hiển thị tàu theo tuyến
+MaTuyenDuong.addEventListener('change', function() {
+  hienThiTauHopLe();
 });
 
 function removeAttrHiddenOption(){
@@ -164,6 +182,9 @@ function removeAttrHiddenOption(){
         break;
       }
     }
+
+    hienThiTauHopLe();
+    
     for (let i = 0; i < optionMaTau.length; i++) {
       if (optionMaTau[i].value === MaTau_table) {
         optionMaTau[i].selected = true;
@@ -203,6 +224,7 @@ function removeAttrHiddenOption(){
 		e.preventDefault();
     var $form = $(this);
     var $alert = $form.find('.alert');
+    var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=chuyentau&action=' + action,
 			method:'POST',
@@ -224,6 +246,7 @@ function removeAttrHiddenOption(){
           $('#myModal').hide();
           $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
 				}else{
+          sw.close();
           if($alert.length === 0)
 					  $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
 				}
@@ -246,6 +269,7 @@ function removeAttrHiddenOption(){
       cancelButtonText: 'Hủy'
   }).then((result) => {
     if (result.isConfirmed) {
+      var sw = showLoadingSwal();
       $.ajax({
         url: 'index.php/?type=admin&page=chuyentau&action=delete',
         type: 'POST',
@@ -262,6 +286,7 @@ function removeAttrHiddenOption(){
                 location.reload();
             }, 1000); 
           } else {
+            sw.close();
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
