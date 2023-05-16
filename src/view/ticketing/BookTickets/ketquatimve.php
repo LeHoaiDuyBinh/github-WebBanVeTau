@@ -1801,7 +1801,7 @@
 
         <!-- Vé chiều về (nếu có) -->
         <div class="text" style="margin-top: 30px;">
-            <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều đi: Ngày ... từ ... đến ...</h1>
+            <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều về: Ngày ... từ ... đến ...</h1>
             <table id="myTable">
                 <thead>
                     <div id="train-container" class="train-group" style="margin-bottom: 25px;">
