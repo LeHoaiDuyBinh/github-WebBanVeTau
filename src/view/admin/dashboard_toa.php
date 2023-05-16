@@ -155,7 +155,7 @@
         </div>
       </div>
     <div class="row et-car-floor">
-      <div class="et-col-1-18 et-car-floor-full-height">
+      <div class="et-col-1-18 et-car-floor-full-height" style="--bs-gutter-x: -0.5rem;">
          <div class="et-bed-way et-full-width"></div>
          <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 3</div>
          <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
@@ -1434,7 +1434,7 @@
          <div class="row text-center"></div>
       </div>
       <div class="row et-car-floor">
-      <div class="et-col-1-18 et-car-floor-full-height">
+      <div class="et-col-1-18 et-car-floor-full-height" style="--bs-gutter-x: -0.5rem;">
          <div class="et-bed-way et-full-width"></div>
          <div class="et-bed-way et-full-width"></div>
          <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
