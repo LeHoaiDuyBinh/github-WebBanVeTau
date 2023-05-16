@@ -1777,7 +1777,7 @@
    </div>
 </div>
 </div>
-      </div>
+</div>
     </table>
     <div id="myModal" class="modal" style="display: none;">
     <div class="modal-content">
