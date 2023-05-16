@@ -3725,7 +3725,7 @@
                     <!-- <i class="fa fa-shopping-cart" style="font-size:20px"></i> -->
                     <span><strong class="ng-binding"> GIỎ VÉ</strong></span>
                 </div>
-                <div class="row" style="flex-wrap: wrap;">
+                <div class="row" style="flex-wrap: wrap !important;">
                     <!-- Trường hợp chưa chọn vé -->
                     <div class="col-md-12 text-center nohave" style="display: block">
                         <h5 sstyle="margin-top: 4px;" class="ng-binding">Chưa có vé</h5>
