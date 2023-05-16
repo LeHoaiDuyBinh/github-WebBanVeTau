@@ -153,7 +153,7 @@ toaElements.forEach(function (toaElement) {
 
 
 // xử lý sự kiện hover khi click vào chỗ ngồi sẽ hiện màu và ẩn dòng chữ "chưa chọn vé" tại giỏ vé
-var selectedSeatElements = [];
+var selectedSeatElements = null;
 var seatElements = document.querySelectorAll('.et-sit-check');
 
 for (var i = 0; i < seatElements.length; i++) {
@@ -162,28 +162,29 @@ for (var i = 0; i < seatElements.length; i++) {
     var chieuVe = document.querySelector('.chieuVe');
     var seatElement = seatElements[i];
     seatElement.addEventListener('click', function () {
-        var icon = this.querySelector('.seat');
-        if (selectedSeatElements.includes(this)) {
-            // Phần tử đã được chọn trước đó, hủy chọn
-            icon.classList.remove('et-sit-selected');
-            icon.classList.add('et-sit-avaiable');
-            var index = selectedSeatElements.indexOf(this);
-            selectedSeatElements.splice(index, 1);
-            // code cứng giả định xóa data
-            noHave.style.display = 'block';
-            chieuDi.style.display = 'none';
-            chieuVe.style.display = 'none';
-            /*code xóa data*/
-        } else {
-            // Phần tử chưa được chọn, thêm vào mảng và chọn
-            icon.classList.add('et-sit-selected');
-            icon.classList.remove('et-sit-avaiable');
-            selectedSeatElements.push(this);
-            // code cứng giả định add data
-            noHave.style.display = 'none';
-            chieuDi.style.display = 'block';
-            chieuVe.style.display = 'block';
-            /*code add data*/
+        var icon = this.querySelector('.seat.et-sit-bought');
+        if (icon === null || !icon.classList.contains('et-sit-bought')) {
+            // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
+            var iconCheck = this.querySelector('.seat');
+            if (iconCheck.classList.contains('et-sit-avaiable')) {
+                // Phần tử chưa được chọn, thêm vào mảng và chọn
+                iconCheck.classList.add('et-sit-selected');
+                iconCheck.classList.remove('et-sit-avaiable');
+                // code cứng giả định add data
+                noHave.style.display = 'none';
+                chieuDi.style.display = 'block';
+                chieuVe.style.display = 'block';
+                /*code add data*/
+            } else {
+                // Phần tử đã được chọn trước đó, hủy chọn
+                iconCheck.classList.remove('et-sit-selected');
+                iconCheck.classList.add('et-sit-avaiable');
+                // code cứng giả định xóa data
+                noHave.style.display = 'block';
+                chieuDi.style.display = 'none';
+                chieuVe.style.display = 'none';
+                /*code xóa data*/
+            }
         }
     });
 }
