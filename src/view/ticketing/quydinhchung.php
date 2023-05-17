@@ -12,7 +12,6 @@
                             <p>&nbsp; &nbsp;d. Trẻ em dưới 6 tuổi: Miễn vé và sử dụng chung chỗ của người lớn đi kèm.</p>
                             <p>&nbsp; &nbsp;e. Trẻ em từ 6 đến dưới 10 tuổi: Giảm 25% giá vé</p>
                             <p>&nbsp; &nbsp;f. Người cao tuổi từ 60 tuổi trở lên: Giảm 15% giá vé.</p>
-                            <p>&nbsp; &nbsp;i. Sinh viên: Giảm 10% giá vé.</p>
                             <p>2. Khách hàng chịu trách nhiệm trước pháp luật về tính xác thực của các thông tin cùng với tính hợp lệ tài khoản thanh toán đã được sử dụng để mua vé.</p>
                             <p>3. Khi ra ga lấy vé, Khách hàng phải đem theo giấy tờ tùy thân hợp lệ để chứng minh là người mua vé hoặc là một trong số các hành khách đi tầu cùng với mã đặt chỗ được hệ thống bán vé cung cấp. Khi giao vé cho khách hàng thư ký bán vé tại cửa vé hướng dẫn khách hàng ký nhận vé vào mặt sau của liên trắng.</p>
                             <p>4. Vé hành khách</p>
