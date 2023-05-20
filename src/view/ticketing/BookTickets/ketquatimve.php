@@ -5,27 +5,29 @@
 <div class="body-page row">
     <!-- Chọn vé -->
     <div class="colume1">
-        <!-- Vé chiều đi -->
+        <!-- Vé chiều đi -->       
         <div class="text">
             <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều đi: Ngày ... từ ... đến ...</h1>
             <table id="myTable">
                 <thead>
                     <div id="train-container" class="train-group" style="margin-bottom: 25px;">
-                        <!-- Tàu số 1 -->
-                        <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code="SE22">
+                        <!-- In ra tau -->
+                        <?$sum=0?>
+                        <?php foreach ($arrChuyen as $each): ?>
+                        <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code=<? echo $each->getMaTau().$sum;$sum+=1;?>>
                             <div class="et-train-head">
                                 <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
-                                    <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);">SE22</div>
+                                    <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau()?></div>
                                 </div>
                                 <div class="et-train-head-info">
                                     <div class="row et-no-margin">
                                         <span class="pull-left et-bold ng-binding">TG đi: </span>
-                                        <span style="margin-left: 20%;" class="pull-right ng-binding">25/05 06:45</span>
+                                        <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat()?></span>
                                     </div>
                                     <div class="row et-no-margin">
-                                        <span class="pull-left et-bold ng-binding">TG đến: </span>
+                                        <span class="pull-left et-bold ng-binding">TG chạy: </span>
                                         <span class="pull-right"></span>
-                                        <span style="margin-left: 20%;" class="pull-right ng-binding">26/05 00:28</span>
+                                        <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianChay()?></span>
                                     </div>
                                     <div class="row et-no-margin">
                                         <div class="et-col-50">
@@ -53,111 +55,37 @@
                             <div class="et-train-base-4"></div>
                             <div class="et-train-base-5"></div>
                         </div>
-                        <!-- Tàu số 2 -->
-                        <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code="SE04">
-                            <div class="et-train-head">
-                                <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
-                                    <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);">SE04</div>
-                                </div>
-                                <div class="et-train-head-info">
-                                    <div class="row et-no-margin">
-                                        <span class="pull-left et-bold ng-binding">TG đi: </span>
-                                        <span style="margin-left: 20%;" class="pull-right ng-binding">25/05 06:45</span>
-                                    </div>
-                                    <div class="row et-no-margin">
-                                        <span class="pull-left et-bold ng-binding">TG đến: </span>
-                                        <span class="pull-right"></span>
-                                        <span style="margin-left: 20%;" class="pull-right ng-binding">26/05 00:28</span>
-                                    </div>
-                                    <div class="row et-no-margin">
-                                        <div class="et-col-50">
-                                            <div class="et-text-sm ng-binding">SL chỗ đặt</div>
-                                            <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
-                                        </div>
-                                        <div class="et-col-50 text-center">
-                                            <div class="et-text-sm ng-binding">SL chỗ trống</div>
-                                            <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row et-no-margin">
-                                    <div class="et-col-50">
-                                        <span class="et-train-lamp-bellow-left"></span>
-                                    </div>
-                                    <div class="et-col-50">
-                                        <span class="et-train-lamp-bellow-right"></span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="et-train-base"></div>
-                            <div class="et-train-base-2"></div>
-                            <div class="et-train-base-3"></div>
-                            <div class="et-train-base-4"></div>
-                            <div class="et-train-base-5"></div>
-                        </div>
+                        <?php endforeach; ?>
+                        
                     </div>
 
                     <!-- Toa của tàu -->
-                    <div class="row">
-                        <!-- Danh sách toa tàu SE8 -->
-                        <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code="SE22" id="train-SE22">
-                            <!-- Toa 3 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="3" tooltip="Giường nằm khoang 6 điều hòa">
-                                <div class="et-car-icon et-car-icon-avaiable">
-                                    <img src="view/image/trainCar2.png">
-                                </div>
-                                <div class="text-center text-info et-car-label ng-binding">3</div>
-                            </div>
-                            <!-- Toa 2 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="2" tooltip="Giường nằm khoang 4 điều hòa">
-                                <div class="et-car-icon et-car-icon-avaiable">
-                                    <img src="view/image/trainCar2.png">
-                                </div>
-                                <div class="text-center text-info et-car-label ng-binding">2</div>
-                            </div>
-                            <!-- Toa 1 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="1" tooltip="Ngồi mềm điều hòa">
-                                <div class="et-car-icon et-car-icon-avaiable">
-                                    <img src="view/image/trainCar2.png">
-                                </div>
-                                <div class="text-center text-info et-car-label ng-binding">1</div>
-                            </div>
-                            <!-- Đầu tàu -->
-                            <div class="et-car-block">
-                                <div class="et-car-icon"><img src="view/image/train2.png"></div>
-                                <div class="text-center text-info et-car-label ng-binding">SE22</div>
-                            </div>
-                        </div>
 
-                        <!-- Danh sách toa SE22 -->
-                        <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code="SE04" id="train-SE04">
-                            <!-- Toa 3 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="3" tooltip="Giường nằm khoang 6 điều hòa">
+                    <div class="row" style="flex-wrap: wrap !important">  
+                    <?$sum=0?>
+                        <?php foreach ($arrChuyen as $each): ?>
+                        
+                        <!-- Danh sách toa tàu -->
+                        <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code=<? echo $each->getMaTau().$sum;$sum+=1;?> id=<?php echo "train-".$each->getMaTau();?>>
+
+                        <!-- In ra toa -->
+                            <?php foreach ($each->getToa() as $eachToa): ?>                            
+                            <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa();?> tooltip=<? echo $eachToa->getTenLoaiToa();?> value="<?php echo $eachToa->getTenLoaiToa(); ?>"> 
                                 <div class="et-car-icon et-car-icon-avaiable">
                                     <img src="view/image/trainCar2.png">
                                 </div>
-                                <div class="text-center text-info et-car-label ng-binding">3</div>
+                                <div class="text-center text-info et-car-label ng-binding"><? echo $eachToa->getThuTuToa();?> </div>
                             </div>
-                            <!-- Toa 2 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="2" tooltip="Giường nằm khoang 4 điều hòa">
-                                <div class="et-car-icon et-car-icon-avaiable">
-                                    <img src="view/image/trainCar2.png">
-                                </div>
-                                <div class="text-center text-info et-car-label ng-binding">2</div>
-                            </div>
-                            <!-- Toa 1 -->
-                            <div class="et-car-block ng-scope toa oneway" data-toa="1" tooltip="Ngồi mềm điều hòa">
-                                <div class="et-car-icon et-car-icon-avaiable">
-                                    <img src="view/image/trainCar2.png">
-                                </div>
-                                <div class="text-center text-info et-car-label ng-binding">1</div>
-                            </div>
+                            <?php endforeach; ?>
+
                             <!-- Đầu tàu -->
                             <div class="et-car-block">
                                 <div class="et-car-icon"><img src="view/image/train2.png"></div>
-                                <div class="text-center text-info et-car-label ng-binding">SE04</div>
+                                <div class="text-center text-info et-car-label ng-binding"><? echo $each->getMaTau();?></div>
                             </div>
                         </div>
+                        <?php endforeach; ?>
+                    </div>                  
                 </thead>
 
                 <!-- Hiển thị chỗ ngồi trong toa  -->

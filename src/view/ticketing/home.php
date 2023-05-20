@@ -37,10 +37,10 @@
      <!-- Form đặt vé tàu -->
      <div class="booking-form">
        <h2 style="text-align: center;">THÔNG TIN HÀNH TRÌNH</h2>
-       <form>
+       <form method="post" action="/route.php?&page=ketquatimve">
         <div class="form-group">
           <label>Ga đi</label>
-          <select id ="ga-di" class="form-control">
+          <select id ="ga-di" class="form-control" name="XuatPhat">
             <option>Thành phố Hà Nội</option>
             <option>Tỉnh Hà Giang</option>
             <option>Tỉnh Cao Bằng</option>
@@ -106,7 +106,7 @@
         </div>
         <div class="form-group">
           <label>Ga đến</label>
-          <select id = "ga-den" class="form-control">
+          <select id = "ga-den" class="form-control" name="DiemDen">
             <option>Tỉnh Thái Nguyên</option>
             <option>Tỉnh Lạng Sơn</option>
             <option>Tỉnh Quảng Ninh</option>
@@ -172,20 +172,20 @@
         </div>
         <div class="form-group">
           <label>Thời gian đi</label>
-          <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+          <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiGianXuatPhat">
         </div>
         <div class="form-group">
           <label>Thời gian quay về</label>
-          <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+          <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiDiemQuayVe">
         </div>
         <div class="form-group ">
           <label>Loại vé</label>
           <div class="form-check">
-            <input type="radio" class="form-check-input" name="ticket-type" value="one-way" checked>
+            <input type="radio" class="form-check-input" name="ticket_type" value="one-way" checked>
             <label class="form-check-label right">Một chiều</label>
           </div>
           <div class="form-check">
-            <input type="radio" class="form-check-input" name="ticket-type" value="round-trip">
+            <input type="radio" class="form-check-input" name="ticket_type" value="round-trip">
             <label class="form-check-label">Khứ hồi</label>
           </div>
         </div>

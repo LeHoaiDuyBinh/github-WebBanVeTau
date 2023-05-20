@@ -8,7 +8,7 @@
    require_once 'controller/ToaController.php';
    require_once 'controller/DatVeController.php';
    require_once 'controller/ChuyenTauController.php';
-
+   require_once 'controller/ketquatimve.php';
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
     $type = $_GET['type'] ?? '';
@@ -151,7 +151,7 @@
                         (new Controller)->thongtindatcho();
                         break;
                     case 'ketquatimve':
-                        (new DatVeController)->index();
+                        (new KetQuaTimVe)->index();
                         break;
                     default:
                         (new Controller)->home();
