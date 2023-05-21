@@ -153,6 +153,9 @@
                     case 'ketquatimve':
                         (new KetQuaTimVe)->index();
                         break;
+		    case 'dienthongtin':
+                        (new DatVeController)->dienthongtin();
+                        break;
                     default:
                         (new Controller)->home();
                         break;
