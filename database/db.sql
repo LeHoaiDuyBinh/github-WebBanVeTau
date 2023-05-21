@@ -2,10 +2,10 @@ create database IF NOT EXISTS train_ticket;
 
 USE train_ticket;
 DROP TABLE IF EXISTS `Ga`;
+
 CREATE TABLE Ga (
-  `MaGa` VARCHAR(20),
-  `TenGa` NVARCHAR(100),
-  PRIMARY KEY (`MaGa`)
+  `MaGa` VARCHAR(20) PRIMARY KEY,
+  `TenGa` NVARCHAR(100)
 );
 DROP TABLE IF EXISTS `TuyenDuong`;
 
@@ -63,6 +63,15 @@ CREATE TABLE ChoNgoi(
   `TrangThai` TINYINT,
   FOREIGN KEY (`MaToa`) REFERENCES `Toa`(`MaToa`)
 );
+DROP TABLE IF EXISTS `NguoiDatCho`;
+
+CREATE TABLE NguoiDatCho(
+  `ID_NguoiDatCho` INT PRIMARY KEY AUTO_INCREMENT,
+  `HoTen` VARCHAR(100),
+  `CCCD` VARCHAR(20),
+  `SDT` VARCHAR(20),
+  `Email` VARCHAR(100)
+);
 DROP TABLE IF EXISTS `KhachHang`;
 
 CREATE TABLE KhachHang(
@@ -71,18 +80,20 @@ CREATE TABLE KhachHang(
   `CCCD` VARCHAR(20),
   `SDT` VARCHAR(20),
   `Email` VARCHAR(100),
-  `NgaySinh` DATETIME
+  `NgaySinh` DATETIME,
+  `MaChoNgoi` VARCHAR(20),
+  `ID_NguoiDatCho` INT,
+  FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`),
+  FOREIGN KEY (`ID_NguoiDatCho`) REFERENCES `NguoiDatCho`(`ID_NguoiDatCho`)
 );
 DROP TABLE IF EXISTS `ThongTinDatCho`;
 
 CREATE TABLE ThongTinDatCho(
   `MaDatCho` VARCHAR(20) PRIMARY KEY,
-  `ID_KhachHang` INT,
+  `ID_NguoiDatCho` INT,
   `NgayDatCho` DATETIME,
   `TrangThai` BOOLEAN,
-  `MaChoNgoi` VARCHAR(20),
-  FOREIGN KEY (`ID_KhachHang`) REFERENCES `KhachHang`(`ID_KhachHang`),
-  FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`)
+  FOREIGN KEY (`ID_NguoiDatCho`) REFERENCES `NguoiDatCho`(`ID_NguoiDatCho`)
 );
 DROP TABLE IF EXISTS `Ve`;
 
