@@ -1,6 +1,7 @@
 <?php
     include_once "./module/db.php";
     include "ToaObject.php";
+    include "ChoNgoi.php";
         class Toa{
             private $table = "Toa";
             function load($maTau){
@@ -13,7 +14,9 @@
                     $arr = [];
 
                     while($row = $sth->fetch()) {
-                        $obj = new ToaObject($row);
+                        $ChoNgoi= (new ChoNgoi)->load($row['MaToa']);
+                        var_dump($ChoNgoi);
+                        $obj = new ToaObject($row,$ChoNgoi);
                         $arr[] = $obj;
                     }
                     return $arr;

@@ -60,7 +60,7 @@ DROP TABLE IF EXISTS `ChoNgoi`;
 CREATE TABLE ChoNgoi(
   `MaChoNgoi` VARCHAR(20) PRIMARY KEY,
   `MaToa` VARCHAR(20),
-  `TrangThai` TINYINT,
+  `TrangThai` TINYINT, -- 0 la trong, 1 la duoc dat
   FOREIGN KEY (`MaToa`) REFERENCES `Toa`(`MaToa`)
 );
 DROP TABLE IF EXISTS `NguoiDatCho`;
