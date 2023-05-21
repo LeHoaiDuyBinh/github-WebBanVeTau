@@ -6,9 +6,10 @@
         private $MaLoaiToa;
         private $ThuTuToa;
         private $TenLoaiToa;
-
-        public function __construct($row)
+        private $ChoNgoi;
+        public function __construct($row,$ChoNgoi)
         {
+                $this->ChoNgoi=$ChoNgoi;
             $this->MaToa = $row['MaToa'];
             $this->SoChoNgoi = $row['SoChoNgoi'];
             $this->MaTau = $row['MaTau'];
