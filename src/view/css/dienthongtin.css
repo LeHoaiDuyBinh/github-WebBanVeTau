@@ -1,0 +1,33 @@
+.button-preNext {
+  display: flex;
+  justify-content: space-between;
+}
+
+.back-button,
+.next-button {
+  background-color: #01b3a7 !important;
+  float: right;
+  width: 20% !important;
+  color: white;
+  border-radius: 5px;
+}
+
+.apply-button {
+  background-color: #01b3a7 !important;
+  float: left;
+  width: 100% !important;
+  color: white;
+  border-radius: 5px;
+  margin-left: 10px;
+}
+
+.center-align {
+  text-align: center;
+}
+
+/* tạo viền cho select đối tượng*/
+select {
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 4px;
+}
