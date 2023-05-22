@@ -87,6 +87,7 @@ toaElements.forEach(function (toaElement) {
 
         // đặt thông tin cho toa
         selectedToaElement = this;
+        var dataCode = this.getAttribute('data-code');
         var toaNumber = this.getAttribute('data-toa');
         var toaTitle = this.getAttribute('tooltip');
         var toaInfo = "Toa số " + toaNumber + ": " + toaTitle;
@@ -101,13 +102,13 @@ toaElements.forEach(function (toaElement) {
                 khoang.style.display = 'none';
             });
             if (toaTitle.includes('Giường nằm khoang 6 điều hòa')) {
-                var khoang1 = seatTrainOneway.querySelector('#khoang1');
+                var khoang1 = seatTrainOneway.querySelector('#khoang1[data-code="' + dataCode + '"]');
                 khoang1.style.display = 'block';
             } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
-                var khoang2 = seatTrainOneway.querySelector('#khoang2');
+                var khoang2 = seatTrainOneway.querySelector('#khoang2[data-code="' + dataCode + '"]');
                 khoang2.style.display = 'block';
             } else if (toaTitle.includes('Giường nằm khoang 4 điều hòa')) {
-                var khoang3 = seatTrainOneway.querySelector('#khoang3');
+                var khoang3 = seatTrainOneway.querySelector('#khoang3[data-code="' + dataCode + '"]');
                 khoang3.style.display = 'block';
             }
         }
