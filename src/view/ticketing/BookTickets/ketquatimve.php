@@ -493,17 +493,6 @@
                             <option>Tỉnh Đồng Nai</option>
                             <option>Tỉnh Bà Rịa - Vũng Tàu</option>
                             <option>Thành phố Hồ Chí Minh</option>
-                            <option>Tỉnh Long An</option>
-                            <option>Tỉnh Tiền Giang</option>
-                            <option>Tỉnh Bến Tre</option>
-                            <option>Tỉnh Trà Vinh</option>
-                            <option>Tỉnh Vĩnh Long</option>
-                            <option>Tỉnh Đồng Tháp</option>
-                            <option>Tỉnh An Giang</option>
-                            <option>Tỉnh Kiên Giang</option>
-                            <option>Thành phố Cần Thơ</option>
-                            <option>Tỉnh Hậu Giang</option>
-                            <option>Tỉnh Sóc Trăng</option>
                         </select>
                     </div>
                     <div class="form-group">

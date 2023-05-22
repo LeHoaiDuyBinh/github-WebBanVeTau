@@ -9,7 +9,7 @@
                     $db = new DB();
                     $sql = "select Toa.*,LoaiToa.TenLoaiToa from Toa,LoaiToa 
                     where MaTau=? and Toa.MaLoaiToa= LoaiToa.MaLoaiToa 
-                    order by Toa.ThuTuToa ASC;";
+                    order by Toa.ThuTuToa DESC;";
                     $sth = $db->select($sql,array($maTau));
                     $arr = [];
 
