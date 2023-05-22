@@ -19,29 +19,30 @@
           <tbody>
             <tr>
               <!--Họ tên-->
-              <form></form>
-              <td>
-                <div class="input-row">
-                  <label for="tenNguoiNgoi">Họ và tên</label>
-                  <input type="text" id="tenNguoiNgoi" name="tenNguoiNgoi"><br>
-                </div>
-                <label for="doiTuong">Đối tượng</label>
-                <select name="doiTuongGiam" id="doiTuongGiam" onchange="handleDoiTuongGiamChange()">
-                  <option value="nguoiLon">Người lớn</option>
-                  <option value="treEm">Trẻ em</option>
-                  <option value="nguoiCaoTuoi">Người cao tuổi</option>
-                </select>
+              <form>
+                <td>
+                  <div class="input-row">
+                    <label for="tenNguoiNgoi">Họ và tên</label>
+                    <input type="text" id="tenNguoiNgoi" name="tenNguoiNgoi"><br>
+                  </div>
+                  <label for="doiTuong">Đối tượng</label>
+                  <select name="doiTuongGiam" id="doiTuongGiam" onchange="handleDoiTuongGiamChange()">
+                    <option value="nguoiLon" selected>Người lớn</option>
+                    <option value="treEm">Trẻ em</option>
+                    <option value="nguoiCaoTuoi">Người cao tuổi</option>
+                  </select>
 
-                <!-- hiện lịch để chọn ngày sinh nếu là trẻ em hoặc người cao tuổi-->
-                <div id="ngayThangContainer" style="display: none;">
-                  <label for="ngayThang">Ngày tháng</label>
-                  <input type="date" name="ngayThang" id="ngayThang" onchange="updateTotal()">
-                </div>
-                <!-- Nếu là người lớn hoặc người cao tuổi thì hiện ô nhập CCCD -->
-                <div id="CCCDContainer" style="display: block;">
-                  <label for="cccdNguoiNgoi" style="margin-top: 10px;">Số CCCD/Hộ chiếu</label>
-                  <input type="text" id="cccdNguoiNgoi" name="cccdNguoiNgoi">
-                </div>
+                  <!-- hiện lịch để chọn ngày sinh nếu là trẻ em hoặc người cao tuổi-->
+                  <div id="ngayThangContainer" style="display: none;">
+                    <label for="ngayThang">Ngày tháng</label>
+                    <input type="date" name="ngayThang" id="ngayThang" onchange="updateTotal()">
+                  </div>
+                  <!-- Nếu là người lớn hoặc người cao tuổi thì hiện ô nhập CCCD -->
+                  <div id="CCCDContainer" style="display: block;">
+                    <label for="cccdNguoiNgoi" style="margin-top: 10px;">Số CCCD/Hộ chiếu</label>
+                    <input type="text" id="cccdNguoiNgoi" name="cccdNguoiNgoi">
+                  </div>
+              </form>
               </td>
               <!-- thông tin vé -->
               <td>
@@ -113,7 +114,7 @@
         <p>Quý khách vui lòng điền đầy đủ và chính xác các thông tin về người mua vé dưới đây. Các thông tin
           này sẽ được sử dụng để xác minh người mua vé và lấy vé tại ga trước khi lên tàu theo quy định.</p>
 
-        <form>
+        <form id="formInfor" method="POST" action="/?page=xacnhan">
 
           <label for="fullname">Họ và tên*</label>
           <input type="text" id="fullname" name="fullname"><br>
@@ -160,23 +161,29 @@
                 </td>
               </tr>
             </tbody>
-          </table>
-        </form>
-        <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
-          <button class="back-button" onclick="quayLai()">Quay lại</button>
-          <button class="next-button" onclick="tiepTheo()">Tiếp theo</button>
-        </div>
 
+          </table>
+          <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
+            <button class="back-button" onclick="quayLai()" type="button">Quay lại</button>
+            <button class="next-button" onclick="tiepTheo()" type="submit">Tiếp theo</button>
+          </div>
+        </form>
       </div>
+      <!-- <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
+          <button class="back-button" onclick="quayLai()">Quay lại</button>
+          <button class="next-button" onclick="tiepTheo()" type="submit">Tiếp theo</button>
+        </div> -->
+
     </div>
   </div>
 </div>
+</div>
 <!-- Animation Header -->
 <script>
-  const link = document.querySelector('.nav-link.dienthongtin');
-  link.style.borderBottom = '3px solid transparent';
-  link.style.transition = 'border-color 0.3s ease-in-out';
-  link.style.borderColor = '#01b3a7';
+  // const link = document.querySelector('.nav-link.dienthongtin');
+  // link.style.borderBottom = '3px solid transparent';
+  // link.style.transition = 'border-color 0.3s ease-in-out';
+  // link.style.borderColor = '#01b3a7';
 </script>
 <!--Script-->
 <script src="/view/javascript/dienthongtin.js"></script>
