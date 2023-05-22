@@ -19,7 +19,7 @@
             }
             include './module/TimVeModule/TimVe.php';
             $arrChuyen = (new TimVe)->load($xuatPhat,$DiemDen,$ThoiGianXuatPhat);
-            //include 'view/ticketing/BookTickets/ketquatimve.php';
+            include 'view/ticketing/BookTickets/ketquatimve.php';
             //var_dump($arrChuyen);
         }
     }
