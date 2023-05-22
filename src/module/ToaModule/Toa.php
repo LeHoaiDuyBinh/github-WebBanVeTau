@@ -75,11 +75,14 @@
                     $sql = "insert into $this->table (MaToa, MaTau, MaLoaiToa, ThuTuToa) values(?, ?, ?, ?)";
                     $params = array($MaToa, $MaTau, $MaLoaiToa, $stt);
                     $db->execute($sql, $params);
-                    if ($MaLoaiToa == 'LT001' || $MaLoaiToa == 'LT003') {
-                        $error = $this->addChoNgoi($MaToa, 42, $db);
+                    if ($MaLoaiToa == 'LT001') {
+                        $error = $this->addChoNgoi($MaToa, 64, $db);
                     }
                     elseif ($MaLoaiToa == 'LT002') {
-                        $error = $this->addChoNgoi($MaToa, 64, $db);
+                        $error = $this->addChoNgoi($MaToa, 48, $db);
+                    }
+                    elseif($MaLoaiToa == 'LT003') {
+                        $error = $this->addChoNgoi($MaToa, 32, $db);
                     }
                     if($error == NULL)
                         return "done";

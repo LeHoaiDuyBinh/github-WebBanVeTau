@@ -66,10 +66,10 @@
                     $sql = "insert into $this->table (MaToa, MaTau, MaLoaiToa, ThuTuToa) values(?, ?, ?, ?)";
                     $params = array($MaToa, $MaTau, $MaLoaiToa, $stt);
                     $db->execute($sql, $params);
-                    if ($MaLoaiToa == 'LT001' || $MaLoaiToa == 'LT003') {
+                    if ($MaLoaiToa == 'LT002' || $MaLoaiToa == 'LT003') {
                         $error = $this->addChoNgoi($MaToa, 42, $db);
                     }
-                    elseif ($MaLoaiToa == 'LT002') {
+                    elseif ($MaLoaiToa == 'LT001') {
                         $error = $this->addChoNgoi($MaToa, 64, $db);
                     }
                     if($error == NULL)
