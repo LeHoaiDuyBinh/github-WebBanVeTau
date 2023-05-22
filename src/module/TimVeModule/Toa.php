@@ -17,6 +17,7 @@
                         $ChoNgoi= (new ChoNgoi)->load($row['MaToa']);
                         $obj = new ToaObject($row,$ChoNgoi);
                         $arr[] = $obj;
+                        //var_dump($arr);
                     }
                     return $arr;
                 }

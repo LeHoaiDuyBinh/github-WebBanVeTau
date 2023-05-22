@@ -14,8 +14,6 @@ include "timVeObject.php";
                         as tmp1, Ga as G2 where tmp1.DiemDen = G2.MaGa 
                         ) as TD_TMP where CT.MaTuyenDuong = TD_TMP.MaTuyenDuong
                         )  as chuyen WHERE chuyen.TenGaXuatPhat=? and chuyen.TenGaDiemDen=? and chuyen.ThoiGianXuatPhat LIKE ? and chuyen.TrangThai=0"; // lấy chuyến tàu
-
-                
                 $sth = $db->select($sql, array($TenGaXuatPhat,$TenGaDiemDen,$ThoiGianXuatPhat."%"));
                 $arr = [];
                 while($row = $sth->fetch()) {
@@ -24,7 +22,6 @@ include "timVeObject.php";
                     $arr[]=$obj;
 
                 }
-                    
                     return $arr;
                 }
             catch (PDOException $e) {
