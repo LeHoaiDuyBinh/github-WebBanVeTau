@@ -20,11 +20,11 @@ const trainRounds = document.querySelectorAll('.et-train-block.train-return');
 trainRounds.forEach(train => {
     //Ẩn đi chỗ ngồi + tàu khác + title toa
     train.addEventListener('click', () => {
-        var khoangs = document.querySelectorAll('.khoang.round');
+        var khoangs = document.querySelectorAll('.khoang.return');
         khoangs.forEach(function (khoang) {
             khoang.style.display = 'none';
         });
-        var container2 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.round');
+        var container2 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
         container2.style.display = 'none';
         trainRounds.forEach(train => {
             train.querySelector('.et-train-head').classList.remove('et-train-head-selected');
@@ -114,22 +114,22 @@ toaElements.forEach(function (toaElement) {
         }
 
         // tàu chiều về, hiển thị khoang được chọn tại lớp 'seatTrain-round' nếu toa có class 'round'
-        if (this.classList.contains('round')) {
-            var seatTrainRound = document.querySelector('.seatTrain-round');
+        if (this.classList.contains('return')) {
+            var seatTrainRound = document.querySelector('.seatTrain-return');
             seatTrainRound.style.display = 'block';
 
             var khoangElements = seatTrainRound.querySelectorAll('.khoang');
             khoangElements.forEach(function (khoang) {
                 khoang.style.display = 'none';
             });
-            if (toaTitle.includes('Giường nằm khoang 6 điều hòa')) {
-                var khoang1 = seatTrainRound.querySelector('#khoang1');
+            if (toaTitle.includes('Giường Nằm 6')) {
+                var khoang1 = seatTrainRound.querySelector('#khoang1[data-code="' + dataCode + '"]');
                 khoang1.style.display = 'block';
             } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
-                var khoang2 = seatTrainRound.querySelector('#khoang2');
+                var khoang2 = seatTrainRound.querySelector('#khoang2[data-code="' + dataCode + '"]');
                 khoang2.style.display = 'block';
-            } else if (toaTitle.includes('Giường nằm khoang 4 điều hòa')) {
-                var khoang3 = seatTrainRound.querySelector('#khoang3');
+            } else if (toaTitle.includes('Giường Nằm 4')) {
+                var khoang3 = seatTrainRound.querySelector('#khoang3[data-code="' + dataCode + '"]');
                 khoang3.style.display = 'block';
             }
         }
@@ -143,8 +143,8 @@ toaElements.forEach(function (toaElement) {
             container.style.display = 'block';
             container.innerHTML = '';
             container.appendChild(message);
-        } else if (this.classList.contains('round')) {
-            container = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.round');
+        } else if (this.classList.contains('return')) {
+            container = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
             container.style.display = 'block';
             container.innerHTML = '';
             container.appendChild(message);
@@ -190,8 +190,51 @@ for (var i = 0; i < seatElements.length; i++) {
     });
 }
 
-// xử lý sự kiện hover khi chỗ đã được bán thì tự động chuyển thành màu đỏ
+// ẩn chuyến chiều về nếu không có click khứ hồi
 
+// ======================================================================================
+//Bắt sự kiện thời gian đi và thời gian quay về
+const ticketTypeInputs = document.getElementsByName('ticket_type');
+let departureDateInput = document.querySelector('#departure-date');
+let returnDateInput = document.querySelector('#return-date');
+returnDateInput.disabled = true;
+// Lấy ngày hiện tại và định dạng lại định dạng ngày tháng năm
+let currentDate = new Date().toISOString().slice(0, 10);
+
+// Thiết lập thuộc tính min cho thời gian đi, để ẩn các ngày trước ngày hiện tại
+departureDateInput.min = currentDate;
+
+// Bắt sự kiện khi ngày đi thay đổi
+departureDateInput.addEventListener('change', () => {
+    returnDateInput.min = departureDateInput.value;
+    if (returnDateInput.disabled && ticketTypeInputs[1].checked) {
+        // Bỏ disable ngày quay về nếu nó đang bị disable và loại vé là "Khứ hồi"
+        returnDateInput.disabled = false;
+    }
+});
+
+ticketTypeInputs.forEach(ticketTypeInput => {
+    ticketTypeInput.addEventListener('click', () => {
+        if (ticketTypeInput.value === 'round-trip') {
+            returnDateInput.disabled = false;
+        } else {
+            returnDateInput.disabled = true;
+        }
+    });
+});
+
+// Bắt sự kiện khi ngày quay về thay đổi
+returnDateInput.addEventListener('change', () => {
+    // Lấy giá trị ngày đi và ngày quay về
+    let departureDate = new Date(departureDateInput.value);
+    let returnDate = new Date(returnDateInput.value);
+    if (returnDate <= departureDate) {
+        alert('Ngày quay về phải lớn hơn ngày đi!');
+        returnDateInput.value = '';
+    }
+});
+
+//===========================================================================================
 // Active
 const link = document.querySelector(".sidenav_link.toa.et-sit-sur");
 link.classList.add('active');

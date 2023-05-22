@@ -14,7 +14,8 @@
                         <!-- In ra tau -->
                         <? $sum = 0 ?>
                         <?php foreach ($arrChuyen as $each) : ?>
-                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?>>
+                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code=<? echo $each->getMaTau() . $sum;
+                                                                                                                        $sum += 1; ?>>
                                 <div class="et-train-head">
                                     <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
                                         <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
@@ -63,10 +64,11 @@
                         <? $sum = 0 ?>
                         <?php foreach ($arrChuyen as $each) : ?>
                             <!-- Danh sách toa tàu -->
-                            <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
+                            <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;
+                                                                                                        $sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
                                 <!-- In ra toa -->
                                 <?php foreach ($each->getToa() as $eachToa) : ?>
-                                    <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<?echo $eachToa->getMaToa();?>">
+                                    <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
                                         <div class="et-car-icon et-car-icon-avaiable">
                                             <img src="view/image/trainCar2.png">
                                         </div>
@@ -90,11 +92,11 @@
                             <h4 class="oneway"></h4>
                         </div>
                         <? foreach ($each->getToa() as $eachToa) :
-                            //Khoang mềm điều hòa
+                            // Khoang mềm điều hòa
                             if ($eachToa->getMaLoaiToa() == "LT001") include 'view/ticketing/BookTickets/LT001.php';
-                            //Khoang giường nằm 6 điều hòa
+                            // Khoang giường nằm 6 điều hòa
                             elseif ($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php';
-                            //Khoang giường nằm 4 điều hòa
+                            // Khoang giường nằm 4 điều hòa
                             elseif ($eachToa->getMaLoaiToa() == "LT003") include 'view/ticketing/BookTickets/LT003.php';
                         endforeach; ?>
                     </div>
@@ -102,104 +104,107 @@
 
             </table>
         </div>
-
+        
         <!-- Vé chiều về (nếu có) -->
-        <div class="text">
-            <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều về</h1>
-            <table id="myTable">
-                <thead>
-                    <div id="train-container" class="train-group" style="margin-bottom: 25px;">
-                        <!-- In ra tau -->
-                        <? $sum = 0 ?>
-                        <?php foreach ($arrVe as $each) : ?>
-                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?>>
-                                <div class="et-train-head">
-                                    <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
-                                        <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
-                                    </div>
-                                    <div class="et-train-head-info">
-                                        <div class="row et-no-margin">
-                                            <span class="pull-left et-bold ng-binding">TG đi: </span>
-                                            <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
+        <?php if($ticket_type == "round-trip") { ?>
+            <div class="text">
+                <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều về</h1>
+                <table id="myTable">
+                    <thead>
+                        <div id="train-container" class="train-group" style="margin-bottom: 25px;">
+                            <!-- In ra tau -->
+                            <? $sum = 0 ?>
+                            <?php foreach ($arrVe as $each) : ?>
+                                <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?>>
+                                    <div class="et-train-head">
+                                        <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
+                                            <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
                                         </div>
-                                        <div class="row et-no-margin">
-                                            <span class="pull-left et-bold ng-binding">TG chạy: </span>
-                                            <span class="pull-right"></span>
-                                            <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
+                                        <div class="et-train-head-info">
+                                            <div class="row et-no-margin">
+                                                <span class="pull-left et-bold ng-binding">TG đi: </span>
+                                                <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
+                                            </div>
+                                            <div class="row et-no-margin">
+                                                <span class="pull-left et-bold ng-binding">TG chạy: </span>
+                                                <span class="pull-right"></span>
+                                                <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
+                                            </div>
+                                            <div class="row et-no-margin">
+                                                <div class="et-col-50">
+                                                    <div class="et-text-sm ng-binding">SL chỗ đặt</div>
+                                                    <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
+                                                </div>
+                                                <div class="et-col-50 text-center">
+                                                    <div class="et-text-sm ng-binding">SL chỗ trống</div>
+                                                    <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
+                                                </div>
+                                            </div>
                                         </div>
                                         <div class="row et-no-margin">
                                             <div class="et-col-50">
-                                                <div class="et-text-sm ng-binding">SL chỗ đặt</div>
-                                                <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
+                                                <span class="et-train-lamp-bellow-left"></span>
                                             </div>
-                                            <div class="et-col-50 text-center">
-                                                <div class="et-text-sm ng-binding">SL chỗ trống</div>
-                                                <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
+                                            <div class="et-col-50">
+                                                <span class="et-train-lamp-bellow-right"></span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row et-no-margin">
-                                        <div class="et-col-50">
-                                            <span class="et-train-lamp-bellow-left"></span>
-                                        </div>
-                                        <div class="et-col-50">
-                                            <span class="et-train-lamp-bellow-right"></span>
-                                        </div>
-                                    </div>
+                                    <div class="et-train-base"></div>
+                                    <div class="et-train-base-2"></div>
+                                    <div class="et-train-base-3"></div>
+                                    <div class="et-train-base-4"></div>
+                                    <div class="et-train-base-5"></div>
                                 </div>
-                                <div class="et-train-base"></div>
-                                <div class="et-train-base-2"></div>
-                                <div class="et-train-base-3"></div>
-                                <div class="et-train-base-4"></div>
-                                <div class="et-train-base-5"></div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-
-                    <!-- Toa của tàu -->
-                    <div class="row" style="flex-wrap: wrap !important">
-                        <? $sum = 0 ?>
-                        <?php foreach ($arrVe as $each) : ?>
-                            <!-- Danh sách toa tàu -->
-                            <div class="et-coach-block coach-return col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
-                                <!-- In ra toa -->
-                                <?php foreach ($each->getToa() as $eachToa) : ?>
-                                    <div class="et-car-block ng-scope toa return" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<?echo $eachToa->getMaToa();?>">
-                                        <div class="et-car-icon et-car-icon-avaiable">
-                                            <img src="view/image/trainCar2.png">
-                                        </div>
-                                        <div class="text-center text-info et-car-label ng-binding"><? echo $eachToa->getThuTuToa(); ?> </div>
-                                    </div>
-                                <?php endforeach; ?>
-                                <!-- Đầu tàu -->
-                                <div class="et-car-block">
-                                    <div class="et-car-icon"><img src="view/image/train2.png"></div>
-                                    <div class="text-center text-info et-car-label ng-binding"><? echo $each->getMaTau(); ?></div>
-                                </div>
-                            </div>
-                        <?php endforeach; ?>
-                    </div>
-                </thead>
-
-                <? foreach ($arrVe as $each) : ?>
-                    <!-- Hiển thị chỗ ngồi trong toa  -->
-                    <div class="seatTrain-return">
-                        <div class="col-xs-12 col-sm-12 col-md-12 text-center return">
-                            <h4 class="return"></h4>
+                            <?php endforeach; ?>
                         </div>
-                        <? foreach ($each->getToa() as $eachToa) :
-                            //Khoang mềm điều hòa
-                            if ($eachToa->getMaLoaiToa() == "LT001") include 'view/ticketing/BookTickets/LT001.php';
-                            //Khoang giường nằm 6 điều hòa
-                            elseif ($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php';
-                            //Khoang giường nằm 4 điều hòa
-                            elseif ($eachToa->getMaLoaiToa() == "LT003") include 'view/ticketing/BookTickets/LT003.php';
-                        endforeach; ?>
-                    </div>
-                <?php endforeach; ?>
 
-            </table>
-        </div>
+                        <!-- Toa của tàu -->
+                        <div class="row" style="flex-wrap: wrap !important">
+                            <? $sum = 0 ?>
+                            <?php foreach ($arrVe as $each) : ?>
+                                <!-- Danh sách toa tàu -->
+                                <div class="et-coach-block coach-return col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;
+                                                                                                            $sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
+                                    <!-- In ra toa -->
+                                    <?php foreach ($each->getToa() as $eachToa) : ?>
+                                        <div class="et-car-block ng-scope toa return" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                            <div class="et-car-icon et-car-icon-avaiable">
+                                                <img src="view/image/trainCar2.png">
+                                            </div>
+                                            <div class="text-center text-info et-car-label ng-binding"><? echo $eachToa->getThuTuToa(); ?> </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                    <!-- Đầu tàu -->
+                                    <div class="et-car-block">
+                                        <div class="et-car-icon"><img src="view/image/train2.png"></div>
+                                        <div class="text-center text-info et-car-label ng-binding"><? echo $each->getMaTau(); ?></div>
+                                    </div>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </thead>
+
+                    <? foreach ($arrVe as $each) : ?>
+                        <!-- Hiển thị chỗ ngồi trong toa  -->
+                        <div class="seatTrain-return">
+                            <div class="col-xs-12 col-sm-12 col-md-12 text-center return">
+                                <h4 class="return"></h4>
+                            </div>
+                            <? foreach ($each->getToa() as $eachToa) :
+                                // Khoang mềm điều hòa
+                                if ($eachToa->getMaLoaiToa() == "LT001") include 'view/ticketing/BookTickets/LT001.php';
+                                // Khoang giường nằm 6 điều hòa
+                                elseif ($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php';
+                                // Khoang giường nằm 4 điều hòa
+                                elseif ($eachToa->getMaLoaiToa() == "LT003") include 'view/ticketing/BookTickets/LT003.php';
+                            endforeach; ?>
+                        </div>
+                    <?php endforeach; ?>
+
+                </table>
+            </div>
+        <?php } ?>
 
         <!-- Chú thích biểu tượng -->
         <div class="et-col-md-12 table-bordered list-ticket-deskhop" style="margin-top: 20px; padding: 5px">
@@ -427,17 +432,6 @@
                             <option>Tỉnh Đồng Nai</option>
                             <option>Tỉnh Bà Rịa - Vũng Tàu</option>
                             <option>Thành phố Hồ Chí Minh</option>
-                            <option>Tỉnh Long An</option>
-                            <option>Tỉnh Tiền Giang</option>
-                            <option>Tỉnh Bến Tre</option>
-                            <option>Tỉnh Trà Vinh</option>
-                            <option>Tỉnh Vĩnh Long</option>
-                            <option>Tỉnh Đồng Tháp</option>
-                            <option>Tỉnh An Giang</option>
-                            <option>Tỉnh Kiên Giang</option>
-                            <option>Thành phố Cần Thơ</option>
-                            <option>Tỉnh Hậu Giang</option>
-                            <option>Tỉnh Sóc Trăng</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -493,6 +487,17 @@
                             <option>Tỉnh Đồng Nai</option>
                             <option>Tỉnh Bà Rịa - Vũng Tàu</option>
                             <option>Thành phố Hồ Chí Minh</option>
+                            <option>Tỉnh Long An</option>
+                            <option>Tỉnh Tiền Giang</option>
+                            <option>Tỉnh Bến Tre</option>
+                            <option>Tỉnh Trà Vinh</option>
+                            <option>Tỉnh Vĩnh Long</option>
+                            <option>Tỉnh Đồng Tháp</option>
+                            <option>Tỉnh An Giang</option>
+                            <option>Tỉnh Kiên Giang</option>
+                            <option>Thành phố Cần Thơ</option>
+                            <option>Tỉnh Hậu Giang</option>
+                            <option>Tỉnh Sóc Trăng</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -506,10 +511,12 @@
                     <div class="form-group ">
                         <label>Loại vé</label>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="ticket-type" value="one-way" checked> Một chiều </input>
+                            <input type="radio" class="form-check-input" name="ticket_type" value="one-way" checked>
+                            <label class="form-check-label right">Một chiều</label>
                         </div>
                         <div class="form-check">
-                            <input type="radio" class="form-check-input" name="ticket-type" value="round-trip"> Khứ hồi </input>
+                            <input type="radio" class="form-check-input" name="ticket_type" value="round-trip">
+                            <label class="form-check-label">Khứ hồi</label>
                         </div>
                     </div>
                     <button type="submit" class="btn btn-primary">Tìm vé</button>
