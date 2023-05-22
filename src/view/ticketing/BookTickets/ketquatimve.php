@@ -69,10 +69,10 @@
                         <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code=<? echo $each->getMaTau().$sum;$sum+=1;?> id=<?php echo "train-".$each->getMaTau();?>>
 
                         <!-- In ra toa -->
-                            <?php foreach ($each->getToa() as $eachToa): ?>      
-                            <? //echo '<h1>'.$eachToa->getTenLoaiToa().'</h1>' ?>
+                            <?php foreach ($each->getToa() as $eachToa): ?>    
+                              
                                                   
-                            <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa();?> tooltip="<? echo $eachToa->getTenLoaiToa();?>" value=<?php echo $eachToa->getTenLoaiToa(); ?>> 
+                            <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa();?> tooltip="<? echo $eachToa->getTenLoaiToa();?>" value="<?php echo $eachToa->getTenLoaiToa(); ?>"> 
                                 <div class="et-car-icon et-car-icon-avaiable">
                                     <img src="view/image/trainCar2.png">
                                 </div>
@@ -97,7 +97,7 @@
                     </div>
                     
                     <? foreach ($each->getToa() as $eachToa): ?>
-                
+                    
                     <!-- Khoang giường nằm 6 điều hòa-->
                     <? if($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php' ?>                   
                     

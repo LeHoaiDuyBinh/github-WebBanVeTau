@@ -72,5 +72,14 @@
         {
                 $this->ThuTuToa = $ThuTuToa;
         }
+        public function getChoNgoi()
+        {
+                return $this->ChoNgoi;
+        }
+
+        public function setChoNgoi($ChoNgoi)
+        {
+                $this->ChoNgoi = $ChoNgoi;
+        }
     }
 ?>
