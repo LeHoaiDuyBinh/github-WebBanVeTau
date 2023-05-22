@@ -37,6 +37,22 @@ function handleDoiTuongGiamChange() {
                 ngayThangContainer.style.display = "none";
             }
 }
+
+//Lấy thông tin người ngồi -> người đặt vé
+
+const tenNguoiNgoi = document.getElementById('tenNguoiNgoi');
+const fullname = document.getElementById('fullname');
+const cccdNguoiNgoi = document.getElementById('cccdNguoiNgoi');
+const idnumber = document.getElementById('idnumber');
+
+tenNguoiNgoi.addEventListener('input', function () {
+    fullname.value = tenNguoiNgoi.value;    
+});
+cccdNguoiNgoi.addEventListener('input', function () {
+    idnumber.value = cccdNguoiNgoi.value;    
+});
+
+
 //Tính phần trăm khuyến mãi
 function calculateTotal() {
     var doiTuongGiam = document.getElementById("doiTuongGiam").value;
@@ -131,32 +147,37 @@ function quayLai() {
 
 //Kiểm tra các ràng buộc
 function tiepTheo() {
-    var tenNguoiNgoi = document.getElementById("tenNguoiNgoi").value;
-    var cccdNguoiNgoi = document.getElementById("cccdNguoiNgoi").value;
-    var doiTuongGiam = document.getElementById("doiTuongGiam").value;
-    var ngayThang = document.getElementById("ngayThang").value;
-    var fullname = document.getElementById("fullname").value;
-    var idnumber = document.getElementById("idnumber").value;
-    var phone = document.getElementById("phone").value;
-    var email = document.getElementById("email").value;
-    var phoneNumberRegex = /^0\d{9}$/;
-    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (tenNguoiNgoi == '' || fullname == '' || phone == '' || email == '' || idnumber == '') {
-        alert("Vui lòng nhập đầy đủ thông tin");
-    } else
-        if ((doiTuongGiam === "treEm" || doiTuongGiam === "nguoiCaoTuoi") && ngayThang == '') {
-            alert("Vui lòng chọn ngày sinh");
-        }
-        else
-            if ((doiTuongGiam === "nguoiLon" || doiTuongGiam === "nguoiCaoTuoi") && cccdNguoiNgoi == '') {
-                alert("Vui lòng nhập CCCD/Hộ chiếu của người ngồi");
-            } else
-                if (phoneNumberRegex.test(phone) == false) {
-                    alert("Vui lòng nhập đúng số điện thoại");
-                } else
-                    if (emailRegex.test(email) == false) {
-                        alert("Vui lòng nhập đúng email");
-                    } else
-                        window.location.href = "?page=xacnhan";
+    document.getElementById("formInfor").addEventListener("submit", function (event) {
+        // Ngăn chặn gửi form mặc định
+        event.preventDefault();
+        var tenNguoiNgoi = document.getElementById("tenNguoiNgoi").value;
+        var cccdNguoiNgoi = document.getElementById("cccdNguoiNgoi").value;
+        var doiTuongGiam = document.getElementById("doiTuongGiam").value;
+        var ngayThang = document.getElementById("ngayThang").value;
+        var fullname = document.getElementById("fullname").value;
+        var idnumber = document.getElementById("idnumber").value;
+        var phone = document.getElementById("phone").value;
+        var email = document.getElementById("email").value;
+        var phoneNumberRegex = /^0\d{9}$/;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+        if (tenNguoiNgoi == '' || fullname == '' || phone == '' || email == '' || idnumber == '') {
+            alert("Vui lòng nhập đầy đủ thông tin");
+        } else
+            if ((doiTuongGiam === "treEm" || doiTuongGiam === "nguoiCaoTuoi") && ngayThang == '') {
+                alert("Vui lòng chọn ngày sinh");
+            }
+            else
+                if ((doiTuongGiam === "nguoiLon" || doiTuongGiam === "nguoiCaoTuoi") && cccdNguoiNgoi == '') {
+                    alert("Vui lòng nhập CCCD/Hộ chiếu của người ngồi");
+                } else
+                    if (phoneNumberRegex.test(phone) == false) {
+                        alert("Vui lòng nhập đúng số điện thoại");
+                    } else
+                        if (emailRegex.test(email) == false) {
+                            alert("Vui lòng nhập đúng email");
+                        } else {
+                            document.getElementById("formInfor").submit();
+                        }
+    });
 }
