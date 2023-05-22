@@ -414,3 +414,5 @@ const link = document.querySelector('.nav-link.trangchu');
   link.style.transition = 'border-color 0.3s ease-in-out';
   link.style.borderColor = '#01b3a7';
 </script>
+
+

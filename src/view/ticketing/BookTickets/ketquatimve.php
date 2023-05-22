@@ -111,7 +111,7 @@
                     <div id="train-container" class="train-group" style="margin-bottom: 25px;">
                         <!-- In ra tau -->
                         <? $sum = 0 ?>
-                        <?php foreach ($arrChuyen as $each) : ?>
+                        <?php foreach ($arrVe as $each) : ?>
                             <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?>>
                                 <div class="et-train-head">
                                     <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
@@ -159,7 +159,7 @@
                     <!-- Toa của tàu -->
                     <div class="row" style="flex-wrap: wrap !important">
                         <? $sum = 0 ?>
-                        <?php foreach ($arrChuyen as $each) : ?>
+                        <?php foreach ($arrVe as $each) : ?>
                             <!-- Danh sách toa tàu -->
                             <div class="et-coach-block coach-return col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
                                 <!-- In ra toa -->
@@ -181,7 +181,7 @@
                     </div>
                 </thead>
 
-                <? foreach ($arrChuyen as $each) : ?>
+                <? foreach ($arrVe as $each) : ?>
                     <!-- Hiển thị chỗ ngồi trong toa  -->
                     <div class="seatTrain-return">
                         <div class="col-xs-12 col-sm-12 col-md-12 text-center return">
@@ -373,10 +373,10 @@
         <et-search-pane calculatetrainlist="calculateTrainList" calculatecanshit="calculateCanShift" class="ng-isolate-scope">
             <div class="col-md-12 et-widget" style="margin-bottom: 5px">
                 <div class="row et-widget-header"><span><strong class="ng-binding">THÔNG TIN HÀNH TRÌNH</strong></span></div>
-                <form>
+                <form method="post" action="/route.php?&page=ketquatimve">
                     <div class="form-group">
                         <label>Ga đi</label>
-                        <select id="ga-di" class="form-control">
+                        <select id="ga-di" class="form-control" name="XuatPhat">
                             <option>Thành phố Hà Nội</option>
                             <option>Tỉnh Hà Giang</option>
                             <option>Tỉnh Cao Bằng</option>
@@ -442,7 +442,7 @@
                     </div>
                     <div class="form-group">
                         <label>Ga đến</label>
-                        <select id="ga-den" class="form-control">
+                        <select id="ga-den" class="form-control" name="DiemDen">
                             <option>Tỉnh Thái Nguyên</option>
                             <option>Tỉnh Lạng Sơn</option>
                             <option>Tỉnh Quảng Ninh</option>
@@ -497,11 +497,11 @@
                     </div>
                     <div class="form-group">
                         <label>Thời gian đi</label>
-                        <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                        <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiGianXuatPhat">
                     </div>
                     <div class="form-group">
                         <label>Thời gian quay về</label>
-                        <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy">
+                        <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiDiemQuayVe">
                     </div>
                     <div class="form-group ">
                         <label>Loại vé</label>

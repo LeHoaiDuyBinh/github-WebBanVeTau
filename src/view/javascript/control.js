@@ -36,42 +36,45 @@ gaDen.addEventListener('change', function() {
 });
 
 //Bắt sự kiện thời gian đi và thời gian quay về
-const ticketTypeInputs = document.getElementsByName('ticket-type');
+const ticketTypeInputs = document.getElementsByName('ticket_type');
 let departureDateInput = document.querySelector('#departure-date');
 let returnDateInput = document.querySelector('#return-date');
 returnDateInput.disabled = true;
 // Lấy ngày hiện tại và định dạng lại định dạng ngày tháng năm
-let currentDate = new Date().toISOString().slice(0,10);
+let currentDate = new Date().toISOString().slice(0, 10);
 
 // Thiết lập thuộc tính min cho thời gian đi, để ẩn các ngày trước ngày hiện tại
 departureDateInput.min = currentDate;
 
 // Bắt sự kiện khi ngày đi thay đổi
 departureDateInput.addEventListener('change', () => {
-  returnDateInput.min = departureDateInput.value;
-  returnDateInput.disabled = true;
+    returnDateInput.min = departureDateInput.value;
+    if (returnDateInput.disabled && ticketTypeInputs[1].checked) {
+        // Bỏ disable ngày quay về nếu nó đang bị disable và loại vé là "Khứ hồi"
+        returnDateInput.disabled = false;
+    }
 });
 
 ticketTypeInputs.forEach(ticketTypeInput => {
-  ticketTypeInput.addEventListener('click', () => {
-    if (ticketTypeInput.value === 'round-trip') {
-        returnDateInput.disabled = false;
-    }else{
-      returnDateInput.disabled = true;
-    }
-  });
+    ticketTypeInput.addEventListener('click', () => {
+        if (ticketTypeInput.value === 'round-trip') {
+            returnDateInput.disabled = false;
+        } else {
+            returnDateInput.disabled = true;
+        }
+    });
 });
 
 
 // Bắt sự kiện khi ngày quay về thay đổi
 returnDateInput.addEventListener('change', () => {
-  // Lấy giá trị ngày đi và ngày quay về
-  let departureDate = new Date(departureDateInput.value);
-  let returnDate = new Date(returnDateInput.value);
-  if (returnDate <= departureDate) {
-    alert('Ngày quay về phải lớn hơn ngày đi!');
-    returnDateInput.value = '';
-  }
+    // Lấy giá trị ngày đi và ngày quay về
+    let departureDate = new Date(departureDateInput.value);
+    let returnDate = new Date(returnDateInput.value);
+    if (returnDate <= departureDate) {
+        alert('Ngày quay về phải lớn hơn ngày đi!');
+        returnDateInput.value = '';
+    }
 });
 
 

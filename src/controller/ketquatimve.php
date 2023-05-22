@@ -19,6 +19,9 @@
             }
             include './module/TimVeModule/TimVe.php';
             $arrChuyen = (new TimVe)->load($xuatPhat,$DiemDen,$ThoiGianXuatPhat);
+            if($ticket_type!="one-way"){
+                $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
+            }
             include 'view/ticketing/BookTickets/ketquatimve.php';
             //var_dump($arrChuyen);
         }
