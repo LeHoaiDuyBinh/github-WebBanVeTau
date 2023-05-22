@@ -3,14 +3,22 @@
   justify-content: space-between;
 }
 
-.back-button,
-.next-button {
+.back-button  {
   background-color: #01b3a7 !important;
   float: right;
-  width: 20% !important;
+  width: 15% !important;
   color: white;
   border-radius: 5px;
 }
+
+button[type="submit"]{
+  background-color: #01b3a7 !important;
+  float: right;
+  width: 15% !important;
+  color: white;
+  border-radius: 5px;
+}
+
 
 .apply-button {
   background-color: #01b3a7 !important;
