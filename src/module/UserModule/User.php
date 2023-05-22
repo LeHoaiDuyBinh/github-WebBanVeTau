@@ -11,6 +11,10 @@ include_once "./module/db.php";
                     if ($sth->rowCount() > 0) {
                         $row = $sth->fetch(); {
                             $_SESSION['login_id'] = $row['ID_User'];
+                            if($row['ChucVu'] == 0)
+                                $_SESSION['ChucVu'] = 'SuperAdmin';
+                            else
+                                $_SESSION['ChucVu'] = 'Admin';
                         }
                         return "Successful";
                     } else {

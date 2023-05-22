@@ -129,7 +129,7 @@
 			}
             break;
 		case '':
-           if($action != 'login'){
+           if($action != 'login' && $action != 'logout'){
                 (new Controller)->header();
 			    switch($page){
 				    case 'base':
@@ -163,8 +163,12 @@
                 (new Controller)->footer();
            }
            else {
-                (new AuthController)->login();
-                exit();
+                if($action == 'login'){
+                    (new AuthController)->login();
+                }
+                else{
+                    (new AuthController)->logout();
+                }
            }
            break;
         default:

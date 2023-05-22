@@ -1,17 +1,5 @@
 <?php
-	session_start();	
- 	// include '../module/User.php';
-	// $user = new User();
-	// $Email = $_POST['Email'];
-	// $password = $_POST['Password'];
-	// $message = $user->login($Email, $password);
-	// if($message ==="Successful"){
-	// 	header("Location: /?type=admin&page=");
-	// }
-	// else {
-	// 	echo $message;
-	// }
-	// include '../view/admin/login.html';
+	session_start();
 
 	class AuthController {
 		public function index(){
@@ -34,6 +22,17 @@
 					$_SESSION['message'] = $message;
 				header("Location: /login.php");
 			}
+			exit();
+		}
+		public function logout(){
+			// Hủy tất cả các biến session
+			session_unset();
+
+			// Xóa tất cả các session đã lưu trữ trên máy chủ
+			session_destroy();
+
+			// Chuyển hướng đến trang chính hoặc trang đăng nhập
+			header("Location: /login.php");
 			exit();
 		}
 	}

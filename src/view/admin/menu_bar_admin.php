@@ -1,3 +1,13 @@
+<?php
+  session_start();
+
+  // Kiểm tra xem phiên đăng nhập đã được thiết lập hay chưa
+  if (!isset($_SESSION['login_id']) ||!isset($_SESSION['ChucVu'])) {
+      // Phiên đăng nhập không tồn tại hoặc không hợp lệ, chuyển hướng đến trang đăng nhập
+      header('Location: /login.php');
+      exit;
+  }
+?>
 <!DOCTYPE html>
 <html>
 <head>

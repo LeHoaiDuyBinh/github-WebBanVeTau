@@ -33,7 +33,7 @@ toggleBtn.addEventListener('click', ()=>{
 const themeSwitch = document.querySelector(".log");
 
 themeSwitch.addEventListener("click", function() {
-  window.location.replace("/controller/login.php");
+  window.location.replace("/?action=logout");
 });
 
 
