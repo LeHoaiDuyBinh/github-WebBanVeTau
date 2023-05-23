@@ -26,11 +26,12 @@
             </div>
             <? $conTrong = "et-sit-avaiable"; $daBan = "et-sit-bought"; $sum = 0?>
             <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi):?>
-                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[2]">
+                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
                     <div class="et-bed-left">
-                        <div class="et-bed-outer et-sit-check">
+                        <div class="et-bed-outer et-sit-check" data-seat="<?echo $eachChoNgoi->getMaChoNgoi()?>" 
+                                number-seat="<? echo $sum += 1?>" data-toa="<?echo $eachToa->getMaToa();?>" number-toa="<?echo $eachToa->getThuTuToa();?>">
                             <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai()==0) echo $conTrong; else echo $daBan ?>">
-                                <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3"><? echo $sum += 1?></span></div>
+                                <div><span><? echo $sum?></span></div>
                             </div>
                             <div class="et-bed-illu"></div>
                         </div>
@@ -70,11 +71,14 @@
             </div>
             <? $conTrong = "et-sit-avaiable"; $daBan = "et-sit-bought"; $sum = 0?>
             <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi):?>
-                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[2]">
+                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
                     <div class="et-bed-left">
-                        <div class="et-bed-outer et-sit-check">
+                        <div class="et-bed-outer et-sit-check" data-seat="<?echo $eachChoNgoi->getMaChoNgoi()?>" 
+                                number-seat="<? echo $sum += 1?>" data-toa="<?echo $eachToa->getMaToa();?>" number-toa="<?echo $eachToa->getThuTuToa();?>">
                             <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai()==0) echo $conTrong; else echo $daBan ?>">
-                                <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3"><? echo $sum += 1?></span></div>
+                                <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán">
+                                    <span><? echo $sum?></span>
+                                </div>
                             </div>
                             <div class="et-bed-illu"></div>
                         </div>

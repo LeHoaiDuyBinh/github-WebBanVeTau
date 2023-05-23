@@ -125,11 +125,10 @@
 }
 .data-ticket {
     width: 100% !important;
-    /* float: left; */
     min-height: 1px;
     text-align: left; 
-    font-size: 15px; 
     padding-left: 5px !important;
+    border-collapse:collapse;
 }
 
 /* Chỗ đã chọn */
@@ -141,4 +140,9 @@
 .et-sit-selected {
     background-color: #a6b727;
     color: #fff;
+}
+
+/* bảng giỏ vé */
+table, tr {
+    border-bottom:1px solid #ccc !important;
 }

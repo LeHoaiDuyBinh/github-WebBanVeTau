@@ -14,8 +14,9 @@
                         <!-- In ra tau -->
                         <? $sum = 0 ?>
                         <?php foreach ($arrChuyen as $each) : ?>
-                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code=<? echo $each->getMaTau() . $sum;
-                                                                                                                        $sum += 1; ?>>
+                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" 
+                                data-code-train="<? echo $each->getMaTau().$sum; $sum+=1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen()?>"
+                                data-xuat-phat="<? echo $each->getTenGaXuatPhat()?>" data-time="<? echo $each->getThoiGianXuatPhat()?>">
                                 <div class="et-train-head">
                                     <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
                                         <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
@@ -64,11 +65,10 @@
                         <? $sum = 0 ?>
                         <?php foreach ($arrChuyen as $each) : ?>
                             <!-- Danh sách toa tàu -->
-                            <div class="et-coach-block coach-oneway col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;
-                                                                                                        $sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
+                            <div class="et-coach-block coach coach-oneway col-md-12 et-no-margin" data-code-train="<? echo $each->getMaTau() . $sum;$sum += 1; ?>" id="<?php echo "train-" . $each->getMaTau(); ?>">
                                 <!-- In ra toa -->
                                 <?php foreach ($each->getToa() as $eachToa) : ?>
-                                    <div class="et-car-block ng-scope toa oneway" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                    <div class="et-car-block ng-scope toa oneway" data-toa="<?echo $eachToa->getThuTuToa();?>" tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
                                         <div class="et-car-icon et-car-icon-avaiable">
                                             <img src="view/image/trainCar2.png">
                                         </div>
@@ -114,8 +114,10 @@
                         <div id="train-container" class="train-group" style="margin-bottom: 25px;">
                             <!-- In ra tau -->
                             <? $sum = 0 ?>
-                            <?php foreach ($arrVe as $each) : ?>
-                                <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" data-code=<? echo $each->getMaTau() . $sum;$sum += 1; ?>>
+                            <?php foreach ($arrVe as $each): ?>
+                                <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" 
+                                data-code-train="<? echo $each->getMaTau().$sum; $sum+=1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen()?>"
+                                data-xuat-phat="<? echo $each->getTenGaXuatPhat()?>" data-time="<? echo $each->getThoiGianXuatPhat()?>">
                                     <div class="et-train-head">
                                         <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
                                             <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
@@ -164,10 +166,9 @@
                             <? $sum = 0 ?>
                             <?php foreach ($arrVe as $each) : ?>
                                 <!-- Danh sách toa tàu -->
-                                <div class="et-coach-block coach-return col-md-12 et-no-margin" data-code=<? echo $each->getMaTau() . $sum;
-                                                                                                            $sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
+                                <div class="et-coach-block coach coach-return col-md-12 et-no-margin" data-code-train=<? echo $each->getMaTau() . $sum;$sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
                                     <!-- In ra toa -->
-                                    <?php foreach ($each->getToa() as $eachToa) : ?>
+                                    <?php foreach ($each->getToa() as $eachToa): ?>
                                         <div class="et-car-block ng-scope toa return" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
                                             <div class="et-car-icon et-car-icon-avaiable">
                                                 <img src="view/image/trainCar2.png">
@@ -347,28 +348,22 @@
                     <!-- Trường hợp khách hàng đã add vé -->
                     <!-- Chiều đi -->
                     <div class="col-md-12 text-center chieuDi" style="display: none; padding: 5px !important">
-                        <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều đi </strong></h6>
-                        <div class="col-md-12 et-ticket-info ng-scope" ng-repeat="ve in searchData.ves.chieuDi">
+                        <h6 class="ng-binding" style="font-size: 20px"> <strong> Chiều đi </strong></h6>
+                        <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-oneway" style="border-bottom:1px solid #ccc;">
                             <!-- bắt sự kiện và add thông tin-->
-                            <div class="data-ticket chieuDi">
-                                <div class="ng-binding">SE8 Thanh Hoá-Biên Hòa</div>
-                                <div class="ng-binding">12/05/2023 01:16</div>
-                                <div class="ng-binding">NML56 toa 2 chỗ 35</div>
-                            </div>
-                        </div>
+                            <tbody class="tbody"></tbody>
+                        </table>
                     </div>
-
+                    <?php if($ticket_type == "round-trip") { ?>
                     <!-- Chiều về (nếu có) -->
                     <div class="col-md-12 text-center chieuVe" style="display: none; padding: 5px !important">
                         <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều về </strong></h6>
-                        <div class="col-md-12 et-ticket-info ng-scope chieuVe" ng-repeat="ve in searchData.ves.chieuVe">
-                            <div class="data-ticket chieuVe">
-                                <div class="ng-binding">SE8 Biên Hòa-Thanh Hoá</div>
-                                <div class="ng-binding">13/05/2023 07:32</div>
-                                <div class="ng-binding">NML toa 1 chỗ 60</div>
-                            </div>
-                        </div>
+                        <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-return" style="border-bottom:1px solid #ccc;">
+                            <!-- bắt sự kiện và add thông tin-->
+                            <tbody class="tbody"></tbody>
+                        </table>
                     </div>
+                    <?php } ?>
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Mua vé</button>
             </div>
