@@ -183,8 +183,8 @@ INSERT INTO `TuyenDuong`(`MaTuyenDuong`, `XuatPhat`, `DiemDen`, `ThoiGianChay`) 
 INSERT INTO `TuyenDuong`(`MaTuyenDuong`, `XuatPhat`, `DiemDen`, `ThoiGianChay`) VALUES ('TN002','G050','G031','19:00:00');
 INSERT INTO `TuyenDuong`(`MaTuyenDuong`, `XuatPhat`, `DiemDen`, `ThoiGianChay`) VALUES ('TN003','G001','G039','18:00:00');
 
-INSERT INTO `Tau`(`MaTau`, `GaHienTai`, `TrangThai`) VALUES ('TU001','G050',0);
-INSERT INTO `Tau`(`MaTau`, `GaHienTai`, `TrangThai`) VALUES ('TU002','G001',0);
+INSERT INTO `Tau`(`MaTau`, `GaHienTai`, `TrangThai`) VALUES ('TU001','G050',1);
+INSERT INTO `Tau`(`MaTau`, `GaHienTai`, `TrangThai`) VALUES ('TU002','G001',1);
 
 INSERT INTO `Toa` (`MaToa`, `MaTau`, `MaLoaiToa`, `ThuTuToa`) VALUES
 ('T001', 'TU001', 'LT001', 1),

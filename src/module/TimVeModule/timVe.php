@@ -1,7 +1,9 @@
 <?php 
 include_once "./module/db.php";
 include_once "Toa.php";
-include "timVeObject.php";
+include_once "timVeObject.php";
+
+
     class TimVe{
         function load($TenGaXuatPhat,$TenGaDiemDen,$ThoiGianXuatPhat){
             try {
@@ -18,9 +20,8 @@ include "timVeObject.php";
                 $arr = [];
                 while($row = $sth->fetch()) {
                     $toa=(new Toa)->load($row['MaTau']);
-                    $obj = new ChuyenTauObject($row,$toa);
+                    $obj = new TimVeObject($row,$toa);
                     $arr[]=$obj;
-
                 }
                     return $arr;
                 }

@@ -17,13 +17,13 @@
             if(isset($_POST['ticket_type'])){
                 $ticket_type=$_POST['ticket_type'];
             }
-            include './module/TimVeModule/TimVe.php';
+            include_once './module/TimVeModule/timVe.php';
             $arrChuyen = (new TimVe)->load($xuatPhat,$DiemDen,$ThoiGianXuatPhat);
             if($ticket_type!="one-way"){
                 $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
-            }
-            include 'view/ticketing/BookTickets/ketquatimve.php';
-            //var_dump($arrChuyen);
+            };
+            
+            include_once 'view/ticketing/BookTickets/ketquatimve.php';
         }
     }
     

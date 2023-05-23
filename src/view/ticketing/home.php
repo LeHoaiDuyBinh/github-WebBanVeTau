@@ -161,11 +161,11 @@
         </div>
         <div class="form-group">
           <label>Thời gian đi</label>
-          <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiGianXuatPhat">
+          <input id="departure-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiGianXuatPhat" required>
         </div>
         <div class="form-group">
           <label>Thời gian quay về</label>
-          <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiDiemQuayVe">
+          <input id="return-date" type="date" class="form-control" placeholder="dd/mm/yyyy" name="ThoiDiemQuayVe" required>
         </div>
         <div class="form-group ">
           <label>Loại vé</label>

@@ -12,7 +12,8 @@
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
     $type = $_GET['type'] ?? '';
-
+    (new ChuyenTauController)->checkChuyenTau();
+     
     switch($type){
 		case 'admin':
 			switch($page){
@@ -153,7 +154,7 @@
                     case 'ketquatimve':
                         (new KetQuaTimVe)->index();
                         break;
-		    case 'dienthongtin':
+		            case 'dienthongtin':
                         (new DatVeController)->dienthongtin();
                         break;
                     default:
@@ -175,6 +176,5 @@
            (new Controller)->page_403();
            break;
 	}
-   
 ?> 
 

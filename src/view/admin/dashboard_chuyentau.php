@@ -174,7 +174,10 @@ function removeAttrHiddenOption(){
     const MaTau_table = row.cells[3].textContent.trim();
     const ThoiGianXuatPhat_table = row.cells[4].textContent.trim();
     const TrangThai_table = row.cells[6].getAttribute('value').trim();
-    // Điền dữ liệu vào form
+
+    // chuyến đã hoàn thành hoặc đang chạy thì k cho sửa
+    if(TrangThai_table != 2 && TrangThai_table != 3){
+          // Điền dữ liệu vào form
     MaChuyenTau.value = MaChuyenTau_table;
     for (let i = 0; i < optionMaTuyenDuong.length; i++) {
       if (optionMaTuyenDuong[i].value === MaTuyen_table) {
@@ -217,6 +220,14 @@ function removeAttrHiddenOption(){
       MaChuyenTau.classList.add("readonly");
     // Hiển thị form
     modal.style.display = "block";
+    }
+    else {
+      Swal.fire(
+        'Không thành công',
+        'Chuyến tàu đã kết thúc, bạn không được sửa!',
+        'error'
+      )
+    }
   }
 });
 

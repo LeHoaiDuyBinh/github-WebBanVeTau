@@ -12,6 +12,7 @@
         private $ThoiGianDenNoi;
         private $TrangThai;
         private $TrangThaitxt;
+        private $TrangThaiTau;
 
         public function __construct($row)
         {
@@ -25,6 +26,7 @@
             $this->ThoiGianXuatPhat = $row['ThoiGianXuatPhat'];
             $this->ThoiGianChay = $row['ThoiGianChay'];
             $this->TrangThai = $row['TrangThai'];
+            $this->TrangThaiTau = $row['TrangThaiTau'];
         }
 
         public function getMaChuyenTau()
@@ -141,6 +143,16 @@
         {
                 $this->TrangThaitxt = $TrangThaitxt;
 
+        }
+
+        public function getTrangThaiTau()
+        {
+                return $this->TrangThaiTau;
+        }
+
+        public function setTrangThaiTau($TrangThaiTau)
+        {
+                $this->TrangThaiTau = $TrangThaiTau;
         }
     }
 ?>

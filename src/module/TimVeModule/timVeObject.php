@@ -1,6 +1,5 @@
 <?php
-        include_once "./module/TauModule/TauObject.php";
-    class ChuyenTauObject{
+    class TimVeObject{
         private $MaTau;
         private $TenGaDiemDen;
         private $TenGaXuatPhat;

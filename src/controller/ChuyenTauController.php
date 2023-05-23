@@ -1,7 +1,7 @@
 <?php
     class ChuyenTauController{
         public function index(){
-            include './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $arrChuyenTau= (new ChuyenTau)->load();
 
             include './module/TuyenDuongModule/TuyenDuong.php';
@@ -14,7 +14,7 @@
 		}
 
         public function create(){
-            include './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $maTuyenDuong = $_POST['MaTuyenDuong'];
             $maTau = $_POST['MaTau'];
@@ -25,7 +25,7 @@
         }
 
         public function edit(){
-            include './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $maTuyenDuong = $_POST['MaTuyenDuong'];
             $maTau = $_POST['MaTau'];
@@ -36,10 +36,16 @@
         }
 
         public function remove(){
-            include './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $check = (new ChuyenTau)->remove($maChuyenTau);
             echo $check;
+        }
+        public function checkChuyenTau(){
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            $arrChuyenTau= (new ChuyenTau)->load();
+
+            (new ChuyenTau)->check($arrChuyenTau);
         }
     }
 ?>
