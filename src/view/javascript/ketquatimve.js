@@ -1,70 +1,38 @@
-// Xử lý sự kiện click vào tàu hover lên + ẩn đi chỗ ngồi và title toa khi bấm vào tàu khác
-const trains = document.querySelectorAll('.et-train-block.train-oneway');
-trains.forEach(train => {
-    //Ẩn đi chỗ ngồi + tàu khác + title toa
-    train.addEventListener('click', () => {
-        var khoangs = document.querySelectorAll('.khoang.oneway');
-        khoangs.forEach(function (khoang) {
-            khoang.style.display = 'none';
-        });
-        var container1 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.oneway');
-        container1.style.display = 'none';
-        trains.forEach(train => {
-            train.querySelector('.et-train-head').classList.remove('et-train-head-selected');
-        });
-        train.querySelector('.et-train-head').classList.add('et-train-head-selected');
-    });
-});
-
-const trainRounds = document.querySelectorAll('.et-train-block.train-return');
-trainRounds.forEach(train => {
-    //Ẩn đi chỗ ngồi + tàu khác + title toa
-    train.addEventListener('click', () => {
-        var khoangs = document.querySelectorAll('.khoang.return');
-        khoangs.forEach(function (khoang) {
-            khoang.style.display = 'none';
-        });
-        var container2 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
-        container2.style.display = 'none';
-        trainRounds.forEach(train => {
-            train.querySelector('.et-train-head').classList.remove('et-train-head-selected');
-        });
-        train.querySelector('.et-train-head').classList.add('et-train-head-selected');
-    });
-});
-
+/*======================================================================================================*/
 //Hiển thị các toa tàu khi click vào tàu
 // Tàu một chiều
-const trainOneways = document.querySelectorAll('.train-oneway');
-trainOneways.forEach(trainOneway => {
-    trainOneway.addEventListener('click', () => {
-        const trainCodeOneway = trainOneway.dataset.code;
-        const coachOneways = document.querySelectorAll('.coach-oneway');
-        coachOneways.forEach(coachOneway => {
-            if (coachOneway.dataset.code === trainCodeOneway) {
-                coachOneway.style.display = 'block';
-            } else {
-                coachOneway.style.display = 'none';
-            }
-        });
-    });
-});
-// Tàu khứ hồi
-const trainReturns = document.querySelectorAll('.train-return');
-trainReturns.forEach(trainReturn => {
-    trainReturn.addEventListener('click', () => {
-        const trainCodeReturn = trainReturn.dataset.code;
-        const coachReturns = document.querySelectorAll('.coach-return');
-        coachReturns.forEach(coachReturn => {
-            if (coachReturn.dataset.code === trainCodeReturn) {
-                coachReturn.style.display = 'block';
-            } else {
-                coachReturn.style.display = 'none';
-            }
-        });
-    });
-});
+// const trainOneways = document.querySelectorAll('.train-oneway');
+// trainOneways.forEach(trainOneway => {
+//     trainOneway.addEventListener('click', () => {
+//         const trainCodeOneway = trainOneway.dataset.code;
+//         const coachOneways = document.querySelectorAll('.coach-oneway');
+//         coachOneways.forEach(coachOneway => {
+//             if (coachOneway.dataset.code === trainCodeOneway) {
+//                 coachOneway.style.display = 'block';
+//             } else {
+//                 coachOneway.style.display = 'none';
+//             }
+//         });
+//     });
+// });
+// // Tàu khứ hồi
+// const trainReturns = document.querySelectorAll('.train-return');
+// trainReturns.forEach(trainReturn => {
+//     trainReturn.addEventListener('click', () => {
+//         const trainCodeReturn = trainReturn.dataset.code;
+//         const coachReturns = document.querySelectorAll('.coach-return');
+//         coachReturns.forEach(coachReturn => {
+//             if (coachReturn.dataset.code === trainCodeReturn) {
+//                 coachReturn.style.display = 'block';
+//             } else {
+//                 coachReturn.style.display = 'none';
+//             }
+//         });
+//     });
+// });
 
+
+/*======================================================================================================*/
 // Xử lý sự kiện hover khi click vào toa và hiển thị số toa + thông tin toa + danh sách chỗ ngồi
 var selectedToaElement = null;
 var toaElements = document.querySelectorAll('.toa');
@@ -153,46 +121,229 @@ toaElements.forEach(function (toaElement) {
 });
 
 
-// xử lý sự kiện hover khi click vào chỗ ngồi sẽ hiện màu và ẩn dòng chữ "chưa chọn vé" tại giỏ vé
-var selectedSeatElements = null;
-var seatElements = document.querySelectorAll('.et-sit-check');
+/*======================================================================================================*/
+// xử lý sự kiện hover khi click vào chỗ ngồi sẽ hiện màu, ẩn dòng chữ "chưa chọn vé" và hiện thông tin trong thẻ div tại giỏ vé
+var maTau = null;
+var diemDen = null;
+var xuatPhat = null;
+var thoiGian = null;
 
-for (var i = 0; i < seatElements.length; i++) {
-    var noHave = document.querySelector('.nohave');
-    var chieuDi = document.querySelector('.chieuDi');
-    var chieuVe = document.querySelector('.chieuVe');
-    var seatElement = seatElements[i];
-    seatElement.addEventListener('click', function () {
-        var icon = this.querySelector('.seat.et-sit-bought');
-        if (icon === null || !icon.classList.contains('et-sit-bought')) {
-            // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
-            var iconCheck = this.querySelector('.seat');
-            if (iconCheck.classList.contains('et-sit-avaiable')) {
-                // Phần tử chưa được chọn, thêm vào mảng và chọn
-                iconCheck.classList.add('et-sit-selected');
-                iconCheck.classList.remove('et-sit-avaiable');
-                // code cứng giả định add data
-                noHave.style.display = 'none';
-                chieuDi.style.display = 'block';
-                chieuVe.style.display = 'block';
-                /*code add data*/
-            } else {
-                // Phần tử đã được chọn trước đó, hủy chọn
-                iconCheck.classList.remove('et-sit-selected');
-                iconCheck.classList.add('et-sit-avaiable');
-                // code cứng giả định xóa data
-                noHave.style.display = 'block';
-                chieuDi.style.display = 'none';
-                chieuVe.style.display = 'none';
-                /*code xóa data*/
-            }
+var noHave = document.querySelector('.nohave');
+var chieuDi = document.querySelector('.chieuDi');
+var chieuVe = document.querySelector('.chieuVe');
+var selectedSeatElements = [];
+
+var selectedTauElement = null;
+const tauElements = document.querySelectorAll('.et-train-block');
+tauElements.forEach(tauElement => {
+    tauElement.addEventListener('click', function () {
+        selectedTauElement = this
+
+        /* ẩn đi chỗ ngồi và title toa khi bấm vào tàu khác */
+        var khoangs = document.querySelectorAll('.khoang');
+        khoangs.forEach(function (khoang) {
+            khoang.style.display = 'none';
+        });
+        var container1 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center');
+        container1.style.display = 'none';
+        tauElements.forEach(tauElement => {
+            tauElement.querySelector('.et-train-head').classList.remove('et-train-head-selected');
+        });
+        tauElement.querySelector('.et-train-head').classList.add('et-train-head-selected');
+
+        /* Hiển thị các toa tàu khi click vào tàu */
+        const coachOneways = document.querySelectorAll('.coach-oneway');
+        const coachReturns = document.querySelectorAll('.coach-return');
+        if(selectedTauElement.classList.contains('train-oneway')) {     // nếu tàu là oneway
+            coachReturns.forEach(coachReturn => {                       // ẩn các toa của tàu return
+                coachReturn.style.display = 'none';
+            });
+            const trainCodeOneway = tauElement.dataset.code;
+            coachOneways.forEach(coachOneway => {
+                if (coachOneway.dataset.code === trainCodeOneway)       // chỉ hiện các toa của tàu được chọn
+                    coachOneway.style.display = 'block';
+                else coachOneway.style.display = 'none';
+            });
+        }
+        else if (selectedTauElement.classList.contains('train-return')) {
+            coachOneways.forEach(coachOneway => {
+                coachOneway.style.display = 'none';
+            });
+            const trainCodeReturn = tauElement.dataset.code;
+            coachReturns.forEach(coachReturn => {
+                if (coachReturn.dataset.code === trainCodeReturn)
+                    coachReturn.style.display = 'block';
+                else coachReturn.style.display = 'none';
+            });
+        }
+
+        /* lấy data chuyến đi */
+        maTau = selectedTauElement.getAttribute('data-code-train');
+        diemDen = selectedTauElement.getAttribute('data-diem-den');
+        xuatPhat = selectedTauElement.getAttribute('data-xuat-phat');
+        thoiGian = selectedTauElement.getAttribute('data-time');
+
+        var seatElements = document.querySelectorAll('.et-sit-check');
+        for (var i = 0; i < seatElements.length; i++) {
+            var seatElement = seatElements[i];
+            seatElement.addEventListener('click', function () {
+                // lấy data chỗ ngồi
+                var maChoNgoi = this.getAttribute('data-seat');
+                var soChoNgoi = this.getAttribute('number-seat');
+                var maToa = this.getAttribute('data-toa');
+                var soToa = this.getAttribute('number-toa');
+                var choInfor = maToa + " toa " + soToa + " chỗ số " + soChoNgoi + " " + maChoNgoi;
+                var tauInfor = maTau + " " + xuatPhat + " - " + diemDen;
+                var mess = tauInfor + "<br>" + thoiGian + "<br>" + choInfor;
+
+                // kiểm tra chỗ được mua chưa
+                var icon = this.querySelector('.seat.et-sit-bought');
+                if (icon === null || !icon.classList.contains('et-sit-bought')) {
+                    var iconCheck = this.querySelector('.seat');
+                    // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
+                    if (iconCheck.classList.contains('et-sit-avaiable')) {
+                        // Phần tử chưa được chọn, thêm vào mảng và chọn
+                        iconCheck.classList.add('et-sit-selected');
+                        iconCheck.classList.remove('et-sit-avaiable');
+                        selectedSeatElements.push(this);
+                        if (selectedTauElement.classList.contains('train-oneway')) {
+                            //ẩn dòng chữ "Chưa chọn vé"
+                            noHave.style.display = 'none';
+                            chieuDi.style.display = 'block';
+                            //thêm data vào giỏ vé
+                            addData(mess, 'table-oneway');
+                        }
+                        else if (selectedTauElement.classList.contains('train-return')) {
+                            //ẩn dòng chữ "Chưa chọn vé"
+                            noHave.style.display = 'none';
+                            chieuVe.style.display = 'block';
+                            //thêm data vào giỏ vé
+                            addData(mess, 'table-return');
+                        }
+                    } else {
+                        // Phần tử đã được chọn trước đó, hủy chọn
+                        iconCheck.classList.remove('et-sit-selected');
+                        iconCheck.classList.add('et-sit-avaiable');
+
+                        // delete data
+                        var index = selectedSeatElements.indexOf(this);
+                        if (index > -1) {
+                            selectedSeatElements.splice(index, 1);
+                        }
+                        if (selectedTauElement.classList.contains('train-oneway'))
+                            deleteData(maChoNgoi, "table-oneway");
+                        else if (selectedTauElement.classList.contains('train-return'))
+                            deleteData(maChoNgoi, "table-return");
+                        if (selectedSeatElements.length === 0) {
+                            noHave.style.display = 'block';
+                            chieuDi.style.display = 'none';
+                            chieuVe.style.display = 'none';
+                        }
+                    }
+                }
+            });
         }
     });
+});
+
+// const tauReturnElements = document.querySelectorAll('.et-train-block.train-return');
+// tauReturnElements.forEach(tauElement => {
+//     tauElement.addEventListener('click', function () {
+//         selectedTauElement = this
+//         // lấy data chuyến đi
+//         maTau = selectedTauElement.getAttribute('data-code-train');
+//         diemDen = selectedTauElement.getAttribute('data-diem-den');
+//         xuatPhat = selectedTauElement.getAttribute('data-xuat-phat');
+//         thoiGian = selectedTauElement.getAttribute('data-time');
+
+//         var seatElements = document.querySelectorAll('.et-sit-check');
+//         for (var i = 0; i < seatElements.length; i++) {
+//             var seatElement = seatElements[i];
+//             seatElement.addEventListener('click', function () {
+//                 // lấy data chỗ ngồi
+//                 var maChoNgoi = this.getAttribute('data-seat');
+//                 var soChoNgoi = this.getAttribute('number-seat');
+//                 var maToa = this.getAttribute('data-toa');
+//                 var soToa = this.getAttribute('number-toa');
+
+//                 var icon = this.querySelector('.seat.et-sit-bought');
+//                 if (icon === null || !icon.classList.contains('et-sit-bought')) {
+//                     var iconCheck = this.querySelector('.seat');
+//                     // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
+//                     if (iconCheck.classList.contains('et-sit-avaiable')) {
+//                         // Phần tử chưa được chọn, thêm vào mảng và chọn
+//                         iconCheck.classList.add('et-sit-selected');
+//                         iconCheck.classList.remove('et-sit-avaiable');
+//                         selectedSeatElements.push(this);
+
+//                         //ẩn dòng chữ "Chưa chọn vé"
+//                         noHave.style.display = 'none';
+//                         chieuVe.style.display = 'block';
+
+//                         var choInfor = maToa + " toa " + soToa + " chỗ số " + soChoNgoi + " " + maChoNgoi;
+//                         var tauInfor = maTau + " " + xuatPhat + " - " + diemDen;
+//                         var mess = tauInfor + "<br>" + thoiGian + "<br>" + choInfor;
+//                         addData(mess, 'table-return');
+//                     } else {
+//                         // Phần tử đã được chọn trước đó, hủy chọn
+//                         iconCheck.classList.remove('et-sit-selected');
+//                         iconCheck.classList.add('et-sit-avaiable');
+
+//                         // delete data
+//                         var index = selectedSeatElements.indexOf(this);
+//                         if (index > -1) {
+//                             selectedSeatElements.splice(index, 1);
+//                         }
+//                         deleteData(maChoNgoi, "table-oneway");
+//                     }
+//                 }
+//             });
+//         }
+//     });
+// });
+
+// Chức năng thêm dữ liệu
+function addData(data, id) {
+    // Lấy tham chiếu đến bảng
+    var table = document.getElementById(id);
+    var tbody = table.querySelector('tbody');
+
+    // Tạo một dòng mới
+    var row = document.createElement('tr');
+
+    // Tạo các ô dữ liệu
+    var dataCell = document.createElement('td');
+    dataCell.innerHTML = data;
+    row.appendChild(dataCell);
+
+    // Thêm dòng vào tbody
+    tbody.appendChild(row);
+    tbody.style.display = "block";
 }
 
-// ẩn chuyến chiều về nếu không có click khứ hồi
+function deleteData(data, id) {
+    var table = document.getElementById(id);
+    // Lấy danh sách các hàng (tr) trong bảng
+    var rows = table.getElementsByTagName('tr');
 
-// ======================================================================================
+    // Duyệt qua từng hàng (tr)
+    for (var i = 0; i < rows.length; i++) {
+        var row = rows[i];
+        // Lấy giá trị của cột trong hàng
+        var columnValue = row.cells[0].innerHTML; // Giả sử cột đầu tiên
+
+        // Kiểm tra nếu giá trị cột chứa chuỗi "TU00"
+        if (columnValue.includes(data)) {
+            // Xóa hàng (tr)
+            table.deleteRow(i);
+            // Giảm chỉ số i để duyệt đúng các hàng tiếp theo sau khi xóa
+            i--;
+        }
+    }
+}
+
+
+/*======================================================================================================*/
 //Bắt sự kiện thời gian đi và thời gian quay về
 const ticketTypeInputs = document.getElementsByName('ticket_type');
 let departureDateInput = document.querySelector('#departure-date');
