@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="/view/css/ketquatimve.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<div class="body-page row">
+<div class="body-page row row-body">
     <!-- Chọn vé -->
     <div class="colume1">
         <!-- Vé chiều đi -->
@@ -333,7 +333,7 @@
     <!-- Thông tin vé và giỏ hàng -->
     <div class="colume2">
         <!-- Giỏ hàng -->
-        <div et-ticket-pocket="" class="ng-isolate-scope">
+        <div et-ticket-pocket="" class="ticket-pocket">
             <div class="col-md-12 et-widget" id="ticketPocket" style="padding-bottom: 8px">
                 <div class="row et-widget-header ">
                     <!-- <i class="fa fa-shopping-cart" style="font-size:20px"></i> -->
@@ -370,7 +370,7 @@
         </div>
 
         <!-- Thông tin hành trình -->
-        <et-search-pane calculatetrainlist="calculateTrainList" calculatecanshit="calculateCanShift" class="ng-isolate-scope">
+        <et-search-pane calculatetrainlist="calculateTrainList" calculatecanshit="calculateCanShift" class="infor-form">
             <div class="col-md-12 et-widget" style="margin-bottom: 5px">
                 <div class="row et-widget-header"><span><strong class="ng-binding">THÔNG TIN HÀNH TRÌNH</strong></span></div>
                 <form method="post" action="/route.php?&page=ketquatimve">

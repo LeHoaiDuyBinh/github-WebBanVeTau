@@ -28,7 +28,7 @@
             <? $conTrong = "et-sit-avaiable"; $daBan = "et-sit-bought"; $sum = 0?>
             <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi):?>
                 <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                    <div class="et-bed-left">
+                    <div class="<? if($sum % 2 == 0) echo "et-bed-left"; else echo "et-bed-right"?>">
                         <div class="et-bed-outer et-sit-check" data-seat="<?echo $eachChoNgoi->getMaChoNgoi()?>" 
                                 number-seat="<? echo $sum += 1?>" data-toa="<?echo $eachToa->getMaToa();?>" number-toa="<?echo $eachToa->getThuTuToa();?>">
                             <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai()==0) echo $conTrong; else echo $daBan ?>">
@@ -75,7 +75,7 @@
             <? $conTrong = "et-sit-avaiable"; $daBan = "et-sit-bought"; $sum = 0?>
             <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi):?>
                 <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
-                    <div class="et-bed-left">
+                    <div class="<? if($sum % 2 == 0) echo "et-bed-left"; else echo "et-bed-right"?>">
                         <div class="et-bed-outer et-sit-check" data-seat="<?echo $eachChoNgoi->getMaChoNgoi()?>" 
                                 number-seat="<? echo $sum += 1?>" data-toa="<?echo $eachToa->getMaToa();?>" number-toa="<?echo $eachToa->getThuTuToa();?>">
                             <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai()==0) echo $conTrong; else echo $daBan ?>">

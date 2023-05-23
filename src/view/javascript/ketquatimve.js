@@ -163,7 +163,7 @@ tauElements.forEach(tauElement => {
                 if (coachOneway.dataset.code === trainCodeOneway)       // chỉ hiện các toa của tàu được chọn
                     coachOneway.style.display = 'block';
                 else coachOneway.style.display = 'none';
-            });
+            });78
         }
         else if (selectedTauElement.classList.contains('train-return')) {
             coachOneways.forEach(coachOneway => {
@@ -184,34 +184,34 @@ tauElements.forEach(tauElement => {
         thoiGian = selectedTauElement.getAttribute('data-time');
 
         var seatElements = document.querySelectorAll('.et-sit-check');
-        for (var i = 0; i < seatElements.length; i++) {
-            var seatElement = seatElements[i];
+        seatElements.forEach (seatElement => { 
             seatElement.addEventListener('click', function () {
                 // lấy data chỗ ngồi
-                var maChoNgoi = this.getAttribute('data-seat');
-                var soChoNgoi = this.getAttribute('number-seat');
-                var maToa = this.getAttribute('data-toa');
-                var soToa = this.getAttribute('number-toa');
-                var choInfor = maToa + " toa " + soToa + " chỗ số " + soChoNgoi + " " + maChoNgoi;
-                var tauInfor = maTau + " " + xuatPhat + " - " + diemDen;
-                var mess = tauInfor + "<br>" + thoiGian + "<br>" + choInfor;
+                var maChoNgoi = seatElement.getAttribute('data-seat');
+                var soChoNgoi = seatElement.getAttribute('number-seat');
+                var maToa = seatElement.getAttribute('data-toa');
+                var soToa = seatElement.getAttribute('number-toa');
+                var toaInfo = "<strong>Mã toa:</strong> " + maToa + " - toa số " + soToa;
+                var choInfor = "<strong>Mã chỗ:</strong> " + maChoNgoi + " - chỗ số " + soChoNgoi;
+                var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
+                var mess = tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
 
                 // kiểm tra chỗ được mua chưa
-                var icon = this.querySelector('.seat.et-sit-bought');
+                var icon = seatElement.querySelector('.seat.et-sit-bought');
                 if (icon === null || !icon.classList.contains('et-sit-bought')) {
-                    var iconCheck = this.querySelector('.seat');
+                    var iconCheck = seatElement.querySelector('.seat');
                     // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
                     if (iconCheck.classList.contains('et-sit-avaiable')) {
                         // Phần tử chưa được chọn, thêm vào mảng và chọn
                         iconCheck.classList.add('et-sit-selected');
                         iconCheck.classList.remove('et-sit-avaiable');
-                        selectedSeatElements.push(this);
+                        selectedSeatElements.push(seatElement);
                         if (selectedTauElement.classList.contains('train-oneway')) {
                             //ẩn dòng chữ "Chưa chọn vé"
                             noHave.style.display = 'none';
                             chieuDi.style.display = 'block';
                             //thêm data vào giỏ vé
-                            addData(mess, 'table-oneway');
+                            addData(mess, 'table-oneway');                            
                         }
                         else if (selectedTauElement.classList.contains('train-return')) {
                             //ẩn dòng chữ "Chưa chọn vé"
@@ -226,7 +226,7 @@ tauElements.forEach(tauElement => {
                         iconCheck.classList.add('et-sit-avaiable');
 
                         // delete data
-                        var index = selectedSeatElements.indexOf(this);
+                        var index = selectedSeatElements.indexOf(seatElement);
                         if (index > -1) {
                             selectedSeatElements.splice(index, 1);
                         }
@@ -242,65 +242,9 @@ tauElements.forEach(tauElement => {
                     }
                 }
             });
-        }
+        });
     });
 });
-
-// const tauReturnElements = document.querySelectorAll('.et-train-block.train-return');
-// tauReturnElements.forEach(tauElement => {
-//     tauElement.addEventListener('click', function () {
-//         selectedTauElement = this
-//         // lấy data chuyến đi
-//         maTau = selectedTauElement.getAttribute('data-code-train');
-//         diemDen = selectedTauElement.getAttribute('data-diem-den');
-//         xuatPhat = selectedTauElement.getAttribute('data-xuat-phat');
-//         thoiGian = selectedTauElement.getAttribute('data-time');
-
-//         var seatElements = document.querySelectorAll('.et-sit-check');
-//         for (var i = 0; i < seatElements.length; i++) {
-//             var seatElement = seatElements[i];
-//             seatElement.addEventListener('click', function () {
-//                 // lấy data chỗ ngồi
-//                 var maChoNgoi = this.getAttribute('data-seat');
-//                 var soChoNgoi = this.getAttribute('number-seat');
-//                 var maToa = this.getAttribute('data-toa');
-//                 var soToa = this.getAttribute('number-toa');
-
-//                 var icon = this.querySelector('.seat.et-sit-bought');
-//                 if (icon === null || !icon.classList.contains('et-sit-bought')) {
-//                     var iconCheck = this.querySelector('.seat');
-//                     // Chỉ thực hiện chọn/hủy chọn nếu không có class "et-sit-bought"
-//                     if (iconCheck.classList.contains('et-sit-avaiable')) {
-//                         // Phần tử chưa được chọn, thêm vào mảng và chọn
-//                         iconCheck.classList.add('et-sit-selected');
-//                         iconCheck.classList.remove('et-sit-avaiable');
-//                         selectedSeatElements.push(this);
-
-//                         //ẩn dòng chữ "Chưa chọn vé"
-//                         noHave.style.display = 'none';
-//                         chieuVe.style.display = 'block';
-
-//                         var choInfor = maToa + " toa " + soToa + " chỗ số " + soChoNgoi + " " + maChoNgoi;
-//                         var tauInfor = maTau + " " + xuatPhat + " - " + diemDen;
-//                         var mess = tauInfor + "<br>" + thoiGian + "<br>" + choInfor;
-//                         addData(mess, 'table-return');
-//                     } else {
-//                         // Phần tử đã được chọn trước đó, hủy chọn
-//                         iconCheck.classList.remove('et-sit-selected');
-//                         iconCheck.classList.add('et-sit-avaiable');
-
-//                         // delete data
-//                         var index = selectedSeatElements.indexOf(this);
-//                         if (index > -1) {
-//                             selectedSeatElements.splice(index, 1);
-//                         }
-//                         deleteData(maChoNgoi, "table-oneway");
-//                     }
-//                 }
-//             });
-//         }
-//     });
-// });
 
 // Chức năng thêm dữ liệu
 function addData(data, id) {

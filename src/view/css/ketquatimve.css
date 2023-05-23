@@ -8,7 +8,7 @@
     filter: none !important;
     -webkit-box-shadow: none !important;
     box-shadow: none !important;
-    position: none !important ;
+    position: none !important;
     min-height: 0px !important;
     margin-bottom: 0px !important;
     border: none !important;
@@ -35,11 +35,36 @@
     white-space: nowrap !important;
 }
 
-.btn-group-vertical>.btn-group:after, .btn-group-vertical>.btn-group:before, .btn-toolbar:after, .btn-toolbar:before, .clearfix:after, 
-.clearfix:before, .container-fluid:after, .container-fluid:before, .container:after, .container:before, .dl-horizontal dd:after, 
-.dl-horizontal dd:before, .form-horizontal .form-group:after, .form-horizontal .form-group:before, .modal-footer:after, 
-.modal-footer:before, .nav:after, .nav:before, .navbar-collapse:after, .navbar-collapse:before, .navbar-header:after, .navbar-header:before,
-.navbar:after, .navbar:before, .pager:after, .pager:before, .panel-body:after, .panel-body:before, .row:after, .row:before {
+.btn-group-vertical>.btn-group:after,
+.btn-group-vertical>.btn-group:before,
+.btn-toolbar:after,
+.btn-toolbar:before,
+.clearfix:after,
+.clearfix:before,
+.container-fluid:after,
+.container-fluid:before,
+.container:after,
+.container:before,
+.dl-horizontal dd:after,
+.dl-horizontal dd:before,
+.form-horizontal .form-group:after,
+.form-horizontal .form-group:before,
+.modal-footer:after,
+.modal-footer:before,
+.nav:after,
+.nav:before,
+.navbar-collapse:after,
+.navbar-collapse:before,
+.navbar-header:after,
+.navbar-header:before,
+.navbar:after,
+.navbar:before,
+.pager:after,
+.pager:before,
+.panel-body:after,
+.panel-body:before,
+.row:after,
+.row:before {
     content: none !important;
     display: table;
 }
@@ -59,32 +84,82 @@
     .navbar-expand-lg .navbar-nav {
         flex-direction: row;
     }
+
     .navbar-expand-lg {
         -ms-flex-flow: row nowrap;
         flex-flow: row nowrap;
         -ms-flex-pack: start;
         justify-content: flex-start;
     }
+
     .navbar-nav .nav-item {
         margin-right: 40px;
     }
 
 
     .navbar-collapse.collapse {
-        display: block!important;
-        height: auto!important;
+        display: block !important;
+        height: auto !important;
         padding-bottom: 0;
-        overflow: visible!important;
+        overflow: visible !important;
         flex-direction: row;
         flex-wrap: nowrap;
         align-content: flex-start;
         justify-content: flex-start;
         align-items: baseline;
     }
+
     .collapse.show {
         display: block !important;
     }
 }
+
+@media (max-width: 992px) {
+
+    /* res body */
+    .body-page {
+        margin-top: 0px !important;
+    }
+
+    /* ẩn bảng chọn thông tin hành trình */
+    .infor-form {
+        display: none;
+    }
+
+    /* khung chỗ ngồi */
+    .et-car-floor {
+        overflow-x: auto !important;
+        white-space: nowrap !important;
+        height: 200px !important;
+        margin-left: 0 !important;
+        width: 100%;
+    }
+
+    /* chỉnh kích thước tàu */
+    .colume1 {
+        width: 100% !important;
+    }
+
+    /* chỉnh giỏ vé xuống cuối trang và sửa kích thước */
+    .row {
+        display: flow-root;
+    }
+    .colume2 {
+        width: 100% !important;
+        margin: 10px !important;
+        display: flex;
+        align-items: center; /* Căn giữa theo chiều dọc */
+        justify-content: center; /* Căn giữa theo chiều ngang */
+    }
+    .ticket-pocket {
+        display: flex;
+        width: 80%;
+    }
+    .et-widget-header {
+        display: flex;
+    }
+}
+
 
 /* Body */
 .body-page {
@@ -92,21 +167,21 @@
     margin-right: auto;
     margin-bottom: auto;
     margin-top: 110px;
-    height:fit-content;
+    height: fit-content;
     flex-wrap: nowrap;
     width: 90%;
 }
 
 /* Hình các toa tàu */
 .colume1 {
-    width: 80%;
+    width: 77%;
     margin-right: 10px;
     padding: 25px;
 }
 
 /* giỏ vé và thông tin hành trình */
 .colume2 {
-    width: 20%;
+    width: 23%;
     margin-left: 10px;
     flex-wrap: nowrap;
 }
@@ -115,20 +190,21 @@
 .form-check {
     display: inline-block !important;
     vertical-align: middle !important;
-  }
-  
+}
+
 .form-check-input {
     margin-right: 5px !important;
     text-align: right !important;
     float: right !important;
-    position:relative !important;
+    position: relative !important;
 }
+
 .data-ticket {
     width: 100% !important;
     min-height: 1px;
-    text-align: left; 
+    text-align: left;
     padding-left: 5px !important;
-    border-collapse:collapse;
+    border-collapse: collapse;
 }
 
 /* Chỗ đã chọn */
@@ -143,6 +219,10 @@
 }
 
 /* bảng giỏ vé */
-table, tr {
-    border-bottom:1px solid #ccc !important;
+table,
+tr {
+    border-bottom: 1px solid #ccc !important;
+}
+.td {
+    padding: 5px;
 }
