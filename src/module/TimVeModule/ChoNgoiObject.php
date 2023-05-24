@@ -3,9 +3,13 @@
         private $MaChoNgoi;
         private $MaToa;
         private $TrangThai;
+        private $MaTau;
+        private $ThoiGianKhoiHanh;
 
-        public function __construct($row)
+        public function __construct($row,$MaTau,$ThoiGianKhoiHanh)
         {
+                $this->MaTau = $MaTau;
+                $this->ThoiGianKhoiHanh = $ThoiGianKhoiHanh;
             $this->MaChoNgoi = $row['MaChoNgoi'];
             $this->MaToa = $row['MaToa'];
             $this->TrangThai = $row['TrangThai'];
@@ -36,9 +40,27 @@
                 return $this->TrangThai;
         }
 
-        public function setMaTau($TrangThai)
+        public function setTrangThai($TrangThai)
         {
                 $this->TrangThai = $TrangThai;
+        }
+        public function getMaTau()
+        {
+                return $this->MaTau;
+        }
+
+        public function setMaTau($MaTau)
+        {
+                $this->MaTau = $MaTau;
+        }
+        public function getThoiGianKhoiHanh()
+        {
+                return $this->ThoiGianKhoiHanh;
+        }
+
+        public function setThoiGianKhoiHanh($ThoiGianKhoiHanh)
+        {
+                $this->ThoiGianKhoiHanh = $ThoiGianKhoiHanh;
         }
     }
 ?>

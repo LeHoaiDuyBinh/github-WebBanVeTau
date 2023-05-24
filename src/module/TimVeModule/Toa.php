@@ -4,7 +4,7 @@
     include "ChoNgoi.php";
         class Toa{
             private $table = "Toa";
-            function load($maTau){
+            function load($maTau,$maChuyenTau,$ThoiGianXuatPhat){
                 try {
                     $db = new DB();
                     $sql = "select Toa.*,LoaiToa.TenLoaiToa from Toa,LoaiToa 
@@ -14,7 +14,7 @@
                     $arr = [];
 
                     while($row = $sth->fetch()) {
-                        $ChoNgoi= (new ChoNgoi)->load($row['MaToa']);
+                        $ChoNgoi= (new ChoNgoi)->load($row['MaToa'],$maChuyenTau,$maTau,$ThoiGianXuatPhat);
                         $obj = new ToaObject($row,$ChoNgoi);
                         $arr[] = $obj;
                         //var_dump($arr);

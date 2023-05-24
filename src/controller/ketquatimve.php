@@ -23,7 +23,7 @@
                 $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
             };
             
-            include_once 'view/ticketing/BookTickets/ketquatimve.php';
+            //include_once 'view/ticketing/BookTickets/ketquatimve.php';
         }
     }
     

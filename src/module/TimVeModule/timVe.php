@@ -19,7 +19,7 @@ include_once "timVeObject.php";
                 $sth = $db->select($sql, array($TenGaXuatPhat,$TenGaDiemDen,$ThoiGianXuatPhat."%"));
                 $arr = [];
                 while($row = $sth->fetch()) {
-                    $toa=(new Toa)->load($row['MaTau']);
+                    $toa=(new Toa)->load($row['MaTau'],$row['MaChuyenTau'],$ThoiGianXuatPhat);
                     $obj = new TimVeObject($row,$toa);
                     $arr[]=$obj;
                 }
