@@ -14,17 +14,15 @@
                         <!-- In ra tau -->
                         <? $sum = 0 ?>
                         <?php foreach ($arrChuyen as $each) : ?>
-                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" 
-                                data-code-train="<? echo $each->getMaTau().$sum; $sum+=1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen()?>"
-                                data-xuat-phat="<? echo $each->getTenGaXuatPhat()?>" data-time="<? echo $each->getThoiGianXuatPhat()?>">
+                            <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-oneway ng-scope" data-code-train="<? echo $each->getMaTau() . $sum;$sum += 1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen() ?>" data-xuat-phat="<? echo $each->getTenGaXuatPhat() ?>" data-time="<? echo $each->getThoiGianXuatPhat() ?>">
                                 <div class="et-train-head">
                                     <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
                                         <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
                                     </div>
                                     <div class="et-train-head-info">
                                         <div class="row et-no-margin">
-                                            <span class="pull-left et-bold ng-binding">TG đi: </span>
-                                            <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
+                                            <span class="pull-left et-bold ng-binding"></span>
+                                            <span style="" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
                                         </div>
                                         <div class="row et-no-margin">
                                             <span class="pull-left et-bold ng-binding">TG chạy: </span>
@@ -68,7 +66,7 @@
                             <div class="et-coach-block coach coach-oneway col-md-12 et-no-margin" data-code-train="<? echo $each->getMaTau() . $sum;$sum += 1; ?>" id="<?php echo "train-" . $each->getMaTau(); ?>">
                                 <!-- In ra toa -->
                                 <?php foreach ($each->getToa() as $eachToa) : ?>
-                                    <div class="et-car-block ng-scope toa oneway" data-toa="<?echo $eachToa->getThuTuToa();?>" tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                    <div class="et-car-block ng-scope toa oneway" data-toa="<? echo $eachToa->getThuTuToa(); ?>" tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
                                         <div class="et-car-icon et-car-icon-avaiable">
                                             <img src="view/image/trainCar2.png">
                                         </div>
@@ -93,20 +91,150 @@
                         </div>
                         <? foreach ($each->getToa() as $eachToa) :
                             // Khoang mềm điều hòa
-                            if ($eachToa->getMaLoaiToa() == "LT001") include 'view/ticketing/BookTickets/LT001.php';
+                            if ($eachToa->getMaLoaiToa() == "LT001") { ?>
+                                <div id="khoang2" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                    <div class="et-full-width et-car-loading ng-hide">
+                                        <div class="row text-capitalize text-center"></div>
+                                    </div>
+                                    <div class="row et-car-floor">
+                                        <div class="et-car-door"></div>
+                                        <div class="et-car-nm-64-half-block">
+
+                                            <div class="et-full-width">
+                                                <? $conTrong = "et-sit-avaiable";$daBan = "et-sit-bought";$sum = 0 ?>
+                                                <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                    <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                        <div class="et-car-seat-left et-seat-h-35">
+                                                            <div class="et-col-16 et-sit-side"></div>
+                                                            <div class="et-col-84 et-sit-sur-outer et-sit-check oneway" 
+                                                                data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-diem-den="" 
+                                                                data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                                <div class="et-sit-sur text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;else echo $daBan ?>">
+                                                                    <div class="et-sit-no ng-scope"><span><? echo $sum ?></span></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <?
+                                                    if ($sum + 1 == 17 || $sum + 1 == 49) echo "<div class=\"et-car-way et-full-width\"></div>";
+                                                    elseif ($sum + 1 == 33) echo "</div></div><div class=\"et-car-seperator\" ng-class=\"{'et-hidden': !seatMap[0].Status}\"><div></div><div></div></div><div class=\"et-car-nm-64-half-block\"><div class=\"et-full-width\">"
+                                                    ?>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                        <div class="et-car-door"></div>
+                                    </div>
+                                </div>
+                            <? }
                             // Khoang giường nằm 6 điều hòa
-                            elseif ($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php';
+                            elseif ($eachToa->getMaLoaiToa() == "LT002") { ?>
+                                <div id="khoang1" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                    <div class="et-full-width et-car-loading ng-hide">
+                                        <div class="row text-capitalize text-center">
+                                        </div>
+                                        <div class="row text-center">
+                                        </div>
+                                    </div>
+                                    <div class="row et-car-floor">
+                                        <div class="et-col-1-18 et-car-floor-full-height">
+                                            <div class="et-bed-way et-full-width"></div>
+                                            <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 3</div>
+                                            <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
+                                            <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+                                        </div>
+                                        <div class="et-col-8-9">
+                                            <div class="et-bed-way et-full-width et-text-sm">
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+                                            </div>
+                                            <? $conTrong = "et-sit-avaiable";
+                                            $daBan = "et-sit-bought";
+                                            $sum = 0 ?>
+                                            <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                    <div class="<? if ($sum % 2 == 0) echo "et-bed-left";
+                                                                else echo "et-bed-right" ?>">
+                                                        <div class="et-bed-outer et-sit-check oneway" data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                            <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;
+                                                                                                else echo $daBan ?>">
+                                                                <div class="et-sit-no ng-scope">
+                                                                    <span><? echo $sum ?></span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="et-bed-illu"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                    </div>
+                                </div>
+                            <? }
                             // Khoang giường nằm 4 điều hòa
-                            elseif ($eachToa->getMaLoaiToa() == "LT003") include 'view/ticketing/BookTickets/LT003.php';
+                            elseif ($eachToa->getMaLoaiToa() == "LT003") { ?>
+                                <div id="khoang3" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                    <div class="et-full-width et-car-loading ng-hide">
+                                        <div class="row text-capitalize text-center"></div>
+                                        <div class="row text-center"></div>
+                                    </div>
+                                    <div class="row et-car-floor">
+                                        <div class="et-col-1-18 et-car-floor-full-height">
+                                            <div class="et-bed-way et-full-width"></div>
+                                            <div class="et-bed-way et-full-width"></div>
+                                            <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
+                                            <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+                                        </div>
+                                        <div class="et-col-8-9">
+                                            <div class="et-bed-way et-full-width"></div>
+                                            <div class="et-bed-way et-full-width et-text-sm">
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
+                                                <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+                                            </div>
+                                            <? $conTrong = "et-sit-avaiable";
+                                            $daBan = "et-sit-bought";
+                                            $sum = 0 ?>
+                                            <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                    <div class="<? if ($sum % 2 == 0) echo "et-bed-left";
+                                                                else echo "et-bed-right" ?>">
+                                                        <div class="et-bed-outer et-sit-check oneway" data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                            <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;
+                                                                                                else echo $daBan ?>">
+                                                                <div><span><? echo $sum ?></span></div>
+                                                            </div>
+                                                            <div class="et-bed-illu"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
+                                        </div>
+                                        <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                    </div>
+
+                                </div>
+                        <? }
                         endforeach; ?>
                     </div>
                 <?php endforeach; ?>
 
             </table>
         </div>
-        
+
         <!-- Vé chiều về (nếu có) -->
-        <?php if($ticket_type == "round-trip") { ?>
+        <?php if ($ticket_type == "round-trip") { ?>
             <div class="text">
                 <h1 style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important">Chiều về</h1>
                 <table id="myTable">
@@ -114,10 +242,9 @@
                         <div id="train-container" class="train-group" style="margin-bottom: 25px;">
                             <!-- In ra tau -->
                             <? $sum = 0 ?>
-                            <?php foreach ($arrVe as $each): ?>
-                                <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" 
-                                data-code-train="<? echo $each->getMaTau().$sum; $sum+=1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen()?>"
-                                data-xuat-phat="<? echo $each->getTenGaXuatPhat()?>" data-time="<? echo $each->getThoiGianXuatPhat()?>">
+                            <?php foreach ($arrVe as $each) : ?>
+                                <div class="col-xs-4 col-sm-3 et-col-md-2 et-train-block train-return ng-scope" data-code-train="<? echo $each->getMaTau() . $sum;
+                                                                                                                                    $sum += 1; ?>" data-diem-den="<? echo $each->getTenGaDiemDen() ?>" data-xuat-phat="<? echo $each->getTenGaXuatPhat() ?>" data-time="<? echo $each->getThoiGianXuatPhat() ?>">
                                     <div class="et-train-head">
                                         <div class="row center-block" style="margin-left: 29%;  width: 40%; margin-bottom: 3px">
                                             <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
@@ -166,9 +293,10 @@
                             <? $sum = 0 ?>
                             <?php foreach ($arrVe as $each) : ?>
                                 <!-- Danh sách toa tàu -->
-                                <div class="et-coach-block coach coach-return col-md-12 et-no-margin" data-code-train=<? echo $each->getMaTau() . $sum;$sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
+                                <div class="et-coach-block coach coach-return col-md-12 et-no-margin" data-code-train=<? echo $each->getMaTau() . $sum;
+                                                                                                                        $sum += 1; ?> id=<?php echo "train-" . $each->getMaTau(); ?>>
                                     <!-- In ra toa -->
-                                    <?php foreach ($each->getToa() as $eachToa): ?>
+                                    <?php foreach ($each->getToa() as $eachToa) : ?>
                                         <div class="et-car-block ng-scope toa return" data-toa=<? echo $eachToa->getThuTuToa(); ?> tooltip="<? echo $eachToa->getTenLoaiToa(); ?>" data-code="<? echo $eachToa->getMaToa(); ?>">
                                             <div class="et-car-icon et-car-icon-avaiable">
                                                 <img src="view/image/trainCar2.png">
@@ -194,11 +322,144 @@
                             </div>
                             <? foreach ($each->getToa() as $eachToa) :
                                 // Khoang mềm điều hòa
-                                if ($eachToa->getMaLoaiToa() == "LT001") include 'view/ticketing/BookTickets/LT001.php';
+                                if ($eachToa->getMaLoaiToa() == "LT001") { ?>
+                                    <div id="khoang2" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                        <div class="et-full-width et-car-loading ng-hide">
+                                            <div class="row text-capitalize text-center"></div>
+                                        </div>
+                                        <div class="row et-car-floor">
+                                            <div class="et-car-door"></div>
+                                            <div class="et-car-nm-64-half-block">
+
+                                                <div class="et-full-width">
+                                                    <? $conTrong = "et-sit-avaiable";
+                                                    $daBan = "et-sit-bought";
+                                                    $sum = 0 ?>
+                                                    <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                        <div class="et-car-nm-64-sit ng-isolate-scope">
+                                                            <div class="et-car-seat-left et-seat-h-35">
+                                                                <div class="et-col-16 et-sit-side"></div>
+                                                                <div class="et-col-84 et-sit-sur-outer et-sit-check return" data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                                    <div class="et-sit-sur text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;
+                                                                                                            else echo $daBan ?>">
+                                                                        <div class="et-sit-no ng-scope"><span><? echo $sum ?></span></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <?
+                                                        if ($sum + 1 == 17 || $sum + 1 == 49) echo "<div class=\"et-car-way et-full-width\"></div>";
+                                                        elseif ($sum + 1 == 33) echo "</div></div><div class=\"et-car-seperator\" ng-class=\"{'et-hidden': !seatMap[0].Status}\"><div></div><div></div></div><div class=\"et-car-nm-64-half-block\"><div class=\"et-full-width\">"
+                                                        ?>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                            <div class="et-car-door"></div>
+                                        </div>
+                                    </div>
+                                <? }
                                 // Khoang giường nằm 6 điều hòa
-                                elseif ($eachToa->getMaLoaiToa() == "LT002") include 'view/ticketing/BookTickets/LT002.php';
+                                elseif ($eachToa->getMaLoaiToa() == "LT002") { ?>
+                                    <div id="khoang1" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                        <div class="et-full-width et-car-loading ng-hide">
+                                            <div class="row text-capitalize text-center">
+                                            </div>
+                                            <div class="row text-center">
+                                            </div>
+                                        </div>
+                                        <div class="row et-car-floor">
+                                            <div class="et-col-1-18 et-car-floor-full-height">
+                                                <div class="et-bed-way et-full-width"></div>
+                                                <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 3</div>
+                                                <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
+                                                <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+                                            </div>
+                                            <div class="et-col-8-9">
+                                                <div class="et-bed-way et-full-width et-text-sm">
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+                                                </div>
+                                                <? $conTrong = "et-sit-avaiable";
+                                                $daBan = "et-sit-bought";
+                                                $sum = 0 ?>
+                                                <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                        <div class="<? if ($sum % 2 == 0) echo "et-bed-left";
+                                                                    else echo "et-bed-right" ?>">
+                                                            <div class="et-bed-outer et-sit-check return" data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                                <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;
+                                                                                                    else echo $daBan ?>">
+                                                                    <div class="et-sit-no ng-scope">
+                                                                        <span><? echo $sum ?></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="et-bed-illu"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                        </div>
+                                    </div>
+                                <? }
                                 // Khoang giường nằm 4 điều hòa
-                                elseif ($eachToa->getMaLoaiToa() == "LT003") include 'view/ticketing/BookTickets/LT003.php';
+                                elseif ($eachToa->getMaLoaiToa() == "LT003") { ?>
+                                    <div id="khoang3" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
+                                        <div class="et-full-width et-car-loading ng-hide">
+                                            <div class="row text-capitalize text-center"></div>
+                                            <div class="row text-center"></div>
+                                        </div>
+                                        <div class="row et-car-floor">
+                                            <div class="et-col-1-18 et-car-floor-full-height">
+                                                <div class="et-bed-way et-full-width"></div>
+                                                <div class="et-bed-way et-full-width"></div>
+                                                <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
+                                                <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+                                            </div>
+                                            <div class="et-col-8-9">
+                                                <div class="et-bed-way et-full-width"></div>
+                                                <div class="et-bed-way et-full-width et-text-sm">
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
+                                                    <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+                                                </div>
+                                                <? $conTrong = "et-sit-avaiable";
+                                                $daBan = "et-sit-bought";
+                                                $sum = 0 ?>
+                                                <? foreach ($eachToa->getChoNgoi() as $eachChoNgoi) : ?>
+                                                    <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope">
+                                                        <div class="<? if ($sum % 2 == 0) echo "et-bed-left";
+                                                                    else echo "et-bed-right" ?>">
+                                                            <div class="et-bed-outer et-sit-check return" data-seat="<? echo $eachChoNgoi->getMaChoNgoi() ?>" number-seat="<? echo $sum += 1 ?>" data-toa="<? echo $eachToa->getMaToa(); ?>" number-toa="<? echo $eachToa->getThuTuToa(); ?>">
+                                                                <div class="et-bed text-center seat <? if ($eachChoNgoi->getTrangThai() == 0) echo $conTrong;
+                                                                                                    else echo $daBan ?>">
+                                                                    <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán">
+                                                                        <span><? echo $sum ?></span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="et-bed-illu"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                <?php endforeach; ?>
+                                            </div>
+                                            <div class="et-col-1-18 et-car-floor-full-height"></div>
+                                        </div>
+
+                                    </div>
+                            <? }
                             endforeach; ?>
                         </div>
                     <?php endforeach; ?>
@@ -354,15 +615,15 @@
                             <tbody class="tbody"></tbody>
                         </table>
                     </div>
-                    <?php if($ticket_type == "round-trip") { ?>
-                    <!-- Chiều về (nếu có) -->
-                    <div class="col-md-12 text-center chieuVe" style="display: none; padding: 5px !important">
-                        <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều về </strong></h6>
-                        <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-return" style="border-bottom:1px solid #ccc;">
-                            <!-- bắt sự kiện và add thông tin-->
-                            <tbody class="tbody"></tbody>
-                        </table>
-                    </div>
+                    <?php if ($ticket_type == "round-trip") { ?>
+                        <!-- Chiều về (nếu có) -->
+                        <div class="col-md-12 text-center chieuVe" style="display: none; padding: 5px !important">
+                            <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều về </strong></h6>
+                            <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-return" style="border-bottom:1px solid #ccc;">
+                                <!-- bắt sự kiện và add thông tin-->
+                                <tbody class="tbody"></tbody>
+                            </table>
+                        </div>
                     <?php } ?>
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Mua vé</button>
