@@ -94,7 +94,7 @@ CREATE TABLE ThongTinDatCho(
   `ID_NguoiDatCho` INT,
   `NgayDatCho` DATETIME,
   `TongTien` DECIMAL(18, 2),
-  `TrangThai` BOOLEAN, -- 0 là đang chờ thanh toán, 1 là đã thanh toán, 2 là đã bị hủy do quá hạn
+  `TrangThai` TINYINT, -- 0 là đang chờ thanh toán, 1 là đã thanh toán, 2 là đã bị hủy do quá hạn
   FOREIGN KEY (`ID_NguoiDatCho`) REFERENCES `NguoiDatCho`(`ID_NguoiDatCho`)
 );
 DROP TABLE IF EXISTS `Ve`;
