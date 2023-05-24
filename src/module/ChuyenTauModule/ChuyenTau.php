@@ -112,7 +112,10 @@ include_once "./module/TuyenDuongModule/TuyenDuongObject.php";
                         return "CT:" . $obj->getMaChuyenTau();
                     }
                 }
+                if($arrTG_DenNoi == NULL)
+                    return false;
                 $maxTG_DenNoi = $this->checkGaHienTai($arrTG_DenNoi);
+;
                 $GaDiemDenCuoiCung = '';
                 foreach($arr as $each){
                     if($maxTG_DenNoi == $each->getThoiGianDenNoi()){
