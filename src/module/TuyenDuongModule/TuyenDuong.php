@@ -1,6 +1,6 @@
 <?php
     include_once "./module/db.php";
-    include "TuyenDuongObject.php";
+    include_once "TuyenDuongObject.php";
         class TuyenDuong{
             private $table = "TuyenDuong";
             function load(){
@@ -59,6 +59,25 @@
                     $params = array($MaTuyenDuong);
                     $db->execute($sql, $params);
                     return "done";
+                    }
+                catch (PDOException $e) {
+                    // return $e->getMessage();
+                    return "Lỗi";
+                }
+            }
+
+            function find($MaTuyenDuong){
+                try {
+                    $db = new DB();
+                    $sql = "select * from $this->table where MaTuyenDuong = ?";
+                    $params = array($MaTuyenDuong);
+                    $sth = $db->select($sql, $params);
+                    $arr = [];
+                    while($row = $sth->fetch()) {
+                        $obj = new TuyenDuongObject($row);
+                        $arr[] = $obj;
+                    }
+                        return $arr;
                     }
                 catch (PDOException $e) {
                     // return $e->getMessage();

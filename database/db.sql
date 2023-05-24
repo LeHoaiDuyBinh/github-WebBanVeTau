@@ -128,6 +128,7 @@ INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VAL
 INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT002','Giường Nằm 6', 48 ,150000,'Toa giường nằm, mỗi toa có 6 giường với điều hòa dễ chịu.');
 INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT003','Giường Nằm 4', 32 ,200000,'Toa giường nằm, mỗi toa có 4 giường với điều hòa dễ chịu.');
 
+INSERT INTO `Ga`(`MaGa`, `TenGa`) VALUES ('G000','Tàu hiện đang chạy');
 INSERT INTO `Ga`(`MaGa`, `TenGa`) VALUES ('G001', 'Thành phố Hà Nội');
 INSERT INTO `Ga`(`MaGa`, `TenGa`) VALUES ('G002', 'Tỉnh Hà Giang');
 INSERT INTO `Ga`(`MaGa`, `TenGa`) VALUES ('G003', 'Tỉnh Cao Bằng');

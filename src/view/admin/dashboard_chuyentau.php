@@ -139,7 +139,7 @@ function hienThiTauHopLe(){
 
 // hiển thị tàu theo tuyến
 MaTuyenDuong.addEventListener('change', function() {
-  hienThiTauHopLe();
+  //hienThiTauHopLe();
 });
 
 function removeAttrHiddenOption(){
@@ -186,7 +186,7 @@ function removeAttrHiddenOption(){
       }
     }
 
-    hienThiTauHopLe();
+    // hienThiTauHopLe();
     
     for (let i = 0; i < optionMaTau.length; i++) {
       if (optionMaTau[i].value === MaTau_table) {
@@ -254,12 +254,20 @@ function removeAttrHiddenOption(){
           setTimeout(function() {
               location.reload();
           }, 1000); 
+          $('#ChuyenTauForm').find('.alert-danger').remove();
           $('#myModal').hide();
           $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
 				}else{
           sw.close();
           if($alert.length === 0)
-					  $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+					  $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          else{
+
+            //nhớ thêm cái này cho mấy trang kia
+            $('#ChuyenTauForm').find('.alert-danger').remove();
+            $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          }
+              
 				}
     }
 		})
@@ -269,6 +277,7 @@ function removeAttrHiddenOption(){
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
     const MaChuyenTau = row.cells[0].textContent.trim();
+    const TrangThai = row.cells[6].getAttribute('value').trim();
   Swal.fire({
       title: 'Bạn có chắc là muốn xóa chuyến tàu này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
@@ -284,7 +293,10 @@ function removeAttrHiddenOption(){
       $.ajax({
         url: 'index.php/?type=admin&page=chuyentau&action=delete',
         type: 'POST',
-        data: { MaChuyenTau: MaChuyenTau },
+        data: { 
+          MaChuyenTau: MaChuyenTau,
+          TrangThai: TrangThai 
+        },
         success: function(response) {
           if (response.trim() == "done") {
             Swal.fire(

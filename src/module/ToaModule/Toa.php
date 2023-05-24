@@ -67,10 +67,33 @@
                     return "Lỗi khi thêm Chỗ ngồi: " . $e->getMessage();
                 }
             }
+
+            function checkTrangThaiTau($MaTau){
+                try {
+                    $db = new DB();
+                    $sql = "select Tau.TrangThai from Tau where Tau.MaTau = ?";
+                    $params = array($MaTau);
+                    $sth = $db->select($sql, $params);
+
+                    while($row = $sth->fetch()) {
+                        if($row['TrangThai'] == 0)
+                            return true;
+                    }
+                    return false;
+                }
+                    
+                catch (PDOException $e) {
+                    // return $e->getMessage();
+                    return "Lỗi";
+                }
+            }
     
             function create($MaToa, $MaTau , $MaLoaiToa){
                 try {
                     $db = new DB();
+                    if($this->checkTrangThaiTau($MaTau)){
+                        return "Tàu đang chạy không thể thêm toa";
+                    }
                     $stt = $this->getSTT($MaTau);
                     $sql = "insert into $this->table (MaToa, MaTau, MaLoaiToa, ThuTuToa) values(?, ?, ?, ?)";
                     $params = array($MaToa, $MaTau, $MaLoaiToa, $stt);
@@ -96,6 +119,9 @@
             function edit($MaToa, $MaTau){
                 try {
                     $db = new DB();
+                    if($this->checkTrangThaiTau($MaTau)){
+                        return "Tàu đang chạy không thể sửa toa";
+                    }
                     $sql = "update $this->table set MaTau = ? where MaToa = ?";
                     $params = array($MaTau, $MaToa);
                     $db->execute($sql, $params);
@@ -122,6 +148,9 @@
 
             function remove($MaToa, $ThuTuToa, $MaTau){
                 try {
+                    if($this->checkTrangThaiTau($MaTau)){
+                        return "Tàu đang chạy không thể xóa toa";
+                    }
                     $this->removeChoNgoi($MaToa);
                     $db = new DB();
                     $sql = "delete from $this->table where MaToa = ?";

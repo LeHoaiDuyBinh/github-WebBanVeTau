@@ -60,17 +60,6 @@
           <option value="DongNai">Tỉnh Đồng Nai</option>
           <option value="VungTau">Tỉnh Bà Rịa - Vũng Tàu</option>
           <option value="HoChiMinh">Thành phố Hồ Chí Minh</option>
-          <option value="LongAn">Tỉnh Long An</option>
-          <option value="TienGiang">Tỉnh Tiền Giang</option>
-          <option value="BenTre">Tỉnh Bến Tre</option>
-          <option value="TraVinh">Tỉnh Trà Vinh</option>
-          <option value="VinhLong">Tỉnh Vĩnh Long</option>
-          <option value="DongThap">Tỉnh Đồng Tháp</option>
-          <option value="AnGiang">Tỉnh An Giang</option>
-          <option value="KienGiang">Tỉnh Kiên Giang</option>
-          <option value="CanTho">Thành phố Cần Thơ</option>
-          <option value="HauGiang">Tỉnh Hậu Giang</option>
-          <option value="SocTrang">Tỉnh Sóc Trăng</option>
          </select>
       </form>
       <thead>   
@@ -84,19 +73,19 @@
             </div>
             <div class="et-train-head-info">
                 <div class="row et-no-margin">
-                    <span class="pull-left et-bold ng-binding">TG đi: </span> 
-                    <span style="margin-left: -52%;" class="pull-right ng-binding">25/05 06:45</span></div>
+                    <span class="pull-left et-bold ng-binding"></span> 
+                    <span style="margin-left: -52%;" class="pull-right ng-binding"></span></div>
                     <div class="row et-no-margin">
-                        <span class="pull-left et-bold ng-binding">TG đến: </span> 
+                        <span class="pull-left et-bold ng-binding"></span> 
                         <span class="pull-right"></span> 
-                        <span style="margin-left: -152%;" class="pull-right ng-binding">26/05 00:28</span>
+                        <span style="margin-left: -152%;" class="pull-right ng-binding"></span>
                     </div><div class="row et-no-margin">
                         <div class="et-col-50">
-                            <div class="et-text-sm ng-binding">SL chỗ đặt</div>
-                            <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
+                            <div class="et-text-sm ng-binding"></div>
+                            <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px"></div>
                         </div><div class="et-col-50 text-center">
-                            <div class="et-text-sm ng-binding">SL chỗ trống</div>
-                            <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
+                            <div class="et-text-sm ng-binding"></div>
+                            <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px"></div>
                         </div>
                     </div>
                 </div>
@@ -175,8 +164,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"seat="seatMap[4]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data  data-khoang="1">5</span> 
                      </div>
                   </div>
@@ -187,8 +176,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[5]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data   data-khoang="1">6</span> 
                      </div>
                   </div>
@@ -199,8 +188,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[10]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data  data-khoang="1">11</span> 
                      </div>
                   </div>
@@ -211,8 +200,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[11]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">12</span> 
                      </div>
                   </div>
@@ -247,8 +236,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[22]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">23</span> 
                      </div>
                   </div>
@@ -259,8 +248,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[23]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">24</span> 
                      </div>
                   </div>
@@ -344,7 +333,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">47</span> 
                      </div>
                   </div>
@@ -356,7 +345,7 @@
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">48</span> 
                      </div>
                   </div>
@@ -367,8 +356,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[2]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">3</span> 
                      </div>
                   </div>
@@ -379,8 +368,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[3]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">4</span> 
                      </div>
                   </div>
@@ -391,8 +380,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[8]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">9</span> 
                      </div>
                   </div>
@@ -403,8 +392,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[9]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">10</span> 
                      </div>
                   </div>
@@ -415,8 +404,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[14]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">15</span> 
                      </div>
                   </div>
@@ -439,8 +428,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[20]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">21</span> 
                      </div>
                   </div>
@@ -451,8 +440,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[21]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">22</span> 
                      </div>
                   </div>
@@ -487,8 +476,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[32]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">33</span> 
                      </div>
                   </div>
@@ -536,7 +525,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">45</span> 
                      </div>
                   </div>
@@ -548,7 +537,7 @@
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">46</span> 
                      </div>
                   </div>
@@ -559,8 +548,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[0]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">1</span> 
                      </div>
                   </div>
@@ -571,8 +560,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[1]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">2</span> 
                      </div>
                   </div>
@@ -583,8 +572,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[6]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">7</span> 
                      </div>
                   </div>
@@ -595,8 +584,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[7]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">8</span> 
                      </div>
                   </div>
@@ -607,8 +596,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[12]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">13</span> 
                      </div>
                   </div>
@@ -619,8 +608,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[13]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">14</span> 
                      </div>
                   </div>
@@ -631,8 +620,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[18]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">19</span> 
                      </div>
                   </div>
@@ -643,8 +632,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[19]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">20</span> 
                      </div>
                   </div>
@@ -655,8 +644,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[24]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">25</span> 
                      </div>
                   </div>
@@ -667,8 +656,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[25]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">26</span> 
                      </div>
                   </div>
@@ -679,8 +668,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[30]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">31</span> 
                      </div>
                   </div>
@@ -691,8 +680,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[31]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">32</span> 
                      </div>
                   </div>
@@ -728,7 +717,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">43</span> 
                      </div>
                   </div>
@@ -740,7 +729,7 @@
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">44</span> 
                      </div>
                   </div>
@@ -776,8 +765,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">8</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Giá: 561,000 VNĐ" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">8</span></div>
                      </div>
                   </div>
                </div>
@@ -786,8 +775,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">9</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">9</span></div>
                      </div>
                   </div>
                </div>
@@ -796,8 +785,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">16</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">16</span></div>
                      </div>
                   </div>
                </div>
@@ -816,8 +805,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">24</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">24</span></div>
                      </div>
                   </div>
                </div>
@@ -826,13 +815,13 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">25</span></div>
-                        <div class="popover top fade ng-animate in-add" ng-class="{ in: isOpen(), fade: animation() }" popover-popup="" title="Chỗ đã bán" content="Chỗ đã bán" placement="top" animation="tt_animation" is-open="tt_isOpen" style="top: 228.8px; left: 258.5px; display: block; transition-property: none;">
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">25</span></div>
+                        <div class="popover top fade ng-animate in-add" ng-class="{ in: isOpen(), fade: animation() }" popover-popup="" title="Chỗ trống" content="Chỗ trống" placement="top" animation="tt_animation" is-open="tt_isOpen" style="top: 228.8px; left: 258.5px; display: block; transition-property: none;">
                            <div class="arrow"></div>
                            <div class="popover-inner">
-                              <h3 class="popover-title ng-binding" ng-bind="title" ng-show="title">Chỗ đã bán</h3>
-                              <div class="popover-content ng-binding" ng-bind-html="content">Chỗ đã bán</div>
+                              <h3 class="popover-title ng-binding" ng-bind="title" ng-show="title">Chỗ trống</h3>
+                              <div class="popover-content ng-binding" ng-bind-html="content">Chỗ trống</div>
                            </div>
                         </div>
                      </div>
@@ -843,8 +832,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">32</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">32</span></div>
                      </div>
                   </div>
                </div>
@@ -863,8 +852,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">7</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">7</span></div>
                      </div>
                   </div>
                </div>
@@ -873,8 +862,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">10</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">10</span></div>
                      </div>
                   </div>
                </div>
@@ -883,8 +872,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">15</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">15</span></div>
                      </div>
                   </div>
                </div>
@@ -923,8 +912,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">31</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">31</span></div>
                      </div>
                   </div>
                </div>
@@ -954,8 +943,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">11</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">11</span></div>
                      </div>
                   </div>
                </div>
@@ -974,8 +963,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">19</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">19</span></div>
                      </div>
                   </div>
                </div>
@@ -984,8 +973,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">22</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">22</span></div>
                      </div>
                   </div>
                </div>
@@ -994,8 +983,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">27</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">27</span></div>
                      </div>
                   </div>
                </div>
@@ -1004,8 +993,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">30</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">30</span></div>
                      </div>
                   </div>
                </div>
@@ -1034,8 +1023,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">12</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">12</span></div>
                      </div>
                   </div>
                </div>
@@ -1054,8 +1043,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">20</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">20</span></div>
                      </div>
                   </div>
                </div>
@@ -1064,8 +1053,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">21</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">21</span></div>
                      </div>
                   </div>
                </div>
@@ -1074,8 +1063,8 @@
                <div class="et-car-seat-left et-seat-h-35">
                   <div class="et-col-16 et-sit-side"></div>
                   <div class="et-col-84 et-sit-sur-outer">
-                     <div class="et-sit-sur text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">28</span></div>
+                     <div class="et-sit-sur text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">28</span></div>
                      </div>
                   </div>
                </div>
@@ -1101,8 +1090,8 @@
             <div class="et-car-nm-64-sit ng-isolate-scope" seat="seatMap[32]">
                <div class="et-car-seat-right et-seat-h-35">
                   <div class="et-col-84 et-sit-sur-outer-invert">
-                     <div class="et-sit-sur-invert text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">33</span></div>
+                     <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">33</span></div>
                      </div>
                   </div>
                   <div class="et-col-16 et-sit-side"></div>
@@ -1181,8 +1170,8 @@
             <div class="et-car-nm-64-sit ng-isolate-scope" seat="seatMap[33]">
                <div class="et-car-seat-right et-seat-h-35">
                   <div class="et-col-84 et-sit-sur-outer-invert">
-                     <div class="et-sit-sur-invert text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">34</span></div>
+                     <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">34</span></div>
                      </div>
                   </div>
                   <div class="et-col-16 et-sit-side"></div>
@@ -1342,8 +1331,8 @@
             <div class="et-car-nm-64-sit ng-isolate-scope" seat="seatMap[35]">
                <div class="et-car-seat-right et-seat-h-35">
                   <div class="et-col-84 et-sit-sur-outer-invert">
-                     <div class="et-sit-sur-invert text-center et-sit-bought">
-                        <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">36</span></div>
+                     <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                        <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">36</span></div>
                      </div>
                   </div>
                   <div class="et-col-16 et-sit-side"></div>
@@ -1455,8 +1444,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[2]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">3</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">3</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1465,8 +1454,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[3]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">4</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">4</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1475,8 +1464,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[6]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">7</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">7</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1485,8 +1474,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[7]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">8</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">8</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1495,8 +1484,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[10]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">11</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">11</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1505,8 +1494,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[11]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">12</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">12</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1535,8 +1524,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[18]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">19</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">19</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1555,8 +1544,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[22]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">23</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">23</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1596,7 +1585,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">31</span></div>
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">31</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1606,7 +1595,7 @@
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">32</span></div>
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">32</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1615,8 +1604,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[0]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">1</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">1</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1625,8 +1614,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[1]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">2</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">2</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1635,8 +1624,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[4]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">5</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">5</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1645,8 +1634,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[5]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">6</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">6</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1655,8 +1644,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[8]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">9</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">9</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1665,8 +1654,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[9]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">10</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">10</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1675,8 +1664,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[12]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">13</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">13</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1685,8 +1674,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[13]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">14</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">14</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1695,8 +1684,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[16]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">17</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">17</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1705,8 +1694,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[17]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">18</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">18</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1715,8 +1704,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[20]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">21</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">21</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1725,8 +1714,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[21]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">22</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">22</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1735,8 +1724,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[24]">
             <div class="et-bed-left">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">25</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">25</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1745,8 +1734,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[25]">
             <div class="et-bed-right">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center et-sit-bought">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">26</span></div>
+                  <div class="et-bed text-center et-sit-avaiable">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">26</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1756,7 +1745,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">29</span></div>
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">29</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1766,7 +1755,7 @@
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ đã bán" data-popover-title="Chỗ đã bán"><span class="ng-binding" data-khoang="3">30</span></div>
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">30</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>

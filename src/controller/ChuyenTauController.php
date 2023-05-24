@@ -14,31 +14,40 @@
 		}
 
         public function create(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $maTuyenDuong = $_POST['MaTuyenDuong'];
             $maTau = $_POST['MaTau'];
             $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
             $trangThai = $_POST['TrangThai'];
-            $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai);
+
+            include './module/TuyenDuongModule/TuyenDuong.php';
+            $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
+
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
             echo $check;
         }
 
         public function edit(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $maTuyenDuong = $_POST['MaTuyenDuong'];
             $maTau = $_POST['MaTau'];
             $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
             $trangThai = $_POST['TrangThai'];
-            $check = (new ChuyenTau)->edit($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai);
+
+            include './module/TuyenDuongModule/TuyenDuong.php';
+            $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
+
+            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            $check = (new ChuyenTau)->edit($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
             echo $check;
         }
 
         public function remove(){
             include_once './module/ChuyenTauModule/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
-            $check = (new ChuyenTau)->remove($maChuyenTau);
+            $trangThai = $_POST['TrangThai'];
+            $check = (new ChuyenTau)->remove($maChuyenTau, $trangThai);
             echo $check;
         }
         public function checkChuyenTau(){

@@ -7,7 +7,6 @@ include_once "./module/db.php";
                     $sql = "select * from Users where Email=? and Password=?";
                     $params = array($Email,$password);
                     $sth = $db->select($sql, $params);
-                    // die($password);
                     if ($sth->rowCount() > 0) {
                         $row = $sth->fetch(); {
                             $_SESSION['login_id'] = $row['ID_User'];
