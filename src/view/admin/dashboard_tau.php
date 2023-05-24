@@ -51,9 +51,11 @@
       <select id="GaHienTai" name="GaHienTai" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
+          <?php if($each->getMaGa() != 'G000'): ?>
           <option value="<?php echo $each->getMaGa() ?>">
             <?php echo $each->getTenGa(); ?>
           </option>
+          <?php endif; ?>
         <?php endforeach; ?>
       </select>
       <label for="TrangThai">Trạng thái:</label>
@@ -213,7 +215,13 @@
 				}else{
           sw.close();
           if($alert.length === 0)
-					  $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+					  $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          else{
+
+            //nhớ thêm cái này cho mấy trang kia
+            $('#TauForm').find('.alert-danger').remove();
+            $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          }
 				}
     }
 		})

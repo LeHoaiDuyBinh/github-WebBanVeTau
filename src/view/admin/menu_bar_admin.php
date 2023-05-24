@@ -73,6 +73,12 @@
         <h3>Chuyến tàu</h3>
       </a>
 
+      <!-- mới thêm chưa có hiệu ứng trên navbar -->
+      <a href="?type=admin&page=nguoidatcho" class="sidenav_link nguoidatcho">
+        <i class='bx bx-receipt'></i>
+        <h3>Người đặt chổ</h3>
+      </a>
+
       <a href="?type=admin&page=bangve" class="sidenav_link bangve">
         <i class='bx bx-receipt'></i>
         <h3>Bảng vé</h3>

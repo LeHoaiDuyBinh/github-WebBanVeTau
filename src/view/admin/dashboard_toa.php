@@ -1897,8 +1897,14 @@ $('#ToaForm').submit(function(e){
           clearAll();
 				}else{
                sw.close();
-               if (alert.length === 0) 
-					   $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+               if($alert.length === 0)
+					  $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+               else{
+
+               //nhớ thêm cái này cho mấy trang kia
+                  $('#ToaForm').find('.alert-danger').remove();
+                  $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+               }
 				}
     }
 		})
@@ -1943,7 +1949,11 @@ editBtn.addEventListener('click', function() {
    // Bắt sự kiện buộc phải click toa mới được sửa
   const selectedToa = document.querySelector('.selected-toa');
   if (!selectedToa) {
-    console.error('Vui lòng chọn toa trước khi sửa');
+      Swal.fire(
+   'Chưa chọn toa',
+   'Vui lòng chọn toa để sửas!',
+   'error'
+   )
     return;
   }
   action = 'edit';
@@ -1999,7 +2009,11 @@ document.getElementById('RemoveBtn').addEventListener('click', function() {
   // Lấy thông tin toa đã được chọn
   const selectedToa = document.querySelector('.selected-toa');
   if (!selectedToa) {
-    console.error('Vui lòng chọn toa trước khi xóa!');
+   Swal.fire(
+   'Chưa chọn toa',
+   'Vui lòng chọn toa để xóa!',
+   'error'
+   )
     return;
   }
 

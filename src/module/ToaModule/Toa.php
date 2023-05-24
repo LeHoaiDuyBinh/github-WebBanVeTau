@@ -57,8 +57,8 @@
                     $db = new DB();
                     for ($i = 1; $i <= $max; $i++) {
                         $MaChoNgoi = sprintf('%s%03d', $MaToa, $i);
-                        $sqlChoNgoi = "insert into ChoNgoi (MaChoNgoi, MaToa, TrangThai) values (?, ?, ?)";
-                        $paramsChoNgoi = array($MaChoNgoi, $MaToa, 0);
+                        $sqlChoNgoi = "insert into ChoNgoi (MaChoNgoi, MaToa) values (?, ?)";
+                        $paramsChoNgoi = array($MaChoNgoi, $MaToa);
                         $db->execute($sqlChoNgoi, $paramsChoNgoi);
                     }
                 }

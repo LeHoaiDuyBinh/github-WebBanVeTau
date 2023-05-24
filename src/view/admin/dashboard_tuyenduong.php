@@ -49,18 +49,22 @@
       <select id="XuatPhat" name="XuatPhat" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
+          <?php if($each->getMaGa() != 'G000'): ?>
           <option value="<?php echo $each->getMaGa() ?>">
             <?php echo $each->getTenGa(); ?>
           </option>
+          <?php endif; ?>
         <?php endforeach; ?>
       </select>
       <label for="DiemDen">Ga đến:</label>
       <select id="DiemDen" name="DiemDen" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
+          <?php if($each->getMaGa() != 'G000'): ?>
           <option value="<?php echo $each->getMaGa() ?>" >
             <?php echo $each->getTenGa(); ?>
           </option>
+          <?php endif; ?>
         <?php endforeach; ?>
       </select>
       <label for="ThoiGianChay">Thời gian chạy:</label>
@@ -238,7 +242,13 @@ diemDenSelect.addEventListener("change", function() {
 				}else{
           sw.close();
           if($alert.length === 0)
-					  $('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>')
+					  $('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          else{
+
+               //nhớ thêm cái này cho mấy trang kia
+              $('#TuyenForm').find('.alert-danger').remove();
+              $('#TuyenForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          }
 				}
     }
 		})

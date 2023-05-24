@@ -157,7 +157,13 @@
 				}else{
           sw.close();
           if($alert.length === 0)
-					  $('#GaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+					  $('#GaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          else{
+
+            //nhớ thêm cái này cho mấy trang kia
+            $('#GaForm').find('.alert-danger').remove();
+            $('#GaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          }
 				}
     }
 		})

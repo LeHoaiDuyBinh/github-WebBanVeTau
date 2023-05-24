@@ -160,7 +160,13 @@
 				}else{
           sw.close();
           if($alert.length === 0)
-					  $('#LoaiToaForm').prepend('<div class="alert alert-danger">'+ resp + '</div>')
+					  $('#LoaiToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          else{
+
+            //nhớ thêm cái này cho mấy trang kia
+            $('#LoaiToaForm').find('.alert-danger').remove();
+            $('#LoaiToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
+          }
 				}
     }
 		})
