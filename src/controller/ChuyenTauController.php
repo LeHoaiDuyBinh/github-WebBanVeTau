@@ -22,7 +22,7 @@
 
             include './module/TuyenDuongModule/TuyenDuong.php';
             $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
-
+            
             include_once './module/ChuyenTauModule/ChuyenTau.php';
             $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
             echo $check;

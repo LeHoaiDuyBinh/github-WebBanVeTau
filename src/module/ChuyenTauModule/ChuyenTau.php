@@ -120,7 +120,9 @@ include_once "./module/TuyenDuongModule/TuyenDuongObject.php";
                         break;
                     }
                 }
-                if($GaDiemDenCuoiCung != $GaXuatPhat_new)
+
+
+                if($GaDiemDenCuoiCung != $GaXuatPhat_new && $GaDiemDenCuoiCung != '')
                     return "G:" . $GaDiemDenCuoiCung;
                 return false;
                 }
