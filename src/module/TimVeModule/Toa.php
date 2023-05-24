@@ -17,9 +17,10 @@
                         $ChoNgoi= (new ChoNgoi)->load($row['MaToa'],$maChuyenTau,$maTau,$ThoiGianXuatPhat);
                         $obj = new ToaObject($row,$ChoNgoi);
                         $arr[] = $obj;
-                        //var_dump($arr);
                     }
+
                     return $arr;
+                    
                 }
                 catch (PDOException $e) {
                     return  $sql . "<br>" . $e->getMessage();

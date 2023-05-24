@@ -23,6 +23,7 @@ include_once "timVeObject.php";
                     $obj = new TimVeObject($row,$toa);
                     $arr[]=$obj;
                 }
+
                     return $arr;
                 }
             catch (PDOException $e) {

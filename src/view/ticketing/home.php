@@ -37,7 +37,7 @@
      <!-- Form đặt vé tàu -->
      <div class="booking-form">
        <h2 style="text-align: center;">THÔNG TIN HÀNH TRÌNH</h2>
-       <form method="post" action="/route.php?&page=ketquatimve">
+       <form method="post" action="/route.php?page=ketquatimve">
         <div class="form-group">
           <label>Ga đi</label>
           <select id ="ga-di" class="form-control" name="XuatPhat">
