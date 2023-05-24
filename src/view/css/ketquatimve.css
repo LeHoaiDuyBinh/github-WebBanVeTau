@@ -224,5 +224,5 @@ tr {
     border-bottom: 1px solid #ccc !important;
 }
 .td {
-    padding: 5px;
+    padding: 5px !important;
 }
