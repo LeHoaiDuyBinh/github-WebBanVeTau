@@ -19,32 +19,34 @@
           <tbody>
             <tr>
               <!--Họ tên-->
-              <form>
+              <td>
+                <div id="formContainerNguoiNgoi"></div>
+                <!-- <form id="formInforNguoiNgoi" method="POST" action="/?page=xacnhan">
                 <td>
                   <div class="input-row">
                     <label for="tenNguoiNgoi">Họ và tên</label>
                     <input type="text" id="tenNguoiNgoi" name="tenNguoiNgoi"><br>
                   </div>
                   <label for="doiTuong">Đối tượng</label>
-                  <select name="doiTuongGiam" id="doiTuongGiam" onchange="handleDoiTuongGiamChange()">
-                    <option value="nguoiLon" selected>Người lớn</option>
+                  <select name="doiTuongGiam" id="doiTuongGiam" onchange="handleDoiTuongGiamChange()">                  
+                    <option value="nguoiLon">Người lớn</option>
                     <option value="treEm">Trẻ em</option>
                     <option value="nguoiCaoTuoi">Người cao tuổi</option>
-                  </select>
+                  </select> -->
 
-                  <!-- hiện lịch để chọn ngày sinh nếu là trẻ em hoặc người cao tuổi-->
-                  <div id="ngayThangContainer" style="display: none;">
+                <!-- hiện lịch để chọn ngày sinh nếu là trẻ em hoặc người cao tuổi-->
+                <!-- <div id="ngayThangContainer" style="display: none;">
                     <label for="ngayThang">Ngày tháng</label>
                     <input type="date" name="ngayThang" id="ngayThang" onchange="updateTotal()">
-                  </div>
-                  <!-- Nếu là người lớn hoặc người cao tuổi thì hiện ô nhập CCCD -->
-                  <div id="CCCDContainer" style="display: block;">
+                  </div> -->
+                <!-- Nếu là người lớn hoặc người cao tuổi thì hiện ô nhập CCCD -->
+                <!-- <div id="CCCDContainer" style="display: block;">
                     <label for="cccdNguoiNgoi" style="margin-top: 10px;">Số CCCD/Hộ chiếu</label>
                     <input type="text" id="cccdNguoiNgoi" name="cccdNguoiNgoi">
                   </div>
-              </form>
-              </td>
-              <!-- thông tin vé -->
+              </form> -->
+
+                <!-- thông tin vé -->
               <td>
                 <!-- chiều đi-->
                 <div class="data-ticket chieuDi">
@@ -62,17 +64,19 @@
               </td>
               <!-- giá vé add từ DB-->
               <td>
-                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
+                <!-- <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
                   <div class="ng-binding">1,200,000</div>
                 </div>
 
                 <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
                   <div class="ng-binding">1,204,000</div>
-                </div>
+                </div> -->
               </td>
 
               <!--Khuyến mãi-->
-              <td id="khuyenMaiCell">Không có khuyến mãi vé này</td>
+              <td>
+                <div id="khuyenMai"></div>
+              </td>
               <!--Thành tiền-->
               <td class="text-right thanhTien" style="line-height: 6;">
                 <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
@@ -84,6 +88,7 @@
                 </div>
               </td>
             </tr>
+
           </tbody>
           <tfoot>
             <tr>
@@ -105,6 +110,7 @@
               <td class="text-right">
                 <strong class="ng-binding tongTien">2,404,000</strong>
               </td>
+
             </tr>
           </tfoot>
 
@@ -165,7 +171,7 @@
           </table>
           <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
             <button class="back-button" onclick="quayLai()" type="button">Quay lại</button>
-            <button class="next-button" onclick="tiepTheo()" type="submit">Tiếp theo</button>
+            <button class="next-button" onclick="tiepTheo(event)" type="submit">Tiếp theo</button>
           </div>
         </form>
       </div>
