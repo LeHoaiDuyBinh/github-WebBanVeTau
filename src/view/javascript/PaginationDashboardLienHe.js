@@ -1,7 +1,7 @@
 const table = document.getElementById("myTable");
 const container = table.parentElement;
 
-const rowsPerPage = 3;
+const rowsPerPage = 5;
 const totalRows = table.rows.length - 1;
 const totalPages = Math.ceil(totalRows / rowsPerPage);
 
