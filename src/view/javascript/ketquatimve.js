@@ -3,12 +3,10 @@ const trains = document.querySelectorAll('.et-train-block.train-oneway');
 trains.forEach(train => {
     //Ẩn đi chỗ ngồi + tàu khác + title toa
     train.addEventListener('click', () => {
-        var khoangs = document.querySelectorAll('.khoang.oneway');
+        var khoangs = document.querySelectorAll('.seatTrain-oneway');
         khoangs.forEach(function (khoang) {
             khoang.style.display = 'none';
         });
-        var container1 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.oneway');
-        container1.style.display = 'none';
         trains.forEach(train => {
             train.querySelector('.et-train-head').classList.remove('et-train-head-selected');
         });
@@ -20,12 +18,10 @@ const trainRounds = document.querySelectorAll('.et-train-block.train-return');
 trainRounds.forEach(train => {
     //Ẩn đi chỗ ngồi + tàu khác + title toa
     train.addEventListener('click', () => {
-        var khoangs = document.querySelectorAll('.khoang.return');
+        var khoangs = document.querySelectorAll('.seatTrain-return');
         khoangs.forEach(function (khoang) {
             khoang.style.display = 'none';
         });
-        var container2 = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
-        container2.style.display = 'none';
         trainRounds.forEach(train => {
             train.querySelector('.et-train-head').classList.remove('et-train-head-selected');
         });
@@ -38,13 +34,12 @@ trainRounds.forEach(train => {
 //Hiển thị các toa tàu khi click vào tàu
 // Tàu một chiều
 const trainOneways = document.querySelectorAll('.train-oneway');
-console.log(trainOneways);
 trainOneways.forEach(trainOneway => {
     trainOneway.addEventListener('click', () => {
-        const trainCodeOneway = trainOneway.dataset.code;
+        const trainCodeOneway = trainOneway.dataset.codetrain;
         const coachOneways = document.querySelectorAll('.coach-oneway');
         coachOneways.forEach(coachOneway => {
-            if (coachOneway.dataset.code === trainCodeOneway) {
+            if (coachOneway.dataset.codetrain === trainCodeOneway) {
                 coachOneway.style.display = 'block';
             } else {
                 coachOneway.style.display = 'none';
@@ -52,14 +47,16 @@ trainOneways.forEach(trainOneway => {
         });
     });
 });
+
 // Tàu khứ hồi
 const trainReturns = document.querySelectorAll('.train-return');
 trainReturns.forEach(trainReturn => {
     trainReturn.addEventListener('click', () => {
-        const trainCodeReturn = trainReturn.dataset.code;
+        const trainCodeReturn = trainReturn.dataset.codetrain;
+        //console.log(trainReturn.dataset.codetrain);
         const coachReturns = document.querySelectorAll('.coach-return');
         coachReturns.forEach(coachReturn => {
-            if (coachReturn.dataset.code === trainCodeReturn) {
+            if (coachReturn.dataset.codetrain === trainCodeReturn) {
                 coachReturn.style.display = 'block';
             } else {
                 coachReturn.style.display = 'none';
@@ -93,66 +90,75 @@ toaElements.forEach(function (toaElement) {
         // đặt thông tin cho toa
         selectedToaElement = this;
         var dataCode = this.getAttribute('data-code');
-        var toaNumber = this.getAttribute('data-toa');
+        var toaNumber = this.getAttribute('number-toa');
         var toaTitle = this.getAttribute('tooltip');
         var toaInfo = "Toa số " + toaNumber + ": " + toaTitle;
 
-        // tàu chiều đi, hiển thị khoang được chọn tại lớp 'seatTrain-oneway' nếu toa có class 'oneway'
-        if (this.classList.contains('oneway')) {
-            var seatTrainOneway = document.querySelector('.seatTrain-oneway');
-            seatTrainOneway.style.display = 'block';
-
-            var khoangElements = seatTrainOneway.querySelectorAll('.khoang');
-            khoangElements.forEach(function (khoang) {
-                khoang.style.display = 'none';
-            });
-            if (toaTitle.includes('Giường Nằm 6')) {
-                var khoang1 = seatTrainOneway.querySelector('#khoang1[data-code="' + dataCode + '"]');
-                khoang1.style.display = 'block';
-            } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
-                var khoang2 = seatTrainOneway.querySelector('#khoang2[data-code="' + dataCode + '"]');
-                khoang2.style.display = 'block';
-            } else if (toaTitle.includes('Giường Nằm 4')) {
-                var khoang3 = seatTrainOneway.querySelector('#khoang3[data-code="' + dataCode + '"]');
-                khoang3.style.display = 'block';
-            }
-        }
-
-        // tàu chiều về, hiển thị khoang được chọn tại lớp 'seatTrain-round' nếu toa có class 'round'
-        if (this.classList.contains('return')) {
-            var seatTrainRound = document.querySelector('.seatTrain-return');
-            seatTrainRound.style.display = 'block';
-
-            var khoangElements = seatTrainRound.querySelectorAll('.khoang');
-            khoangElements.forEach(function (khoang) {
-                khoang.style.display = 'none';
-            });
-            if (toaTitle.includes('Giường Nằm 6')) {
-                var khoang1 = seatTrainRound.querySelector('#khoang1[data-code="' + dataCode + '"]');
-                khoang1.style.display = 'block';
-            } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
-                var khoang2 = seatTrainRound.querySelector('#khoang2[data-code="' + dataCode + '"]');
-                khoang2.style.display = 'block';
-            } else if (toaTitle.includes('Giường Nằm 4')) {
-                var khoang3 = seatTrainRound.querySelector('#khoang3[data-code="' + dataCode + '"]');
-                khoang3.style.display = 'block';
-            }
-        }
         // Hiển thị thông tin toa
         var message = document.createElement('h4');
         message.textContent = toaInfo;
-        //message.classList.add('oneway');
         var container;
+        
+        // tàu chiều đi, hiển thị khoang được chọn tại lớp 'seatTrain-oneway' nếu toa có class 'oneway'
         if (this.classList.contains('oneway')) {
-            container = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.oneway');
-            container.style.display = 'block';
-            container.innerHTML = '';
-            container.appendChild(message);
-        } else if (this.classList.contains('return')) {
-            container = document.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
-            container.style.display = 'block';
-            container.innerHTML = '';
-            container.appendChild(message);
+            const trainCodeOneway = toaElement.dataset.codetrain;
+            const seatTrainOneways = document.querySelectorAll('.seatTrain-oneway');
+            seatTrainOneways.forEach(function (seatTrainOneway) {
+                if (seatTrainOneway.dataset.codetrain === trainCodeOneway) {
+                    seatTrainOneway.style.display = 'block';
+                    var khoangElements = seatTrainOneway.querySelectorAll('.khoang');
+                    khoangElements.forEach(function (khoang) {
+                        khoang.style.display = 'none';
+                    });
+                    container = seatTrainOneway.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.oneway');
+                    container.style.display = 'block';
+                    container.innerHTML = '';
+                    container.appendChild(message);
+                    if (toaTitle.includes('Giường Nằm 6')) {
+                        var khoang1 = seatTrainOneway.querySelector('#khoang1[data-code="' + dataCode + '"]');
+                        khoang1.style.display = 'block';
+                    } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
+                        var khoang2 = seatTrainOneway.querySelector('#khoang2[data-code="' + dataCode + '"]');
+                        khoang2.style.display = 'block';
+                    } else if (toaTitle.includes('Giường Nằm 4')) {
+                        var khoang3 = seatTrainOneway.querySelector('#khoang3[data-code="' + dataCode + '"]');
+                        khoang3.style.display = 'block';
+                    }
+                } else {
+                    seatTrainOneway.style.display = 'none';
+                }
+            });
+        }
+
+        // tàu chiều về, hiển thị khoang được chọn tại lớp 'seatTrain-round' nếu toa có class 'return'
+        if (this.classList.contains('return')) {
+            const trainCodeReturn = toaElement.dataset.codetrain;
+            const seatCodeReturns = document.querySelectorAll('.seatTrain-return');
+            seatCodeReturns.forEach(function (seatCodeReturn) {
+                if (seatCodeReturn.dataset.codetrain === trainCodeReturn) {
+                    seatCodeReturn.style.display = 'block';
+                    var khoangElements = seatCodeReturn.querySelectorAll('.khoang');
+                    khoangElements.forEach(function (khoang) {
+                        khoang.style.display = 'none';
+                    });
+                    container = seatCodeReturn.querySelector('.col-xs-12.col-sm-12.col-md-12.text-center.return');
+                    container.style.display = 'block';
+                    container.innerHTML = '';
+                    container.appendChild(message);
+                    if (toaTitle.includes('Giường Nằm 6')) {
+                        var khoang1 = seatCodeReturn.querySelector('#khoang1[data-code="' + dataCode + '"]');
+                        khoang1.style.display = 'block';
+                    } else if (toaTitle.includes('Ngồi mềm điều hòa')) {
+                        var khoang2 = seatCodeReturn.querySelector('#khoang2[data-code="' + dataCode + '"]');
+                        khoang2.style.display = 'block';
+                    } else if (toaTitle.includes('Giường Nằm 4')) {
+                        var khoang3 = seatCodeReturn.querySelector('#khoang3[data-code="' + dataCode + '"]');
+                        khoang3.style.display = 'block';
+                    }
+                } else {
+                    seatCodeReturn.style.display = 'none';
+                }
+            });
         }
     });
 });
@@ -167,17 +173,21 @@ var selectedSeatElements = [];
 
 var seatElements = document.querySelectorAll('.et-sit-check');
 console.log(seatElements);
-seatElements.forEach (seatElement => { 
+seatElements.forEach(seatElement => {
     seatElement.addEventListener('click', function () {
         // lấy data chỗ ngồi
+        var maTau = seatElement.getAttribute('data-tau');
+        var xuatPhat = seatElement.getAttribute('data-xuatPhat');
+        var diemDen = seatElement.getAttribute('data-diemDen');
+        var thoiGian = seatElement.getAttribute('data-time');
         var maChoNgoi = seatElement.getAttribute('data-seat');
         var soChoNgoi = seatElement.getAttribute('number-seat');
         var maToa = seatElement.getAttribute('data-toa');
         var soToa = seatElement.getAttribute('number-toa');
         var toaInfo = "<strong>Mã toa:</strong> " + maToa + " - toa số " + soToa;
         var choInfor = "<strong>Mã chỗ:</strong> " + maChoNgoi + " - chỗ số " + soChoNgoi;
-        //var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
-        var mess = toaInfo + "<br>" + choInfor + "<br>";
+        var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
+        var mess =tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
 
         // kiểm tra chỗ được mua chưa
         var icon = seatElement.querySelector('.seat.et-sit-bought');
@@ -194,7 +204,7 @@ seatElements.forEach (seatElement => {
                     noHave.style.display = 'none';
                     chieuDi.style.display = 'block';
                     //thêm data vào giỏ vé
-                    addData(mess, 'table-oneway');                            
+                    addData(mess, 'table-oneway');
                 }
                 else if (this.classList.contains('return')) {
                     //ẩn dòng chữ "Chưa chọn vé"
@@ -236,6 +246,7 @@ function addData(data, id) {
 
     // Tạo một dòng mới
     var row = document.createElement('tr');
+
 
     // Tạo các ô dữ liệu
     var dataCell = document.createElement('td');
@@ -309,4 +320,21 @@ returnDateInput.addEventListener('change', () => {
         alert('Ngày quay về phải lớn hơn ngày đi!');
         returnDateInput.value = '';
     }
+});
+
+/*======================================================================================================*/
+// không thể submit khi giỏ vé chưa có vé
+var form = document.querySelector('.ticket-pocket');
+
+// Lấy tham chiếu đến phần tử hiển thị "Chưa có vé"
+var noTicketElement = form.querySelector('.nohave');
+
+// Bắt sự kiện submit của form
+form.addEventListener('submit', function (event) {
+  // Kiểm tra nếu phần tử "Chưa có vé" đang hiển thị
+  if (noTicketElement.style.display === 'block') {
+    // Ngăn chặn việc submit form
+    event.preventDefault();
+    alert('Chưa có vé. Vui lòng chọn vé trước khi mua.');
+  }
 });
