@@ -613,7 +613,9 @@
                             <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều về </strong></h6>
                             <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-return" style="border-bottom:1px solid #ccc;">
                                 <!-- bắt sự kiện và add thông tin-->
-                                <tbody class="tbody"></tbody>
+                                <tbody class="tbody">
+                                    
+                                </tbody>
                             </table>
                         </div>
                     <?php } ?>
