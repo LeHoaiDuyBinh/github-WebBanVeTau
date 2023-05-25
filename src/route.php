@@ -9,6 +9,7 @@
    require_once 'controller/DatVeController.php';
    require_once 'controller/ChuyenTauController.php';
    require_once 'controller/NguoiDatChoController.php';
+   require_once 'controller/KhachHangController.php';
    require_once 'controller/ketquatimve.php';
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
@@ -142,7 +143,25 @@
                             (new ChuyenTauController)->remove();
                             break;
                     }
-                    break;            
+                    break;
+                case 'khachhang':
+                    switch($action){
+                        case 'index':
+                            // mới sửa
+                            (new Controller)->menu_bar();
+                            (new KhachHangController)->index();
+                            break;
+                        case 'create':
+                            (new ChuyenTauController)->create();
+                            break;
+                        case 'edit':
+                            (new ChuyenTauController)->edit();
+                            break;
+                        case 'delete':
+                            (new ChuyenTauController)->remove();
+                            break;
+                    }
+                    break;                
                 default:
                     (new Controller)->menu_bar();
                     (new Controller)->dashboard_home();
