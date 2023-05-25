@@ -79,6 +79,11 @@
         <h3>Người đặt chổ</h3>
       </a>
 
+      <a href="?type=admin&page=khachhang" class="sidenav_link khachhang">
+        <i class='bx bx-receipt'></i>
+        <h3>Khách hàng</h3>
+      </a>
+
       <a href="?type=admin&page=bangve" class="sidenav_link bangve">
         <i class='bx bx-receipt'></i>
         <h3>Bảng vé</h3>
