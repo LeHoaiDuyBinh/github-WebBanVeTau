@@ -7,15 +7,17 @@
         private $ThoiGianXuatPhat;
         private $ThoiGianChay; 
         private $Toa;
+        private $MaChuyenTau;
         public function __construct($row,$toa)
         {
-                $this->Toa=$toa;
+            $this->Toa=$toa;
             $this->MaTau = $row['MaTau'];
             $this->TenGaXuatPhat = $row['TenGaXuatPhat'];
             $this->TenGaDiemDen = $row['TenGaDiemDen'];
             $this->ThoiGianXuatPhat = $row['ThoiGianXuatPhat'];
             $this->ThoiGianChay = $row['ThoiGianChay'];
             $this->TrangThai = $row['TrangThai'];
+            $this->MaChuyenTau = $row['MaChuyenTau'];
         }
         public function getToa()
         {
@@ -76,6 +78,14 @@
         public function setTrangThai($TrangThai)
         {
                 $this->TrangThai = $TrangThai;
+        }
+        public function setMaChuyenTau($MaChuyenTau)
+        {
+                return $this->MaChuyenTau = $MaChuyenTau;
+        }
+        public function getMaChuyenTau()
+        {
+                return $this->MaChuyenTau;
         }
     }
 ?>
