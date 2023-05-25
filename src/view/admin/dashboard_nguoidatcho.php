@@ -6,7 +6,6 @@
       <div class="text">
         <h2>Danh sách người đặt chổ</h2> 
   <table id="myTable">
-  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm chuyến tàu</button>
   <thead>
     <tr>
       <th scope="col" width="60px">ID Người đặt chổ</th>
@@ -47,7 +46,7 @@
       <td data-label="NgayThanhToan"><?php echo $each->getNgayThanhToan(); ?></td>
       <td data-label="LoaiThanhToan"><?php echo $each->getLoaiThanhToan(); ?></td>
 
-      <td data-label="ListKhachHang"><a href="<?php echo "?/type=admin&page=khachhang&action=find&data=" . $each->getHoTenNguoiDatCho(); ?>">Xem</a></td>
+      <td data-label="ListKhachHang"><a href="<?php echo "/?type=admin&page=khachhang&data=" . $each->getHoTenNguoiDatCho(); ?>">Xem</a></td>
       <td data-label="Period">
         <i class="fa fa-trash ticon"></i>
         <i class="fa fa-pencil"></i>

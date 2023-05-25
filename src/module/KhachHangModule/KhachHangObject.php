@@ -7,20 +7,26 @@
         private $Email_KH;
         private $NgaySinh;
         private $MaChoNgoi;
+        private $TienVe;
+        private $MaVe;
         private $MaChuyenTau;
         private $ID_NguoiDatCho;
+        private $TenNguoiDatCho;
 
         public function __construct($row)
         {
-            $this->ID_KH = $row['ID_KH'];
-            $this->HoTen_KH = $row['HoTen_KH'];
-            $this->CCCD_KH = $row['CCCD_KH'];
-            $this->SDT_KH = $row['SDT_KH'];
-            $this->Email_KH = $row['Email_KH'];
+            $this->ID_KH = $row['ID_KhachHang'];
+            $this->HoTen_KH = $row['HoTen'];
+            $this->CCCD_KH = $row['CCCD'];
+            $this->SDT_KH = $row['SDT'];
+            $this->Email_KH = $row['Email'];
             $this->NgaySinh = $row['NgaySinh'];
             $this->MaChoNgoi = $row['MaChoNgoi'];
+            $this->TienVe = $row['TienVe'];
+            $this->MaVe = $row['MaVe'];
             $this->MaChuyenTau = $row['MaChuyenTau'];
             $this->ID_NguoiDatCho = $row['ID_NguoiDatCho'];
+            $this->TenNguoiDatCho = $row['HoTenNguoiDatCho'];
         }
 
         public function getID_KH()
@@ -118,6 +124,37 @@
         public function setID_NguoiDatCho($ID_NguoiDatCho)
         {
                 $this->ID_NguoiDatCho = $ID_NguoiDatCho;
+
+        }
+        public function getTienVe()
+        {
+                return $this->TienVe;
+        }
+        public function setTienVe($TienVe)
+        {
+                $this->TienVe = $TienVe;
+
+        }
+
+        public function getMaVe()
+        {
+                return $this->MaVe;
+        }
+
+        public function setMaVe($MaVe)
+        {
+                $this->MaVe = $MaVe;
+
+        }
+
+        public function getTenNguoiDatCho()
+        {
+                return $this->TenNguoiDatCho;
+        }
+
+        public function setTenNguoiDatCho($TenNguoiDatCho)
+        {
+                $this->TenNguoiDatCho = $TenNguoiDatCho;
 
         }
     }

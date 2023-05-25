@@ -5,7 +5,7 @@
         <h2>Danh sách loại toa</h2> 
         
 <table id="myTable">
-  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm tuyến đường</button>
+  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm loại toa</button>
   <thead>
     <tr>
       <th scope="col" width="50px">Mã loại toa</th>

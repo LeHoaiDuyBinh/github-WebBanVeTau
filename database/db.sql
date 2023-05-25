@@ -81,6 +81,7 @@ CREATE TABLE KhachHang(
   `Email` VARCHAR(100),
   `NgaySinh` DATETIME,
   `MaChoNgoi` VARCHAR(20),
+  `TienVe` DECIMAL(18, 2),
   `MaChuyenTau` VARCHAR(20),
   `ID_NguoiDatCho` INT,
   FOREIGN KEY (`MaChoNgoi`) REFERENCES `ChoNgoi`(`MaChoNgoi`),
@@ -497,14 +498,14 @@ INSERT INTO `NguoiDatCho`(`HoTen`, `CCCD`, `SDT`, `Email`) VALUES ('Lê Văn Tè
 INSERT INTO `NguoiDatCho`(`HoTen`, `CCCD`, `SDT`, `Email`) VALUES ('Lê Văn Hiền','012398678977','0707888111','hien@gmail.com');
 INSERT INTO `NguoiDatCho`(`HoTen`, `CCCD`, `SDT`, `Email`) VALUES ('Lê Văn Vân','012398678978','0707888178','van@gmail.com');
 
-INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Lê Văn Tú','012398678922','0707999888','tu@gmail.com','2002-02-02','T001001','CT001',1);
-INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Lê Văn Tùng','012398678933','0707111666','tung@gmail.com','2002-02-02','T001002','CT001',1);
-INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Phạm Thị Hiền','012398678944','0707117444','hienpeo@gmail.com','2002-02-02','T001003','CT003',2);
-INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Phạm Thị Hề','012398678945','0707117445','hienhe@gmail.com','2002-02-02','T001004','CT003',3);
+INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `TienVe`, `MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Lê Văn Tú','012398678922','0707999888','tu@gmail.com','2002-02-02','T001001', 100000,'CT001',1);
+INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `TienVe` ,`MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Lê Văn Tùng','012398678933','0707111666','tung@gmail.com','2002-02-02','T001002', 100000,'CT001',1);
+INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `TienVe` ,`MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Phạm Thị Hiền','012398678944','0707117444','hienpeo@gmail.com','2002-02-02','T001003', 100000,'CT003',2);
+INSERT INTO `KhachHang`(`HoTen`, `CCCD`, `SDT`, `Email`, `NgaySinh`, `MaChoNgoi`, `TienVe` ,`MaChuyenTau`, `ID_NguoiDatCho`) VALUES ('Phạm Thị Hề','012398678945','0707117445','hienhe@gmail.com','2002-02-02','T001004', 100000,'CT003',3);
 
-INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC001',1,'2023-05-24',600000, 1);
-INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC002',2,'2023-05-24',500000, 0);
-INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC003',3,'2023-05-24',500000, 2);
+INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC001',1,'2023-05-24',200000, 1);
+INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC002',2,'2023-05-24',100000, 0);
+INSERT INTO `ThongTinDatCho`(`MaDatCho`, `ID_NguoiDatCho`, `NgayDatCho`, `TongTien`, `TrangThai`) VALUES ('DC003',3,'2023-05-24',100000, 2);
 
 INSERT INTO `ThanhToan`(`MaDatCho`, `NgayThanhToan`, `LoaiThanhToan`) VALUES ('DC001','2023-05-24','MoMo');
 

@@ -1,52 +1,32 @@
 <?php
     class KhachHangController{
-        public function index(){
-            
+        public function index($data){
+            include './module/KhachHangModule/KhachHang.php';
+            $arrKH = (new KhachHang)->load();
+
             include './view/admin/dashboard_khachhang.php';
 		}
 
-        public function create(){
-            $maChuyenTau = $_POST['MaChuyenTau'];
-            $maTuyenDuong = $_POST['MaTuyenDuong'];
-            $maTau = $_POST['MaTau'];
-            $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
-            $trangThai = $_POST['TrangThai'];
-
-            include './module/TuyenDuongModule/TuyenDuong.php';
-            $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
-
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
-            echo $check;
-        }
-
         public function edit(){
-            $maChuyenTau = $_POST['MaChuyenTau'];
-            $maTuyenDuong = $_POST['MaTuyenDuong'];
-            $maTau = $_POST['MaTau'];
-            $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
-            $trangThai = $_POST['TrangThai'];
+            $ID = $_POST['id'];
+            $HoTen = $_POST['name'];
+            $CCCD = $_POST['cccd'];
+            $NgaySinh = $_POST['birthday'];
+            $Email = $_POST['Email'];
+            $SDT = $_POST['SDT'];
 
-            include './module/TuyenDuongModule/TuyenDuong.php';
-            $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
-
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $check = (new ChuyenTau)->edit($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
+            include_once './module/KhachHangModule/KhachHang.php';
+            $check = (new KhachHang)->edit($ID, $HoTen, $CCCD, $NgaySinh, $Email, $SDT);
             echo $check;
         }
 
         public function remove(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $maChuyenTau = $_POST['MaChuyenTau'];
-            $trangThai = $_POST['TrangThai'];
-            $check = (new ChuyenTau)->remove($maChuyenTau, $trangThai);
+            include_once './module/KhachHangModule/KhachHang.php';
+            $ID_KhachHang = $_POST['ID_KhachHang'];
+            $TienVe = $_POST['TienVe'];
+            $ID_NguoiDatCho = $_POST['ID_NguoiDatCho'];
+            $check = (new KhachHang)->remove($ID_KhachHang, $TienVe, $ID_NguoiDatCho);
             echo $check;
-        }
-        public function checkChuyenTau(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $arrChuyenTau= (new ChuyenTau)->load();
-
-            (new ChuyenTau)->check($arrChuyenTau);
         }
     }
 ?>
