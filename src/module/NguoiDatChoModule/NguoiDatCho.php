@@ -1,6 +1,6 @@
 <?php
     include_once "./module/db.php";
-    include "NguoiDatChoObject.php";
+    include_once "NguoiDatChoObject.php";
         class NguoiDatCho{
             private $table = "NguoiDatCho";
             function load(){
@@ -34,6 +34,56 @@
                     return  $sql . "<br>" . $e->getMessage();
                 }
             }
+
+            function getSTTVe(){
+                try {
+                    $db = new DB();
+                    $sql = "select COUNT(*) as Tong from Ve";
+                    $sth = $db->select($sql);
+                    $Tong = 0;
+                    while($row = $sth->fetch()) {
+                        $Tong = $row['Tong'];
+                    }
+                        return $Tong + 1;
+                    }
+                catch (PDOException $e) {
+                    return  $sql . "<br>" . $e->getMessage();
+                }
+            }
+
+            function createVe($MaChoNgoi, $MaChuyenTau){
+                try{
+                    $db = new DB();
+                    $stt = $this->getSTTVe();
+                    $MaVe = sprintf("V%03d", $stt);
+                    $sql = "insert into Ve (MaVe, MaChuyenTau, MaChoNgoi) values(?, ?, ?)";
+                    $params = array($MaVe, $MaChuyenTau, $MaChoNgoi);
+                    $sth = $db->execute($sql, $params);
+                   }
+                   catch (PDOException $e) {
+                    // return $e->getMessage();
+                    return "Lôi khi thêm vé";
+                }
+            }
+
+            function loadKH($MaDatCho){
+               try{
+                $db = new DB();
+                $sql = "select kh.* from (
+                    select ttdc.ID_NguoiDatCho from ThongTinDatCho as ttdc where ttdc.MaDatCho = ?
+                    ) as tmp, KhachHang as kh 
+                    where tmp.ID_NguoiDatCho = kh.ID_NguoiDatCho";
+                $params = array($MaDatCho);
+                $sth = $db->select($sql, $params);
+                while($row = $sth->fetch()) {
+                    $this->createVe($row['MaChoNgoi'], $row['MaChuyenTau']);
+                }
+               }
+               catch (PDOException $e) {
+                // return $e->getMessage();
+                return "Lôi khi load khách hàng";
+            }
+            }
     
             function createThanhToan($MaDatCho){
                 try {
@@ -45,7 +95,12 @@
                     $sql = "update ThongTinDatCho set TrangThai = ? where MaDatCho = ?";
                     $params = array(1, $MaDatCho);
                     $db->execute($sql, $params);
+
+                    // tạo vé
+                    $this->loadKH($MaDatCho);
+                    
                     return "done";
+                    
                     }
                 catch (PDOException $e) {
                     // return $e->getMessage();

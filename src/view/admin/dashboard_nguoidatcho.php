@@ -148,7 +148,7 @@ $('#addThanhToanBtn').click(function() {
           if (response.trim() == "done") {
             Swal.fire(
               'Completed!',
-              'Bạn đã xóa người đặt chổ thành công!',
+              'Đã thanh toán và tạo vé thành công!',
               'success'
             )
             // sau 2 giây sẽ tải lại trang
