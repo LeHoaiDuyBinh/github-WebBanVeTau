@@ -14,6 +14,8 @@
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
     $type = $_GET['type'] ?? '';
+    $data = $_GET['data'] ?? '';
+
     (new ChuyenTauController)->checkChuyenTau();
      
     switch($type){
@@ -149,16 +151,13 @@
                         case 'index':
                             // mới sửa
                             (new Controller)->menu_bar();
-                            (new KhachHangController)->index();
-                            break;
-                        case 'create':
-                            (new ChuyenTauController)->create();
+                            (new KhachHangController)->index($data);
                             break;
                         case 'edit':
-                            (new ChuyenTauController)->edit();
+                            (new KhachHangController)->edit();
                             break;
                         case 'delete':
-                            (new ChuyenTauController)->remove();
+                            (new KhachHangController)->remove();
                             break;
                     }
                     break;                

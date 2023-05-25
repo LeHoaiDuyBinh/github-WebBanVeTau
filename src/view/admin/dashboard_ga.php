@@ -4,7 +4,7 @@
         <h2>Danh sách ga</h2> 
         
 <table id="myTable">
-  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm chuyến tàu</button>
+  <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 10px;" id="addBtn">Thêm ga</button>
   <thead>
     <tr>
       <th scope="col" width="100px">Mã ga</th>
