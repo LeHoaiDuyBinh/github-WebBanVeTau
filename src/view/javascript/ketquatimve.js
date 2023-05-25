@@ -1,8 +1,11 @@
 // Xử lý sự kiện click vào tàu hover lên + ẩn đi chỗ ngồi và title toa khi bấm vào tàu khác
+var maChuyenDi = null;
+var maChuyenVe = null;
 const trains = document.querySelectorAll('.et-train-block.train-oneway');
 trains.forEach(train => {
     //Ẩn đi chỗ ngồi + tàu khác + title toa
     train.addEventListener('click', () => {
+        maChuyenDi = train.getAttribute('maChuyenDi');
         var khoangs = document.querySelectorAll('.seatTrain-oneway');
         khoangs.forEach(function (khoang) {
             khoang.style.display = 'none';
@@ -18,6 +21,7 @@ const trainRounds = document.querySelectorAll('.et-train-block.train-return');
 trainRounds.forEach(train => {
     //Ẩn đi chỗ ngồi + tàu khác + title toa
     train.addEventListener('click', () => {
+        maChuyenVe = train.getAttribute('maChuyenVe');
         var khoangs = document.querySelectorAll('.seatTrain-return');
         khoangs.forEach(function (khoang) {
             khoang.style.display = 'none';
@@ -204,14 +208,14 @@ seatElements.forEach(seatElement => {
                     noHave.style.display = 'none';
                     chieuDi.style.display = 'block';
                     //thêm data vào giỏ vé
-                    addData(mess, 'table-oneway');
+                    addData(mess, maChoNgoi, 'table-oneway');
                 }
                 else if (this.classList.contains('return')) {
                     //ẩn dòng chữ "Chưa chọn vé"
                     noHave.style.display = 'none';
                     chieuVe.style.display = 'block';
                     //thêm data vào giỏ vé
-                    addData(mess, 'table-return');
+                    addData(mess, maChoNgoi, 'table-return');
                 }
 
             } else {
@@ -225,11 +229,13 @@ seatElements.forEach(seatElement => {
                     selectedSeatElements.splice(index, 1);
                 }
                 if (seatElement.classList.contains('oneway')) {
-                    if (deleteData(maChoNgoi, "table-oneway") === 0)
-                        chieuDi.style.display = 'none';
+                    deleteData(maChoNgoi, "table-oneway")
+                    // if (deleteData(maChoNgoi, "table-oneway") === 0)
+                    //     chieuDi.style.display = 'none';
                 } else if (seatElement.classList.contains('return')) {
-                    if (deleteData(maChoNgoi, "table-return") === 0)
-                        chieuVe.style.display = 'none';
+                    deleteData(maChoNgoi, "table-return")
+                    // if (deleteData(maChoNgoi, "table-return") === 0)
+                    //     chieuVe.style.display = 'none';
                 }
                 if (selectedSeatElements.length === 0) {
                     noHave.style.display = 'block';
@@ -242,7 +248,7 @@ seatElements.forEach(seatElement => {
 });
 
 // Chức năng thêm dữ liệu
-function addData(data, id) {
+function addData(data, maChoNgoi, id) {
     // Lấy tham chiếu đến bảng
     var table = document.getElementById(id);
     var tbody = table.querySelector('tbody');
@@ -250,6 +256,14 @@ function addData(data, id) {
     // Tạo một dòng mới
     var row = document.createElement('tr');
 
+    // Tạo trường nhập liệu kiểu văn bản
+    var input = document.createElement('input');
+    input.type = 'hidden';
+    input.value = maChoNgoi;
+    if (id === "table-oneway")
+        input.name = 'maGheDi';
+    else input.name = 'maGheVe';
+    row.appendChild(input);
 
     // Tạo các ô dữ liệu
     var dataCell = document.createElement('td');
@@ -343,52 +357,44 @@ form.addEventListener('submit', function (event) {
         // Ngăn chặn việc submit form
         event.preventDefault();
         alert('Chưa có vé. Vui lòng chọn vé trước khi mua.');
-    } else if (ticketType === "round-trip" && noChieuVe.style.display === 'none') {
-        event.preventDefault();
-        alert('Chưa chọn vé chiều về. Vui lòng chọn vé trước khi mua.');
     }
-    else if (ticketType === "one-way" && nochieuDi.style.display === 'none') {
+    // nếu loại vé là 1 chiều
+    if (ticketType === 'one-way') {
         event.preventDefault();
-        alert('Chưa chọn vé chiều đi. Vui lòng chọn vé trước khi mua.');
-    } else {
-        // chặn submit tự động
-        event.preventDefault();
-
-        var dataOneway = document.getElementById('table-oneway');
-        var dataReturn = document.getElementById('table-return');
-
-        // Lấy danh sách các phần tử con trong phần tử chứa nội dung bảng
-        var rowOneways = dataOneway.children;
-        var rowReturns = dataReturn.children;
-
-        // Tạo một mảng để lưu trữ dữ liệu từ bảng
-        var arrOneway = [];
-        var arrReturn = [];
-
-        // Lặp qua các phần tử con và lấy giá trị của chúng
-        for (var i = 0; i < rowOneways.length; i++) {
-            var rowOneway = rowOneways[i].innerHTML;
-            arrOneway.push(rowOneway);
-        }
-        for (var i = 0; i < rowReturns.length; i++) {
-            var rowReturn = rowReturns[i].innerHTML;
-            arrReturn.push(rowReturn);
-        }
-
-        // Gán mảng dữ liệu vào một phần tử input trong form
-        var inputOneway = document.createElement('input');
-        inputOneway.type = 'hidden';
-        inputOneway.name = 'dataOneway';
-        inputOneway.value = JSON.stringify(arrOneway);
-        document.forms[0].appendChild(inputOneway);
-
-        var inputReturn = document.createElement('input');
-        inputReturn.type = 'hidden';
-        inputReturn.name = 'dataReturn';
-        inputReturn.value = JSON.stringify(arrReturn);
-        document.forms[0].appendChild(inputReturn);
-
-        // Submit form
+        var chieuDiData = {
+            maChuyenDi: form.elements.maChuyenDi.value,
+            maGheDi: form.elements.maGheDi.value.split(',')
+        };
+        var jsonData = {
+            chieuDi: chieuDiData
+        };
+        var jsonString = JSON.stringify(jsonData);
+        console.log(jsonString);
         form.submit();
+    }
+    // nếu loại vé là khứ hồi
+    else if (ticketType === 'round-trip') {
+        // kiểm tra đã chọn 2 loại vé chưa
+        if (nochieuDi.style.display === 'none' || noChieuVe.style.display === 'none') {
+            event.preventDefault();
+            alert('Chưa chọn đủ loại vé. Vui lòng chọn vé trước khi mua.');
+        } else {
+            event.preventDefault();
+            var chieuDiData = {
+                maChuyenDi: form.elements.maChuyenDi.value,
+                maGheDi: form.elements.maGheDi.value.split(',')
+            };
+            var chieuVeData = {
+                maChuyenVe: form.elements.maChuyenVe.value,
+                maGheVe: form.elements.maGheVe.value.split(',')
+            };
+            var jsonData = {
+                chieuDi: chieuDiData,
+                chieuVe: chieuVeData
+            };
+            var jsonString = JSON.stringify(jsonData);
+            console.log(jsonString);
+            form.submit();
+        }
     }
 });

@@ -587,7 +587,7 @@
     <!-- Thông tin vé và giỏ hàng -->
     <div class="colume2">
         <!-- Giỏ hàng -->
-        <form class="ticket-pocket" method="post" action="/?page=dienthongtin" ticketType="<?echo $ticket_type?>">
+        <form class="ticket-pocket" method="post" action="/?page=dienthongtin" ticketType="<? echo $ticket_type ?>">
             <div class="col-md-12 et-widget" id="ticketPocket" style="padding-bottom: 8px">
                 <div class="row et-widget-header ">
                     <!-- <i class="fa fa-shopping-cart" style="font-size:20px"></i> -->
@@ -606,6 +606,11 @@
                         <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-oneway" style="border-bottom:1px solid #ccc;">
                             <!-- bắt sự kiện và add thông tin-->
                             <tbody class="tbody">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="maChuyenDi" value="<?echo $arrChuyen[0]->getMaChuyenTau()?>">
+                                    </td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
@@ -616,6 +621,11 @@
                             <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-return" style="border-bottom:1px solid #ccc;">
                                 <!-- bắt sự kiện và add thông tin-->
                                 <tbody class="tbody">
+                                <tr>
+                                    <td>
+                                        <input type="hidden" name="maChuyenVe" value="<?echo $arrVe[0]->getMaChuyenTau()?>">
+                                    </td>
+                                </tr>
                                 </tbody>
                             </table>
                         </div>

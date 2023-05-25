@@ -25,7 +25,8 @@
             if($ticket_type!="one-way"){
                 $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
             };
-
+            //var_dump($arrChuyen);
+            //echo $arrChuyen[0]->getMaChuyenTau;
             include_once 'view/ticketing/BookTickets/ketquatimve.php';
         }
     }
