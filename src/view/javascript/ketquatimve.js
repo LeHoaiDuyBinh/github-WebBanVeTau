@@ -98,7 +98,7 @@ toaElements.forEach(function (toaElement) {
         var message = document.createElement('h4');
         message.textContent = toaInfo;
         var container;
-        
+
         // tàu chiều đi, hiển thị khoang được chọn tại lớp 'seatTrain-oneway' nếu toa có class 'oneway'
         if (this.classList.contains('oneway')) {
             const trainCodeOneway = toaElement.dataset.codetrain;
@@ -187,7 +187,7 @@ seatElements.forEach(seatElement => {
         var toaInfo = "<strong>Mã toa:</strong> " + maToa + " - toa số " + soToa;
         var choInfor = "<strong>Mã chỗ:</strong> " + maChoNgoi + " - chỗ số " + soChoNgoi;
         var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
-        var mess =tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
+        var mess = tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
 
         // kiểm tra chỗ được mua chưa
         var icon = seatElement.querySelector('.seat.et-sit-bought');
@@ -224,10 +224,13 @@ seatElements.forEach(seatElement => {
                 if (index > -1) {
                     selectedSeatElements.splice(index, 1);
                 }
-                if (seatElement.classList.contains('oneway'))
-                    deleteData(maChoNgoi, "table-oneway");
-                else if (seatElement.classList.contains('return'))
-                    deleteData(maChoNgoi, "table-return");
+                if (seatElement.classList.contains('oneway')) {
+                    if (deleteData(maChoNgoi, "table-oneway") === 0)
+                        chieuDi.style.display = 'none';
+                } else if (seatElement.classList.contains('return')) {
+                    if (deleteData(maChoNgoi, "table-return") === 0)
+                        chieuVe.style.display = 'none';
+                }
                 if (selectedSeatElements.length === 0) {
                     noHave.style.display = 'block';
                     chieuDi.style.display = 'none';
@@ -277,6 +280,7 @@ function deleteData(data, id) {
             i--;
         }
     }
+    return rows.length;
 }
 
 
@@ -328,13 +332,63 @@ var form = document.querySelector('.ticket-pocket');
 
 // Lấy tham chiếu đến phần tử hiển thị "Chưa có vé"
 var noTicketElement = form.querySelector('.nohave');
+var ticketType = form.getAttribute('ticketType');
+var noChieuVe = form.querySelector('.chieuVe');
+var nochieuDi = form.querySelector('.chieuDi')
 
 // Bắt sự kiện submit của form
 form.addEventListener('submit', function (event) {
-  // Kiểm tra nếu phần tử "Chưa có vé" đang hiển thị
-  if (noTicketElement.style.display === 'block') {
-    // Ngăn chặn việc submit form
-    event.preventDefault();
-    alert('Chưa có vé. Vui lòng chọn vé trước khi mua.');
-  }
+    // Kiểm tra nếu phần tử "Chưa có vé" đang hiển thị
+    if (noTicketElement.style.display === 'block') {
+        // Ngăn chặn việc submit form
+        event.preventDefault();
+        alert('Chưa có vé. Vui lòng chọn vé trước khi mua.');
+    } else if (ticketType === "round-trip" && noChieuVe.style.display === 'none') {
+        event.preventDefault();
+        alert('Chưa chọn vé chiều về. Vui lòng chọn vé trước khi mua.');
+    }
+    else if (ticketType === "one-way" && nochieuDi.style.display === 'none') {
+        event.preventDefault();
+        alert('Chưa chọn vé chiều đi. Vui lòng chọn vé trước khi mua.');
+    } else {
+        // chặn submit tự động
+        event.preventDefault();
+
+        var dataOneway = document.getElementById('table-oneway');
+        var dataReturn = document.getElementById('table-return');
+
+        // Lấy danh sách các phần tử con trong phần tử chứa nội dung bảng
+        var rowOneways = dataOneway.children;
+        var rowReturns = dataReturn.children;
+
+        // Tạo một mảng để lưu trữ dữ liệu từ bảng
+        var arrOneway = [];
+        var arrReturn = [];
+
+        // Lặp qua các phần tử con và lấy giá trị của chúng
+        for (var i = 0; i < rowOneways.length; i++) {
+            var rowOneway = rowOneways[i].innerHTML;
+            arrOneway.push(rowOneway);
+        }
+        for (var i = 0; i < rowReturns.length; i++) {
+            var rowReturn = rowReturns[i].innerHTML;
+            arrReturn.push(rowReturn);
+        }
+
+        // Gán mảng dữ liệu vào một phần tử input trong form
+        var inputOneway = document.createElement('input');
+        inputOneway.type = 'hidden';
+        inputOneway.name = 'dataOneway';
+        inputOneway.value = JSON.stringify(arrOneway);
+        document.forms[0].appendChild(inputOneway);
+
+        var inputReturn = document.createElement('input');
+        inputReturn.type = 'hidden';
+        inputReturn.name = 'dataReturn';
+        inputReturn.value = JSON.stringify(arrReturn);
+        document.forms[0].appendChild(inputReturn);
+
+        // Submit form
+        form.submit();
+    }
 });
