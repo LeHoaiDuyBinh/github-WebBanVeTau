@@ -133,14 +133,14 @@
                             (new Controller)->menu_bar();
                             (new NguoiDatChoController)->index();
                             break;
-                        case 'create':
-                            (new ChuyenTauController)->create();
+                        case 'createThanhToan':
+                            (new NguoiDatChoController)->createThanhToan();
                             break;
                         case 'edit':
-                            (new ChuyenTauController)->edit();
+                            (new NguoiDatChoController)->edit();
                             break;
                         case 'delete':
-                            (new ChuyenTauController)->remove();
+                            (new NguoiDatChoController)->remove();
                             break;
                     }
                     break;
