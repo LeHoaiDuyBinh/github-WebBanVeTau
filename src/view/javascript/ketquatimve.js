@@ -261,8 +261,8 @@ function addData(data, maChoNgoi, id) {
     input.type = 'hidden';
     input.value = maChoNgoi;
     if (id === "table-oneway")
-        input.name = 'maGheDi';
-    else input.name = 'maGheVe';
+        input.name = 'maGheDi[]';
+    else input.name = 'maGheVe[]';
     row.appendChild(input);
 
     // Tạo các ô dữ liệu
@@ -361,16 +361,27 @@ form.addEventListener('submit', function (event) {
     // nếu loại vé là 1 chiều
     if (ticketType === 'one-way') {
         event.preventDefault();
-        var chieuDiData = {
-            maChuyenDi: form.elements.maChuyenDi.value,
-            maGheDi: form.elements.maGheDi.value.split(',')
-        };
-        var jsonData = {
-            chieuDi: chieuDiData
-        };
+        var maGheDiElements = form.elements['maGheDi[]'];
+            var maGheDiValues = [];
+            for (var i = 0; i < maGheDiElements.length; i++) {
+                var maGheDiValue = maGheDiElements[i].value;
+                maGheDiValues.push(maGheDiValue);
+            }
+            var chieuDiData = {
+                maChuyenDi: form.elements.maChuyenDi.value,
+                maGheDi: maGheDiValues
+            };
+            var jsonData = {
+                chieuDi: chieuDiData
+            };
         var jsonString = JSON.stringify(jsonData);
         console.log(jsonString);
-        form.submit();
+        let xhr = new XMLHttpRequest();
+        xhr.open("POST", form.action, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(jsonString);
+        window.location=form.action;
+
     }
     // nếu loại vé là khứ hồi
     else if (ticketType === 'round-trip') {
@@ -380,21 +391,41 @@ form.addEventListener('submit', function (event) {
             alert('Chưa chọn đủ loại vé. Vui lòng chọn vé trước khi mua.');
         } else {
             event.preventDefault();
-            var chieuDiData = {
+            var maGheDiElements = form.elements['maGheDi[]'];
+            var maGheDiValues = [];
+            for (var i = 0; i < maGheDiElements.length; i++) {
+                var maGheDiValue = maGheDiElements[i].value;
+                maGheDiValues.push(maGheDiValue);
+            }
+            var maGheVeElements = form.elements['maGheDi[]'];
+            var maGheVeValues = [];
+            for (var i = 0; i < maGheVeElements.length; i++) {
+                var maGheVeValue = maGheVeElements[i].value;
+            }
+                var chieuDiData = {
                 maChuyenDi: form.elements.maChuyenDi.value,
-                maGheDi: form.elements.maGheDi.value.split(',')
-            };
+                maGheDi: maGheDiValues
+                };
             var chieuVeData = {
                 maChuyenVe: form.elements.maChuyenVe.value,
-                maGheVe: form.elements.maGheVe.value.split(',')
+                maGheVe: maGheDiValues
             };
             var jsonData = {
                 chieuDi: chieuDiData,
                 chieuVe: chieuVeData
             };
             var jsonString = JSON.stringify(jsonData);
+            var jsonString = JSON.stringify(jsonData);
             console.log(jsonString);
-            form.submit();
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("POST", form.action, true);
+            xhr.setRequestHeader("Content-Type", "application/json");
+            xhr.send(jsonString);
+            window.location=form.action;
+            
+
         }
     }
+
 });
