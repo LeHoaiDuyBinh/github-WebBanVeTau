@@ -14,7 +14,7 @@
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
     $type = $_GET['type'] ?? '';
-    //(new ChuyenTauController)->checkChuyenTau();
+    (new ChuyenTauController)->checkChuyenTau();
      
     switch($type){
 		case 'admin':
