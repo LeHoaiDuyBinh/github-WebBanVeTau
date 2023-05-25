@@ -28,12 +28,24 @@
       <td data-label="cccd">123456789</td>
       <td data-label="birthday">04/12/2002</td>
       <td data-label="seat-code">CH0001</td>
-      <td data-label="Booking-person">Lê Văn Đạt</td>
+      <td data-label="booking-person">Lê Văn Đạt</td>
       <td data-label="Period">
         <i class="fa fa-trash ticon" style="margin-right: 10px;"></i>
         <i class="fa fa-pencil editBtn"></i>
       </td>
     </tr>
+    <tr>
+      <td data-label="id">TK0001</td>
+      <td data-label="train-code">T004</td>
+      <td data-label="name">Duy Bình</td>
+      <td data-label="cccd">123456789</td>
+      <td data-label="birthday">04/12/2002</td>
+      <td data-label="seat-code">CH0001</td>
+      <td data-label="booking-person">Lê Duy Bình</td>
+      <td data-label="Period">
+        <i class="fa fa-trash ticon" style="margin-right: 10px;"></i>
+        <i class="fa fa-pencil editBtn"></i>
+      </td>
     </tr>
     <tr>
       <td data-label="id">TK0002</td>
@@ -109,33 +121,28 @@ for (let i = 0; i < linkElements.length; i++) {
 }
 
 //-------------------------Tìm kiếm theo ký tự nhập vào--------------------------------------------------
-// Lấy các phần tử DOM
 const searchInput = document.getElementById('search-input');
 const table = document.getElementById('myTable');
+const rows = table.getElementsByTagName('tr');
 
-// Xử lý sự kiện khi người dùng nhập vào thanh tìm kiếm
 searchInput.addEventListener('input', function() {
-  const keyword = searchInput.value.trim().toLowerCase();
+  const keyword = searchInput.value.trim();
   filterTable(keyword);
 });
 
-// Hàm lọc bảng dữ liệu theo từ khóa tìm kiếm
 function filterTable(keyword) {
-  const rows = table.getElementsByTagName('tr');
-  
-  // Duyệt qua từng hàng trong bảng (bỏ qua hàng tiêu đề)
   for (let i = 1; i < rows.length; i++) {
     const row = rows[i];
-    const bookingPerson = row.querySelector('td[data-label="Booking-person"]').textContent.toLowerCase();
-    
-    // Kiểm tra nếu từ khóa tìm kiếm tồn tại trong tên người đặt chỗ
-    if (bookingPerson.includes(keyword)) {
+    const bookingPerson = row.querySelector('td[data-label="booking-person"]').textContent;
+    if (bookingPerson.toLowerCase().indexOf(keyword.toLowerCase()) !== -1) {
       row.style.display = '';
     } else {
       row.style.display = 'none';
     }
   }
 }
+
+
 
 //------------------------------------------Sửa thông tin---------------------------------------
 //Hiển thị form khi click vào icon pencil
