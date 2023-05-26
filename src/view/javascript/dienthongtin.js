@@ -144,7 +144,7 @@ function doiTuongGiamChange(id) {
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
     var khuyenMai = document.getElementById("khuyenMai" + id);
 
-    //Giá vé mặc định
+    //Giá vé mặc định (add DB sau)
     var giaVeChieuDiDefault = "700,000";
     var giaVeChieuVeDefault = "800,000";
 
@@ -178,20 +178,6 @@ function doiTuongGiamChange(id) {
             }
 }
 
-
-//Lấy thông tin người ngồi -> người đặt vé
-
-// const tenNguoiNgoi = document.getElementById('tenNguoiNgoi');
-// const fullname = document.getElementById('fullname');
-// const cccdNguoiNgoi = document.getElementById('cccdNguoiNgoi');
-// const idnumber = document.getElementById('idnumber');
-
-// tenNguoiNgoi.addEventListener('input', function () {
-//     fullname.value = tenNguoiNgoi.value;
-// });
-// cccdNguoiNgoi.addEventListener('input', function () {
-//     idnumber.value = cccdNguoiNgoi.value;
-// });
 
 
 //Tính phần trăm khuyến mãi
@@ -245,6 +231,7 @@ function updateTotal(id) {
     // var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id);
     var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
+
     //var tongTien = document.querySelector('.tongTien');
 
     var giaTriChieuDi = thanhTienChieuDi.textContent.replace(/,/g, '');
@@ -259,8 +246,17 @@ function updateTotal(id) {
     thanhTienChieuDi.value = giaTriChieuDiSauKM;
     thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
     thanhTienChieuVe.value = giaTriChieuVeSauKM;
-
+    var numberOfForms = 2; // Số lượng người ngồi
+    var tongTien = document.getElementById("tongTien");
+    tongTien.value = 0;
+    for (var i = 0; i < numberOfForms; i++) {
+        var ChieuDi = document.getElementById("thanhTienChieuDi" + i).value;
+        var ChieuVe = document.getElementById("thanhTienChieuVe" + i).value;
+        tongTien.value += ChieuDi + ChieuVe;
+    }
+    tongTien.textContent = tongTien.value.toLocaleString('en-US');
 }
+
 
 function calculateAge(birthDate) {
     var today = new Date();
@@ -394,18 +390,14 @@ function combineForms(id) {
         combinedForm.appendChild(inputThanhTienChieuVe);
 
     }
-    //Sao chép các form của người ngồi
-    //var numberOfForms = 3; // Số lượng form gốc
-    // for (var i = 0; i < id; i++) {
-    //     var originalForm = document.getElementById("formInforNguoiNgoi" + i);
 
-    //     // Duyệt qua các trường input trong form gốc
-    //     var inputFields = originalForm.querySelectorAll("input");
-    //     for (var j = 0; j < inputFields.length; j++) {
-    //         var inputField = inputFields[j].cloneNode(true);
-    //         combinedForm.appendChild(inputField);
-    //     }
-    // }
+    var tongTien = document.getElementById("tongTien").value;
+    var inputTongTien = document.createElement("input");
+    inputTongTien.type = "hidden";
+    inputTongTien.name = "tongTien";
+    inputTongTien.value = tongTien;
+    combinedForm.appendChild(inputTongTien);
+
     // Thêm form mới vào body và gửi dữ liệu
     document.body.appendChild(combinedForm);
     combinedForm.submit();

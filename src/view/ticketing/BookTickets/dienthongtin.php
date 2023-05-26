@@ -104,12 +104,12 @@
                   <p style="margin-top: 10px;" id="couponMessage"></p>
                 </div>
                 <div style="float: right;">
-                  <span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span>
+                  <span class="pull-right"><strong class="ng-binding" >Tổng tiền</strong></span>
                 </div>
               </td>
               <!--giá trị tổng tiền-->
               <td class="text-right">
-                <strong class="ng-binding tongTien">2,404,000</strong>
+                <strong class="ng-binding tongTien" id ="tongTien">3,000,000</strong>
               </td>
 
             </tr>
