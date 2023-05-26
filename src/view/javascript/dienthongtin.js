@@ -112,17 +112,20 @@ document.addEventListener("DOMContentLoaded", function () {
         khuyenMai.name = "khuyenMai" + i;
         khuyenMai.textContent = "Không có khuyến mãi cho vé này";
 
+        //add giá vé sau
         var thanhTienChieuDi = document.createElement("div");
         thanhTienChieuDi.type = "text";
         thanhTienChieuDi.id = "thanhTienChieuDi" + i;
         thanhTienChieuDi.name = "thanhTienChieuDi" + i;
         thanhTienChieuDi.textContent = "700,000";
+        thanhTienChieuDi.value = 700000;
 
         var thanhTienChieuVe = document.createElement("div");
         thanhTienChieuVe.type = "text";
         thanhTienChieuVe.id = "thanhTienChieuVe" + i;
         thanhTienChieuVe.name = "thanhTienChieuVe" + i;
         thanhTienChieuVe.textContent = "800,000";
+        thanhTienChieuVe.value = 800000;
 
         khuyenMaiCell.appendChild(khuyenMai);
         thanhTienCell.appendChild(thanhTienChieuDi);
@@ -253,7 +256,9 @@ function updateTotal(id) {
 
     // Cập nhật nội dung bảng
     thanhTienChieuDi.textContent = giaTriChieuDiSauKM.toLocaleString('en-US');
+    thanhTienChieuDi.value = giaTriChieuDiSauKM;
     thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
+    thanhTienChieuVe.value = giaTriChieuVeSauKM;
 
 }
 
@@ -296,18 +301,11 @@ function tiepTheo(event) {
         var cccdNguoiNgoi = document.getElementById("cccdNguoiNgoi" + i).value;
         var doiTuongGiam = document.getElementById("doiTuongGiam" + i).value;
         var ngayThang = document.getElementById("ngayThang" + i).value;
-
-        var fullname = document.getElementById("fullname").value;
-        var idnumber = document.getElementById("idnumber").value;
-        var phone = document.getElementById("phone").value;
-        var email = document.getElementById("email").value;
-        var phoneNumberRegex = /^0\d{9}$/;
-        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-        if (tenNguoiNgoi == '' || fullname == '' || phone == '' || email == '' || idnumber == '') {
+        if (tenNguoiNgoi == '') {
             alert("Vui lòng nhập đầy đủ thông tin");
             return;
-        } else
+        }
+        else
             if ((doiTuongGiam === "treEm" || doiTuongGiam === "nguoiCaoTuoi") && ngayThang == '') {
                 alert("Vui lòng chọn ngày sinh");
                 return;
@@ -316,18 +314,31 @@ function tiepTheo(event) {
                 if ((doiTuongGiam === "nguoiLon" || doiTuongGiam === "nguoiCaoTuoi") && cccdNguoiNgoi == '') {
                     alert("Vui lòng nhập CCCD/Hộ chiếu của người ngồi");
                     return;
-                } else
-                    if (phoneNumberRegex.test(phone) == false) {
-                        alert("Vui lòng nhập đúng số điện thoại");
-                        return;
-                    } else
-                        if (emailRegex.test(email) == false) {
-                            alert("Vui lòng nhập đúng email");
-                            return;
-                        } else {
-                            combineForms(i);
-                        }
+                }
     }
+    var fullname = document.getElementById("fullname").value;
+    var idnumber = document.getElementById("idnumber").value;
+    var phone = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var phoneNumberRegex = /^0\d{9}$/;
+    var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (fullname == '' || phone == '' || email == '' || idnumber == '') {
+        alert("Vui lòng nhập đầy đủ thông tin");
+        return;
+    }
+    else
+        if (phoneNumberRegex.test(phone) == false) {
+            alert("Vui lòng nhập đúng số điện thoại");
+            return;
+        } else
+            if (emailRegex.test(email) == false) {
+                alert("Vui lòng nhập đúng email");
+                return;
+            } else {
+                combineForms(numberOfForms);
+            }
+
 }
 
 //Gộp form thông tin người ngồi và thông tin người đặt chỗ thành 1 form
@@ -346,27 +357,43 @@ function combineForms(id) {
             combinedForm.appendChild(cloneInput);
         }
     }
-    var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + id);
+
     // Sao chép các trường input từ formInforNguoiNgoi vào form mới (ngoại trừ đối tượng giảm)
-    for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
-        var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
-        if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
-            var cloneInputNguoiNgoi = inputNguoiNgoi.cloneNode(true);
-            combinedForm.appendChild(cloneInputNguoiNgoi);
+    for (var i = 0; i < id; i++) {
+        var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
+        for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
+            var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
+            if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
+                var cloneInputNguoiNgoi = inputNguoiNgoi.cloneNode(true);
+                combinedForm.appendChild(cloneInputNguoiNgoi);
+            }
         }
+        // Lấy giá trị của select doiTuongGiam trong formInforNguoiNgoi
+        var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
+        var doiTuongGiamValue = doiTuongGiam.value;
+        // Tạo một phần tử input ẩn để chứa giá trị của select doiTuongGiam
+        var inputDoiTuongGiam = document.createElement("input");
+        inputDoiTuongGiam.type = "hidden";
+        inputDoiTuongGiam.name = "doiTuongGiam" + i;
+        inputDoiTuongGiam.value = doiTuongGiamValue;
+        combinedForm.appendChild(inputDoiTuongGiam);
+
+        // thêm thành tiền chiều đi
+        var inputThanhTienChieuDi = document.createElement("input");
+        var inputThanhTienChieuDiValue = document.getElementById("thanhTienChieuDi" + i).value;
+        inputThanhTienChieuDi.type = "hidden";
+        inputThanhTienChieuDi.name = "thanhTienChieuDi" + i;
+        inputThanhTienChieuDi.value = inputThanhTienChieuDiValue;
+        combinedForm.appendChild(inputThanhTienChieuDi);
+        // thêm thành tiền chiều về
+        var inputThanhTienChieuVe = document.createElement("input");
+        var inputThanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
+        inputThanhTienChieuVe.type = "hidden";
+        inputThanhTienChieuVe.name = "thanhTienChieuVe" + i;
+        inputThanhTienChieuVe.value = inputThanhTienChieuVeValue;
+        combinedForm.appendChild(inputThanhTienChieuVe);
+
     }
-
-    // // Lấy giá trị của select doiTuongGiam trong formInforNguoiNgoi
-    // var doiTuongGiamValue = formInforNguoiNgoi.elements.doiTuongGiam.value;
-
-    // // Tạo một phần tử input ẩn để chứa giá trị của select doiTuongGiam
-    // var inputDoiTuongGiam = document.createElement("input");
-    // inputDoiTuongGiam.type = "hidden";
-    // inputDoiTuongGiam.name = "doiTuongGiam";
-    // inputDoiTuongGiam.value = doiTuongGiamValue;
-    // combinedForm.appendChild(inputDoiTuongGiam);
-
-
     //Sao chép các form của người ngồi
     //var numberOfForms = 3; // Số lượng form gốc
     // for (var i = 0; i < id; i++) {
