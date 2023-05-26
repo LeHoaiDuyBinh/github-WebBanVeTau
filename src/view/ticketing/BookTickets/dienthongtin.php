@@ -64,28 +64,29 @@
               </td>
               <!-- giá vé add từ DB-->
               <td>
-                <!-- <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                  <div class="ng-binding">1,200,000</div>
+                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
+                  <div class="ng-binding" id="giaVeChieuDi">700,000</div>
                 </div>
 
                 <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                  <div class="ng-binding">1,204,000</div>
-                </div> -->
+                  <div class="ng-binding" id="giaVeChieuVe">800,000</div>
+                </div>
+                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
+                  <div class="ng-binding" id="giaVeChieuDi">700,000</div>
+                </div>
+
+                <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
+                  <div class="ng-binding" id="giaVeChieuVe">800,000</div>
+                </div>
               </td>
 
               <!--Khuyến mãi-->
               <td>
-                <div id="khuyenMai"></div>
+                <div id="khuyenMaiCell"></div>
               </td>
               <!--Thành tiền-->
-              <td class="text-right thanhTien" style="line-height: 6;">
-                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                  <div class="ng-binding">1,200,000</div>
-                </div>
-
-                <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                  <div class="ng-binding">1,204,000</div>
-                </div>
+              <td id="thanhTienCell" style="text-align: right;">
+                
               </td>
             </tr>
 
@@ -141,28 +142,18 @@
           <table style="border-collapse: collapse; padding: 5px;">
             <tbody>
               <tr>
-                <td style="width: 15%;">
-                  <input type="radio" name="thanhToan" value="visa" id="visa">
+                <td style="width: 10%;">
+                  <input type="radio" name="thanhToan" value="QR" id="QR">
                 </td>
-                <td style="width: 15%;">
-                  <label for="visa" class="custom-radio">Visa</label>
+                <td style="width: 35%;">
+                  <label for="QR" class="custom-radio">Quét mã QR</label>
                 </td>
-                <td style="width: 15%;">
-                  <input type="radio" name="thanhToan" value="masterCard" id="masterCard">
-                </td>
-                <td style="width: 15%;">
-                  <label for="masterCard" class="custom-radio">MasterCard</label>
-                </td>
-                <td style="width: 15%;">
-                  <input type="radio" name="thanhToan" value="payPal" id="payPal">
-                </td>
-                <td style="width: 15%;">
-                  <label for="payPal" class="custom-radio">PayPal</label>
-                </td>
-                <td style="width: 15%;">
+              </tr>
+              <tr>
+                <td style="width: 10%;">
                   <input type="radio" name="thanhToan" value="traSau" id="traSau" checked>
                 </td>
-                <td style="width: 15%;">
+                <td style="width: 35%;">
                   <label for="traSau" class="custom-radio">Thanh toán trả sau</label>
                 </td>
               </tr>

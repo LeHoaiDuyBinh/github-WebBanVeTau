@@ -214,6 +214,9 @@
 		            case 'dienthongtin':
                         (new DatVeController)->dienthongtin();
                         break;
+                    case 'xacnhan':
+                        (new DatVeController)->xacnhan();
+                        break;
                     default:
                         (new Controller)->home();
                         break;
