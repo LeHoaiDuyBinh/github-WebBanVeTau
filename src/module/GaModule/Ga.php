@@ -1,6 +1,6 @@
 <?php 
 include_once "./module/db.php";
-include "GaObject.php";
+include_once "GaObject.php";
     class Ga{
         private $table = "Ga";
         function load(){

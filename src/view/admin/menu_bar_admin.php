@@ -7,6 +7,11 @@
       header('Location: /login.php');
       exit;
   }
+
+  if(isset($_SESSION['ChucVu']) && $_SESSION['ChucVu'] == 'Admin' && $page == 'user'){
+    header('Location: /?type=admin&page=home_admin');
+      exit;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -82,6 +87,12 @@
       <a href="?type=admin&page=khachhang" class="sidenav_link khachhang">
         <i class='bx bx-receipt'></i>
         <h3>Khách hàng</h3>
+      </a>
+
+
+      <a href="?type=admin&page=user" class="sidenav_link user">
+        <i class='bx bx-receipt'></i>
+        <h3>User</h3>
       </a>
 
       <a href="?type=admin&page=bangve" class="sidenav_link bangve">

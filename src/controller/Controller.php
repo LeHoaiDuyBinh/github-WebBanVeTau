@@ -24,11 +24,11 @@
         public function thongtindatcho(){
             include 'view/ticketing/thongtindatcho.php';
         }
-        public function menu_bar(){
-            include 'view/admin/menu_bar_admin.php';
+        public function menu_bar($page){
+            include_once 'view/admin/menu_bar_admin.php';
         }
         public function dashboard_home(){
-            include 'view/admin/dashboard_home.php';
+            include_once 'view/admin/dashboard_home.php';
         }
         public function page_403(){
             include 'view/403.html';

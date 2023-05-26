@@ -10,6 +10,7 @@
    require_once 'controller/ChuyenTauController.php';
    require_once 'controller/NguoiDatChoController.php';
    require_once 'controller/KhachHangController.php';
+   require_once 'controller/UserController.php';
    require_once 'controller/ketquatimve.php';
     $action = $_GET['action'] ?? 'index';
     $page = $_GET['page'] ?? 'base';
@@ -22,13 +23,13 @@
 		case 'admin':
 			switch($page){
 				case 'base':
-					(new Controller)->menu_bar();
+					(new Controller)->menu_bar($page);
 					(new Controller)->dashboard_home();
 					break;
 				case 'ga':
 					switch($action){
 						case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
 							(new GaController)->index();
 							break;
 						case 'create':
@@ -45,7 +46,7 @@
                 case 'tuyenduong':
                     switch($action){
                         case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new TuyenDuongController)->index();
                             break;
                         case 'create':
@@ -62,7 +63,7 @@
                 case 'tau':
                     switch($action){
                         case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new TauController)->index();
                             break;
                         case 'create':
@@ -79,7 +80,7 @@
                 case 'loaitoa':
                     switch($action){
                         case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new LoaiToaController)->index();
                             break;
                         case 'create':
@@ -96,7 +97,7 @@
                 case 'toa':
                     switch($action){
                         case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new ToaController)->index();
                             break;
                         case 'create':
@@ -113,7 +114,7 @@
                 case 'chuyentau':
                     switch($action){
                         case 'index':
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new ChuyenTauController)->index();
                             break;
                         case 'create':
@@ -132,7 +133,7 @@
                         case 'index':
 
                             // mới sửa
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new NguoiDatChoController)->index();
                             break;
                         case 'createThanhToan':
@@ -150,7 +151,7 @@
                     switch($action){
                         case 'index':
                             // mới sửa
-                            (new Controller)->menu_bar();
+                            (new Controller)->menu_bar($page);
                             (new KhachHangController)->index($data);
                             break;
                         case 'edit':
@@ -160,9 +161,27 @@
                             (new KhachHangController)->remove();
                             break;
                     }
+                    break;
+                case 'user':
+                    switch($action){
+                        case 'index':
+                                // mới sửa
+                            (new Controller)->menu_bar($page);
+                            (new UserController)->index();
+                            break;
+                        case 'create':
+                            (new UserController)->create();
+                            break;    
+                        case 'edit':
+                            (new UserController)->edit();
+                            break;
+                        case 'delete':
+                            (new UserController)->remove();
+                            break;
+                        }
                     break;                
                 default:
-                    (new Controller)->menu_bar();
+                    (new Controller)->menu_bar($page);
                     (new Controller)->dashboard_home();
                     break;
 			}

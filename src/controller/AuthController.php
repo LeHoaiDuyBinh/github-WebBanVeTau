@@ -11,7 +11,7 @@
 				include './module/UserModule/User.php';
 				$user = new User();
 				$Email = $_POST['Email'];
-				$password = $_POST['password'];
+				$password = md5($_POST['password']);
 				$message = $user->checkAccount($Email, $password);
 			}
 			if($message ==="Successful"){

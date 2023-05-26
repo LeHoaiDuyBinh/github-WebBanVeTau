@@ -125,8 +125,8 @@ CREATE TABLE Users(
   `ChucVu` TINYINT
 );
 
-INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '123', 1);
-INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('user@gmail.com', '123', 0);
+INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('tandat@gmail.com', '202cb962ac59075b964b07152d234b70', 1);
+INSERT INTO `Users`(`Email`, `Password`, `ChucVu`) VALUES('user@gmail.com', '202cb962ac59075b964b07152d234b70', 0);
 INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT001','Ngồi mềm điều hòa', 64 ,100000,'Toa ngồi có đệm mềm với điều hòa dễ chịu.');
 INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT002','Giường Nằm 6', 48 ,150000,'Toa giường nằm, mỗi toa có 6 giường với điều hòa dễ chịu.');
 INSERT INTO `LoaiToa`(`MaLoaiToa`, `TenLoaiToa`, `SoChoNgoi`, `Gia`, `MoTa`) VALUES ('LT003','Giường Nằm 4', 32 ,200000,'Toa giường nằm, mỗi toa có 4 giường với điều hòa dễ chịu.');
