@@ -6,5 +6,8 @@
         public function dienthongtin(){
             include 'view/ticketing/BookTickets/dienthongtin.php';
         }
+        public function xacnhan(){
+            include 'view/ticketing/BookTickets/xacnhan.php';
+        }
     }
 ?>
