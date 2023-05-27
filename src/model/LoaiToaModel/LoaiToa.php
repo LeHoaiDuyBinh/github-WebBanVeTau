@@ -1,5 +1,5 @@
 <?php
-    include_once "./module/db.php";
+    include_once "./model/db.php";
     include "LoaiToaObject.php";
         class LoaiToa{
             private $table = "LoaiToa";
@@ -29,8 +29,17 @@
                     return "done";
                     }
                 catch (PDOException $e) {
-                    // return $e->getMessage();
-                    return "Trùng mã loại toa";
+                    if ($e->getCode() == '23000') {
+                        if (strpos($e->getMessage(), 'Duplicate') !== false) {
+                            return "Mã loại toa đã tồn tại, vui lòng nhập mã loại toa khác!";
+                        }
+                        else {
+                            return "Lỗi không xác định!";
+                        }
+                    }
+                    else {
+                        return "Lỗi";
+                    }
                 }
             }
     
@@ -56,8 +65,26 @@
                     return "done";
                     }
                 catch (PDOException $e) {
-                    // return $e->getMessage();
-                    return "Lỗi";
+                    if ($e->getCode() == '23000') {
+                        $errorMessage = $e->getMessage();
+                       
+                        // tìm thông tin theo match
+                        preg_match('/CONSTRAINT `([^`]+)` FOREIGN KEY \(`([^`]+)`\) REFERENCES `([^`]+)`/', $errorMessage, $matches);
+                        $foreignKey = $matches[1];
+                        $column = $matches[2];
+                        $referencedTable = $matches[3];
+    
+                        // nếu liên quan đến bảng chuyến tàu
+                        if (strpos($foreignKey, 'toa') !== false) {
+                            return "Loại toa này đã được gán vào toa, bạn không thể xóa!";
+                        }
+                        else {
+                            return "Lỗi không xác định";
+                        }
+                        // Thực hiện các hành động phù hợp
+                    } else {
+                        return "Lỗi";
+                    }
                 }
             }
         }

@@ -1,5 +1,5 @@
 <?php 
-include_once "./module/db.php";
+include_once "./model/db.php";
 include_once "GaObject.php";
     class Ga{
         private $table = "Ga";
@@ -29,8 +29,19 @@ include_once "GaObject.php";
                 return "done";
                 }
             catch (PDOException $e) {
-                // return $e->getMessage();
-                return "Trùng mã ga";
+                
+                // check trùng mã
+                if ($e->getCode() == '23000') {
+                    if (strpos($e->getMessage(), 'Duplicate') !== false) {
+                        return "Mã ga đã tồn tại, vui lòng nhập mã ga khác!";
+                    }
+                    else {
+                        return "Lỗi không xác định!";
+                    }
+                }
+                else {
+                    return "Lỗi";
+                }
             }
         }
 
@@ -56,8 +67,29 @@ include_once "GaObject.php";
                 return "done";
                 }
             catch (PDOException $e) {
-                // return $e->getMessage();
-                return "Lỗi";
+                
+                // xóa nhưng lỗi khóa ngoại tới bảng tuyến
+                if ($e->getCode() == '23000') {
+                    $errorMessage = $e->getMessage();
+                   // Lấy thông tin tuyenduong, XuatPhat và MaGa từ thông báo lỗi
+                    preg_match('/CONSTRAINT `([^`]+)` FOREIGN KEY \(`([^`]+)`\) REFERENCES `([^`]+)`/', $errorMessage, $matches);
+                    $foreignKey = $matches[1];
+                    $column = $matches[2];
+                    $referencedTable = $matches[3];
+
+                    if (strpos($foreignKey, 'tuyenduong') !== false) {
+                        return "Ga này tồn tại trong một hoặc nhiều tuyến đường, vui lòng xóa tuyến trước!";
+                    }
+                    elseif(strpos($foreignKey, 'tau') !== false){
+                        return "Ga này hiện đang có tàu dừng chân, vui lòng xóa tàu trước!";
+                    }
+                    else {
+                        return "Lỗi không xác định";
+                    }
+                    // Thực hiện các hành động phù hợp
+                } else {
+                    return "Lỗi";
+                }
             }
         }
     }

@@ -61,14 +61,14 @@
       <label for="name">Họ tên:</label>
       <input style="height: 47px;" type="text" id="name" name="name" required>
       <label for="cccd">CCCD:</label>
-      <input style="height: 47px;" type="text" id="cccd" name="cccd" required>
+      <input style="height: 47px;" pattern="^[0-9]\d*$" type="text" id="cccd" name="cccd" required>
       <label for="birthday">Ngày sinh:</label>
       <input style="height: 47px; width:100%;" type="date" id="birthday" name="birthday" required>
       <br></br>
       <label for="Email">Email:</label>
       <input style="height: 47px;" type="email" id="Email" name="Email" required>
       <label for="SDT">SDT:</label>
-      <input style="height: 47px;" type="text" id="SDT" name="SDT" required>
+      <input style="height: 47px;" pattern="^[0-9]\d*$" type="text" id="SDT" name="SDT" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Lưu</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class="btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
@@ -227,9 +227,6 @@ $('#KhachHangForm').submit(function(e){
           $('#myModal').hide();
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#KhachHangForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#KhachHangForm').find('.alert-danger').remove();
@@ -237,7 +234,6 @@ $('#KhachHangForm').submit(function(e){
           }
               
 				}
-    }
 		})
 	});
 
@@ -293,7 +289,7 @@ table2.addEventListener('click', function(event) {
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }

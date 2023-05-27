@@ -132,7 +132,6 @@
   $('#GaForm').submit(function(e){
 		e.preventDefault();
     var $form = $(this);
-    var $alert = $form.find('.alert');
     var sw = showLoadingSwal();
 		$.ajax({
 			url:'/?type=admin&page=ga&action='+action,
@@ -156,16 +155,12 @@
           $('#GaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#GaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#GaForm').find('.alert-danger').remove();
             $('#GaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
           }
 				}
-    }
 		})
 	});
 
@@ -206,7 +201,7 @@ table2.addEventListener('click', function(event) {
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }

@@ -61,11 +61,11 @@
       <label for="HoTen">Họ tên:</label>
       <input type="text" id="HoTen" name="HoTen" required>
       <label for="CCCD">CCCD:</label>
-      <input type="text" id="CCCD" name="CCCD" required>
+      <input type="text" pattern="^[0-9]\d*$" id="CCCD" name="CCCD" required>
       <label for="Email">Email:</label>
       <input type="email" id="Email" name="Email" required>
       <label for="SDT">SDT:</label>
-      <input type="text" id="SDT" name="SDT" required>
+      <input type="text" id="SDT" pattern="^[0-9]\d*$" name="SDT" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
@@ -233,9 +233,6 @@ $('#addThanhToanBtn').click(function() {
           $('#myModal').hide();
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#NguoiDatChoForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#NguoiDatChoForm').find('.alert-danger').remove();
@@ -243,7 +240,6 @@ $('#addThanhToanBtn').click(function() {
           }
               
 				}
-    }
 		})
 	});
 
@@ -288,7 +284,7 @@ $('#addThanhToanBtn').click(function() {
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }

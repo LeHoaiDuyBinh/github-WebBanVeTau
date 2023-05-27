@@ -39,9 +39,9 @@
       <label for="TenLoaiToa">Tên loại toa:</label>
       <input type="text" id="TenLoaiToa" name="TenLoaiToa" required>
       <label for="Gia">Giá:</label>
-      <input type="text" id="Gia" name="Gia" required>
+      <input type="text" pattern="^[1-9]\d*$" id="Gia" name="Gia" required>
       <label for="SoChoNgoi">Số chổ ngồi:</label>
-      <input type="text" id="SoChoNgoi" name="SoChoNgoi" required>
+      <input type="text" pattern="^[1-9]\d*$" id="SoChoNgoi" name="SoChoNgoi" required>
       <label for="MoTa">Mô tả:</label>
       <input type="text" id="MoTa" name="MoTa" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
@@ -122,6 +122,8 @@
     SoChoNgoi.value = SoChoNgoi_table;
     MoTa.value = MoTa_table
 
+    SoChoNgoi.setAttribute('readonly', true);
+    SoChoNgoi.classList.add("readonly");
     // biến thành readonly
     MaLoaiToa.setAttribute('readonly', true);
 
@@ -159,16 +161,12 @@
           $('#LoaiToaForm input[type=text]').removeAttr('readonly').removeClass('readonly'); 
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#LoaiToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#LoaiToaForm').find('.alert-danger').remove();
             $('#LoaiToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
           }
 				}
-    }
 		})
 	});
 
@@ -177,7 +175,7 @@
     const row = event.target.closest('tr');
     const MaLoaiToa = row.cells[0].textContent.trim();
   Swal.fire({
-      title: 'Bạn có chắc là muốn xóa ga này không?',
+      title: 'Bạn có chắc là muốn xóa loại toa này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
       icon: 'warning',
       showCancelButton: true,
@@ -196,7 +194,7 @@
           if (response.trim() == "done") {
             Swal.fire(
               'Completed!',
-              'Bạn đã xóa ga thành công!',
+              'Bạn đã xóa loại toa thành công!',
               'success'
             )
             // sau 2 giây sẽ tải lại trang
@@ -208,7 +206,7 @@
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }

@@ -1,14 +1,14 @@
 <?php
     class LoaiToaController{
         public function index(){
-            include './module/LoaiToaModule/LoaiToa.php';
+            include './model/LoaiToaModel/LoaiToa.php';
             $arrLoaiToa = (new LoaiToa)->load();
             
             include './view/admin/dashboard_loaitoa.php';
 		}
 
         public function create(){
-            include './module/LoaiToaModule/LoaiToa.php';
+            include './model/LoaiToaModel/LoaiToa.php';
             $MaLoaiToa = $_POST['MaLoaiToa'];
             $TenLoaiToa = $_POST['TenLoaiToa'];
             $Gia = $_POST['Gia'];
@@ -19,7 +19,7 @@
         }
 
         public function edit(){
-            include './module/LoaiToaModule/LoaiToa.php';
+            include './model/LoaiToaModel/LoaiToa.php';
             $MaLoaiToa = $_POST['MaLoaiToa'];
             $TenLoaiToa = $_POST['TenLoaiToa'];
             $Gia = $_POST['Gia'];
@@ -30,7 +30,7 @@
         }
 
         public function remove(){
-            include './module/LoaiToaModule/LoaiToa.php';
+            include './model/LoaiToaModel/LoaiToa.php';
             $MaLoaiToa = $_POST['MaLoaiToa'];
             $check = (new LoaiToa)->remove($MaLoaiToa);
             echo $check;

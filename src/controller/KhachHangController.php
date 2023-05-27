@@ -1,7 +1,7 @@
 <?php
     class KhachHangController{
         public function index($data){
-            include './module/KhachHangModule/KhachHang.php';
+            include './model/KhachHangModel/KhachHang.php';
             $arrKH = (new KhachHang)->load();
 
             include './view/admin/dashboard_khachhang.php';
@@ -15,13 +15,13 @@
             $Email = $_POST['Email'];
             $SDT = $_POST['SDT'];
 
-            include_once './module/KhachHangModule/KhachHang.php';
+            include_once './model/KhachHangModel/KhachHang.php';
             $check = (new KhachHang)->edit($ID, $HoTen, $CCCD, $NgaySinh, $Email, $SDT);
             echo $check;
         }
 
         public function remove(){
-            include_once './module/KhachHangModule/KhachHang.php';
+            include_once './model/KhachHangModel/KhachHang.php';
             $ID_KhachHang = $_POST['ID_KhachHang'];
             $TienVe = $_POST['TienVe'];
             $ID_NguoiDatCho = $_POST['ID_NguoiDatCho'];

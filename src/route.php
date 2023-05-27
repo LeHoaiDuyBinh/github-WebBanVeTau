@@ -17,7 +17,7 @@
     $type = $_GET['type'] ?? '';
     $data = $_GET['data'] ?? '';
 
-    (new ChuyenTauController)->checkChuyenTau();
+    // (new ChuyenTauController)->checkChuyenTau();
      
     switch($type){
 		case 'admin':

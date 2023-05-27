@@ -1,5 +1,5 @@
 <?php
-include_once "./module/db.php";
+include_once "./model/db.php";
 include_once "UserObject.php";
     Class User{
         private $table = "Users";

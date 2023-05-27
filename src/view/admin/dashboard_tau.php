@@ -59,6 +59,7 @@
         <?php endforeach; ?>
       </select>
       <label for="TrangThai">Trạng thái:</label>
+      <input type="text" id="TrangThai_old" name="TrangThai_old" hidden>
       <select id="TrangThai" name="TrangThai" required>
         <option value=""></option>
         <option value="0">Đang hoạt động</option>
@@ -103,6 +104,7 @@
   const MaTau = modal.querySelector('#MaTau');
   const GaHienTai = modal.querySelector('#GaHienTai');
   const TrangThai = modal.querySelector('#TrangThai');
+  const TrangThai_old = modal.querySelector('#TrangThai_old');
   const optionTrangThai = TrangThai.querySelectorAll('option');
   const optionGaHienTai = GaHienTai.querySelectorAll('option');
   const editBtn = document.querySelectorAll('.fa-pencil');
@@ -128,6 +130,12 @@
     }
   }
 
+  function removeAttrHiddenOptionMaGa(){
+    for (let i = 0; i < optionGaHienTai.length; i++) {
+      optionGaHienTai[i].hidden = false;
+    }
+  }
+
   function removeAttrHiddenOption(){
     for (let i = 0; i < optionTrangThai.length; i++) {
       optionTrangThai[i].hidden = false;
@@ -141,6 +149,7 @@
     $('#TauForm #submitBtn').text('Thêm');
     addAttrHiddenOption();
     optionTrangThai[2].hidden = false;
+    removeAttrHiddenOptionMaGa();
   });
 
   // khi nhấn sửa
@@ -152,35 +161,47 @@
     const MaTau_table = row.cells[0].textContent.trim();
     const GaHienTai_table = row.cells[1].getAttribute('value').trim();
     const TrangThai_table = row.cells[2].getAttribute('value').trim();
-
-    // Điền dữ liệu vào form
-    MaTau.value = MaTau_table;
-    for (let i = 0; i < optionGaHienTai.length; i++) {
-      if (optionGaHienTai[i].value === GaHienTai_table) {
-        optionGaHienTai[i].selected = true;
-        break;
+    if(TrangThai_table != 0){
+      // Điền dữ liệu vào form
+      MaTau.value = MaTau_table;
+      TrangThai_old.value = TrangThai_table;
+      for (let i = 0; i < optionGaHienTai.length; i++) {
+        if (optionGaHienTai[i].value === GaHienTai_table) {
+          optionGaHienTai[i].selected = true;
+          optionGaHienTai[i].hidden = false;
+        }
+        else {
+          optionGaHienTai[i].hidden = true;
+        }
       }
+
+      // set trạng thái
+      if (TrangThai_table === "0") {
+        optionTrangThai[1].selected = true; // Đang hoạt động
+        optionTrangThai[2].hidden = true; // Ẩn Đang không hoạt động
+      } else if (TrangThai_table === "1") {
+        optionTrangThai[2].selected = true; // Đang không hoạt động
+        optionTrangThai[1].hidden = true; // Ẩn Đang hoạt động
+      } else if (TrangThai_table === "2") {
+        optionTrangThai[3].selected = true; // Đang sửa chữa
+        optionTrangThai[1].hidden = true; // Ẩn Đang hoạt động
+      }
+
+          // biến thành readonly
+      MaTau.setAttribute('readonly', true);
+
+        // thêm màu cho input readonly
+      MaTau.classList.add("readonly");
+      // Hiển thị form
+      modal.style.display = "block";
     }
-
-    // set trạng thái
-    if (TrangThai_table === "0") {
-      optionTrangThai[1].selected = true; // Đang hoạt động
-      optionTrangThai[2].hidden = true; // Ẩn Đang không hoạt động
-    } else if (TrangThai_table === "1") {
-      optionTrangThai[2].selected = true; // Đang không hoạt động
-      optionTrangThai[1].hidden = true; // Ẩn Đang hoạt động
-    } else if (TrangThai_table === "2") {
-      optionTrangThai[3].selected = true; // Đang sửa chữa
-      optionTrangThai[1].hidden = true; // Ẩn Đang hoạt động
+    else {
+      Swal.fire(
+        'Không thành công',
+        'Tàu đang chạy, bạn không được sửa!',
+        'error'
+      )
     }
-
-        // biến thành readonly
-    MaTau.setAttribute('readonly', true);
-
-      // thêm màu cho input readonly
-    MaTau.classList.add("readonly");
-    // Hiển thị form
-    modal.style.display = "block";
   }
 });
 
@@ -214,15 +235,11 @@
           removeAttrHiddenOption();
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#TauForm').find('.alert-danger').remove();
             $('#TauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
           }
-				}
     }
 		})
 	});
@@ -242,46 +259,56 @@
   if (event.target.classList.contains('fa-trash')) {
     const row = event.target.closest('tr');
     const MaTau = row.cells[0].textContent.trim();
-  Swal.fire({
-      title: 'Bạn có chắc là muốn xóa tàu này không?',
-      text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Vẫn xóa',
-      cancelButtonText: 'Hủy'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      var sw = showLoadingSwal();
-      $.ajax({
-        url: 'index.php/?type=admin&page=tau&action=delete',
-        type: 'POST',
-        data: { MaTau: MaTau},
-        success: function(response) {
-          if (response.trim() == "done") {
-            Swal.fire(
-              'Completed!',
-              'Bạn đã xóa tàu thành công!',
-              'success'
-            )
-            // sau 2 giây sẽ tải lại trang
-            setTimeout(function() {
-                location.reload();
-            }, 1000); 
-          } else {
-            sw.close();
-            // Nếu có lỗi thì hiển thị thông báo lỗi
-            Swal.fire(
-              'Oops...',
-              'Đã có lỗi xảy ra!',
-              'error'
-            )
-          }
-        },
-      });
+    const TrangThai_table = row.cells[2].getAttribute('value').trim();
+    if(TrangThai_table != 0){
+        Swal.fire({
+        title: 'Bạn có chắc là muốn xóa tàu này không?',
+        text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Vẫn xóa',
+        cancelButtonText: 'Hủy'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        var sw = showLoadingSwal();
+        $.ajax({
+          url: 'index.php/?type=admin&page=tau&action=delete',
+          type: 'POST',
+          data: { MaTau: MaTau},
+          success: function(response) {
+            if (response.trim() == "done") {
+              Swal.fire(
+                'Completed!',
+                'Bạn đã xóa tàu thành công!',
+                'success'
+              )
+              // sau 2 giây sẽ tải lại trang
+              setTimeout(function() {
+                  location.reload();
+              }, 1000); 
+            } else {
+              sw.close();
+              // Nếu có lỗi thì hiển thị thông báo lỗi
+              Swal.fire(
+                'Oops...',
+                response,
+                'error'
+              )
+            }
+          },
+        });
+      }
+    })
     }
-  })
+    else {
+      Swal.fire(
+        'Không thành công',
+        'Tàu đang chạy, bạn không được xóa!',
+        'error'
+      )
+    }
 }
 });
   

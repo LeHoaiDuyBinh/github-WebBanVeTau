@@ -1,13 +1,13 @@
 <?php
     class ChuyenTauController{
         public function index(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './model/ChuyenTauModel/ChuyenTau.php';
             $arrChuyenTau= (new ChuyenTau)->load();
 
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $arrTuyenDuong= (new TuyenDuong)->load();
 
-            include './module/TauModule/Tau.php';
+            include './model/TauModel/Tau.php';
             $arrTau= (new Tau)->load();
             
             include './view/admin/dashboard_chuyentau.php';
@@ -20,11 +20,14 @@
             $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
             $trangThai = $_POST['TrangThai'];
 
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
+
+            include './model/GaModel/Ga.php';
+            $arrGa= (new Ga)->load();
             
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
+            include_once './model/ChuyenTauModel/ChuyenTau.php';
+            $check = (new ChuyenTau)->create($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen, $arrGa);
             echo $check;
         }
 
@@ -32,26 +35,30 @@
             $maChuyenTau = $_POST['MaChuyenTau'];
             $maTuyenDuong = $_POST['MaTuyenDuong'];
             $maTau = $_POST['MaTau'];
+            $maTau_old = $_POST['MaTau_old'];
             $thoiGianXuatPhat = $_POST['ThoiGianXuatPhat'];
             $trangThai = $_POST['TrangThai'];
 
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $arrTuyen= (new TuyenDuong)->find($maTuyenDuong);
 
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
-            $check = (new ChuyenTau)->edit($maChuyenTau, $maTuyenDuong, $maTau, $thoiGianXuatPhat, $trangThai, $arrTuyen);
+            include './model/GaModel/Ga.php';
+            $arrGa= (new Ga)->load();
+
+            include_once './model/ChuyenTauModel/ChuyenTau.php';
+            $check = (new ChuyenTau)->edit($maChuyenTau, $maTuyenDuong, $maTau, $maTau_old, $thoiGianXuatPhat, $trangThai, $arrTuyen,  $arrGa);
             echo $check;
         }
 
         public function remove(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './model/ChuyenTauModel/ChuyenTau.php';
             $maChuyenTau = $_POST['MaChuyenTau'];
             $trangThai = $_POST['TrangThai'];
             $check = (new ChuyenTau)->remove($maChuyenTau, $trangThai);
             echo $check;
         }
         public function checkChuyenTau(){
-            include_once './module/ChuyenTauModule/ChuyenTau.php';
+            include_once './model/ChuyenTauModel/ChuyenTau.php';
             $arrChuyenTau= (new ChuyenTau)->load();
 
             (new ChuyenTau)->check($arrChuyenTau);

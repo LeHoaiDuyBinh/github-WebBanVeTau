@@ -1,16 +1,16 @@
 <?php 
     class TuyenDuongController{
         public function index(){
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $arrTuyenDuong = (new TuyenDuong)->load();
 
-            include './module/GaModule/Ga.php';
+            include './model/GaModel/Ga.php';
             $arrGa = (new Ga)->load();
             include './view/admin/dashboard_tuyenduong.php';
 		}
 
         public function create(){
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $MaTuyenDuong = $_POST['MaTuyenDuong'];
             $XuatPhat = $_POST['XuatPhat'];
             $DiemDen = $_POST['DiemDen'];
@@ -22,7 +22,7 @@
         }
 
         public function edit(){
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $MaTuyenDuong = $_POST['MaTuyenDuong'];
             $XuatPhat = $_POST['XuatPhat'];
             $DiemDen = $_POST['DiemDen'];
@@ -34,7 +34,7 @@
         }
 
         public function remove(){
-            include './module/TuyenDuongModule/TuyenDuong.php';
+            include './model/TuyenDuongModel/TuyenDuong.php';
             $MaTuyenDuong = $_POST['MaTuyenDuong'];
             $check = (new TuyenDuong)->remove($MaTuyenDuong);
             echo $check;

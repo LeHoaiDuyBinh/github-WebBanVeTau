@@ -1771,6 +1771,7 @@
     <div id="myModal" class="modal" style="display: none;">
     <div class="modal-content">
     <form id="ToaForm">
+      <input type="text" id="ThuTuToa_old" name="ThuTuToa_old" required>
       <label for="MaToa">Mã toa:</label>
       <input type="text" id="MaToa" name="MaToa" required>
       <label for="MaLoaiToa">Loại toa:</label>
@@ -1783,6 +1784,7 @@
          <?php endforeach; ?>
       </select>
       <label for="MaTau">Mã Tàu:</label>
+      <input type="text" id="MaTau_old" name="MaTau_old" required>
       <select name="MaTau" id="MaTau" required>
          <option value=""></option>
          <?php foreach($arrTau as $each): ?>
@@ -1829,6 +1831,8 @@
   const MaLoaiToa = modal.querySelector('#MaLoaiToa');
   const optionMaLoaiToa= MaLoaiToa.querySelectorAll('option');
   const MaTau = modal.querySelector('#MaTau');
+  const MaTau_old = modal.querySelector('#MaTau_old');
+  const ThuTuToa_old = modal.querySelector('#ThuTuToa_old');
   const optionMaTau= MaTau.querySelectorAll('option');
 
   function showLoadingSwal() {
@@ -1897,16 +1901,12 @@ $('#ToaForm').submit(function(e){
           clearAll();
 				}else{
                sw.close();
-               if($alert.length === 0)
-					  $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-               else{
 
                //nhớ thêm cái này cho mấy trang kia
                   $('#ToaForm').find('.alert-danger').remove();
                   $('#ToaForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
                }
 				}
-    }
 		})
 	});
 //============================================================================================================
@@ -1958,24 +1958,27 @@ editBtn.addEventListener('click', function() {
   }
   action = 'edit';
   $('#ToaForm #submitBtn').text('Lưu');
-  const MaToa_old = selectedToa.getAttribute('data-codeTrain');
-  const MaLoaiToa_old = selectedToa.getAttribute('tooltip');
-  const MaTau_old = selectedToa.parentNode.getAttribute('id').replace('train-', '');
+  const MaToa_table = selectedToa.getAttribute('data-codeTrain');
+  const MaLoaiToa_table = selectedToa.getAttribute('tooltip');
+  const MaTau_table = selectedToa.parentNode.getAttribute('id').replace('train-', '');
+  const ThuTuToa_table = selectedToa.getAttribute('data-toa');
 
   // Đặt giá trị cho các trường input trong modal
   // Dữ liệu này phải khóa lại vì nó là dạng tĩnh sau này myModel có thể xóa luôn thằng số chỗ ngồi
   //vì số chỗ ngồi sẽ phụ thuộc dữ liệu tooltip chỉ cần lấy thg tooltip so sánh tên loại toa
   //là khoang nào thì sẽ có được tổng số chỗ ngồi của khoang đó ^^
-  MaToa.value = MaToa_old;
+  MaTau_old.value = MaTau_table;
+  ThuTuToa_old.value = ThuTuToa_table;
+  MaToa.value = MaToa_table;
   MaToa.readOnly = true;
    for (let i = 0; i < optionMaTau.length; i++) {
-      if (optionMaTau[i].value === MaTau_old) {
+      if (optionMaTau[i].value === MaTau_table) {
         optionMaTau[i].selected = true;
         break;
       }
    }
    for (let i = 0; i < optionMaLoaiToa.length; i++) {
-      if (optionMaLoaiToa[i].value === MaLoaiToa_old) {
+      if (optionMaLoaiToa[i].value === MaLoaiToa_table) {
         optionMaLoaiToa[i].selected = true;
         break;
       }
@@ -2085,7 +2088,7 @@ document.getElementById('RemoveBtn').addEventListener('click', function() {
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }

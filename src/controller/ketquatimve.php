@@ -19,7 +19,7 @@
                 $ticket_type=$_POST['ticket_type'];
             }
 
-            include_once './module/TimVeModule/timVe.php';
+            include_once './model/TimVeModel/timVe.php';
 
             $arrChuyen = (new TimVe)->load($xuatPhat,$DiemDen,$ThoiGianXuatPhat);
             if($ticket_type!="one-way"){

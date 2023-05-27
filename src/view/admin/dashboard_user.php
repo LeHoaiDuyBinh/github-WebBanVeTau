@@ -40,9 +40,6 @@
       <select name="ChucVu" id="ChucVu">
         <option value="">
         </option>
-        <option value="1">
-            SuperAdmin
-        </option>
         <option value="0">
             Admin
         </option>
@@ -120,22 +117,30 @@
     const ID_table = row.cells[0].textContent.trim();
     const Email_table = row.cells[1].textContent.trim();
     const ChucVu_table = row.cells[3].getAttribute('value').trim();
-    console.log(ChucVu_table);
-    console.log(optionChucVu);
-    // Điền dữ liệu vào form
-    ID.value = ID_table;
-    Email.value = Email_table;
-   
-    for (let i = 0; i < optionChucVu.length; i++) {
-      if (optionChucVu[i].value === ChucVu_table) {
-        optionChucVu[i].selected = true;
-        break;
+
+    if(ID_table != 1){
+      // Điền dữ liệu vào form
+      ID.value = ID_table;
+      Email.value = Email_table;
+    
+      for (let i = 0; i < optionChucVu.length; i++) {
+        if (optionChucVu[i].value === ChucVu_table) {
+          optionChucVu[i].selected = true;
+          break;
+        }
       }
-    }
 
 
     // Hiển thị form
     modal.style.display = "block";
+    }
+    else{
+      Swal.fire(
+        'Không thành công',
+        'Superadmin không được sửa thông tin tài khoản!',
+        'error'
+      )
+    }
   }
 });
 
@@ -165,16 +170,13 @@
           $('#myModal').hide();
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#UserForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
+
 
             //nhớ thêm cái này cho mấy trang kia
             $('#UserForm').find('.alert-danger').remove();
             $('#UserForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
           }
 				}
-    }
 		})
 	});
 
@@ -183,55 +185,62 @@
     const row = event.target.closest('tr');
     const ID_User = row.cells[0].textContent.trim();
     var rowCount = table2.rows.length;
-    console.log(rowCount);
-    if(rowCount > 3){
-        Swal.fire({
-      title: 'Bạn có chắc là muốn xóa user này không?',
-      text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Vẫn xóa',
-      cancelButtonText: 'Hủy'
-  }).then((result) => {
-    if (result.isConfirmed) {
-      var sw = showLoadingSwal();
-      $.ajax({
-        url: 'index.php/?type=admin&page=user&action=delete',
-        type: 'POST',
-        data: { ID_User: ID_User },
-        success: function(response) {
-          if (response.trim() == "done") {
-            Swal.fire(
-              'Completed!',
-              'Bạn đã xóa user thành công!',
-              'success'
-            )
+    if(ID_User != 1) {
+      if(rowCount > 3){
+          Swal.fire({
+        title: 'Bạn có chắc là muốn xóa user này không?',
+        text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Vẫn xóa',
+        cancelButtonText: 'Hủy'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            var sw = showLoadingSwal();
+            $.ajax({
+              url: 'index.php/?type=admin&page=user&action=delete',
+              type: 'POST',
+              data: { ID_User: ID_User },
+              success: function(response) {
+                if (response.trim() == "done") {
+                  Swal.fire(
+                    'Completed!',
+                    'Bạn đã xóa user thành công!',
+                    'success'
+                  )
             // sau 2 giây sẽ tải lại trang
-            setTimeout(function() {
-                location.reload();
-            }, 1000); 
-          } else {
-            sw.close();
-            // Nếu có lỗi thì hiển thị thông báo lỗi
-            Swal.fire(
-              'Oops...',
-              'Đã có lỗi xảy ra!',
-              'error'
-            )
+                  setTimeout(function() {
+                      location.reload();
+                  }, 1000); 
+                } else {
+                  sw.close();
+                  // Nếu có lỗi thì hiển thị thông báo lỗi
+                  Swal.fire(
+                    'Oops...',
+                    response,
+                    'error'
+                  )
+                }
+              },
+            });
           }
-        },
-      });
+        })
+      } else {
+        Swal.fire(
+                  'Oops...',
+                  'Còn quá ít user, không được xóa!',
+                  'error'
+                )
+        }   
+    }else{
+      Swal.fire(
+        'Không thành công',
+        'Superadmin không được xóa thông tin tài khoản!',
+        'error'
+      )
     }
-  })
-} else {
-    Swal.fire(
-              'Oops...',
-              'Còn quá ít user, không được xóa!',
-              'error'
-            )
-}
 }
 });
 

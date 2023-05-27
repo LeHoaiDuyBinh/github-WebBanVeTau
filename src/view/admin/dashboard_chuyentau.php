@@ -51,6 +51,7 @@
       <?php endforeach; ?>
       </select>
       <label for="MaTau">Mã tàu:</label>
+      <input type="text" id="MaTau_old" name="MaTau_old" hidden>
       <select name="MaTau" id="MaTau" required>
         <option value=""></option>
       <?php foreach($arrTau as $each): ?>
@@ -65,7 +66,7 @@
       <select name="TrangThai" id="TrangThai" required>
         <option value=""></option>
         <option value="0">Sẵn sàng hoạt động</option>
-        <option value="1">Đang gặp sự cố</option>
+        <!-- <option value="1">Đang gặp sự cố</option> -->
       </select>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
@@ -88,7 +89,6 @@
     
   </main>
   
-  <!-- SỬA CHECK -->
 </div>
 <script>
   // Thêm dữ liệu
@@ -105,6 +105,7 @@
   const MaTuyenDuong = modal.querySelector('#MaTuyenDuong');
   const optionMaTuyenDuong = MaTuyenDuong.querySelectorAll('option');
   const MaTau = modal.querySelector('#MaTau');
+  const MaTau_old = modal.querySelector('#MaTau_old');
   const optionMaTau= MaTau.querySelectorAll('option');
   const ThoiGianXuatPhat = modal.querySelector('#ThoiGianXuatPhat');
   const TrangThai = modal.querySelector('#TrangThai');
@@ -125,34 +126,29 @@
   });
 }
 
-function hienThiTauHopLe(){
-  // Lấy giá trị XuatPhat của tuyến duong được chọn
-  var xuatPhat = MaTuyenDuong.options[MaTuyenDuong.selectedIndex].dataset.xuatPhat;
-  for (let i = 0; i < optionMaTau.length; i++) {
-      optionMaTau[0].selected = true;
-      if (optionMaTau[i].dataset.gaHienTai == xuatPhat)
-        optionMaTau[i].style.display = "block";
-      else
-      optionMaTau[i].style.display = "none";
-    }
-}
-
 // hiển thị tàu theo tuyến
 MaTuyenDuong.addEventListener('change', function() {
   //hienThiTauHopLe();
 });
 
+function removeAttrHiddenOptionTuyenDuong(){
+    for (let i = 0; i < optionMaTuyenDuong.length; i++) {
+      optionMaTuyenDuong[i].hidden = false;
+    }
+}
+
 function removeAttrHiddenOption(){
     for (let i = 0; i < optionTrangThai.length; i++) {
       optionTrangThai[i].hidden = false;
     }
-  }
+}
   
   addBtn.addEventListener('click', function() {
     modal.style.display = "block";
     action = 'create';
     $('#ChuyenTauForm #submitBtn').text('Thêm');
     optionTrangThai[2].hidden = true;
+    removeAttrHiddenOptionTuyenDuong();
   });
 
   $('#cancelBtn').click(function() {
@@ -162,6 +158,7 @@ function removeAttrHiddenOption(){
     $('#ChuyenTauForm select').val([]);
     $('#ChuyenTauForm input[type=datetime-local]').val([]);
     $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
+    $('#ChuyenTauForm input[type=datetime-local]').removeAttr('readonly').removeClass('readonly');
   });
 
   table2.addEventListener('click', function(event) {
@@ -179,11 +176,13 @@ function removeAttrHiddenOption(){
     if(TrangThai_table != 2 && TrangThai_table != 3){
           // Điền dữ liệu vào form
     MaChuyenTau.value = MaChuyenTau_table;
+    MaTau_old.value = MaTau_table;
     for (let i = 0; i < optionMaTuyenDuong.length; i++) {
       if (optionMaTuyenDuong[i].value === MaTuyen_table) {
         optionMaTuyenDuong[i].selected = true;
-        break;
       }
+      else
+        optionMaTuyenDuong[i].hidden = true;
     }
 
     // hienThiTauHopLe();
@@ -207,6 +206,8 @@ function removeAttrHiddenOption(){
     var thoiGianFormatted = `${namValue}-${thangValue}-${ngayValue}T${gioValue}:${phutValue}:${giayValue}`; 
 
     ThoiGianXuatPhat.value = thoiGianFormatted;
+    ThoiGianXuatPhat.setAttribute('readonly', true);
+    ThoiGianXuatPhat.classList.add("readonly");
     removeAttrHiddenOption();
     for (let i = 0; i < optionTrangThai.length; i++) {
       if (optionTrangThai[i].value === TrangThai_table) {
@@ -224,7 +225,7 @@ function removeAttrHiddenOption(){
     else {
       Swal.fire(
         'Không thành công',
-        'Chuyến tàu đã kết thúc, bạn không được sửa!',
+        'Chuyến tàu đã kết thúc hoặc đang chạy, bạn không được sửa!',
         'error'
       )
     }
@@ -257,18 +258,15 @@ function removeAttrHiddenOption(){
           $('#ChuyenTauForm').find('.alert-danger').remove();
           $('#myModal').hide();
           $('#ChuyenTauForm input[type=text]').removeAttr('readonly').removeClass('readonly');
+          $('#ChuyenTauForm input[type=datetime-local]').removeAttr('readonly').removeClass('readonly');
 				}else{
           sw.close();
-          if($alert.length === 0)
-					  $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
-          else{
 
             //nhớ thêm cái này cho mấy trang kia
             $('#ChuyenTauForm').find('.alert-danger').remove();
             $('#ChuyenTauForm').prepend('<div style="width: 100%; text-align: center;  font-style:italic; font-size: 16px;" class="alert alert-danger">'+ resp + '</div>');
           }
               
-				}
     }
 		})
 	});
@@ -278,7 +276,8 @@ function removeAttrHiddenOption(){
     const row = event.target.closest('tr');
     const MaChuyenTau = row.cells[0].textContent.trim();
     const TrangThai = row.cells[6].getAttribute('value').trim();
-  Swal.fire({
+    if(TrangThai != 2 || TrangThai != 3){
+      Swal.fire({
       title: 'Bạn có chắc là muốn xóa chuyến tàu này không?',
       text: "Bạn sẽ không thể hoàn tác sau khi hoàn tất!",
       icon: 'warning',
@@ -313,7 +312,7 @@ function removeAttrHiddenOption(){
             // Nếu có lỗi thì hiển thị thông báo lỗi
             Swal.fire(
               'Oops...',
-              'Đã có lỗi xảy ra!',
+              response,
               'error'
             )
           }
@@ -321,6 +320,14 @@ function removeAttrHiddenOption(){
       });
     }
   })
+  }
+  else{
+    Swal.fire(
+        'Không thành công',
+        'Chuyến tàu đang chạy hoặc đã hoàn thành, bạn không được xóa!',
+        'error'
+      )
+  }
 }
 });
 

@@ -8,7 +8,7 @@
 
 		public function login(){
 			if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-				include './module/UserModule/User.php';
+				include './model/UserModel/User.php';
 				$user = new User();
 				$Email = $_POST['Email'];
 				$password = md5($_POST['password']);
