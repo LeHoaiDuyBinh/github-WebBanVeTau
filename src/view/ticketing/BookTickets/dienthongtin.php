@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
       <div class="col-12">
         <!-- Đây là bảng sẽ hiển thị thông tin đặt chỗ sau khi chọn mua vé -->
-        <table class="table table-bordered">
+        <table class="table table-bordered table-responsive" id="Table">
           <thead class="et-table-header">
             <tr>
               <th style="width: 25%;" class="ng-binding center-align">Họ tên</th>
@@ -19,77 +19,48 @@
           <tbody>
             <tr>
               <!--Họ tên-->
-              <td>
-                <div id="formContainerNguoiNgoi"></div>
-                <!-- <form id="formInforNguoiNgoi" method="POST" action="/?page=xacnhan">
-                <td>
-                  <div class="input-row">
-                    <label for="tenNguoiNgoi">Họ và tên</label>
-                    <input type="text" id="tenNguoiNgoi" name="tenNguoiNgoi"><br>
-                  </div>
-                  <label for="doiTuong">Đối tượng</label>
-                  <select name="doiTuongGiam" id="doiTuongGiam" onchange="handleDoiTuongGiamChange()">                  
-                    <option value="nguoiLon">Người lớn</option>
-                    <option value="treEm">Trẻ em</option>
-                    <option value="nguoiCaoTuoi">Người cao tuổi</option>
-                  </select> -->
-
-                <!-- hiện lịch để chọn ngày sinh nếu là trẻ em hoặc người cao tuổi-->
-                <!-- <div id="ngayThangContainer" style="display: none;">
-                    <label for="ngayThang">Ngày tháng</label>
-                    <input type="date" name="ngayThang" id="ngayThang" onchange="updateTotal()">
-                  </div> -->
-                <!-- Nếu là người lớn hoặc người cao tuổi thì hiện ô nhập CCCD -->
-                <!-- <div id="CCCDContainer" style="display: block;">
-                    <label for="cccdNguoiNgoi" style="margin-top: 10px;">Số CCCD/Hộ chiếu</label>
-                    <input type="text" id="cccdNguoiNgoi" name="cccdNguoiNgoi">
-                  </div>
-              </form> -->
-
-                <!-- thông tin vé -->
-              <td>
-                <!-- chiều đi-->
-                <div class="data-ticket chieuDi">
-                  <div class="ng-binding">SE8 Thanh Hoá-Biên Hòa</div>
-                  <div class="ng-binding">12/05/2023 01:16</div>
-                  <div class="ng-binding">NML56 toa 2 chỗ 35</div>
-                </div>
-                <br><br>
-                <!-- chiều về-->
-                <div class="data-ticket chieuVe">
-                  <div class="ng-binding">SE8 Biên Hòa-Thanh Hoá</div>
-                  <div class="ng-binding">13/05/2023 07:32</div>
-                  <div class="ng-binding">NML toa 1 chỗ 60</div>
-                </div>
-              </td>
+              <div id="formContainerNguoiNgoi"></div>
+              <!-- thông tin vé -->
+              <!-- chiều đi-->
+              <!-- <td>
+              <div class="data-ticket chieuDi">
+                <div class="ng-binding">SE8 Thanh Hoá-Biên Hòa</div>
+                <div class="ng-binding">12/05/2023 01:16</div>
+                <div class="ng-binding">NML56 toa 2 chỗ 35</div>
+              </div>
+              <br><br> -->
+              <!-- chiều về-->
+              <!-- <div class="data-ticket chieuVe">
+                <div class="ng-binding">SE8 Biên Hòa-Thanh Hoá</div>
+                <div class="ng-binding">13/05/2023 07:32</div>
+                <div class="ng-binding">NML toa 1 chỗ 60</div>
+              </div>
+            </td> -->
               <!-- giá vé add từ DB-->
-              <td>
-                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                  <div class="ng-binding" id="giaVeChieuDi">700,000</div>
-                </div>
+              <!-- <td>
+              <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
+                <div class="ng-binding" id="giaVeChieuDi">700,000</div>
+              </div>
 
-                <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                  <div class="ng-binding" id="giaVeChieuVe">800,000</div>
-                </div>
-                <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                  <div class="ng-binding" id="giaVeChieuDi">700,000</div>
-                </div>
+              <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
+                <div class="ng-binding" id="giaVeChieuVe">800,000</div>
+              </div>
+              <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
+                <div class="ng-binding" id="giaVeChieuDi">700,000</div>
+              </div>
 
-                <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                  <div class="ng-binding" id="giaVeChieuVe">800,000</div>
-                </div>
-              </td>
+              <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
+                <div class="ng-binding" id="giaVeChieuVe">800,000</div>
+              </div>
+            </td> -->
 
               <!--Khuyến mãi-->
-              <td>
-                <div id="khuyenMaiCell"></div>
-              </td>
-              <!--Thành tiền-->
-              <td id="thanhTienCell" style="text-align: right;">
-                
-              </td>
-            </tr>
 
+              <div id="khuyenMaiCell" class="khuyenMaiCell"></div>
+
+              <!--Thành tiền-->
+              <div id="thanhTienCell" style="text-align: right;"></div>
+</tr>
           </tbody>
           <tfoot>
             <tr>
@@ -104,12 +75,12 @@
                   <p style="margin-top: 10px;" id="couponMessage"></p>
                 </div>
                 <div style="float: right;">
-                  <span class="pull-right"><strong class="ng-binding" >Tổng tiền</strong></span>
+                  <span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span>
                 </div>
               </td>
               <!--giá trị tổng tiền-->
               <td class="text-right">
-                <strong class="ng-binding tongTien" id ="tongTien">3,000,000</strong>
+                <strong class="ng-binding tongTien" id="tongTien">3,000,000</strong>
               </td>
 
             </tr>
@@ -175,12 +146,6 @@
   </div>
 </div>
 </div>
-<!-- Animation Header -->
-<script>
-  // const link = document.querySelector('.nav-link.dienthongtin');
-  // link.style.borderBottom = '3px solid transparent';
-  // link.style.transition = 'border-color 0.3s ease-in-out';
-  // link.style.borderColor = '#01b3a7';
-</script>
+
 <!--Script-->
 <script src="/view/javascript/dienthongtin.js"></script>

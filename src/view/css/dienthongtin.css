@@ -3,7 +3,7 @@
   justify-content: space-between;
 }
 
-.back-button  {
+.back-button {
   background-color: #01b3a7 !important;
   float: right;
   width: 15% !important;
@@ -11,7 +11,7 @@
   border-radius: 5px;
 }
 
-button[type="submit"]{
+button[type="submit"] {
   background-color: #01b3a7 !important;
   float: right;
   width: 15% !important;
@@ -38,4 +38,38 @@ select {
   border: 1px solid #ccc;
   padding: 5px;
   border-radius: 4px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table-responsive table {
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .table-responsive table {
+    display: block;
+  }
+
+  .table-responsive table tr {
+    display: block;
+    margin-bottom: 10px;
+  }
+
+  .table-responsive table td,
+  .table-responsive table th {
+    display: block;
+    text-align: left;
+  }
+}
+
+.thanh-tien {
+  line-height: 6;
+}
+
+.khuyen-mai:not(:first-child) {
+  margin-top: 250px;
 }
