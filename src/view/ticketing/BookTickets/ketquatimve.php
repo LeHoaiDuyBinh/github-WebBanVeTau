@@ -232,7 +232,7 @@
         </div>
 
         <!-- Vé chiều về (nếu có) -->
-        <?php if ($ticket_type == "round-trip") { ?>
+        <?php if ($ticket_type == "round-trip" && $arrVe[0] != NULL) { ?>
             <div class="text">
                 <h1 class="title" style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10 !important; padding: 10 !important"><strong>chiều về</strong></h1>
                 <table id="myTable">
@@ -614,7 +614,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <?php if ($ticket_type == "round-trip") { ?>
+                    <?php if ($ticket_type == "round-trip" && $arrVe[0] != NULL) { ?>
                         <!-- Chiều về (nếu có) -->
                         <div class="col-md-12 text-center chieuVe" style="display: none; padding: 5px !important">
                             <h6 class="ng-binding" style="font-size: 20px; padding-top: 10px"> <strong> Chiều về </strong></h6>
