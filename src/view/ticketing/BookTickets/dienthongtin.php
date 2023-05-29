@@ -19,47 +19,14 @@
           <tbody>
             <tr>
               <!--Họ tên-->
-              <div id="formContainerNguoiNgoi"></div>
-              <!-- thông tin vé -->
-              <!-- chiều đi-->
-              <!-- <td>
-              <div class="data-ticket chieuDi">
-                <div class="ng-binding">SE8 Thanh Hoá-Biên Hòa</div>
-                <div class="ng-binding">12/05/2023 01:16</div>
-                <div class="ng-binding">NML56 toa 2 chỗ 35</div>
-              </div>
-              <br><br> -->
-              <!-- chiều về-->
-              <!-- <div class="data-ticket chieuVe">
-                <div class="ng-binding">SE8 Biên Hòa-Thanh Hoá</div>
-                <div class="ng-binding">13/05/2023 07:32</div>
-                <div class="ng-binding">NML toa 1 chỗ 60</div>
-              </div>
-            </td> -->
-              <!-- giá vé add từ DB-->
-              <!-- <td>
-              <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                <div class="ng-binding" id="giaVeChieuDi">700,000</div>
-              </div>
-
-              <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                <div class="ng-binding" id="giaVeChieuVe">800,000</div>
-              </div>
-              <div class="data-ticket giaVeChieuDi" style="line-height: 6;">
-                <div class="ng-binding" id="giaVeChieuDi">700,000</div>
-              </div>
-
-              <div class="data-ticket giaVeChieuVe" style="line-height: 6;">
-                <div class="ng-binding" id="giaVeChieuVe">800,000</div>
-              </div>
-            </td> -->
+              <!-- <div id="formContainerNguoiNgoi"></div> -->
+              <!-- thông tin vé -->             
 
               <!--Khuyến mãi-->
-
-              <div id="khuyenMaiCell" class="khuyenMaiCell"></div>
+              <!-- <div id="khuyenMaiCell"></div> -->
 
               <!--Thành tiền-->
-              <div id="thanhTienCell" style="text-align: right;"></div>
+              <!-- <div id="thanhTienCell"></div> -->
 </tr>
           </tbody>
           <tfoot>

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     //Tạo các form cho người ngồi
     var numberOfForms = 2; // Số lượng form cần tạo
     var table = document.getElementById("Table");
-    var formContainer = document.getElementById("formContainerNguoiNgoi"); // Phần tử chứa các form
+    //var formContainer = document.getElementById("formContainerNguoiNgoi"); // Phần tử chứa các form
 
 
     for (var i = 0; i < numberOfForms; i++) {
@@ -96,11 +96,24 @@ document.addEventListener("DOMContentLoaded", function () {
         form.appendChild(ngayThangContainer);
         form.appendChild(cccdContainer);
 
-        formContainer.appendChild(form); // Gắn form vào phần tử container
+        //formContainer.appendChild(form); // Gắn form vào phần tử container
         tableData.appendChild(form);
         tableRow.appendChild(tableData);
         table.appendChild(tableRow);
 
+
+        //add thông tin vé
+        var thongTinVe = document.createElement("td");
+        tableRow.appendChild(thongTinVe);
+
+        //add giá vé
+        var gia = document.createElement("td");
+        var giaDi = document.createElement("div");
+        var giaVe = document.createElement("div");
+        tableRow.appendChild(gia);
+
+
+        //add khuyến mãi
         var khuyenMai = document.createElement("td");
         khuyenMai.type = "text";
         khuyenMai.id = "khuyenMai" + i;
@@ -108,80 +121,29 @@ document.addEventListener("DOMContentLoaded", function () {
         khuyenMai.textContent = "Không có khuyến mãi cho vé này";
         tableRow.appendChild(khuyenMai);
 
-        var thanhTienChieuDi = document.createElement("td");
+        //add thành tiền
+        var thanhTien = document.createElement("td");
+        var thanhTienChieuDi = document.createElement("div");
         thanhTienChieuDi.type = "text";
         thanhTienChieuDi.id = "thanhTienChieuDi" + i;
         thanhTienChieuDi.name = "thanhTienChieuDi" + i;
         thanhTienChieuDi.textContent = "700,000";
         thanhTienChieuDi.value = 700000;
-        tableRow.appendChild(thanhTienChieuDi);
+        thanhTien.appendChild(thanhTienChieuDi);
 
-        var thanhTienChieuVe = document.createElement("td");
+        var thanhTienChieuVe = document.createElement("div");
         thanhTienChieuVe.type = "text";
         thanhTienChieuVe.id = "thanhTienChieuVe" + i;
         thanhTienChieuVe.name = "thanhTienChieuVe" + i;
         thanhTienChieuVe.textContent = "800,000";
         thanhTienChieuVe.value = 800000;
-        tableRow.appendChild(thanhTienChieuVe);
-
+        thanhTien.appendChild(thanhTienChieuVe);
+        
+        tableRow.appendChild(thanhTien);
         table.appendChild(tableRow);
     }
 
 });
-
-//Thêm trường khuyến mãi và trường thành tiền
-// document.addEventListener("DOMContentLoaded", function () {
-//     //Tạo các form cho người ngồi
-//     var numberOfForms = 2; // Số lượng form cần tạo
-
-//     var table = document.getElementById("Table");
-//     var khuyenMaiCell = document.getElementById("khuyenMaiCell"); // Phần tử chứa các form
-//     var thanhTienCell = document.getElementById("thanhTienCell");
-//     for (var i = 0; i < numberOfForms; i++) {
-
-//         var khuyenMai = document.createElement("div");
-//         khuyenMai.type = "text";
-//         khuyenMai.id = "khuyenMai" + i;
-//         khuyenMai.name = "khuyenMai" + i;
-//         khuyenMai.textContent = "Không có khuyến mãi cho vé này";
-//         khuyenMai.className = "khuyen-mai";
-
-//         //add giá vé sau
-//         var thanhTienChieuDi = document.createElement("div");
-//         thanhTienChieuDi.type = "text";
-//         thanhTienChieuDi.id = "thanhTienChieuDi" + i;
-//         thanhTienChieuDi.name = "thanhTienChieuDi" + i;
-//         thanhTienChieuDi.textContent = "700,000";
-//         thanhTienChieuDi.value = 700000;
-//         thanhTienChieuDi.className = "thanh-tien";
-
-//         var thanhTienChieuVe = document.createElement("div");
-//         thanhTienChieuVe.type = "text";
-//         thanhTienChieuVe.id = "thanhTienChieuVe" + i;
-//         thanhTienChieuVe.name = "thanhTienChieuVe" + i;
-//         thanhTienChieuVe.textContent = "800,000";
-//         thanhTienChieuVe.value = 800000;
-//         thanhTienChieuVe.className = "thanh-tien";
-
-
-//         // khuyenMaiCell.appendChild(khuyenMai);
-//         // thanhTienCell.appendChild(thanhTienChieuDi);
-//         // thanhTienCell.appendChild(thanhTienChieuVe);
-//         var tableRow = document.createElement("tr");
-//         // Tạo một thẻ <td> để chứa form
-//         var tableData = document.createElement("td");
-//         // Đặt form vào trong thẻ <td>
-//         tableData.appendChild(khuyenMai);
-//         tableData.appendChild(thanhTienChieuDi);
-//         tableData.appendChild(thanhTienChieuVe);
-//         tableRow.appendChild(tableData);
-//         // Đặt thẻ <td> vào trong thẻ <tr>
-//         //tableRow.appendChild(tableData)
-//         // Đặt thẻ <tr> vào trong bảng
-//         table.appendChild(tableRow);
-//     }
-
-// });
 
 
 //Còn phần khuyến mãi của mỗi vé chưa cập nhật

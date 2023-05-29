@@ -66,10 +66,3 @@ select {
   }
 }
 
-.thanh-tien {
-  line-height: 6;
-}
-
-.khuyen-mai:not(:first-child) {
-  margin-top: 250px;
-}
