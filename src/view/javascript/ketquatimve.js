@@ -362,25 +362,25 @@ form.addEventListener('submit', function (event) {
     if (ticketType === 'one-way') {
         event.preventDefault();
         var maGheDiElements = form.elements['maGheDi[]'];
-            var maGheDiValues = [];
-            for (var i = 0; i < maGheDiElements.length; i++) {
-                var maGheDiValue = maGheDiElements[i].value;
-                maGheDiValues.push(maGheDiValue);
-            }
-            var chieuDiData = {
-                maChuyenDi: form.elements.maChuyenDi.value,
-                maGheDi: maGheDiValues
-            };
-            var jsonData = {
-                chieuDi: chieuDiData
-            };
+        var maGheDiValues = [];
+        for (var i = 0; i < maGheDiElements.length; i++) {
+            var maGheDiValue = maGheDiElements[i].value;
+            maGheDiValues.push(maGheDiValue);
+        }
+        var chieuDiData = {
+            maChuyenDi: form.elements.maChuyenDi.value,
+            maGheDi: maGheDiValues
+        };
+        var jsonData = {
+            chieuDi: chieuDiData
+        };
         var jsonString = JSON.stringify(jsonData);
         console.log(jsonString);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", form.action, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonString);
-        window.location=form.action;
+        window.location = form.action;
 
     }
     // nếu loại vé là khứ hồi
@@ -397,15 +397,16 @@ form.addEventListener('submit', function (event) {
                 var maGheDiValue = maGheDiElements[i].value;
                 maGheDiValues.push(maGheDiValue);
             }
-            var maGheVeElements = form.elements['maGheDi[]'];
+            var maGheVeElements = form.elements['maGheVe[]'];
             var maGheVeValues = [];
             for (var i = 0; i < maGheVeElements.length; i++) {
                 var maGheVeValue = maGheVeElements[i].value;
+                maGheVeValues.push(maGheVeValue);
             }
-                var chieuDiData = {
+            var chieuDiData = {
                 maChuyenDi: form.elements.maChuyenDi.value,
                 maGheDi: maGheDiValues
-                };
+            };
             var chieuVeData = {
                 maChuyenVe: form.elements.maChuyenVe.value,
                 maGheVe: maGheDiValues
@@ -415,14 +416,13 @@ form.addEventListener('submit', function (event) {
                 chieuVe: chieuVeData
             };
             var jsonString = JSON.stringify(jsonData);
-            var jsonString = JSON.stringify(jsonData);
             console.log(jsonString);
             let xhr = new XMLHttpRequest();
 
             xhr.open("POST", form.action, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
-            window.location=form.action;
+            window.location = form.action;
         }
     }
 
