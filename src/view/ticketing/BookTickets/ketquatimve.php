@@ -609,7 +609,7 @@
 
                     <!-- Trường hợp khách hàng đã add vé -->
                     <!-- Chiều đi -->
-                    <?php if ($ticket_type == "one-way" && $arrChuyen[0] != NULL) { ?>
+                    <?php if ($arrChuyen[0] != NULL) { ?>
                         <div class="col-md-12 text-center chieuDi" style="display: none; padding: 5px !important">
                             <h6 class="ng-binding" style="font-size: 20px"> <strong> Chiều đi </strong></h6>
                             <table class="col-md-12 et-ticket-info ng-scope data-ticket" id="table-oneway" style="border-bottom:1px solid #ccc;">
