@@ -237,10 +237,10 @@
 
 
         <!-- Vé chiều về (nếu có) -->
-
+        <?php if ($ticket_type == "round-trip") { ?>
         <div class="text">
             <h1 class="title" style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10px !important; padding: 10px !important"><strong>chiều về</strong></h1>
-            <?php if ($ticket_type == "round-trip" && $arrVe[0] != NULL) { ?>
+            <?php if ($arrVe[0] != NULL) { ?>
                 <table id="myTable">
                     <thead>
                         <div id="train-container" class="train-group" style="margin-bottom: 25px;">
@@ -468,7 +468,8 @@
                 <h3 style="text-align: center; margin: 30px !important">Không tìm thấy vé phù hợp!</h3>
             <? } ?>
         </div>
-
+        <? } ?>
+        
         <!-- Chú thích biểu tượng -->
         <div class="et-col-md-12 table-bordered list-ticket-deskhop" style="margin-top: 20px; padding: 5px">
             <!-- chú thích toa -->
