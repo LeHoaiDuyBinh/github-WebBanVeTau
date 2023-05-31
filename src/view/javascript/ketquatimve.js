@@ -397,15 +397,16 @@ form.addEventListener('submit', function (event) {
                 var maGheDiValue = maGheDiElements[i].value;
                 maGheDiValues.push(maGheDiValue);
             }
-            var maGheVeElements = form.elements['maGheDi[]'];
+            var chieuDiData = {
+                maChuyenDi: form.elements.maChuyenDi.value,
+                maGheDi: maGheDiValues
+            };
+            var maGheVeElements = form.elements['maGheVe[]'];
             var maGheVeValues = [];
             for (var i = 0; i < maGheVeElements.length; i++) {
                 var maGheVeValue = maGheVeElements[i].value;
+                maGheVeValues.push(maGheVeValue);
             }
-                var chieuDiData = {
-                maChuyenDi: form.elements.maChuyenDi.value,
-                maGheDi: maGheDiValues
-                };
             var chieuVeData = {
                 maChuyenVe: form.elements.maChuyenVe.value,
                 maGheVe: maGheDiValues
@@ -414,7 +415,7 @@ form.addEventListener('submit', function (event) {
                 chieuDi: chieuDiData,
                 chieuVe: chieuVeData
             };
-            var jsonString = JSON.stringify(jsonData);
+            console.log(jsonData);
             var jsonString = JSON.stringify(jsonData);
             console.log(jsonString);
             let xhr = new XMLHttpRequest();
