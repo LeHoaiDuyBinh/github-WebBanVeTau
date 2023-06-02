@@ -393,12 +393,20 @@ form.addEventListener('submit', function (event) {
             event.preventDefault();
             var maGheDiElements = form.elements['maGheDi[]'];
             var maGheDiValues = [];
+            if (maGheDiElements.length === undefined) {
+                // Nếu chỉ có một phần tử, tạo một mảng chứa đối tượng đó
+                maGheDiElements = [maGheDiElements];
+            }
             for (var i = 0; i < maGheDiElements.length; i++) {
                 var maGheDiValue = maGheDiElements[i].value;
                 maGheDiValues.push(maGheDiValue);
             }
             var maGheVeElements = form.elements['maGheVe[]'];
             var maGheVeValues = [];
+            if (maGheVeElements.length === undefined) {
+                // Nếu chỉ có một phần tử, tạo một mảng chứa đối tượng đó
+                maGheVeElements = [maGheVeElements];
+            }
             for (var i = 0; i < maGheVeElements.length; i++) {
                 var maGheVeValue = maGheVeElements[i].value;
                 maGheVeValues.push(maGheVeValue);
@@ -409,7 +417,7 @@ form.addEventListener('submit', function (event) {
             };
             var chieuVeData = {
                 maChuyenVe: form.elements.maChuyenVe.value,
-                maGheVe: maGheDiValues
+                maGheVe: maGheVeValues
             };
             var jsonData = {
                 chieuDi: chieuDiData,

@@ -240,7 +240,7 @@
         <?php if ($ticket_type == "round-trip") { ?>
             <div class="text">
                 <h1 class="title" style="text-transform: uppercase; color: #01b3a7; text-align: center; margin-top: 10px !important; padding: 10px !important"><strong>chiều về</strong></h1>
-                <?php if ($ticket_type == "round-trip" && $arrVe[0] != NULL) { ?>
+                <?php if ($arrVe[0] != NULL) { ?>
                     <table id="myTable">
                         <thead>
                             <div id="train-container" class="train-group" style="margin-bottom: 25px;">
