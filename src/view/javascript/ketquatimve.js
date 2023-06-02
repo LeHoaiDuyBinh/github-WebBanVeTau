@@ -362,25 +362,25 @@ form.addEventListener('submit', function (event) {
     if (ticketType === 'one-way') {
         event.preventDefault();
         var maGheDiElements = form.elements['maGheDi[]'];
-            var maGheDiValues = [];
-            for (var i = 0; i < maGheDiElements.length; i++) {
-                var maGheDiValue = maGheDiElements[i].value;
-                maGheDiValues.push(maGheDiValue);
-            }
-            var chieuDiData = {
-                maChuyenDi: form.elements.maChuyenDi.value,
-                maGheDi: maGheDiValues
-            };
-            var jsonData = {
-                chieuDi: chieuDiData
-            };
+        var maGheDiValues = [];
+        for (var i = 0; i < maGheDiElements.length; i++) {
+            var maGheDiValue = maGheDiElements[i].value;
+            maGheDiValues.push(maGheDiValue);
+        }
+        var chieuDiData = {
+            maChuyenDi: form.elements.maChuyenDi.value,
+            maGheDi: maGheDiValues
+        };
+        var jsonData = {
+            chieuDi: chieuDiData
+        };
         var jsonString = JSON.stringify(jsonData);
         console.log(jsonString);
         let xhr = new XMLHttpRequest();
         xhr.open("POST", form.action, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonString);
-        window.location=form.action;
+        window.location = form.action;
 
     }
     // nếu loại vé là khứ hồi
@@ -393,29 +393,36 @@ form.addEventListener('submit', function (event) {
             event.preventDefault();
             var maGheDiElements = form.elements['maGheDi[]'];
             var maGheDiValues = [];
+            if (maGheDiElements.length === undefined) {
+                // Nếu chỉ có một phần tử, tạo một mảng chứa đối tượng đó
+                maGheDiElements = [maGheDiElements];
+            }
             for (var i = 0; i < maGheDiElements.length; i++) {
                 var maGheDiValue = maGheDiElements[i].value;
                 maGheDiValues.push(maGheDiValue);
+            }
+            var maGheVeElements = form.elements['maGheVe[]'];
+            var maGheVeValues = [];
+            if (maGheVeElements.length === undefined) {
+                // Nếu chỉ có một phần tử, tạo một mảng chứa đối tượng đó
+                maGheVeElements = [maGheVeElements];
+            }
+            for (var i = 0; i < maGheVeElements.length; i++) {
+                var maGheVeValue = maGheVeElements[i].value;
+                maGheVeValues.push(maGheVeValue);
             }
             var chieuDiData = {
                 maChuyenDi: form.elements.maChuyenDi.value,
                 maGheDi: maGheDiValues
             };
-            var maGheVeElements = form.elements['maGheVe[]'];
-            var maGheVeValues = [];
-            for (var i = 0; i < maGheVeElements.length; i++) {
-                var maGheVeValue = maGheVeElements[i].value;
-                maGheVeValues.push(maGheVeValue);
-            }
             var chieuVeData = {
                 maChuyenVe: form.elements.maChuyenVe.value,
-                maGheVe: maGheDiValues
+                maGheVe: maGheVeValues
             };
             var jsonData = {
                 chieuDi: chieuDiData,
                 chieuVe: chieuVeData
             };
-            console.log(jsonData);
             var jsonString = JSON.stringify(jsonData);
             console.log(jsonString);
             let xhr = new XMLHttpRequest();
@@ -423,7 +430,7 @@ form.addEventListener('submit', function (event) {
             xhr.open("POST", form.action, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
-            window.location=form.action;
+            window.location = form.action;
         }
     }
 
