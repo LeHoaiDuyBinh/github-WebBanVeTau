@@ -16,19 +16,53 @@
             </tr>
           </thead>
           <!-- add DB từ trang tìm vé-->
-          <tbody>
-            <tr>
-              <!--Họ tên-->
-              <!-- <div id="formContainerNguoiNgoi"></div> -->
-              <!-- thông tin vé -->             
+          <?php var_dump($arrDi);
+          var_dump($arrVe) ?>
+          <!-- DB chiều đi-->
+          <?php foreach ($arrDi as $each) : ?>
+            <div class="chieuDi" name="gaXuatPhat" data-ga-xuat-phat="<?php echo $each->getTenGaXuatPhat(); ?>"></div>
+            <div class="chieuDi" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
+            <div class="chieuDi" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
+            <?php $dsGheDi = []; // Mảng chứa dữ liệu được chuyển đổi
+            foreach ($each->getdsGhe() as $ghe) {
+              $gheDiData = [
+                "MaChoNgoi" => $ghe->getMaChoNgoi(),
+                "MaToa" => $ghe->getMaToa(),
+                "TenLoaiToa" => $ghe->getTenLoaiToa(),
+                "ThuTuToa" => $ghe->getThuTuToa(),
+                "Gia" => $ghe->getGia()
+              ];
+              $dsGheDi[] = $gheDiData;
+            }
+            // Mã hóa mảng $dsGhe thành JSON
+            $jsonDataDi = htmlspecialchars(json_encode($dsGheDi, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+            ?>
+            <div class="dsGheDi" data-ds-ghe-di="<?php echo $jsonDataDi; ?>"></div>
+          <?php endforeach; ?>
+          <!-- DB chiều về -->
+          <?php if (isset($arrVe) && is_array($arrVe)) : ?>
+            <?php foreach ($arrVe as $each) : ?>
+              <div class="chieuVe" name="gaXuatPhat" data-ga-xuat-phat="<?php echo $each->getTenGaXuatPhat(); ?>"></div>
+              <div class="chieuVe" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
+              <div class="chieuVe" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
+              <?php $dsGheVe = []; // Mảng chứa dữ liệu được chuyển đổi
+              foreach ($each->getdsGhe() as $ghe) {
+                $gheVeData = [
+                  "MaChoNgoi" => $ghe->getMaChoNgoi(),
+                  "MaToa" => $ghe->getMaToa(),
+                  "TenLoaiToa" => $ghe->getTenLoaiToa(),
+                  "ThuTuToa" => $ghe->getThuTuToa(),
+                  "Gia" => $ghe->getGia()
+                ];
+                $dsGheVe[] = $gheVeData;
+              }
+              // Mã hóa mảng $dsGhe thành JSON
+              $jsonDataVe = htmlspecialchars(json_encode($dsGheVe, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
+              ?>
+              <div class="dsGheVe" data-ds-ghe-ve="<?php echo $jsonDataVe; ?>"></div>
+            <?php endforeach; ?>
+          <?php endif; ?>
 
-              <!--Khuyến mãi-->
-              <!-- <div id="khuyenMaiCell"></div> -->
-
-              <!--Thành tiền-->
-              <!-- <div id="thanhTienCell"></div> -->
-</tr>
-          </tbody>
           <tfoot>
             <tr>
               <td colspan="4">
@@ -104,11 +138,6 @@
           </div>
         </form>
       </div>
-      <!-- <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
-          <button class="back-button" onclick="quayLai()">Quay lại</button>
-          <button class="next-button" onclick="tiepTheo()" type="submit">Tiếp theo</button>
-        </div> -->
-
     </div>
   </div>
 </div>

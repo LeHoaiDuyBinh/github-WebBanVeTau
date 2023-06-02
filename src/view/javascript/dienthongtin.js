@@ -1,11 +1,19 @@
 document.addEventListener("DOMContentLoaded", function () {
     //Tạo các form cho người ngồi
-    var numberOfForms = 2; // Số lượng form cần tạo
+
     var table = document.getElementById("Table");
-    //var formContainer = document.getElementById("formContainerNguoiNgoi"); // Phần tử chứa các form
+
+    var dsGheDiElement = document.querySelector('.dsGheDi');
+    var dsGheDiData = dsGheDiElement.dataset.dsGheDi;
+    var dsGheDiArray = JSON.parse(dsGheDiData);
+    console.log(dsGheDiArray.length);
+
+    var dsGheVeElement = document.querySelector('.dsGheVe');
+    var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
+    var dsGheVeArray = JSON.parse(dsGheVeData);
 
 
-    for (var i = 0; i < numberOfForms; i++) {
+    for (var i = 0; i < dsGheDiArray.length; i++) {
         var tableRow = document.createElement("tr");
         var tableData = document.createElement("td");
         var form = document.createElement("form"); // Tạo phần tử form
@@ -102,14 +110,89 @@ document.addEventListener("DOMContentLoaded", function () {
         table.appendChild(tableRow);
 
 
-        //add thông tin vé
-        var thongTinVe = document.createElement("td");
-        tableRow.appendChild(thongTinVe);
+        //add thông tin vé đi
+        var thongTin = document.createElement("td");
+        var divGaXuatPhat = document.querySelector('div[name="gaXuatPhat"].chieuDi');
+        var gaXuatPhatValue = divGaXuatPhat.dataset.gaXuatPhat;
+
+        var divGaDen = document.querySelector('div[name="gaDen"].chieuDi');
+        var gaDenValue = divGaDen.dataset.gaDen;
+
+        var divThoiGian = document.querySelector('div[name="thoiGian"].chieuDi');
+        var thoiGianValue = divThoiGian.dataset.thoiGian;
+        var date = new Date(thoiGianValue); // Tạo đối tượng Date từ giá trị thời gian
+
+        var day = date.getDate(); // Lấy ngày
+        var month = date.getMonth() + 1; // Lấy tháng (chú ý: tháng trong JavaScript được đánh số từ 0)
+        var year = date.getFullYear(); // Lấy năm
+        var hours = date.getHours(); // Lấy giờ
+        var minutes = date.getMinutes(); // Lấy phút        
+
+        // Định dạng lại ngày, tháng, năm, giờ, phút, giây thành chuỗi dd/mm/yyyy hh:mm:ss
+        var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year + ' ' +
+            (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+        var gheDiObject = dsGheDiArray[i];
+        var tenLoaiToa = gheDiObject.TenLoaiToa;
+        var thuTuToa = gheDiObject.ThuTuToa;
+        var choNgoi = gheDiObject.MaChoNgoi.slice(-3);
+
+
+        var thongTinDi = document.createElement("div");
+        thongTinDi.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
+            " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+        thongTin.append(thongTinDi);
+        thongTin.appendChild(lineBreak);
+
+
+        //add thông tin vé về       
+        var divGaXuatPhat = document.querySelector('div[name="gaXuatPhat"].chieuVe');
+        var gaXuatPhatValue = divGaXuatPhat.dataset.gaXuatPhat;
+
+        var divGaDen = document.querySelector('div[name="gaDen"].chieuVe');
+        var gaDenValue = divGaDen.dataset.gaDen;
+
+        var divThoiGian = document.querySelector('div[name="thoiGian"].chieuVe');
+        var thoiGianValue = divThoiGian.dataset.thoiGian;
+        var date = new Date(thoiGianValue); // Tạo đối tượng Date từ giá trị thời gian
+
+        var day = date.getDate(); // Lấy ngày
+        var month = date.getMonth() + 1; // Lấy tháng (chú ý: tháng trong JavaScript được đánh số từ 0)
+        var year = date.getFullYear(); // Lấy năm
+        var hours = date.getHours(); // Lấy giờ
+        var minutes = date.getMinutes(); // Lấy phút        
+
+        // Định dạng lại ngày, tháng, năm, giờ, phút, giây thành chuỗi dd/mm/yyyy hh:mm:ss
+        var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year + ' ' +
+            (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+        var gheVeObject = dsGheVeArray[i];
+        var tenLoaiToa = gheVeObject.TenLoaiToa;
+        var thuTuToa = gheVeObject.ThuTuToa;
+        var choNgoi = gheVeObject.MaChoNgoi.slice(-3);
+
+
+        var thongTinVe = document.createElement("div");
+        thongTinVe.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
+            " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+        thongTin.append(thongTinVe);
+
+        tableRow.appendChild(thongTin);
 
         //add giá vé
         var gia = document.createElement("td");
-        var giaDi = document.createElement("div");
-        var giaVe = document.createElement("div");
+        var giaVeChieuDi = document.createElement("div");
+        giaVeChieuDi.id = "giaVeChieuDi" + i;
+        giaVeChieuDi.textContent = parseFloat(gheDiObject.Gia).toLocaleString('en-US');
+        giaVeChieuDi.value = gheDiObject.Gia;
+
+        var giaVeChieuVe = document.createElement("div");
+        giaVeChieuVe.id = "giaVeChieuVe" + i;
+        giaVeChieuVe.textContent = parseFloat(gheVeObject.Gia).toLocaleString('en-US');
+        giaVeChieuVe.value = gheVeObject.Gia;
+
+        gia.appendChild(giaVeChieuDi);
+        gia.appendChild(giaVeChieuVe);
         tableRow.appendChild(gia);
 
 
@@ -127,8 +210,8 @@ document.addEventListener("DOMContentLoaded", function () {
         thanhTienChieuDi.type = "text";
         thanhTienChieuDi.id = "thanhTienChieuDi" + i;
         thanhTienChieuDi.name = "thanhTienChieuDi" + i;
-        thanhTienChieuDi.textContent = "700,000";
-        thanhTienChieuDi.value = 700000;
+        thanhTienChieuDi.textContent = giaVeChieuDi.textContent;
+        thanhTienChieuDi.value = giaVeChieuDi.value;
         thanhTien.appendChild(thanhTienChieuDi);
 
         var thanhTienChieuVe = document.createElement("div");
@@ -138,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
         thanhTienChieuVe.textContent = "800,000";
         thanhTienChieuVe.value = 800000;
         thanhTien.appendChild(thanhTienChieuVe);
-        
+
         tableRow.appendChild(thanhTien);
         table.appendChild(tableRow);
     }
@@ -238,26 +321,30 @@ function calculateTotal(id) {
 //Tính thành tiền và tổng tiền
 function updateTotal(id) {
 
-    // var giaVeChieuDi = document.getElementById("giaVeChieuDi" + id);
-    // var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id);
+    var giaVeChieuDi = document.getElementById("giaVeChieuDi" + id);
+    var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id);
     var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
 
     //var tongTien = document.querySelector('.tongTien');
 
-    var giaTriChieuDi = thanhTienChieuDi.textContent.replace(/,/g, '');
-    var giaTriChieuVe = thanhTienChieuVe.textContent.replace(/,/g, '');
+    // var giaTriChieuDi = giaVeChieuDi.textContent.replace(/,/g, '');
+    // var giaTriChieuVe = giaVeChieuVe.textContent.replace(/,/g, '');
 
     var heSo = calculateTotal(id);
-    var giaTriChieuDiSauKM = parseFloat(giaTriChieuDi) * (1 - heSo);
-    var giaTriChieuVeSauKM = parseFloat(giaTriChieuVe) * (1 - heSo);
+    var giaTriChieuDiSauKM = parseFloat(giaVeChieuDi) * (1 - heSo);
+    var giaTriChieuVeSauKM = giaVeChieuVe * (1 - heSo);
 
     // Cập nhật nội dung bảng
+    var dsGheElement = document.querySelector('.dsGhe');
+    var dsGheData = dsGheElement.dataset.dsGhe;
+    var dsGheArray = JSON.parse(dsGheData);
+
     thanhTienChieuDi.textContent = giaTriChieuDiSauKM.toLocaleString('en-US');
     thanhTienChieuDi.value = giaTriChieuDiSauKM;
     thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
     thanhTienChieuVe.value = giaTriChieuVeSauKM;
-    var numberOfForms = 2; // Số lượng người ngồi
+    var numberOfForms = dsGheArray.length; // Số lượng người ngồi
     var tongTien = document.getElementById("tongTien");
     tongTien.value = 0;
     for (var i = 0; i < numberOfForms; i++) {
