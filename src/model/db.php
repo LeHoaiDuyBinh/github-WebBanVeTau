@@ -13,6 +13,7 @@
         {
             $connect = $this->conn();
             if($params != null){
+
                 $res = $connect->prepare($sql);
                 $res->execute($params);
             }
