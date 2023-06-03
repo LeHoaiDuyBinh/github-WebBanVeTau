@@ -6,12 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var dsGheDiElement = document.querySelector('.dsGheDi');
     var dsGheDiData = dsGheDiElement.dataset.dsGheDi;
     var dsGheDiArray = JSON.parse(dsGheDiData);
-   
 
-    var dsGheVeElement = document.querySelector('.dsGheVe');
-    var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
-    var dsGheVeArray = JSON.parse(dsGheVeData);
+    // var dsGheVeElement = document.querySelector('.dsGheVe');
+    // var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
+    // var dsGheVeArray = JSON.parse(dsGheVeData);
 
+    // if (dsGheDiArray.length > dsGheVeArray.length)
+    //     var numberOfForms = dsGheDiArray.length;
+    // else
+    //     var numberOfForms = dsGheVeArray.length;
 
     for (var i = 0; i < dsGheDiArray.length; i++) {
         var tableRow = document.createElement("tr");
@@ -110,7 +113,7 @@ document.addEventListener("DOMContentLoaded", function () {
         table.appendChild(tableRow);
 
 
-        //add thông tin vé đi
+        //add thông tin vé đi        
         var thongTin = document.createElement("td");
         var divGaXuatPhat = document.querySelector('div[name="gaXuatPhat"].chieuDi');
         var gaXuatPhatValue = divGaXuatPhat.dataset.gaXuatPhat;
@@ -146,56 +149,81 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
         //add thông tin vé về       
-        var divGaXuatPhat = document.querySelector('div[name="gaXuatPhat"].chieuVe');
-        var gaXuatPhatValue = divGaXuatPhat.dataset.gaXuatPhat;
+        var dsGheVeElement = document.querySelector('.dsGheVe');
+        if (dsGheVeElement) {
+            // Lớp .dsGheVe có dữ liệu
+            var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
+            var dsGheVeArray;
 
-        var divGaDen = document.querySelector('div[name="gaDen"].chieuVe');
-        var gaDenValue = divGaDen.dataset.gaDen;
+            try {
+                dsGheVeArray = JSON.parse(dsGheVeData);
+                console.log(dsGheVeArray);
+                // Thực hiện các tác vụ liên quan đến .dsGheVe ở đây
+                var divGaXuatPhat = document.querySelector('div[name="gaXuatPhat"].chieuVe');
+                var gaXuatPhatValue = divGaXuatPhat.dataset.gaXuatPhat;
 
-        var divThoiGian = document.querySelector('div[name="thoiGian"].chieuVe');
-        var thoiGianValue = divThoiGian.dataset.thoiGian;
-        var date = new Date(thoiGianValue); // Tạo đối tượng Date từ giá trị thời gian
+                var divGaDen = document.querySelector('div[name="gaDen"].chieuVe');
+                var gaDenValue = divGaDen.dataset.gaDen;
 
-        var day = date.getDate(); // Lấy ngày
-        var month = date.getMonth() + 1; // Lấy tháng (chú ý: tháng trong JavaScript được đánh số từ 0)
-        var year = date.getFullYear(); // Lấy năm
-        var hours = date.getHours(); // Lấy giờ
-        var minutes = date.getMinutes(); // Lấy phút        
+                var divThoiGian = document.querySelector('div[name="thoiGian"].chieuVe');
+                var thoiGianValue = divThoiGian.dataset.thoiGian;
+                var date = new Date(thoiGianValue); // Tạo đối tượng Date từ giá trị thời gian
 
-        // Định dạng lại ngày, tháng, năm, giờ, phút, giây thành chuỗi dd/mm/yyyy hh:mm:ss
-        var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year + ' ' +
-            (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+                var day = date.getDate(); // Lấy ngày
+                var month = date.getMonth() + 1; // Lấy tháng (chú ý: tháng trong JavaScript được đánh số từ 0)
+                var year = date.getFullYear(); // Lấy năm
+                var hours = date.getHours(); // Lấy giờ
+                var minutes = date.getMinutes(); // Lấy phút        
 
-        var gheVeObject = dsGheVeArray[i];
-        var tenLoaiToa = gheVeObject.TenLoaiToa;
-        var thuTuToa = gheVeObject.ThuTuToa;
-        var choNgoi = gheVeObject.MaChoNgoi.slice(-3);
+                // Định dạng lại ngày, tháng, năm, giờ, phút, giây thành chuỗi dd/mm/yyyy hh:mm:ss
+                var formattedDate = (day < 10 ? '0' : '') + day + '/' + (month < 10 ? '0' : '') + month + '/' + year + ' ' +
+                    (hours < 10 ? '0' : '') + hours + ':' + (minutes < 10 ? '0' : '') + minutes;
+
+                var gheVeObject = dsGheVeArray[i];
+                var tenLoaiToa = gheVeObject.TenLoaiToa;
+                var thuTuToa = gheVeObject.ThuTuToa;
+                var choNgoi = gheVeObject.MaChoNgoi.slice(-3);
 
 
-        var thongTinVe = document.createElement("div");
-        thongTinVe.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
-            " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
-        thongTin.append(thongTinVe);
+                var thongTinVe = document.createElement("div");
+                thongTinVe.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
+                    " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+                thongTin.append(thongTinVe);
+            } catch (error) {
+                console.error('Lỗi khi chuyển đổi dữ liệu thành mảng:', error);
+            }
+        }
 
         tableRow.appendChild(thongTin);
 
         //add giá vé
         var gia = document.createElement("td");
-
+        //Giá đi
         var giaVeChieuDi = document.createElement("div");
         giaVeChieuDi.id = "giaVeChieuDi" + i;
         giaVeChieuDi.textContent = parseFloat(gheDiObject.Gia).toLocaleString('en-US');
         giaVeChieuDi.value = gheDiObject.Gia;
-
-        var giaVeChieuVe = document.createElement("div");
-        giaVeChieuVe.id = "giaVeChieuVe" + i;
-        giaVeChieuVe.textContent = parseFloat(gheVeObject.Gia).toLocaleString('en-US');
-        giaVeChieuVe.value = gheVeObject.Gia;
+        //Giá về
+        var dsGheVeElement = document.querySelector('.dsGheVe');
+        if (dsGheVeElement) {
+            // Lớp .dsGheVe có dữ liệu
+            var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
+            var dsGheVeArray;
+            try {
+                dsGheVeArray = JSON.parse(dsGheVeData);
+                console.log(dsGheVeArray);
+                var giaVeChieuVe = document.createElement("div");
+                giaVeChieuVe.id = "giaVeChieuVe" + i;
+                giaVeChieuVe.textContent = parseFloat(gheVeObject.Gia).toLocaleString('en-US');
+                giaVeChieuVe.value = gheVeObject.Gia;
+                gia.appendChild(giaVeChieuVe);
+            } catch (error) {
+                console.error('Lỗi khi chuyển đổi dữ liệu thành mảng:', error);
+            }
+        }
 
         gia.appendChild(giaVeChieuDi);
-        gia.appendChild(giaVeChieuVe);
         tableRow.appendChild(gia);
-
 
         //add khuyến mãi
         var khuyenMai = document.createElement("td");
@@ -207,6 +235,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //add thành tiền
         var thanhTien = document.createElement("td");
+        //thành tiền chiều đi
         var thanhTienChieuDi = document.createElement("div");
         thanhTienChieuDi.type = "text";
         thanhTienChieuDi.id = "thanhTienChieuDi" + i;
@@ -215,22 +244,22 @@ document.addEventListener("DOMContentLoaded", function () {
         thanhTienChieuDi.value = giaVeChieuDi.value;
         thanhTien.appendChild(thanhTienChieuDi);
 
-        var thanhTienChieuVe = document.createElement("div");
-        thanhTienChieuVe.type = "text";
-        thanhTienChieuVe.id = "thanhTienChieuVe" + i;
-        thanhTienChieuVe.name = "thanhTienChieuVe" + i;
-        thanhTienChieuVe.textContent = giaVeChieuVe.textContent;
-        thanhTienChieuVe.value = giaVeChieuVe.value;
-        thanhTien.appendChild(thanhTienChieuVe);
-
+        //thành tiền chiều về
+        if (checkDataVe() === true) {
+            var thanhTienChieuVe = document.createElement("div");
+            thanhTienChieuVe.type = "text";
+            thanhTienChieuVe.id = "thanhTienChieuVe" + i;
+            thanhTienChieuVe.name = "thanhTienChieuVe" + i;
+            thanhTienChieuVe.textContent = giaVeChieuVe.textContent;
+            thanhTienChieuVe.value = giaVeChieuVe.value;
+            thanhTien.appendChild(thanhTienChieuVe);
+        }
         tableRow.appendChild(thanhTien);
         table.appendChild(tableRow);
     }
 
 });
 
-
-//Còn phần khuyến mãi của mỗi vé chưa cập nhật
 function doiTuongGiamChange(id) {
     var doiTuongGiam = document.getElementById("doiTuongGiam" + id).value;
     var ngayThangContainer = document.getElementById("ngayThangContainer" + id);
@@ -239,10 +268,11 @@ function doiTuongGiamChange(id) {
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
     var khuyenMai = document.getElementById("khuyenMai" + id);
 
-    //Giá vé mặc định (add DB sau)
-    var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi"+i).textContent;
-    var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe"+i).textContent;
-
+    //Giá vé mặc định
+    var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi" + i);
+    if (checkDataVe() === true) {
+        var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe" + i);
+    }
     // Không cho chọn ngày lớn hơn ngày hiện tại
     var ngayThang = document.getElementById("ngayThang" + id);
     var today = new Date().toISOString().split("T")[0];
@@ -252,10 +282,15 @@ function doiTuongGiamChange(id) {
     if (doiTuongGiam === "nguoiLon") {
         ngayThangContainer.style.display = "none";
         CCCDContainer.style.display = "block";
-        thanhTienChieuDi.textContent = giaVeChieuDiDefault;
-        thanhTienChieuVe.textContent = giaVeChieuVeDefault;
+        thanhTienChieuDi.textContent = giaVeChieuDiDefault.textContent;
+        thanhTienChieuDi.value = giaVeChieuDiDefault.value;
+        if (checkDataVe() === true) {
+            thanhTienChieuVe.textContent = giaVeChieuVeDefault.textContent;
+            thanhTienChieuVe.value = giaVeChieuVeDefault.value;
+        }
         ngayThang.value = "";
         khuyenMai.textContent = "Không có khuyến mãi vé này";
+        updateTotal(id);
     }
     else
         if (doiTuongGiam === "treEm") {
@@ -272,8 +307,6 @@ function doiTuongGiamChange(id) {
                 ngayThangContainer.style.display = "none";
             }
 }
-
-
 
 //Tính phần trăm khuyến mãi
 function calculateTotal(id) {
@@ -322,34 +355,35 @@ function calculateTotal(id) {
 //Tính thành tiền và tổng tiền
 function updateTotal(id) {
 
+    //chiều đi
     var giaVeChieuDi = document.getElementById("giaVeChieuDi" + id).value;
-    console.log(giaVeChieuDi);
-    var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id).value;
     var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
-    var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
-
     var heSo = calculateTotal(id);
     var giaTriChieuDiSauKM = giaVeChieuDi * (1 - heSo);
-    console.log(giaTriChieuDiSauKM);
-    var giaTriChieuVeSauKM = giaVeChieuVe * (1 - heSo);
-
     thanhTienChieuDi.textContent = giaTriChieuDiSauKM.toLocaleString('en-US');
     thanhTienChieuDi.value = giaTriChieuDiSauKM;
-    thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
-    thanhTienChieuVe.value = giaTriChieuVeSauKM;
-
+    //Chiều về
+    if (checkDataVe() === true) {
+        var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id).value;
+        var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
+        var giaTriChieuVeSauKM = giaVeChieuVe * (1 - heSo);
+        thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
+        thanhTienChieuVe.value = giaTriChieuVeSauKM;
+    }
     // Cập nhật nội dung bảng
     var dsGheDiElement = document.querySelector('.dsGheDi');
     var dsGheDiData = dsGheDiElement.dataset.dsGheDi;
     var dsGheDiArray = JSON.parse(dsGheDiData);
-    const numberOfForms = dsGheDiArray.length;    
-    
-    var tongTien = document.getElementById("tongTien").value;
-    tongTien = 0;
+    const numberOfForms = dsGheDiArray.length;
+    var tongTien = document.getElementById("tongTien");
+    tongTien.value = 0;
     for (var i = 0; i < numberOfForms; i++) {
-        var ChieuDi = document.getElementById("thanhTienChieuDi" + i).value;
-        var ChieuVe = document.getElementById("thanhTienChieuVe" + i).value;
-        tongTien += ChieuDi + ChieuVe;
+        var ChieuDi = parseInt(document.getElementById("thanhTienChieuDi" + i).value);
+        tongTien.value += ChieuDi;
+        if (checkDataVe() === true) {
+            var ChieuVe = parseInt(document.getElementById("thanhTienChieuVe" + i).value);
+            tongTien.value += ChieuVe;
+        }
     }
     tongTien.textContent = parseInt(tongTien.value).toLocaleString('en-US');
 }
@@ -382,7 +416,6 @@ function apDungVoucher() {
 function quayLai() {
     window.location.href = "?page=ketquatimve";
 }
-
 
 //Kiểm tra các ràng buộc
 function tiepTheo(event) {
@@ -479,13 +512,14 @@ function combineForms(id) {
         inputThanhTienChieuDi.value = inputThanhTienChieuDiValue;
         combinedForm.appendChild(inputThanhTienChieuDi);
         // thêm thành tiền chiều về
-        var inputThanhTienChieuVe = document.createElement("input");
-        var inputThanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
-        inputThanhTienChieuVe.type = "hidden";
-        inputThanhTienChieuVe.name = "thanhTienChieuVe" + i;
-        inputThanhTienChieuVe.value = inputThanhTienChieuVeValue;
-        combinedForm.appendChild(inputThanhTienChieuVe);
-
+        if (checkDataVe() === true) {
+            var inputThanhTienChieuVe = document.createElement("input");
+            var inputThanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
+            inputThanhTienChieuVe.type = "hidden";
+            inputThanhTienChieuVe.name = "thanhTienChieuVe" + i;
+            inputThanhTienChieuVe.value = inputThanhTienChieuVeValue;
+            combinedForm.appendChild(inputThanhTienChieuVe);
+        }
     }
 
     var tongTien = document.getElementById("tongTien").value;
@@ -500,4 +534,21 @@ function combineForms(id) {
     combinedForm.submit();
 }
 
+
+//Check data Về
+function checkDataVe() {
+    var dsGheVeElement = document.querySelector('.dsGheVe');
+    if (dsGheVeElement) {
+        // Lớp .dsGheVe có dữ liệu
+        var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
+        var dsGheVeArray;
+
+        try {
+            dsGheVeArray = JSON.parse(dsGheVeData);
+            return true;
+        } catch (error) {
+            return false;
+        }
+    }
+}
 

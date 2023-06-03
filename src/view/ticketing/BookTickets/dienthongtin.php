@@ -42,7 +42,7 @@
             <div class="dsGheDi" data-ds-ghe-di="<?php echo $jsonDataDi; ?>"></div>
           <?php endforeach; ?>
           <!-- DB chiều về -->
-          <?php if (isset($arrVe) && is_array($arrVe)) : ?>
+          <?php if (isset($arrVe) && !empty($arrVe)) : ?>
             <?php foreach ($arrVe as $each) : ?>
               <div class="chieuVe" name="gaXuatPhat" data-ga-xuat-phat="<?php echo $each->getTenGaXuatPhat(); ?>"></div>
               <div class="chieuVe" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
