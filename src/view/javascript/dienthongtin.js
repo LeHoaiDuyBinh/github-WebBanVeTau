@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var dsGheDiElement = document.querySelector('.dsGheDi');
     var dsGheDiData = dsGheDiElement.dataset.dsGheDi;
     var dsGheDiArray = JSON.parse(dsGheDiData);
-    console.log(dsGheDiArray.length);
+   
 
     var dsGheVeElement = document.querySelector('.dsGheVe');
     var dsGheVeData = dsGheVeElement.dataset.dsGheVe;
@@ -181,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         //add giá vé
         var gia = document.createElement("td");
+
         var giaVeChieuDi = document.createElement("div");
         giaVeChieuDi.id = "giaVeChieuDi" + i;
         giaVeChieuDi.textContent = parseFloat(gheDiObject.Gia).toLocaleString('en-US');
@@ -218,8 +219,8 @@ document.addEventListener("DOMContentLoaded", function () {
         thanhTienChieuVe.type = "text";
         thanhTienChieuVe.id = "thanhTienChieuVe" + i;
         thanhTienChieuVe.name = "thanhTienChieuVe" + i;
-        thanhTienChieuVe.textContent = "800,000";
-        thanhTienChieuVe.value = 800000;
+        thanhTienChieuVe.textContent = giaVeChieuVe.textContent;
+        thanhTienChieuVe.value = giaVeChieuVe.value;
         thanhTien.appendChild(thanhTienChieuVe);
 
         tableRow.appendChild(thanhTien);
@@ -239,8 +240,8 @@ function doiTuongGiamChange(id) {
     var khuyenMai = document.getElementById("khuyenMai" + id);
 
     //Giá vé mặc định (add DB sau)
-    var giaVeChieuDiDefault = "700,000";
-    var giaVeChieuVeDefault = "800,000";
+    var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi"+i).textContent;
+    var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe"+i).textContent;
 
     // Không cho chọn ngày lớn hơn ngày hiện tại
     var ngayThang = document.getElementById("ngayThang" + id);
@@ -321,38 +322,36 @@ function calculateTotal(id) {
 //Tính thành tiền và tổng tiền
 function updateTotal(id) {
 
-    var giaVeChieuDi = document.getElementById("giaVeChieuDi" + id);
-    var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id);
+    var giaVeChieuDi = document.getElementById("giaVeChieuDi" + id).value;
+    console.log(giaVeChieuDi);
+    var giaVeChieuVe = document.getElementById("giaVeChieuVe" + id).value;
     var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
 
-    //var tongTien = document.querySelector('.tongTien');
-
-    // var giaTriChieuDi = giaVeChieuDi.textContent.replace(/,/g, '');
-    // var giaTriChieuVe = giaVeChieuVe.textContent.replace(/,/g, '');
-
     var heSo = calculateTotal(id);
-    var giaTriChieuDiSauKM = parseFloat(giaVeChieuDi) * (1 - heSo);
+    var giaTriChieuDiSauKM = giaVeChieuDi * (1 - heSo);
+    console.log(giaTriChieuDiSauKM);
     var giaTriChieuVeSauKM = giaVeChieuVe * (1 - heSo);
-
-    // Cập nhật nội dung bảng
-    var dsGheElement = document.querySelector('.dsGhe');
-    var dsGheData = dsGheElement.dataset.dsGhe;
-    var dsGheArray = JSON.parse(dsGheData);
 
     thanhTienChieuDi.textContent = giaTriChieuDiSauKM.toLocaleString('en-US');
     thanhTienChieuDi.value = giaTriChieuDiSauKM;
     thanhTienChieuVe.textContent = giaTriChieuVeSauKM.toLocaleString('en-US');
     thanhTienChieuVe.value = giaTriChieuVeSauKM;
-    var numberOfForms = dsGheArray.length; // Số lượng người ngồi
-    var tongTien = document.getElementById("tongTien");
-    tongTien.value = 0;
+
+    // Cập nhật nội dung bảng
+    var dsGheDiElement = document.querySelector('.dsGheDi');
+    var dsGheDiData = dsGheDiElement.dataset.dsGheDi;
+    var dsGheDiArray = JSON.parse(dsGheDiData);
+    const numberOfForms = dsGheDiArray.length;    
+    
+    var tongTien = document.getElementById("tongTien").value;
+    tongTien = 0;
     for (var i = 0; i < numberOfForms; i++) {
         var ChieuDi = document.getElementById("thanhTienChieuDi" + i).value;
         var ChieuVe = document.getElementById("thanhTienChieuVe" + i).value;
-        tongTien.value += ChieuDi + ChieuVe;
+        tongTien += ChieuDi + ChieuVe;
     }
-    tongTien.textContent = tongTien.value.toLocaleString('en-US');
+    tongTien.textContent = parseInt(tongTien.value).toLocaleString('en-US');
 }
 
 

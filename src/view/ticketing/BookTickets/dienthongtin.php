@@ -24,6 +24,7 @@
             <div class="chieuDi" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
             <div class="chieuDi" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
             <?php $dsGheDi = []; // Mảng chứa dữ liệu được chuyển đổi
+            $tongDi = 0;
             foreach ($each->getdsGhe() as $ghe) {
               $gheDiData = [
                 "MaChoNgoi" => $ghe->getMaChoNgoi(),
@@ -33,6 +34,7 @@
                 "Gia" => $ghe->getGia()
               ];
               $dsGheDi[] = $gheDiData;
+              $tongDi += $ghe->getGia();
             }
             // Mã hóa mảng $dsGhe thành JSON
             $jsonDataDi = htmlspecialchars(json_encode($dsGheDi, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
@@ -46,6 +48,7 @@
               <div class="chieuVe" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
               <div class="chieuVe" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
               <?php $dsGheVe = []; // Mảng chứa dữ liệu được chuyển đổi
+              $tongVe = 0;
               foreach ($each->getdsGhe() as $ghe) {
                 $gheVeData = [
                   "MaChoNgoi" => $ghe->getMaChoNgoi(),
@@ -55,6 +58,7 @@
                   "Gia" => $ghe->getGia()
                 ];
                 $dsGheVe[] = $gheVeData;
+                $tongVe += $ghe->getGia();
               }
               // Mã hóa mảng $dsGhe thành JSON
               $jsonDataVe = htmlspecialchars(json_encode($dsGheVe, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES));
@@ -81,7 +85,7 @@
               </td>
               <!--giá trị tổng tiền-->
               <td class="text-right">
-                <strong class="ng-binding tongTien" id="tongTien">3,000,000</strong>
+                <strong class="ng-binding tongTien" id="tongTien"><?php echo number_format($tongDi + $tongVe, 0, '.', ',');?></strong>
               </td>
 
             </tr>
