@@ -20,18 +20,19 @@
           var_dump($arrVe) ?>
           <!-- DB chiều đi-->
           <?php foreach ($arrDi as $each) : ?>
+            <div class="chieuDi" name="maChuyenTau" data-ma-chuyen-tau="<?php echo $each->getMaChuyenTau(); ?>"></div>
             <div class="chieuDi" name="gaXuatPhat" data-ga-xuat-phat="<?php echo $each->getTenGaXuatPhat(); ?>"></div>
             <div class="chieuDi" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
             <div class="chieuDi" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
             <?php $dsGheDi = []; // Mảng chứa dữ liệu được chuyển đổi
             $tongDi = 0;
             foreach ($each->getdsGhe() as $ghe) {
-              $gheDiData = [
+              $gheDiData = [                
                 "MaChoNgoi" => $ghe->getMaChoNgoi(),
                 "MaToa" => $ghe->getMaToa(),
                 "TenLoaiToa" => $ghe->getTenLoaiToa(),
                 "ThuTuToa" => $ghe->getThuTuToa(),
-                "Gia" => $ghe->getGia()
+                "Gia" => $ghe->getGia()                
               ];
               $dsGheDi[] = $gheDiData;
               $tongDi += $ghe->getGia();
@@ -44,13 +45,14 @@
           <!-- DB chiều về -->
           <?php if (isset($arrVe) && !empty($arrVe)) : ?>
             <?php foreach ($arrVe as $each) : ?>
+              <div class="chieuVe" name="maChuyenTau" data-ma-chuyen-tau="<?php echo $each->getMaChuyenTau(); ?>"></div>
               <div class="chieuVe" name="gaXuatPhat" data-ga-xuat-phat="<?php echo $each->getTenGaXuatPhat(); ?>"></div>
               <div class="chieuVe" name="gaDen" data-ga-den="<?php echo $each->getTenGaDen(); ?>"></div>
               <div class="chieuVe" name="thoiGian" data-thoi-gian="<?php echo $each->getThoiGianXuatPhat(); ?>"></div>
               <?php $dsGheVe = []; // Mảng chứa dữ liệu được chuyển đổi
               $tongVe = 0;
               foreach ($each->getdsGhe() as $ghe) {
-                $gheVeData = [
+                $gheVeData = [                  
                   "MaChoNgoi" => $ghe->getMaChoNgoi(),
                   "MaToa" => $ghe->getMaToa(),
                   "TenLoaiToa" => $ghe->getTenLoaiToa(),

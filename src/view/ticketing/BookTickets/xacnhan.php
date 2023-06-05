@@ -6,6 +6,8 @@
                 <h1>Xác nhận thông tin đặt mua vé tàu</h1>
                 <div class="form-container">
                     <h2>Thông tin người mua vé</h2>
+                    <?php var_dump($combinedData);
+                    ?>
                     <form>
                         <div class="form-row">
                             <label for="name">Họ và tên:</label>
