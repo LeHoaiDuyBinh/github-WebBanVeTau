@@ -26,6 +26,7 @@
                 $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
             };
             //var_dump($arrChuyen);
+            //var_dump($arrVe);
             //echo $arrChuyen[0]->getMaChuyenTau;
             include_once 'view/ticketing/BookTickets/ketquatimve.php';
         }

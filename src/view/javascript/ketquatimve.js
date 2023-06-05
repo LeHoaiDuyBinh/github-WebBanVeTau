@@ -190,8 +190,6 @@ seatElements.forEach(seatElement => {
         var soToa = seatElement.getAttribute('number-toa');
         var toaInfo = "<strong>Mã toa:</strong> " + maToa + " - toa số " + soToa;
         var choInfor = "<strong>Mã chỗ:</strong> " + maChoNgoi + " - chỗ số " + soChoNgoi;
-        var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
-        var mess = tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
 
         // kiểm tra chỗ được mua chưa
         var icon = seatElement.querySelector('.seat.et-sit-bought');
@@ -207,6 +205,9 @@ seatElements.forEach(seatElement => {
                     //ẩn dòng chữ "Chưa chọn vé"
                     noHave.style.display = 'none';
                     chieuDi.style.display = 'block';
+
+                    var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + xuatPhat + " - " + diemDen;
+                    var mess = tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
                     //thêm data vào giỏ vé
                     addData(mess, maChoNgoi, 'table-oneway');
                 }
@@ -214,6 +215,9 @@ seatElements.forEach(seatElement => {
                     //ẩn dòng chữ "Chưa chọn vé"
                     noHave.style.display = 'none';
                     chieuVe.style.display = 'block';
+
+                    var tauInfor = "<strong>Mã tàu:</strong> " + maTau + "<br><strong>Tuyến:</strong> " + diemDen + " - " + xuatPhat;
+                    var mess = tauInfor + "<br>" + "<strong>Thời gian:</strong> " + thoiGian + "<br>" + toaInfo + "<br>" + choInfor + "<br>";
                     //thêm data vào giỏ vé
                     addData(mess, maChoNgoi, 'table-return');
                 }

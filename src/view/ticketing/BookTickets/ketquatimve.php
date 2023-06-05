@@ -21,24 +21,13 @@
                                             <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
                                         </div>
                                         <div class="et-train-head-info">
-                                            <div class="row et-no-margin">
-                                                <span class="pull-left et-bold ng-binding"></span>
+                                            <div class="row et-no-margin" style="flex-wrap: wrap !important; margin-top: 5px!important; margin-bottom:5px!important;">
+                                                <span class="pull-left et-bold ng-binding">Thời gian khởi hành</span>
                                                 <span style="" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
                                             </div>
-                                            <div class="row et-no-margin">
-                                                <span class="pull-left et-bold ng-binding">TG chạy: </span>
-                                                <span class="pull-right"></span>
-                                                <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
-                                            </div>
-                                            <div class="row et-no-margin">
-                                                <div class="et-col-50">
-                                                    <div class="et-text-sm ng-binding">SL chỗ đặt</div>
-                                                    <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
-                                                </div>
-                                                <div class="et-col-50 text-center">
-                                                    <div class="et-text-sm ng-binding">SL chỗ trống</div>
-                                                    <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
-                                                </div>
+                                            <div class="row et-no-margin" style="flex-wrap: wrap !important; margin-top: 5px!important; margin-bottom:5px!important;">
+                                                <span class="pull-left et-bold ng-binding">Giờ chạy</span>
+                                                <span style="margin-left: 5px" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
                                             </div>
                                         </div>
                                         <div class="row et-no-margin">
@@ -93,9 +82,6 @@
                                 // Khoang mềm điều hòa
                                 if ($eachToa->getMaLoaiToa() == "LT001") { ?>
                                     <div id="khoang2" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa() ?>">
-                                        <div class="et-full-width et-car-loading ng-hide">
-                                            <div class="row text-capitalize text-center"></div>
-                                        </div>
                                         <div class="row et-car-floor">
                                             <div class="et-car-door"></div>
                                             <div class="et-car-nm-64-half-block">
@@ -129,12 +115,6 @@
                                 // Khoang giường nằm 6 điều hòa
                                 elseif ($eachToa->getMaLoaiToa() == "LT002") { ?>
                                     <div id="khoang1" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
-                                        <div class="et-full-width et-car-loading ng-hide">
-                                            <div class="row text-capitalize text-center">
-                                            </div>
-                                            <div class="row text-center">
-                                            </div>
-                                        </div>
                                         <div class="row et-car-floor">
                                             <div class="et-col-1-18 et-car-floor-full-height">
                                                 <div class="et-bed-way et-full-width"></div>
@@ -180,10 +160,6 @@
                                 // Khoang giường nằm 4 điều hòa
                                 elseif ($eachToa->getMaLoaiToa() == "LT003") { ?>
                                     <div id="khoang3" class="et-col-90 khoang oneway" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa(); ?>">
-                                        <div class="et-full-width et-car-loading ng-hide">
-                                            <div class="row text-capitalize text-center"></div>
-                                            <div class="row text-center"></div>
-                                        </div>
                                         <div class="row et-car-floor">
                                             <div class="et-col-1-18 et-car-floor-full-height">
                                                 <div class="et-bed-way et-full-width"></div>
@@ -252,24 +228,13 @@
                                                 <div class="et-train-lamp text-center ng-binding" style="color: rgb(85, 85, 85);"><?php echo $each->getMaTau() ?></div>
                                             </div>
                                             <div class="et-train-head-info">
-                                                <div class="row et-no-margin">
-                                                    <span class="pull-left et-bold ng-binding">TG đi: </span>
-                                                    <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
+                                                <div class="row et-no-margin" style="flex-wrap: wrap !important; margin-top: 5px!important; margin-bottom:5px!important;">
+                                                    <span class="pull-left et-bold ng-binding">Thời gian khởi hành</span>
+                                                    <span style="" class="pull-right ng-binding"><?php echo $each->getThoiGianXuatPhat() ?></span>
                                                 </div>
-                                                <div class="row et-no-margin">
-                                                    <span class="pull-left et-bold ng-binding">TG chạy: </span>
-                                                    <span class="pull-right"></span>
-                                                    <span style="margin-left: 20%;" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
-                                                </div>
-                                                <div class="row et-no-margin">
-                                                    <div class="et-col-50">
-                                                        <div class="et-text-sm ng-binding">SL chỗ đặt</div>
-                                                        <div class="et-text-large et-bold pull-left ng-binding" style="margin-left: 5px">11</div>
-                                                    </div>
-                                                    <div class="et-col-50 text-center">
-                                                        <div class="et-text-sm ng-binding">SL chỗ trống</div>
-                                                        <div class="et-text-large et-bold pull-right ng-binding" style="margin-right: 5px">218</div>
-                                                    </div>
+                                                <div class="row et-no-margin" style="flex-wrap: wrap !important; margin-top: 5px!important; margin-bottom:5px!important;">
+                                                    <span class="pull-left et-bold ng-binding">Giờ chạy</span>
+                                                    <span style="margin-left: 5px" class="pull-right ng-binding"><?php echo $each->getThoiGianChay() ?></span>
                                                 </div>
                                             </div>
                                             <div class="row et-no-margin">
@@ -325,9 +290,6 @@
                                     // Khoang mềm điều hòa
                                     if ($eachToa->getMaLoaiToa() == "LT001") { ?>
                                         <div id="khoang2" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa() ?>">
-                                            <div class="et-full-width et-car-loading ng-hide">
-                                                <div class="row text-capitalize text-center"></div>
-                                            </div>
                                             <div class="row et-car-floor">
                                                 <div class="et-car-door"></div>
                                                 <div class="et-car-nm-64-half-block">
@@ -361,12 +323,6 @@
                                     // Khoang giường nằm 6 điều hòa
                                     elseif ($eachToa->getMaLoaiToa() == "LT002") { ?>
                                         <div id="khoang1" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa() ?>">
-                                            <div class="et-full-width et-car-loading ng-hide">
-                                                <div class="row text-capitalize text-center">
-                                                </div>
-                                                <div class="row text-center">
-                                                </div>
-                                            </div>
                                             <div class="row et-car-floor">
                                                 <div class="et-col-1-18 et-car-floor-full-height">
                                                     <div class="et-bed-way et-full-width"></div>
@@ -412,10 +368,6 @@
                                     // Khoang giường nằm 4 điều hòa
                                     elseif ($eachToa->getMaLoaiToa() == "LT003") { ?>
                                         <div id="khoang3" class="et-col-90 khoang return" style="margin-bottom: 30px;" data-code="<? echo $eachToa->getMaToa() ?>">
-                                            <div class="et-full-width et-car-loading ng-hide">
-                                                <div class="row text-capitalize text-center"></div>
-                                                <div class="row text-center"></div>
-                                            </div>
                                             <div class="row et-car-floor">
                                                 <div class="et-col-1-18 et-car-floor-full-height">
                                                     <div class="et-bed-way et-full-width"></div>
@@ -642,7 +594,7 @@
                         </div>
                     <?php } ?>
                 </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 10px;">Mua vé</button>
+                <button type="submit" class="btn btn-primary text-button" style="margin-top: 10px; overflow: hidden !important;">Mua vé</button>
             </div>
         </form>
 
@@ -791,7 +743,7 @@
                             <label class="form-check-label">Khứ hồi</label>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Tìm vé</button>
+                    <button type="submit" class="btn btn-primary text-button">Tìm vé</button>
                 </form>
             </div>
         </et-search-pane>
