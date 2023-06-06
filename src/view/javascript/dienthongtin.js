@@ -218,6 +218,7 @@ document.addEventListener("DOMContentLoaded", function () {
             //Giá đi
             var giaVeChieuDi = document.createElement("div");
             giaVeChieuDi.id = "giaVeChieuDi" + i;
+            giaVeChieuDi.className = "common-class";
             giaVeChieuDi.textContent = parseFloat(gheDiObject.Gia).toLocaleString('en-US');
             giaVeChieuDi.value = gheDiObject.Gia;
             gia.appendChild(giaVeChieuDi);
@@ -232,6 +233,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (i < dsGheVeArray.length) {
                         var giaVeChieuVe = document.createElement("div");
                         giaVeChieuVe.id = "giaVeChieuVe" + i;
+                        giaVeChieuVe.className = "common-class";
                         giaVeChieuVe.textContent = parseFloat(gheVeObject.Gia).toLocaleString('en-US');
                         giaVeChieuVe.value = gheVeObject.Gia;
                         gia.appendChild(giaVeChieuVe);
@@ -257,6 +259,7 @@ document.addEventListener("DOMContentLoaded", function () {
             thanhTienChieuDi.type = "text";
             thanhTienChieuDi.id = "thanhTienChieuDi" + i;
             thanhTienChieuDi.name = "thanhTienChieuDi" + i;
+            thanhTienChieuDi.className = "common-class";
             thanhTienChieuDi.textContent = giaVeChieuDi.textContent;
             thanhTienChieuDi.value = parseInt(giaVeChieuDi.value);
             thanhTien.appendChild(thanhTienChieuDi);
@@ -267,6 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 thanhTienChieuVe.type = "text";
                 thanhTienChieuVe.id = "thanhTienChieuVe" + i;
                 thanhTienChieuVe.name = "thanhTienChieuVe" + i;
+                thanhTienChieuVe.className = "common-class";
                 thanhTienChieuVe.textContent = giaVeChieuVe.textContent;
                 thanhTienChieuVe.value = parseInt(giaVeChieuVe.value);
                 thanhTien.appendChild(thanhTienChieuVe);
@@ -490,6 +494,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     if (i < dsGheDiArray.length) {
                         var giaVeChieuDi = document.createElement("div");
                         giaVeChieuDi.id = "giaVeChieuDi" + i;
+                        giaVeChieuDi.className = "common-class";
                         giaVeChieuDi.textContent = parseFloat(gheDiObject.Gia).toLocaleString('en-US');
                         giaVeChieuDi.value = gheDiObject.Gia;
                         gia.appendChild(giaVeChieuDi);
@@ -500,6 +505,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 //Giá về
                 var giaVeChieuVe = document.createElement("div");
                 giaVeChieuVe.id = "giaVeChieuVe" + i;
+                giaVeChieuVe.className = "common-class";
                 giaVeChieuVe.textContent = parseFloat(gheVeObject.Gia).toLocaleString('en-US');
                 giaVeChieuVe.value = gheVeObject.Gia;
                 gia.appendChild(giaVeChieuVe);
@@ -523,6 +529,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 thanhTienChieuDi.type = "text";
                 thanhTienChieuDi.id = "thanhTienChieuDi" + i;
                 thanhTienChieuDi.name = "thanhTienChieuDi" + i;
+                thanhTienChieuDi.className = "common-class";
                 thanhTienChieuDi.textContent = giaVeChieuDi.textContent;
                 thanhTienChieuDi.value = parseInt(giaVeChieuDi.value);
                 thanhTien.appendChild(thanhTienChieuDi);
@@ -533,6 +540,7 @@ document.addEventListener("DOMContentLoaded", function () {
             thanhTienChieuVe.type = "text";
             thanhTienChieuVe.id = "thanhTienChieuVe" + i;
             thanhTienChieuVe.name = "thanhTienChieuVe" + i;
+            thanhTienChieuVe.className = "common-class";
             thanhTienChieuVe.textContent = giaVeChieuVe.textContent;
             thanhTienChieuVe.value = parseInt(giaVeChieuVe.value);
             thanhTien.appendChild(thanhTienChieuVe);
@@ -783,7 +791,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-
+        //window.location = "/?page=xacnhan";
     }
 }
 

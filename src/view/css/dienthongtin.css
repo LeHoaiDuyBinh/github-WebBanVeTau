@@ -66,3 +66,15 @@ select {
   }
 }
 
+.common-class {
+  flex: 1 0 100%;
+  text-align: right; 
+  margin-bottom: 90px;
+}
+.common-class:nth-child(2) {
+  flex-basis: 100%;
+  text-align: right; /* Các chữ nằm bên phải */
+  margin-top: 100px; /* Khoảng cách trên div */
+  
+}
+

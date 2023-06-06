@@ -367,6 +367,10 @@ form.addEventListener('submit', function (event) {
         event.preventDefault();
         var maGheDiElements = form.elements['maGheDi[]'];
         var maGheDiValues = [];
+        if (maGheDiElements.length === undefined) {
+            // Nếu chỉ có một phần tử, tạo một mảng chứa đối tượng đó
+            maGheDiElements = [maGheDiElements];
+        }
         for (var i = 0; i < maGheDiElements.length; i++) {
             var maGheDiValue = maGheDiElements[i].value;
             maGheDiValues.push(maGheDiValue);
@@ -434,7 +438,7 @@ form.addEventListener('submit', function (event) {
             xhr.open("POST", form.action, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
-            window.location = form.action;
+            //window.location = form.action;
         }
     }
 

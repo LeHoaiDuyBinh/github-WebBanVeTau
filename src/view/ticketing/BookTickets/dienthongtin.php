@@ -16,8 +16,9 @@
             </tr>
           </thead>
           <!-- add DB từ trang tìm vé-->
-          <?php var_dump($arrDi);
-          var_dump($arrVe) ?>
+          <?php 
+          var_dump($arrDi);
+          var_dump($arrVe)?>
           <!-- DB chiều đi-->
           <?php foreach ($arrDi as $each) : ?>
             <div class="chieuDi" name="maChuyenTau" data-ma-chuyen-tau="<?php echo $each->getMaChuyenTau(); ?>"></div>
@@ -27,12 +28,12 @@
             <?php $dsGheDi = []; // Mảng chứa dữ liệu được chuyển đổi
             $tongDi = 0;
             foreach ($each->getdsGhe() as $ghe) {
-              $gheDiData = [                
+              $gheDiData = [
                 "MaChoNgoi" => $ghe->getMaChoNgoi(),
                 "MaToa" => $ghe->getMaToa(),
                 "TenLoaiToa" => $ghe->getTenLoaiToa(),
                 "ThuTuToa" => $ghe->getThuTuToa(),
-                "Gia" => $ghe->getGia()                
+                "Gia" => $ghe->getGia()
               ];
               $dsGheDi[] = $gheDiData;
               $tongDi += $ghe->getGia();
@@ -52,7 +53,7 @@
               <?php $dsGheVe = []; // Mảng chứa dữ liệu được chuyển đổi
               $tongVe = 0;
               foreach ($each->getdsGhe() as $ghe) {
-                $gheVeData = [                  
+                $gheVeData = [
                   "MaChoNgoi" => $ghe->getMaChoNgoi(),
                   "MaToa" => $ghe->getMaToa(),
                   "TenLoaiToa" => $ghe->getTenLoaiToa(),
@@ -87,7 +88,7 @@
               </td>
               <!--giá trị tổng tiền-->
               <td class="text-right">
-                <strong class="ng-binding tongTien" id="tongTien"><?php echo number_format($tongDi + $tongVe, 0, '.', ',');?></strong>
+                <strong class="ng-binding tongTien" id="tongTien"><?php echo number_format($tongDi + $tongVe, 0, '.', ','); ?></strong>
               </td>
 
             </tr>
