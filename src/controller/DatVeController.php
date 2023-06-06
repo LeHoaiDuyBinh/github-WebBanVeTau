@@ -21,6 +21,13 @@
             include 'view/ticketing/BookTickets/dienthongtin.php';
         }
         public function xacnhan(){
-            include 'view/ticketing/BookTickets/xacnhan.php';
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+				$jsonData = file_get_contents('php://input');
+                $data = json_decode($jsonData);
+                $_SESSION['data_xacnhan']=$data;
+			}
+            $Ve=$_SESSION['data_xacnhan']->nguoiNgoi;
+            var_dump($Ve);
+            //include 'view/ticketing/BookTickets/xacnhan.php';
         }
     }

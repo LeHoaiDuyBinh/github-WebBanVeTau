@@ -791,7 +791,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        //window.location = "/?page=xacnhan";
+        window.location = "/?page=xacnhan";
     }
 }
 
