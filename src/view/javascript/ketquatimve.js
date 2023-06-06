@@ -438,7 +438,7 @@ form.addEventListener('submit', function (event) {
             xhr.open("POST", form.action, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
-            //window.location = form.action;
+            window.location = form.action;
         }
     }
 
