@@ -26,6 +26,20 @@
                             <label for="email">Email:</label>
                             <span><?php echo $thongTinNguoiDat->email; ?></span>
                         </div>
+
+                        <div class="form-row">
+                            <label for="thanhToan">Phương thức thanh toán:</label>
+                            <span>
+                                <?php
+                                if ($thongTinNguoiDat->thanhToan === "QR") {
+                                    echo "Quét mã QR";
+                                } elseif ($thongTinNguoiDat->thanhToan === "traSau") {
+                                    echo "Thanh toán trả sau";
+                                }
+                                ?>
+                            </span>
+                        </div>
+
                         <h2>Thông tin vé mua</h2>
                         <table>
                             <tr>
