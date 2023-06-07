@@ -730,7 +730,7 @@ function apDungVoucher() {
 
 function quayLai() {
     history.back(); // Quay lại trang trước đó trong lịch sử duyệt
-}  
+}
 
 //Kiểm tra các ràng buộc
 function tiepTheo(event) {
@@ -809,13 +809,14 @@ function combineForms(id) {
         for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
             var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
             if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
-                nguoiNgoi[inputNguoiNgoi.name] = inputNguoiNgoi.value;
+                var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
+                nguoiNgoi[fieldName] = inputNguoiNgoi.value;
             }
         }
 
         var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
         var doiTuongGiamValue = doiTuongGiam.value;
-        nguoiNgoi["doiTuongGiam" + i] = doiTuongGiamValue;
+        nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
 
         if (i < lenArrDi()) {
             // Lấy thông tin từ div thongTinDi
@@ -830,7 +831,10 @@ function combineForms(id) {
                 tenLoaiToa: divThongTinDi.dataset.tenLoaiToa
             };
             var thanhTienChieuDiValue = document.getElementById("thanhTienChieuDi" + i).value;
-            nguoiNgoi["thanhTienChieuDi" + i] = thanhTienChieuDiValue;
+            nguoiNgoi["thanhTienChieuDi"] = thanhTienChieuDiValue;
+
+            var giaVeChieuDiValue = document.getElementById("giaVeChieuDi" + i).value;
+            nguoiNgoi["giaVeChieuDi"] = parseInt(giaVeChieuDiValue);
         }
         if (i < lenArrVe()) {
             // Lấy thông tin từ div thongTinVe
@@ -845,7 +849,9 @@ function combineForms(id) {
                 tenLoaiToa: divThongTinVe.dataset.tenLoaiToa
             };
             var thanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
-            nguoiNgoi["thanhTienChieuVe" + i] = thanhTienChieuVeValue;
+            nguoiNgoi["thanhTienChieuVe"] = thanhTienChieuVeValue;
+            var giaVeChieuVeValue = document.getElementById("giaVeChieuVe" + i).value;
+            nguoiNgoi["giaVeChieuVe"] = parseInt(giaVeChieuVeValue);
         }
         formData.nguoiNgoi.push(nguoiNgoi);
     }

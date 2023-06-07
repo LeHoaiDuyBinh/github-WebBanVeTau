@@ -27,7 +27,8 @@
                 $_SESSION['data_xacnhan']=$data;
 			}
             $Ve=$_SESSION['data_xacnhan']->nguoiNgoi;
-            var_dump($Ve);
-            //include 'view/ticketing/BookTickets/xacnhan.php';
+            //var_dump($Ve);
+            $thongTinNguoiDat=$_SESSION['data_xacnhan']->thongTinNguoiDat;
+            include 'view/ticketing/BookTickets/xacnhan.php';
         }
     }
