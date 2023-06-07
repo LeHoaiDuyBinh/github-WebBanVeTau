@@ -729,8 +729,8 @@ function apDungVoucher() {
 }
 
 function quayLai() {
-    window.location.href = "?page=ketquatimve";
-}
+    history.back(); // Quay lại trang trước đó trong lịch sử duyệt
+}  
 
 //Kiểm tra các ràng buộc
 function tiepTheo(event) {
@@ -791,7 +791,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        //window.location = "/?page=xacnhan";
+        window.location = "/?page=xacnhan";
     }
 }
 
