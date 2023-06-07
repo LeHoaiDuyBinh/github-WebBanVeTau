@@ -6,6 +6,7 @@
                 <h1>Xác nhận thông tin đặt mua vé tàu</h1>
                 <div class="form-container">
                     <h2>Thông tin người mua vé</h2>
+                    
                     <form>
                         <div class="form-row">
                             <label for="name">Họ và tên:</label>
@@ -55,7 +56,11 @@
                                         <td style="text-align: center;"><?php echo $count += 1; ?></td>
                                         <td>
                                             Họ và tên: <?php echo $item->tenNguoiNgoi; ?><br>
-                                            Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
+                                            <?php if (isset($item->cccdNguoiNgoi) && !empty($item->cccdNguoiNgoi)) { ?>
+                                                Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
+                                                <?php
+                                            } else { ?>Ngày sinh: <?php echo date("d/m/Y", strtotime($item->ngayThang)); ?><br>
+                                            <?php } ?>
                                             Đối tượng: <?php
                                                         $doiTuongGiam = $item->doiTuongGiam;
                                                         if ($doiTuongGiam === "treEm") {
@@ -68,9 +73,8 @@
                                             Hành trình: <?php echo $item->thongTinDi->gaXuatPhat; ?> - <?php echo $item->thongTinDi->gaDen; ?>
                                             <?php echo date("d/m/Y H:i", strtotime($item->thongTinDi->thoiGian)); ?>
                                             Toa <?php echo $item->thongTinDi->thuTuToa; ?>
-                                            Chỗ ngồi <?php echo substr($item->thongTinDi->maChoNgoi, -3); ?>
+                                            Chỗ ngồi <?php echo substr($item->thongTinDi->maChoNgoi, -2); ?>
                                             <?php echo $item->thongTinDi->tenLoaiToa; ?><br>
-
                                         </td>
                                         <td style="text-align: right;"><?php echo number_format($item->giaVeChieuDi); ?></td>
                                         <td style="text-align: right;"><?php echo number_format($item->thanhTienChieuDi); ?></td>
@@ -81,7 +85,11 @@
                                         <td style="text-align: center;"><?php echo $count += 1; ?></td>
                                         <td>
                                             Họ và tên: <?php echo $item->tenNguoiNgoi; ?><br>
-                                            Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
+                                            <?php if (isset($item->cccdNguoiNgoi) && !empty($item->cccdNguoiNgoi)) { ?>
+                                                Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
+                                                <?php
+                                            } else { ?>Ngày sinh: <?php echo date("d/m/Y", strtotime($item->ngayThang)); ?><br>
+                                            <?php } ?>
                                             Đối tượng: <?php
                                                         $doiTuongGiam = $item->doiTuongGiam;
                                                         if ($doiTuongGiam === "treEm") {
@@ -94,7 +102,7 @@
                                             Hành trình: <?php echo $item->thongTinVe->gaXuatPhat; ?> - <?php echo $item->thongTinVe->gaDen; ?>
                                             <?php echo date("d/m/Y H:i", strtotime($item->thongTinVe->thoiGian)); ?>
                                             Toa <?php echo $item->thongTinVe->thuTuToa; ?>
-                                            Chỗ ngồi <?php echo substr($item->thongTinVe->maChoNgoi, -3); ?>
+                                            Chỗ ngồi <?php echo substr($item->thongTinVe->maChoNgoi, -2); ?>
                                             <?php echo $item->thongTinVe->tenLoaiToa; ?><br>
 
                                         </td>

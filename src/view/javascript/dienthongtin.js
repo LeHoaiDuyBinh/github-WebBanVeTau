@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var gheDiObject = dsGheDiArray[i];
             var tenLoaiToa = gheDiObject.TenLoaiToa;
             var thuTuToa = gheDiObject.ThuTuToa;
-            var choNgoi = gheDiObject.MaChoNgoi.slice(-3);
+            var choNgoi = gheDiObject.MaChoNgoi.slice(-2);
 
             var divMaChuyenTauDi = document.querySelector('div[name="maChuyenTau"].chieuDi');
             var maChuyenTauDiValue = divMaChuyenTauDi.dataset.maChuyenTau;
@@ -149,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function () {
             thongTinDi.dataset.tenLoaiToa = tenLoaiToa;
 
             thongTinDi.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
-                " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+                " Toa " + thuTuToa + " Chỗ ngồi " + choNgoi + " " + tenLoaiToa;
             thongTin.append(thongTinDi);
             thongTin.appendChild(lineBreak);
 
@@ -187,7 +187,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var gheVeObject = dsGheVeArray[i];
                         var tenLoaiToa = gheVeObject.TenLoaiToa;
                         var thuTuToa = gheVeObject.ThuTuToa;
-                        var choNgoi = gheVeObject.MaChoNgoi.slice(-3);
+                        var choNgoi = gheVeObject.MaChoNgoi.slice(-2);
 
                         var divMaChuyenTauVe = document.querySelector('div[name="maChuyenTau"].chieuVe');
                         var maChuyenTauVeValue = divMaChuyenTauVe.dataset.maChuyenTau;
@@ -204,7 +204,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         thongTinVe.dataset.tenLoaiToa = tenLoaiToa;
 
                         thongTinVe.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
-                            " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+                            " Toa " + thuTuToa + " Chỗ ngồi " + choNgoi + " " + tenLoaiToa;
                         thongTin.append(thongTinVe);
                     }
                 } catch (error) {
@@ -413,7 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var gheDiObject = dsGheDiArray[i];
                         var tenLoaiToa = gheDiObject.TenLoaiToa;
                         var thuTuToa = gheDiObject.ThuTuToa;
-                        var choNgoi = gheDiObject.MaChoNgoi.slice(-3);
+                        var choNgoi = gheDiObject.MaChoNgoi.slice(-2);
 
                         var divMaChuyenTauDi = document.querySelector('div[name="maChuyenTau"].chieuDi');
                         var maChuyenTauDiValue = divMaChuyenTauDi.dataset.maChuyenTau;
@@ -429,7 +429,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         thongTinDi.dataset.thuTuToa = thuTuToa;
                         thongTinDi.dataset.tenLoaiToa = tenLoaiToa;
                         thongTinDi.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
-                            " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+                            " Toa " + thuTuToa + " Chỗ ngồi " + choNgoi + " " + tenLoaiToa;
                         thongTin.append(thongTinDi);
                         thongTin.appendChild(lineBreak);
                     }
@@ -461,7 +461,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var gheVeObject = dsGheVeArray[i];
                 var tenLoaiToa = gheVeObject.TenLoaiToa;
                 var thuTuToa = gheVeObject.ThuTuToa;
-                var choNgoi = gheVeObject.MaChoNgoi.slice(-3);
+                var choNgoi = gheVeObject.MaChoNgoi.slice(-2);
 
                 var divMaChuyenTauVe = document.querySelector('div[name="maChuyenTau"].chieuVe');
                 var maChuyenTauVeValue = divMaChuyenTauVe.dataset.maChuyenTau;
@@ -477,7 +477,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 thongTinVe.dataset.tenLoaiToa = tenLoaiToa;
                 thongTinVe.id = "thongTinVe" + i;
                 thongTinVe.textContent = "Hành trình: " + gaXuatPhatValue + " - " + gaDenValue + " " + formattedDate +
-                    " Toa " + thuTuToa + " Chỗ ngồi: " + choNgoi + " " + tenLoaiToa;
+                    " Toa " + thuTuToa + " Chỗ ngồi " + choNgoi + " " + tenLoaiToa;
                 thongTin.append(thongTinVe);
             }
             tableRow.appendChild(thongTin);
