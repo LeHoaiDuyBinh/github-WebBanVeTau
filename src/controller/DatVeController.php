@@ -31,4 +31,10 @@
             $thongTinNguoiDat=$_SESSION['data_xacnhan']->thongTinNguoiDat;
             include 'view/ticketing/BookTickets/xacnhan.php';
         }
+        public function hienthongtin() {
+            include 'view/ticketing/BookTickets/hienthongtin.php';
+        }
+        public function qrcode() {
+            include 'view/ticketing/BookTickets/qrcode.php';
+        }
     }
