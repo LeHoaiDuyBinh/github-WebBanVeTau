@@ -14,7 +14,6 @@ include_once "./model/db.php";
                 return $maDatCho;
                 }
             catch (PDOException $e) {
-                mp($e);
                 return  $sql . "<br>" . $e->getMessage();
             }
         }
