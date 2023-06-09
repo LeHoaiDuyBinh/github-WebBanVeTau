@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="/view/css/hienthongtin.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="body-page">
+    <?var_dump($arr)?>
     <h1 class="title"><strong>THÔNG TIN VÉ</strong></h1>
     <div class="row">
         <div class="colume1">
