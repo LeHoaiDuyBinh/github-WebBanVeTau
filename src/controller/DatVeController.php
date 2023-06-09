@@ -34,12 +34,13 @@
         public function thanhToan(){
             if(isset($_GET['HinhThuc'])){
                 $HinhThuc=$_GET['HinhThuc'];
-                if($HinhThuc==="MaQR"){
+                if($HinhThuc==="QR"){
                     $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
                     include 'view/ticketing/BookTickets/qrcode.php';                   
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
                     //include
+
                 }
                 else{
                     include 'view/403.html';
@@ -51,12 +52,33 @@
             }
         }
         public function addInfo(){
-            
-        }
-        public function hienthongtin() {
-            include 'view/ticketing/BookTickets/hienthongtin.php';
-        }
-        public function qrcode() {
-            include 'view/ticketing/BookTickets/qrcode.php';
+            if(count($_SESSION[session_id()]->thongTinNguoiDat)>0){
+                $data=$_SESSION[session_id()]->thongTinNguoiDat;
+                $thongTinKhacHang=$_SESSION[session_id()]->nguoiNgoi;
+                include_once './model/DatVeModel/NguoiDatVe.php';
+                include_once './model/DatVeModel/KhachHang.php';
+                include_once './model/DatVeModel/ThongTinDatCho.php';
+
+                (new NguoiDatVe)->insert(array($data->fullname,$data->idnumber,$data->phone,$data->email));
+                $arr = (new NguoiDatVe)->select($data->idnumber);
+                $ID_NguoiDatCho=$arr[0]->getID_NguoiDatCho();
+                (new KhachHang)->insert(array($thongTinKhacHang->HoTen, $thongTinKhacHang->CCCD, $thongTinKhacHang->NgaySinh, $thongTinKhacHang->MaChoNgoi, $thongTinKhacHang->TienVe, $thongTinKhacHang->MaChuyenTau,$ID_NguoiDatCho));
+                $sum=0;
+                foreach($thongTinKhacHang as $each){
+                    $sum+=$each->TienVe;
+                }
+                if($data->thanhToan=="traSau")
+                    $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,0);
+                elseif($data->thanhToan=="QR"){
+                    $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
+                    (new ThanhToan)->insert($maDatCho,$data->thanhToan);
+                    foreach($thongTinKhacHang as $each){
+                        (new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
+                    }
+
+                }
+                
+            }
+
         }
     }
