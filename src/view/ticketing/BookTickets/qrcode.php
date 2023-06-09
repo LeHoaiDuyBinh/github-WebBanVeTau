@@ -29,7 +29,7 @@
     }
     #qr-code {
         width: 40%;
-        height: 60%;
+        height: 70%;
         border: 7px solid #01b3a7;
         border-radius: 5px;
         background-color: white;
