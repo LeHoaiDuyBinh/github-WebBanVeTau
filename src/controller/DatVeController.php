@@ -79,8 +79,9 @@
                 elseif($data->thanhToan=="QR"){
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
                     (new ThanhToan)->insert($maDatCho,$data->thanhToan);
+                    $_SESSION[session_id()."maVe"]=[];
                     foreach($thongTinKhacHang as $each){
-                        $_SESSION[session_id()."maVe"]=(new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
+                        $_SESSION[session_id()."maVe"][]=(new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
                     }
                 }
                 

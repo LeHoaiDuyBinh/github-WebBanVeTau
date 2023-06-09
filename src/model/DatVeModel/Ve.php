@@ -19,9 +19,10 @@ include_once "VeObject.php";
         }
         function select($maVe){
             try {
+                $placeholders = rtrim(str_repeat('?,', count($maVe)), ',');
                 $db = new DB();
-                $sql = "select MaVe,HoTen,Ve.MaChuyenTau,Ve.MaChoNgoi,MaTau,MaToa,ThoiGianXuatPhat from KhachHang,Ve,ChuyenTau,ChoNgoi where KhachHang.MaChuyenTau=Ve.MaChuyenTau and KhachHang.MaChoNgoi=Ve.MaChoNgoi and ChuyenTau.MaChuyenTau=Ve.MaChuyenTau and ChoNgoi.MaChoNgoi=Ve.MaChoNgoi and MaVe=?";
-                $sth = $db->select($sql, array($maVe));
+                $sql = "select MaVe,HoTen,Ve.MaChuyenTau,Ve.MaChoNgoi,MaTau,MaToa,ThoiGianXuatPhat from KhachHang,Ve,ChuyenTau,ChoNgoi where KhachHang.MaChuyenTau=Ve.MaChuyenTau and KhachHang.MaChoNgoi=Ve.MaChoNgoi and ChuyenTau.MaChuyenTau=Ve.MaChuyenTau and ChoNgoi.MaChoNgoi=Ve.MaChoNgoi and MaVe IN ($placeholders)";
+                $sth = $db->select($sql, $maVe);
                 $arr = [];
                 while($row = $sth->fetch()) {
                     $obj = new VeObject($row);
@@ -30,6 +31,7 @@ include_once "VeObject.php";
                     return $arr;
                 }
             catch (PDOException $e) {
+                var_dump($e);
                 return  $sql . "<br>" . $e->getMessage();
             }
         }
