@@ -1,12 +1,12 @@
 <?php 
 include_once "./model/db.php";
 include_once "NguoiDatVeObject.php";
-    class NguoiDatVe{
-        function insert($thongTinNguoiDat){
+    class KhachHang{
+        function insert($thongTinKhachHang){
             try {
                 $db = new DB();
-                $sql="insert into NguoiDatCho(HoTen, CCCD, SDT, Email) values (?, ?, ?, ?)";
-                $db->execute($sql,$thongTinNguoiDat);
+                $sql="insert into KhachHang(HoTen, CCCD, NgaySinh, MaChoNgoi, TienVe, MaChuyenTau, ID_NguoiDatCho) values (?, ?, ?, ?, ?, ?, ?)";
+                $db->execute($sql,$thongTinKhachHang);
                 }
             catch (PDOException $e) {
                 return  $sql . "<br>" . $e->getMessage();
