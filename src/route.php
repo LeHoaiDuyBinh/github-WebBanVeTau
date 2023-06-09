@@ -226,12 +226,18 @@ switch ($type) {
                 case 'xacnhan':
                     (new DatVeController)->xacnhan();
                     break;
-                case 'qrcode':
-                    (new DatVeController)->qrcode();
+                // case 'qrcode':
+                //     (new DatVeController)->qrcode();
+                //     break;
+                // case 'hienthongtin':
+                //     (new DatVeController)->hienthongtin();
+                //     break;
+                case 'thanhToan':
+                    (new DatVeController)->thanhToan();
                     break;
-                case 'hienthongtin':
-                    (new DatVeController)->hienthongtin();
-                    break;
+                case 'loadInfor':
+                    (new DatVeController)->loadInfor();
+                    break;    
                     
                 default:
                     (new Controller)->home();

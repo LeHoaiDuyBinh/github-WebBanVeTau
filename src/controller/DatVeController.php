@@ -34,12 +34,14 @@
         public function thanhToan(){
             if(isset($_GET['HinhThuc'])){
                 $HinhThuc=$_GET['HinhThuc'];
-                if($HinhThuc==="MaQR"){
+                if($HinhThuc==="QR"){
                     $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
-                    include 'view/ticketing/BookTickets/qrcode.php';                   
+                    include 'view/ticketing/BookTickets/qrcode.php';
+                    $_SESSION[session_id()."count"]=0;
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
                     //include
+
                 }
                 else{
                     include 'view/403.html';
@@ -51,12 +53,48 @@
             }
         }
         public function addInfo(){
-            
+            $_SESSION[session_id()."count"]=1;
+            if($_SESSION[session_id()]->thongTinNguoiDat !=NULL){
+                $data=$_SESSION[session_id()]->thongTinNguoiDat;
+                $thongTinKhacHang=$_SESSION[session_id()]->nguoiNgoi;
+                include_once './model/DatVeModel/NguoiDatVe.php';
+                include_once './model/DatVeModel/KhachHang.php';
+                include_once './model/DatVeModel/ThongTinDatCho.php';
+                include_once './model/DatVeModel/ThanhToan.php';
+                include_once './model/DatVeModel/Ve.php';
+
+                (new NguoiDatVe)->insert(array($data->HoTen,$data->CCCD,$data->SDT,$data->Email));
+                $arr = (new NguoiDatVe)->select($data->CCCD);
+                $ID_NguoiDatCho=$arr[0]->getID_NguoiDatCho();
+                foreach($thongTinKhacHang as $each){
+                    (new KhachHang)->insert(array($each->HoTen, $each->CCCD, $each->NgaySinh, $each->MaChoNgoi, $each->TienVe, $each->MaChuyenTau,(int)$ID_NguoiDatCho));
+                }
+               
+                $sum=0;
+                foreach($thongTinKhacHang as $each){
+                    $sum+=$each->TienVe;
+                }
+                if($data->thanhToan=="traSau")
+                    $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,0);
+                elseif($data->thanhToan=="QR"){
+                    $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
+                    (new ThanhToan)->insert($maDatCho,$data->thanhToan);
+                    $_SESSION[session_id()."maVe"]=[];
+                    foreach($thongTinKhacHang as $each){
+                        $_SESSION[session_id()."maVe"][]=(new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
+                    }
+                }
+                
+            }
+
         }
-        public function hienthongtin() {
-            include 'view/ticketing/BookTickets/hienthongtin.php';
-        }
-        public function qrcode() {
-            include 'view/ticketing/BookTickets/qrcode.php';
+        public function loadInfor(){     
+            if($_SESSION[session_id()."count"]==0){
+                $this->addInfo();                   
+            }
+            include_once './model/DatVeModel/Ve.php';
+            $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
+            include 'view/ticketing/BookTickets/hienthongtin.php';                   
+            //var_dump($arr);
         }
     }

@@ -22,13 +22,13 @@ document.addEventListener("DOMContentLoaded", function () {
             inputRowDiv.className = "input-row";
 
             var nameLabel = document.createElement("label");
-            nameLabel.setAttribute("for", "tenNguoiNgoi" + i); // Thêm biến đếm vào tên trường input
+            nameLabel.setAttribute("for", "HoTen" + i); // Thêm biến đếm vào tên trường input
             nameLabel.textContent = "Họ và tên";
 
             var nameInput = document.createElement("input");
             nameInput.type = "text";
-            nameInput.id = "tenNguoiNgoi" + i; // Thêm biến đếm vào id trường input
-            nameInput.name = "tenNguoiNgoi" + i; // Thêm biến đếm vào tên trường input
+            nameInput.id = "HoTen" + i; // Thêm biến đếm vào id trường input
+            nameInput.name = "HoTen" + i; // Thêm biến đếm vào tên trường input
 
             inputRowDiv.appendChild(nameLabel);
             inputRowDiv.appendChild(nameInput);
@@ -57,36 +57,36 @@ document.addEventListener("DOMContentLoaded", function () {
             doiTuongSelect.appendChild(option2);
             doiTuongSelect.appendChild(option3);
 
-            var ngayThangContainer = document.createElement("div");
-            ngayThangContainer.id = "ngayThangContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
-            //ngayThangContainer.style.display = "none";
+            var NgaySinhContainer = document.createElement("div");
+            NgaySinhContainer.id = "NgaySinhContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
+            //NgaySinhContainer.style.display = "none";
 
-            var ngayThangLabel = document.createElement("label");
-            ngayThangLabel.setAttribute("for", "ngayThang" + i); // Thêm biến đếm vào tên trường input ngày tháng
-            ngayThangLabel.textContent = "Ngày tháng";
+            var NgaySinhLabel = document.createElement("label");
+            NgaySinhLabel.setAttribute("for", "NgaySinh" + i); // Thêm biến đếm vào tên trường input ngày tháng
+            NgaySinhLabel.textContent = "Ngày tháng";
 
-            var ngayThangInput = document.createElement("input");
-            ngayThangInput.type = "date";
-            ngayThangInput.name = "ngayThang" + i; // Thêm biến đếm vào tên trường input ngày tháng
-            ngayThangInput.id = "ngayThang" + i; // Thêm biến đếm vào id trường input ngày tháng
-            ngayThangInput.setAttribute("onchange", "updateTotal(" + i + ")");
+            var NgaySinhInput = document.createElement("input");
+            NgaySinhInput.type = "date";
+            NgaySinhInput.name = "NgaySinh" + i; // Thêm biến đếm vào tên trường input ngày tháng
+            NgaySinhInput.id = "NgaySinh" + i; // Thêm biến đếm vào id trường input ngày tháng
+            NgaySinhInput.setAttribute("onchange", "updateTotal(" + i + ")");
 
-            ngayThangContainer.appendChild(ngayThangLabel);
-            ngayThangContainer.appendChild(ngayThangInput);
+            NgaySinhContainer.appendChild(NgaySinhLabel);
+            NgaySinhContainer.appendChild(NgaySinhInput);
 
             var cccdContainer = document.createElement("div");
             cccdContainer.id = "CCCDContainer" + i; // Thêm biến đếm vào id phần tử CCCD container
             cccdContainer.style.display = "block";
 
             var cccdLabel = document.createElement("label");
-            cccdLabel.setAttribute("for", "cccdNguoiNgoi" + i); // Thêm biến đếm vào tên trường input CCCD
+            cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
             cccdLabel.textContent = "Số CCCD/Hộ chiếu";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
-            cccdInput.id = "cccdNguoiNgoi" + i; // Thêm biến đếm vào id trường input CCCD
-            cccdInput.name = "cccdNguoiNgoi" + i; // Thêm biến đếm vào tên trường input CCCD
+            cccdInput.id = "CCCD" + i; // Thêm biến đếm vào id trường input CCCD
+            cccdInput.name = "CCCD" + i; // Thêm biến đếm vào tên trường input CCCD
 
             cccdContainer.appendChild(cccdLabel);
             cccdContainer.appendChild(cccdInput);
@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             form.appendChild(lineBreak);
             form.appendChild(doiTuongLabel);
             form.appendChild(doiTuongSelect);
-            form.appendChild(ngayThangContainer);
+            form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
             //formContainer.appendChild(form); // Gắn form vào phần tử container
@@ -297,13 +297,13 @@ document.addEventListener("DOMContentLoaded", function () {
             inputRowDiv.className = "input-row";
 
             var nameLabel = document.createElement("label");
-            nameLabel.setAttribute("for", "tenNguoiNgoi" + i); // Thêm biến đếm vào tên trường input
+            nameLabel.setAttribute("for", "HoTen" + i); // Thêm biến đếm vào tên trường input
             nameLabel.textContent = "Họ và tên";
 
             var nameInput = document.createElement("input");
             nameInput.type = "text";
-            nameInput.id = "tenNguoiNgoi" + i; // Thêm biến đếm vào id trường input
-            nameInput.name = "tenNguoiNgoi" + i; // Thêm biến đếm vào tên trường input
+            nameInput.id = "HoTen" + i; // Thêm biến đếm vào id trường input
+            nameInput.name = "HoTen" + i; // Thêm biến đếm vào tên trường input
 
             inputRowDiv.appendChild(nameLabel);
             inputRowDiv.appendChild(nameInput);
@@ -332,36 +332,36 @@ document.addEventListener("DOMContentLoaded", function () {
             doiTuongSelect.appendChild(option2);
             doiTuongSelect.appendChild(option3);
 
-            var ngayThangContainer = document.createElement("div");
-            ngayThangContainer.id = "ngayThangContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
-            //ngayThangContainer.style.display = "none";
+            var NgaySinhContainer = document.createElement("div");
+            NgaySinhContainer.id = "NgaySinhContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
+            //NgaySinhContainer.style.display = "none";
 
-            var ngayThangLabel = document.createElement("label");
-            ngayThangLabel.setAttribute("for", "ngayThang" + i); // Thêm biến đếm vào tên trường input ngày tháng
-            ngayThangLabel.textContent = "Ngày tháng";
+            var NgaySinhLabel = document.createElement("label");
+            NgaySinhLabel.setAttribute("for", "NgaySinh" + i); // Thêm biến đếm vào tên trường input ngày tháng
+            NgaySinhLabel.textContent = "Ngày tháng";
 
-            var ngayThangInput = document.createElement("input");
-            ngayThangInput.type = "date";
-            ngayThangInput.name = "ngayThang" + i; // Thêm biến đếm vào tên trường input ngày tháng
-            ngayThangInput.id = "ngayThang" + i; // Thêm biến đếm vào id trường input ngày tháng
-            ngayThangInput.setAttribute("onchange", "updateTotal(" + i + ")");
+            var NgaySinhInput = document.createElement("input");
+            NgaySinhInput.type = "date";
+            NgaySinhInput.name = "NgaySinh" + i; // Thêm biến đếm vào tên trường input ngày tháng
+            NgaySinhInput.id = "NgaySinh" + i; // Thêm biến đếm vào id trường input ngày tháng
+            NgaySinhInput.setAttribute("onchange", "updateTotal(" + i + ")");
 
-            ngayThangContainer.appendChild(ngayThangLabel);
-            ngayThangContainer.appendChild(ngayThangInput);
+            NgaySinhContainer.appendChild(NgaySinhLabel);
+            NgaySinhContainer.appendChild(NgaySinhInput);
 
             var cccdContainer = document.createElement("div");
             cccdContainer.id = "CCCDContainer" + i; // Thêm biến đếm vào id phần tử CCCD container
             cccdContainer.style.display = "block";
 
             var cccdLabel = document.createElement("label");
-            cccdLabel.setAttribute("for", "cccdNguoiNgoi" + i); // Thêm biến đếm vào tên trường input CCCD
+            cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
             cccdLabel.textContent = "Số CCCD/Hộ chiếu";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
-            cccdInput.id = "cccdNguoiNgoi" + i; // Thêm biến đếm vào id trường input CCCD
-            cccdInput.name = "cccdNguoiNgoi" + i; // Thêm biến đếm vào tên trường input CCCD
+            cccdInput.id = "CCCD" + i; // Thêm biến đếm vào id trường input CCCD
+            cccdInput.name = "CCCD" + i; // Thêm biến đếm vào tên trường input CCCD
 
             cccdContainer.appendChild(cccdLabel);
             cccdContainer.appendChild(cccdInput);
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
             form.appendChild(lineBreak);
             form.appendChild(doiTuongLabel);
             form.appendChild(doiTuongSelect);
-            form.appendChild(ngayThangContainer);
+            form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
             //formContainer.appendChild(form); // Gắn form vào phần tử container
@@ -552,106 +552,103 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
+//kiểm tra đối tượng
 function doiTuongGiamChange(id) {
     var doiTuongGiam = document.getElementById("doiTuongGiam" + id).value;
-    // var ngayThangContainer = document.getElementById("ngayThangContainer" + id);
+    // var NgaySinhContainer = document.getElementById("NgaySinhContainer" + id);
     // var CCCDContainer = document.getElementById("CCCDContainer" + id);
-    var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
-    var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
-    var khuyenMai = document.getElementById("khuyenMai" + id);
+    // var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
+    // var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
+    // var khuyenMai = document.getElementById("khuyenMai" + id);
 
     //Giá vé mặc định
-    var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi" + i);
-    if (checkDataVe() === true) {
-        var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe" + i);
-    }
+    // var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi" + i);
+    // if (checkDataVe() === true) {
+    //     var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe" + i);
+    // }
     // Không cho chọn ngày lớn hơn ngày hiện tại
-    var ngayThang = document.getElementById("ngayThang" + id);
+    var NgaySinh = document.getElementById("NgaySinh" + id);
     var today = new Date().toISOString().split("T")[0];
-    document.getElementById("ngayThang" + id).setAttribute("max", today);
+    document.getElementById("NgaySinh" + id).setAttribute("max", today);
 
     // Kiểm tra nếu lựa chọn là "nguoiLon" thì trả về giá trị ban đầu
     if (doiTuongGiam === "nguoiLon") {
-        if (id < lenArrDi()) {
-            thanhTienChieuDi.textContent = giaVeChieuDiDefault.textContent;
-            thanhTienChieuDi.value = giaVeChieuDiDefault.value;
+        var age = calculateAge(NgaySinh);
+        if (age >= 60 || age <= 10) {
+            alert("Tuổi không phù hợp với lựa chọn Người lớn. Vui lòng chọn lại ngày tháng sinh.");
+            NgaySinh.value = "";
         }
-        if (id < lenArrVe()) {
-            thanhTienChieuVe.textContent = giaVeChieuVeDefault.textContent;
-            thanhTienChieuVe.value = giaVeChieuVeDefault.value;
+        else {
+            NgaySinh.value = "";
+            updateTotal(id);
         }
-        ngayThang.value = "";
-        khuyenMai.textContent = "Không có khuyến mãi cho vé này";
-        updateTotal(id);
     }
+    else
+        if (doiTuongGiam === "treEm") {
+            var age = calculateAge(NgaySinh);
+            if (age > 10) {
+                alert("Tuổi không phù hợp với lựa chọn Trẻ em. Vui lòng chọn lại ngày tháng sinh.");
+            }
+            NgaySinh.value = "";
+        }
+        else
+            if (doiTuongGiam === "nguoiCaoTuoi") {
+                if (age < 60) {
+                    alert("Tuổi không phù hợp với lựa chọn Người cao tuổi. Vui lòng chọn lại ngày tháng sinh.");
+                }
+                NgaySinh.value = "";
+            }
 }
+
 
 //Tính phần trăm khuyến mãi
 function calculateTotal(id) {
     var doiTuongGiam = document.getElementById("doiTuongGiam" + id).value;
-    var ngayThang = document.getElementById("ngayThang" + id).value;
-    var khuyenMai = document.getElementById("khuyenMai" + id);
-    var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
-    var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
+    var NgaySinh = document.getElementById("NgaySinh" + id);
     var khuyenMai = document.getElementById("khuyenMai" + id);
 
-    //Giá vé mặc định
-    if (i < lenArrDi())
-        var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi" + i);
-    if (i < lenArrVe()) {
-        var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe" + i);
-    }
     //Xét ngày
     var today = new Date().toISOString().split("T")[0];
-    document.getElementById("ngayThang" + i).setAttribute("max", today);
-    document.getElementById("ngayThang" + i).setAttribute("min", "1900-01-01");
+    document.getElementById("NgaySinh" + i).setAttribute("max", today);
+    document.getElementById("NgaySinh" + i).setAttribute("min", "1900-01-01");
 
     if (doiTuongGiam === "treEm") {
-        var age = calculateAge(ngayThang);
+        var age = calculateAge(NgaySinh.value);
         if (age <= 10) {
             khuyenMai.textContent = "Giảm giá 25%";
             giam = 0.25;
         }
         else {
             alert("Tuổi không phù hợp với lựa chọn Trẻ em. Vui lòng chọn lại ngày tháng sinh.");
-            ngayThang.value = "";
+            NgaySinh.value = "";
             giam = 0;
         }
     }
     else
         if (doiTuongGiam === "nguoiCaoTuoi") {
-            var age = calculateAge(ngayThang);
+            var age = calculateAge(NgaySinh.value);
             if (age >= 60) {
                 khuyenMai.textContent = "Giảm giá 15%";
                 giam = 0.15;
             }
             else {
                 alert("Tuổi không phù hợp với lựa chọn Người cao tuổi. Vui lòng chọn lại ngày tháng sinh.");
-                ngayThang.value = "";
+                NgaySinh.value = "";
                 giam = 0;
             }
         }
         else
             if (doiTuongGiam === "nguoiLon") {
-                var age = calculateAge(ngayThang);
-                if (age < 60 && age > 10) {                    
-                    // if (id < lenArrDi()) {
-                    //     thanhTienChieuDi.textContent = giaVeChieuDiDefault.textContent;
-                    //     thanhTienChieuDi.value = giaVeChieuDiDefault.value;
-                    // }
-                    // if (id < lenArrVe()) {
-                    //     thanhTienChieuVe.textContent = giaVeChieuVeDefault.textContent;
-                    //     thanhTienChieuVe.value = giaVeChieuVeDefault.value;
-                    // }
-                    // ngayThang.value = "";
-                    // khuyenMai.textContent = "Không có khuyến mãi cho vé này";
-                    updateTotal(id);
+                var age = calculateAge(NgaySinh.value);
+                if (age >= 60 || age <= 10) {
+                    alert("Tuổi không phù hợp với lựa chọn Người lớn. Vui lòng chọn lại ngày tháng sinh.");
+                    NgaySinh.value = "";
+                    giam = 0;
                 }
-            }
-            else {
-                alert("Tuổi không phù hợp với lựa chọn Người lớn. Vui lòng chọn lại ngày tháng sinh.");
-                ngayThang.value = "";
-                giam = 0;
+                else {
+                    khuyenMai.textContent = "Không có khuyến mãi cho vé này";
+                    giam = 0;
+                }
             }
 
     return giam;
@@ -755,23 +752,19 @@ function tiepTheo(event) {
     } else var numberOfForms = lenArrVe();
 
     for (var i = 0; i < numberOfForms; i++) {
-        var tenNguoiNgoi = document.getElementById("tenNguoiNgoi" + i).value;
-        var cccdNguoiNgoi = document.getElementById("cccdNguoiNgoi" + i).value;
+        var HoTen = document.getElementById("HoTen" + i).value;
+        var CCCD = document.getElementById("CCCD" + i).value;
         var doiTuongGiam = document.getElementById("doiTuongGiam" + i).value;
-        var ngayThang = document.getElementById("ngayThang" + i).value;
-        if (tenNguoiNgoi == "") {
+        var NgaySinh = document.getElementById("NgaySinh" + i).value;
+        if (HoTen == "") {
             alert("Vui lòng nhập đầy đủ thông tin");
             return;
-        } else if (
-            (doiTuongGiam === "treEm" || doiTuongGiam === "nguoiCaoTuoi") &&
-            ngayThang == ""
-        ) {
+        }
+        else if (NgaySinh == "") {
             alert("Vui lòng chọn ngày sinh");
             return;
-        } else if (
-            (doiTuongGiam === "nguoiLon" || doiTuongGiam === "nguoiCaoTuoi") &&
-            cccdNguoiNgoi == ""
-        ) {
+        }
+        else if ((doiTuongGiam === "nguoiLon" || doiTuongGiam === "nguoiCaoTuoi") && CCCD == "") {
             alert("Vui lòng nhập CCCD/Hộ chiếu của người ngồi");
             return;
         }
@@ -801,7 +794,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        //window.location = "/?page=xacnhan";
+        window.location = "/?page=xacnhan";
     }
 }
 
@@ -813,28 +806,27 @@ function combineForms(id) {
     };
     //add thông tin vé đi
     for (var i = 0; i < id; i++) {
-        var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
-        var nguoiNgoi = {};
-
-        for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
-            var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
-            if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
-                var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
-                nguoiNgoi[fieldName] = inputNguoiNgoi.value;
-            }
-        }
-
-        var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
-        var doiTuongGiamValue = doiTuongGiam.value;
-        nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
-
         if (i < lenArrDi()) {
+            var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
+            var nguoiNgoi = {};
+
+            for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
+                var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
+                if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
+                    var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
+                    nguoiNgoi[fieldName] = inputNguoiNgoi.value;
+                }
+            }
+            var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
+            var doiTuongGiamValue = doiTuongGiam.value;
+            nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
+
             // Lấy thông tin từ div thongTinDi
             var divThongTinDi = document.getElementById("thongTinDi" + i);
             var maChuyenTauVeValue = divThongTinDi.dataset.maChuyenTau;
-            nguoiNgoi["maChuyenTau"] = maChuyenTauVeValue;
+            nguoiNgoi["MaChuyenTau"] = maChuyenTauVeValue;
             var maChoNgoiValue = divThongTinDi.dataset.maChoNgoi;
-            nguoiNgoi["maChoNgoi"] = maChoNgoiValue;
+            nguoiNgoi["MaChoNgoi"] = maChoNgoiValue;
             var gaXuatPhatValue = divThongTinDi.dataset.gaXuatPhat;
             nguoiNgoi["gaXuatPhat"] = gaXuatPhatValue;
             var gaDenValue = divThongTinDi.dataset.gaDen;
@@ -847,38 +839,39 @@ function combineForms(id) {
             nguoiNgoi["tenLoaiToa"] = tenLoaiToaValue;
 
             var thanhTienChieuDiValue = document.getElementById("thanhTienChieuDi" + i).value;
-            nguoiNgoi["thanhTienChieuDi"] = thanhTienChieuDiValue;
+            nguoiNgoi["TienVe"] = thanhTienChieuDiValue;
 
             var giaVeChieuDiValue = document.getElementById("giaVeChieuDi" + i).value;
-            nguoiNgoi["giaVeChieuDi"] = parseInt(giaVeChieuDiValue);
+            nguoiNgoi["giaVe"] = parseInt(giaVeChieuDiValue);
+
+            formData.nguoiNgoi.push(nguoiNgoi);
         }
-        formData.nguoiNgoi.push(nguoiNgoi);
     }
 
     //add thông tin vé về
     for (var i = 0; i < id; i++) {
-        var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
-        var nguoiNgoi = {};
-
-        for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
-            var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
-            if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
-                var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
-                nguoiNgoi[fieldName] = inputNguoiNgoi.value;
-            }
-        }
-
-        var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
-        var doiTuongGiamValue = doiTuongGiam.value;
-        nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
-
         if (i < lenArrVe()) {
+            var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
+            var nguoiNgoi = {};
+
+            for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
+                var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
+                if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
+                    var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
+                    nguoiNgoi[fieldName] = inputNguoiNgoi.value;
+                }
+            }
+
+            var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
+            var doiTuongGiamValue = doiTuongGiam.value;
+            nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
+
             // Lấy thông tin từ div thongTinVe
             var divThongTinVe = document.getElementById("thongTinVe" + i);
             var maChuyenTauVeValue = divThongTinVe.dataset.maChuyenTau;
-            nguoiNgoi["maChuyenTau"] = maChuyenTauVeValue;
+            nguoiNgoi["MaChuyenTau"] = maChuyenTauVeValue;
             var maChoNgoiValue = divThongTinVe.dataset.maChoNgoi;
-            nguoiNgoi["maChoNgoi"] = maChoNgoiValue;
+            nguoiNgoi["MaChoNgoi"] = maChoNgoiValue;
             var gaXuatPhatValue = divThongTinVe.dataset.gaXuatPhat;
             nguoiNgoi["gaXuatPhat"] = gaXuatPhatValue;
             var gaDenValue = divThongTinVe.dataset.gaDen;
@@ -891,17 +884,18 @@ function combineForms(id) {
             nguoiNgoi["tenLoaiToa"] = tenLoaiToaValue;
 
             var thanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
-            nguoiNgoi["thanhTienChieuVe"] = thanhTienChieuVeValue;
+            nguoiNgoi["TienVe"] = thanhTienChieuVeValue;
 
             var giaVeChieuVeValue = document.getElementById("giaVeChieuVe" + i).value;
-            nguoiNgoi["giaVeChieuVe"] = parseInt(giaVeChieuVeValue);
+            nguoiNgoi["giaVe"] = parseInt(giaVeChieuVeValue);
+
+            formData.nguoiNgoi.push(nguoiNgoi);
         }
-        formData.nguoiNgoi.push(nguoiNgoi);
     }
 
     formData.thongTinNguoiDat.HoTen = document.getElementById("fullname").value;
     formData.thongTinNguoiDat.CCCD = document.getElementById("idnumber").value;
-    formData.thongTinNguoiDat.STD = document.getElementById("phone").value;
+    formData.thongTinNguoiDat.SDT = document.getElementById("phone").value;
     formData.thongTinNguoiDat.Email = document.getElementById("email").value;
     var selectedRadio = document.querySelector('input[name="thanhToan"]:checked');
     if (selectedRadio) {

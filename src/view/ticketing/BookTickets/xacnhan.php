@@ -5,30 +5,31 @@
             <div class="col-12">
                 <h1>Xác nhận thông tin đặt mua vé tàu</h1>
                 <div class="form-container">
-                    <h2>Thông tin người mua vé</h2>
-                    
+                    <h2 class="fs-title">Thông tin người mua vé</h2>
+                    <?php var_dump($Ve);
+                    var_dump($thongTinNguoiDat) ?>
                     <form>
                         <div class="form-row">
                             <label for="name">Họ và tên:</label>
-                            <span><?php echo $thongTinNguoiDat->fullname; ?></span>
+                            <span><?php echo $thongTinNguoiDat->HoTen; ?></span>
                         </div>
 
                         <div class="form-row">
                             <label for="id">Số CMND/CCCD/Hộ chiếu:</label>
-                            <span><?php echo $thongTinNguoiDat->idnumber; ?></span>
+                            <span><?php echo $thongTinNguoiDat->CCCD; ?></span>
                         </div>
 
                         <div class="form-row">
                             <label for="phone">Số điện thoại:</label>
-                            <span><?php echo $thongTinNguoiDat->phone; ?></span>
+                            <span><?php echo $thongTinNguoiDat->SDT; ?></span>
                         </div>
 
                         <div class="form-row">
                             <label for="email">Email:</label>
-                            <span><?php echo $thongTinNguoiDat->email; ?></span>
+                            <span><?php echo $thongTinNguoiDat->Email; ?></span>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row thanhToan" data-thanh-toan="<?php echo $thongTinNguoiDat->thanhToan ?>">
                             <label for="thanhToan">Phương thức thanh toán:</label>
                             <span>
                                 <?php
@@ -40,8 +41,7 @@
                                 ?>
                             </span>
                         </div>
-
-                        <h2>Thông tin vé mua</h2>
+                        <h2 class="fs-title">Thông tin vé mua</h2>
                         <table>
                             <tr>
                                 <th style="width: 10%; text-align: center;">STT</th>
@@ -52,83 +52,54 @@
                             <?php $count = 0;
                             foreach ($Ve as $index => $item) { ?>
                                 <tr>
-                                    <?php if (isset($item->thongTinDi) && !empty($item->thongTinDi)) { ?>
-                                        <td style="text-align: center;"><?php echo $count += 1; ?></td>
-                                        <td>
-                                            Họ và tên: <?php echo $item->tenNguoiNgoi; ?><br>
-                                            <?php if (isset($item->cccdNguoiNgoi) && !empty($item->cccdNguoiNgoi)) { ?>
-                                                Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
-                                                <?php
-                                            } else { ?>Ngày sinh: <?php echo date("d/m/Y", strtotime($item->ngayThang)); ?><br>
-                                            <?php } ?>
-                                            Đối tượng: <?php
-                                                        $doiTuongGiam = $item->doiTuongGiam;
-                                                        if ($doiTuongGiam === "treEm") {
-                                                            echo "Trẻ em";
-                                                        } elseif ($doiTuongGiam === "nguoiLon") {
-                                                            echo "Người lớn";
-                                                        } elseif ($doiTuongGiam === "nguoiCaoTuoi") {
-                                                            echo "Người cao tuổi";
-                                                        } ?><br>
-                                            Hành trình: <?php echo $item->thongTinDi->gaXuatPhat; ?> - <?php echo $item->thongTinDi->gaDen; ?>
-                                            <?php echo date("d/m/Y H:i", strtotime($item->thongTinDi->thoiGian)); ?>
-                                            Toa <?php echo $item->thongTinDi->thuTuToa; ?>
-                                            Chỗ ngồi <?php echo substr($item->thongTinDi->maChoNgoi, -2); ?>
-                                            <?php echo $item->thongTinDi->tenLoaiToa; ?><br>
-                                        </td>
-                                        <td style="text-align: right;"><?php echo number_format($item->giaVeChieuDi); ?></td>
-                                        <td style="text-align: right;"><?php echo number_format($item->thanhTienChieuDi); ?></td>
-                                    <?php } ?>
+                                    <td style="text-align: center;"><?php echo $count += 1; ?></td>
+                                    <td>
+                                        Họ và tên: <?php echo $item->HoTen; ?><br>
+                                        <?php if (isset($item->CCCD) && !empty($item->CCCD)) { ?>
+                                            Số giấy tờ: <?php echo $item->CCCD; ?><br>
+                                        <?php
+                                        } ?>
+                                        Ngày sinh: <?php echo date("d/m/Y", strtotime($item->NgaySinh)); ?><br>
+                                        Đối tượng: <?php
+                                                    $doiTuongGiam = $item->doiTuongGiam;
+                                                    if ($doiTuongGiam === "treEm") {
+                                                        echo "Trẻ em";
+                                                    } elseif ($doiTuongGiam === "nguoiLon") {
+                                                        echo "Người lớn";
+                                                    } elseif ($doiTuongGiam === "nguoiCaoTuoi") {
+                                                        echo "Người cao tuổi";
+                                                    } ?><br>
+                                        Hành trình: <?php echo $item->gaXuatPhat; ?> - <?php echo $item->gaDen; ?>
+                                        <?php echo date("d/m/Y H:i", strtotime($item->thoiGian)); ?>
+                                        Toa <?php echo $item->thuTuToa; ?>
+                                        Chỗ ngồi <?php echo substr($item->MaChoNgoi, -2); ?>
+                                        <?php echo $item->tenLoaiToa; ?><br>
+                                    </td>
+                                    <td style="text-align: right;"><?php echo number_format($item->giaVe); ?></td>
+                                    <td style="text-align: right;"><?php echo number_format($item->TienVe); ?></td>
+                                <?php } ?>
                                 </tr>
                                 <tr>
-                                    <?php if (isset($item->thongTinVe) && !empty($item->thongTinVe)) { ?>
-                                        <td style="text-align: center;"><?php echo $count += 1; ?></td>
-                                        <td>
-                                            Họ và tên: <?php echo $item->tenNguoiNgoi; ?><br>
-                                            <?php if (isset($item->cccdNguoiNgoi) && !empty($item->cccdNguoiNgoi)) { ?>
-                                                Số giấy tờ: <?php echo $item->cccdNguoiNgoi; ?><br>
-                                                <?php
-                                            } else { ?>Ngày sinh: <?php echo date("d/m/Y", strtotime($item->ngayThang)); ?><br>
-                                            <?php } ?>
-                                            Đối tượng: <?php
-                                                        $doiTuongGiam = $item->doiTuongGiam;
-                                                        if ($doiTuongGiam === "treEm") {
-                                                            echo "Trẻ em";
-                                                        } elseif ($doiTuongGiam === "nguoiLon") {
-                                                            echo "Người lớn";
-                                                        } elseif ($doiTuongGiam === "nguoiCaoTuoi") {
-                                                            echo "Người cao tuổi";
-                                                        } ?><br>
-                                            Hành trình: <?php echo $item->thongTinVe->gaXuatPhat; ?> - <?php echo $item->thongTinVe->gaDen; ?>
-                                            <?php echo date("d/m/Y H:i", strtotime($item->thongTinVe->thoiGian)); ?>
-                                            Toa <?php echo $item->thongTinVe->thuTuToa; ?>
-                                            Chỗ ngồi <?php echo substr($item->thongTinVe->maChoNgoi, -2); ?>
-                                            <?php echo $item->thongTinVe->tenLoaiToa; ?><br>
-
-                                        </td>
-                                        <td style="text-align: right;"><?php echo number_format($item->giaVeChieuVe); ?></td>
-                                        <td style="text-align: right;"><?php echo number_format($item->thanhTienChieuVe); ?></td>
-                                    <?php } ?>
+                                    <td colspan="3">
+                                        <div style="float: right;">
+                                            <span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span>
+                                        </div>
+                                    </td>
+                                    <td class="text-right">
+                                        <strong class="ng-binding tongTien" id="tongTien"><?php echo number_format($thongTinNguoiDat->TienVe); ?></strong>
+                                    </td>
                                 </tr>
-                            <?php } ?>
-                            <tr>
-                                <td colspan="3">
-                                    <div style="float: right;">
-                                        <span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span>
-                                    </div>
-                                </td>
-                                <td class="text-right">
-                                    <strong class="ng-binding tongTien" id="tongTien"><?php echo number_format($thongTinNguoiDat->tongTien); ?></strong>
-                                </td>
-                            </tr>
                         </table>
 
                         <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button class="back-button" onclick="quayLai()">Quay lại</button>
-                            <button class="next-button" onclick="dongY()">Đồng ý mua vé</button>
+                            <button class="back-button" onclick="quayLai()" type="button">Quay lại</button>
+                            <button class="next-button" onclick="dongY(event)" type="submit">Đồng ý mua vé</button>
                         </div>
                 </div>
 
             </div>
         </div>
     </div>
+</div>
+<!--Script-->
+<script src="/view/javascript/xacnhan.js"></script>
