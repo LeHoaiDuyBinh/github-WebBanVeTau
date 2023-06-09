@@ -36,7 +36,7 @@
                 $HinhThuc=$_GET['HinhThuc'];
                 if($HinhThuc==="QR"){
                     $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
-                    include 'view/ticketing/BookTickets/qrcode.php';                   
+                    include 'view/ticketing/BookTickets/qrcode.php';
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
                     //include
@@ -82,6 +82,8 @@
 
         }
         public function loadInfor(){
+            $this->addInfo();                   
+            sleep(10);
             include_once './model/DatVeModel/Ve.php';
             $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
             include 'view/ticketing/BookTickets/hienthongtin.php';                   
