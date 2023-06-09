@@ -226,7 +226,10 @@ switch ($type) {
                 case 'thanhToan':
                     (new DatVeController)->thanhToan();
                     break;
-
+                case 'loadInfor':
+                    (new DatVeController)->loadInfor();
+                    break;    
+                    
                 default:
                     (new Controller)->home();
                     break;

@@ -1,44 +1,33 @@
 <?php
     class VeObject{
-        private $tenNguoiNgoi;
+        private $MaVe;
+        private $MaChuyenTau;
+        private $MaChoNgoi;
+        private $HoTen;
         private $MaTau;
+        private $MaToa;
         private $ThoiGianXuatPhat;
-        private $TenGaXuatPhat;
-        private $TenGaDen;
-        private $dsGhe;
-        public function __construct($row,$dsGhe)
-        {
-                $this->dsGhe = $dsGhe;
+
+        public function __construct($row)
+        {        
         
+            $this->MaVe=$row['MaVe'];
             $this->MaChuyenTau = $row['MaChuyenTau'];
+            $this->MaChoNgoi=$row['MaChoNgoi'];
+            $this->HoTen=$row['HoTen'];
             $this->MaTau=$row['MaTau'];
+            $this->MaToa=$row['MaToa'];
             $this->ThoiGianXuatPhat=$row['ThoiGianXuatPhat'];
-            $this->TenGaXuatPhat=$row['TenGaXuatPhat'];
-            $this->TenGaDen=$row['TenGaDen'];
+
+
         }
-        public function setdsGhe($dsGhe)
+        public function setHoTen($HoTen)
         {
-                return $this->dsGhe = $dsGhe;
+                return $this->HoTen = $HoTen;
         }
-        public function getdsGhe()
+        public function getHoTen()
         {
-                return $this->dsGhe;
-        }
-        public function setMaChuyenTau($MaChuyenTau)
-        {
-                return $this->MaChuyenTau = $MaChuyenTau;
-        }
-        public function getMaChuyenTau()
-        {
-                return $this->MaChuyenTau;
-        }
-        public function setThoiGianXuatPhat($ThoiGianXuatPhat)
-        {
-                return $this->ThoiGianXuatPhat = $ThoiGianXuatPhat;
-        }
-        public function getThoiGianXuatPhat()
-        {
-                return $this->ThoiGianXuatPhat;
+                return $this->HoTen;
         }
         public function setMaTau($MaTau)
         {
@@ -48,21 +37,45 @@
         {
                 return $this->MaTau;
         }
-        public function setTenGaXuatPhat($TenGaXuatPhat)
+        public function setMaToa($MaToa)
         {
-                return $this->TenGaXuatPhat = $TenGaXuatPhat;
+                return $this->MaToa = $MaToa;
         }
-        public function getTenGaXuatPhat()
+        public function getMaToa()
         {
-                return $this->TenGaXuatPhat;
+                return $this->MaToa;
         }
-        public function setTenGaDen($TenGaDen)
+        public function setThoiGianXuatPhat($ThoiGianXuatPhat)
         {
-                return $this->TenGaDen = $TenGaDen;
+                return $this->ThoiGianXuatPhat = $ThoiGianXuatPhat;
         }
-        public function getTenGaDen()
+        public function getThoiGianXuatPhat()
         {
-                return $this->TenGaDen;
+                return $this->ThoiGianXuatPhat;
+        }
+        public function setMaVe($MaVe)
+        {
+                return $this->MaVe = $MaVe;
+        }
+        public function getMaVe()
+        {
+                return $this->MaVe;
+        }
+        public function setMaChuyenTau($MaChuyenTau)
+        {
+                return $this->MaChuyenTau = $MaChuyenTau;
+        }
+        public function getMaChuyenTau()
+        {
+                return $this->MaChuyenTau;
+        }
+        public function setMaChoNgoi($MaChoNgoi)
+        {
+                return $this->MaChoNgoi = $MaChoNgoi;
+        }
+        public function getMaChoNgoi()
+        {
+                return $this->MaChoNgoi;
         }
     }
 ?>

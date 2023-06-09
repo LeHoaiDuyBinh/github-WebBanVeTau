@@ -73,12 +73,18 @@
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
                     (new ThanhToan)->insert($maDatCho,$data->thanhToan);
                     foreach($thongTinKhacHang as $each){
-                        (new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
+                        $_SESSION[session_id()."maVe"]=(new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
                     }
 
                 }
                 
             }
+
+        }
+        public function loadInfor(){
+            include_once './model/DatVeModel/Ve.php';
+            $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
+            include 'view/ticketing/BookTickets/hienthongtin.php';                   
 
         }
     }
