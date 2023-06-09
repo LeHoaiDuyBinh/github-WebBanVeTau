@@ -59,7 +59,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var ngayThangContainer = document.createElement("div");
             ngayThangContainer.id = "ngayThangContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
-            ngayThangContainer.style.display = "none";
+            //ngayThangContainer.style.display = "none";
 
             var ngayThangLabel = document.createElement("label");
             ngayThangLabel.setAttribute("for", "ngayThang" + i); // Thêm biến đếm vào tên trường input ngày tháng
@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             var ngayThangContainer = document.createElement("div");
             ngayThangContainer.id = "ngayThangContainer" + i; // Thêm biến đếm vào id phần tử ngày tháng container
-            ngayThangContainer.style.display = "none";
+            //ngayThangContainer.style.display = "none";
 
             var ngayThangLabel = document.createElement("label");
             ngayThangLabel.setAttribute("for", "ngayThang" + i); // Thêm biến đếm vào tên trường input ngày tháng
@@ -554,8 +554,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function doiTuongGiamChange(id) {
     var doiTuongGiam = document.getElementById("doiTuongGiam" + id).value;
-    var ngayThangContainer = document.getElementById("ngayThangContainer" + id);
-    var CCCDContainer = document.getElementById("CCCDContainer" + id);
+    // var ngayThangContainer = document.getElementById("ngayThangContainer" + id);
+    // var CCCDContainer = document.getElementById("CCCDContainer" + id);
     var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
     var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
     var khuyenMai = document.getElementById("khuyenMai" + id);
@@ -572,8 +572,6 @@ function doiTuongGiamChange(id) {
 
     // Kiểm tra nếu lựa chọn là "nguoiLon" thì trả về giá trị ban đầu
     if (doiTuongGiam === "nguoiLon") {
-        ngayThangContainer.style.display = "none";
-        CCCDContainer.style.display = "block";
         if (id < lenArrDi()) {
             thanhTienChieuDi.textContent = giaVeChieuDiDefault.textContent;
             thanhTienChieuDi.value = giaVeChieuDiDefault.value;
@@ -583,23 +581,9 @@ function doiTuongGiamChange(id) {
             thanhTienChieuVe.value = giaVeChieuVeDefault.value;
         }
         ngayThang.value = "";
-        khuyenMai.textContent = "Không có khuyến mãi vé này";
+        khuyenMai.textContent = "Không có khuyến mãi cho vé này";
         updateTotal(id);
     }
-    else
-        if (doiTuongGiam === "treEm") {
-            ngayThangContainer.style.display = "block";
-            CCCDContainer.style.display = "none";
-        }
-        else
-            if (doiTuongGiam === "nguoiCaoTuoi") {
-                ngayThangContainer.style.display = "block";
-                CCCDContainer.style.display = "block";
-            }
-            else {
-                ngayThang.value = "";
-                ngayThangContainer.style.display = "none";
-            }
 }
 
 //Tính phần trăm khuyến mãi
@@ -607,8 +591,16 @@ function calculateTotal(id) {
     var doiTuongGiam = document.getElementById("doiTuongGiam" + id).value;
     var ngayThang = document.getElementById("ngayThang" + id).value;
     var khuyenMai = document.getElementById("khuyenMai" + id);
-    var giam = 0;
+    var thanhTienChieuDi = document.getElementById("thanhTienChieuDi" + id);
+    var thanhTienChieuVe = document.getElementById("thanhTienChieuVe" + id);
+    var khuyenMai = document.getElementById("khuyenMai" + id);
 
+    //Giá vé mặc định
+    if (i < lenArrDi())
+        var giaVeChieuDiDefault = document.getElementById("giaVeChieuDi" + i);
+    if (i < lenArrVe()) {
+        var giaVeChieuVeDefault = document.getElementById("giaVeChieuVe" + i);
+    }
     //Xét ngày
     var today = new Date().toISOString().split("T")[0];
     document.getElementById("ngayThang" + i).setAttribute("max", today);
@@ -641,9 +633,27 @@ function calculateTotal(id) {
         }
         else
             if (doiTuongGiam === "nguoiLon") {
-                khuyenMai.textContent = "Không có khuyến mãi vé này";
+                var age = calculateAge(ngayThang);
+                if (age < 60 && age > 10) {                    
+                    // if (id < lenArrDi()) {
+                    //     thanhTienChieuDi.textContent = giaVeChieuDiDefault.textContent;
+                    //     thanhTienChieuDi.value = giaVeChieuDiDefault.value;
+                    // }
+                    // if (id < lenArrVe()) {
+                    //     thanhTienChieuVe.textContent = giaVeChieuVeDefault.textContent;
+                    //     thanhTienChieuVe.value = giaVeChieuVeDefault.value;
+                    // }
+                    // ngayThang.value = "";
+                    // khuyenMai.textContent = "Không có khuyến mãi cho vé này";
+                    updateTotal(id);
+                }
+            }
+            else {
+                alert("Tuổi không phù hợp với lựa chọn Người lớn. Vui lòng chọn lại ngày tháng sinh.");
+                ngayThang.value = "";
                 giam = 0;
             }
+
     return giam;
 }
 //Tính thành tiền và tổng tiền
@@ -791,7 +801,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        window.location = "/?page=xacnhan";
+        //window.location = "/?page=xacnhan";
     }
 }
 
@@ -801,7 +811,7 @@ function combineForms(id) {
         nguoiNgoi: [],
         thongTinNguoiDat: {},
     };
-
+    //add thông tin vé đi
     for (var i = 0; i < id; i++) {
         var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
         var nguoiNgoi = {};
@@ -821,50 +831,83 @@ function combineForms(id) {
         if (i < lenArrDi()) {
             // Lấy thông tin từ div thongTinDi
             var divThongTinDi = document.getElementById("thongTinDi" + i);
-            nguoiNgoi.thongTinDi = {
-                maChuyenTau: divThongTinDi.dataset.maChuyenTau,
-                maChoNgoi: divThongTinDi.dataset.maChoNgoi,
-                gaXuatPhat: divThongTinDi.dataset.gaXuatPhat,
-                gaDen: divThongTinDi.dataset.gaDen,
-                thoiGian: divThongTinDi.dataset.thoiGian,
-                thuTuToa: divThongTinDi.dataset.thuTuToa,
-                tenLoaiToa: divThongTinDi.dataset.tenLoaiToa
-            };
+            var maChuyenTauVeValue = divThongTinDi.dataset.maChuyenTau;
+            nguoiNgoi["maChuyenTau"] = maChuyenTauVeValue;
+            var maChoNgoiValue = divThongTinDi.dataset.maChoNgoi;
+            nguoiNgoi["maChoNgoi"] = maChoNgoiValue;
+            var gaXuatPhatValue = divThongTinDi.dataset.gaXuatPhat;
+            nguoiNgoi["gaXuatPhat"] = gaXuatPhatValue;
+            var gaDenValue = divThongTinDi.dataset.gaDen;
+            nguoiNgoi["gaDen"] = gaDenValue;
+            var thoiGianValue = divThongTinDi.dataset.thoiGian;
+            nguoiNgoi["thoiGian"] = thoiGianValue;
+            var thuTuToaValue = divThongTinDi.dataset.thuTuToa;
+            nguoiNgoi["thuTuToa"] = thuTuToaValue;
+            var tenLoaiToaValue = divThongTinDi.dataset.tenLoaiToa;
+            nguoiNgoi["tenLoaiToa"] = tenLoaiToaValue;
+
             var thanhTienChieuDiValue = document.getElementById("thanhTienChieuDi" + i).value;
             nguoiNgoi["thanhTienChieuDi"] = thanhTienChieuDiValue;
 
             var giaVeChieuDiValue = document.getElementById("giaVeChieuDi" + i).value;
             nguoiNgoi["giaVeChieuDi"] = parseInt(giaVeChieuDiValue);
         }
+        formData.nguoiNgoi.push(nguoiNgoi);
+    }
+
+    //add thông tin vé về
+    for (var i = 0; i < id; i++) {
+        var formInforNguoiNgoi = document.getElementById("formInforNguoiNgoi" + i);
+        var nguoiNgoi = {};
+
+        for (var j = 0; j < formInforNguoiNgoi.elements.length; j++) {
+            var inputNguoiNgoi = formInforNguoiNgoi.elements[j];
+            if (inputNguoiNgoi.type !== "select-one" || inputNguoiNgoi.name !== "doiTuongGiam" + i) {
+                var fieldName = inputNguoiNgoi.name.replace(/[0-9]+$/, '');
+                nguoiNgoi[fieldName] = inputNguoiNgoi.value;
+            }
+        }
+
+        var doiTuongGiam = document.getElementById("doiTuongGiam" + i);
+        var doiTuongGiamValue = doiTuongGiam.value;
+        nguoiNgoi["doiTuongGiam"] = doiTuongGiamValue;
+
         if (i < lenArrVe()) {
             // Lấy thông tin từ div thongTinVe
             var divThongTinVe = document.getElementById("thongTinVe" + i);
-            nguoiNgoi.thongTinVe = {
-                maChuyenTau: divThongTinVe.dataset.maChuyenTau,
-                maChoNgoi: divThongTinVe.dataset.maChoNgoi,
-                gaXuatPhat: divThongTinVe.dataset.gaXuatPhat,
-                gaDen: divThongTinVe.dataset.gaDen,
-                thoiGian: divThongTinVe.dataset.thoiGian,
-                thuTuToa: divThongTinVe.dataset.thuTuToa,
-                tenLoaiToa: divThongTinVe.dataset.tenLoaiToa
-            };
+            var maChuyenTauVeValue = divThongTinVe.dataset.maChuyenTau;
+            nguoiNgoi["maChuyenTau"] = maChuyenTauVeValue;
+            var maChoNgoiValue = divThongTinVe.dataset.maChoNgoi;
+            nguoiNgoi["maChoNgoi"] = maChoNgoiValue;
+            var gaXuatPhatValue = divThongTinVe.dataset.gaXuatPhat;
+            nguoiNgoi["gaXuatPhat"] = gaXuatPhatValue;
+            var gaDenValue = divThongTinVe.dataset.gaDen;
+            nguoiNgoi["gaDen"] = gaDenValue;
+            var thoiGianValue = divThongTinVe.dataset.thoiGian;
+            nguoiNgoi["thoiGian"] = thoiGianValue;
+            var thuTuToaValue = divThongTinVe.dataset.thuTuToa;
+            nguoiNgoi["thuTuToa"] = thuTuToaValue;
+            var tenLoaiToaValue = divThongTinVe.dataset.tenLoaiToa;
+            nguoiNgoi["tenLoaiToa"] = tenLoaiToaValue;
+
             var thanhTienChieuVeValue = document.getElementById("thanhTienChieuVe" + i).value;
             nguoiNgoi["thanhTienChieuVe"] = thanhTienChieuVeValue;
+
             var giaVeChieuVeValue = document.getElementById("giaVeChieuVe" + i).value;
             nguoiNgoi["giaVeChieuVe"] = parseInt(giaVeChieuVeValue);
         }
         formData.nguoiNgoi.push(nguoiNgoi);
     }
 
-    formData.thongTinNguoiDat.fullname = document.getElementById("fullname").value;
-    formData.thongTinNguoiDat.idnumber = document.getElementById("idnumber").value;
-    formData.thongTinNguoiDat.phone = document.getElementById("phone").value;
-    formData.thongTinNguoiDat.email = document.getElementById("email").value;
+    formData.thongTinNguoiDat.HoTen = document.getElementById("fullname").value;
+    formData.thongTinNguoiDat.CCCD = document.getElementById("idnumber").value;
+    formData.thongTinNguoiDat.STD = document.getElementById("phone").value;
+    formData.thongTinNguoiDat.Email = document.getElementById("email").value;
     var selectedRadio = document.querySelector('input[name="thanhToan"]:checked');
     if (selectedRadio) {
         formData.thongTinNguoiDat.thanhToan = selectedRadio.value;
     }
-    formData.thongTinNguoiDat.tongTien = document.getElementById("tongTien").value;
+    formData.thongTinNguoiDat.TienVe = document.getElementById("tongTien").value;
 
     return formData;
 }
