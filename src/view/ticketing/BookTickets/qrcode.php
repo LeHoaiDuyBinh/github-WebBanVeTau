@@ -209,7 +209,7 @@
     <div class="qr">
         <h1><strong>Quét mã QR để hoàn tất thanh toán</strong></h1>
         <div id="qr-code">
-            <img src="https://api.qrserver.com/v1/create-qr-code/?data=https%3A%2F%2Fexample.com&size=200x200" alt="QR Code">
+            <img src="https://api.qrserver.com/v1/create-qr-code/?data=ThanhCong&size=200x200" alt="QR Code">
         </div>
     </div>
     <div class="success-notification">
