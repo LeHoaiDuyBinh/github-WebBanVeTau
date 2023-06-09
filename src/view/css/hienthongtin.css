@@ -5,22 +5,62 @@
     margin-top: 150px;
     height: fit-content;
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
     width: 90%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.row {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: nowrap;
 }
 
 .title {
     width: 50%;
     height: 100px;
     margin: 0 auto;
+    font-size: 50px;
+}
+
+.colume1 {
+    width: 100%;
+    margin-right: 10px;
+    padding: 25px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.colume2 {
+    width: 40%;
+    margin-left: 20px;
+    padding: 10px;
+    flex-wrap: nowrap;
+}
+
+.container {
+    width: 100%;
+    border: 3px solid #01b3a7;
+    border-radius: 5px;
+    background-color: white;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .box {
     position: relative;
-    top: calc(50% - 125px);
-    top: -webkit-calc(50% - 125px);
-    left: calc(50% - 300px);
-    left: -webkit-calc(50% - 300px);
+    margin: 20px;
 }
 
 .ticket {
@@ -256,7 +296,7 @@
     height: 30px;
     width: 90px;
     background: #222;
-    box-shadow: inset 0 1px 0 #01b3a7, 
+    box-shadow: inset 0 1px 0 #01b3a7,
         inset -2px 0 0 #01b3a7,
         inset -4px 0 0 #222,
         inset -5px 0 0 #01b3a7,
@@ -353,6 +393,7 @@
 }
 
 @media (max-width: 992px) {
+
     /* res body */
     .body-page {
         margin-top: 50px !important;

@@ -4,19 +4,23 @@
         background-color: #fff;
         font-family: Arial, sans-serif;
         display: flex;
-        flex-wrap: wrap;
         justify-content: center;
         align-items: center;
         height: 80vh;
+        flex-direction: column;
     }
     .qr {
         text-align: center;
-        width: 50%;
-        height: 70%;
+        width: 45%;
+        height: 60%;
         padding: 30px;
         border-radius: 10px;
         background-color: white;
         box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
     }
     h1 {
         font-size: 30px;
@@ -24,14 +28,16 @@
         margin-bottom: 20px;
     }
     #qr-code {
-        width: 200px;
-        height: 200px;
-        border: 10px solid #01b3a7;
+        width: 40%;
+        height: 60%;
+        border: 7px solid #01b3a7;
         border-radius: 5px;
         background-color: white;
-        padding: 10px;
+        padding: 15px;
         box-sizing: border-box;
-        display: inline-block;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
     }
     .success-notification {
         display: none;
@@ -39,7 +45,7 @@
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background-color: rgb(1, 179, 167, 0.85);
+        background-color: rgb(1, 179, 167, 0.95);
         color: #fff;
         padding: 20px;
         border-radius: 5px;
@@ -52,38 +58,128 @@
         font-size: 40px;
         margin-bottom: 10px;
     }
-
-    .button {
-        width: 40%;
-        height: 10%;
-        display: none;
+    .button-preNext {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 45%;
+        height: 20%;
     }
-
-    .text-button[type="submit"] {
-        white-space: inherit;
-        width: 50%;
+    .back-button,
+    .next-button {
+        background-color: #01b3a7 !important;
+        float: right;
+        width: 25%;
+        height: 40%;
+        color: white;
+        border-radius: 5px;
     }
-
-    @media (max-width: 992px) {
-        .body-page {
-            margin-top: 0px;
+    @media (max-width: 992px) and (min-width: 699px) {
+        .qr {
+            text-align: center;
+            width: 50%;
+            height: 60%;
+            padding: 30px;
         }
-
+        #qr-code {
+            width: 70%;
+            height: 60%;
+        }
+        .button-preNext {
+            width: 80%;
+            height: 40%;
+        }
+        .back-button,
+        .next-button {
+            width: 30%;
+            height: 20%;
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 700px) and (min-width: 480px) {
+        .body-page {
+            margin-top: 20px;
+        }
         .qr {
             text-align: center;
             width: 80%;
             height: 70%;
             padding: 30px;
         }
-
+        h1 {
+            font-size: 30px;
+            margin-bottom: 25px;
+        }
+        #qr-code {
+            width: 65%;
+            height: 70%;
+        }
+        .button-preNext {
+            width: 80%;
+            height: 40%;
+        }
+        .back-button,
+        .next-button {
+            width: 30%;
+            height: 20%;
+            font-size: 20px;
+        }
+    }
+    @media (max-width: 480px) and (min-width: 281px) {
+        .body-page {
+            margin-top: 20px;
+        }
+        .qr {
+            text-align: center;
+            width: 80%;
+            height: 70%;
+            padding: 30px;
+        }
         h1 {
             font-size: 24px;
-            margin-bottom: 30px;
+            margin-bottom: 25px;
         }
-
         #qr-code {
-            width: 210px;
-            height: 210px;
+            width: 100%;
+            height: 70%;
+        }
+        .button-preNext {
+            width: 80%;
+            height: 40%;
+        }
+        .back-button,
+        .next-button {
+            width: 30%;
+            height: 20%;
+        }
+    }
+    @media (max-width: 280px){
+        .body-page {
+            margin-top: 20px;
+        }
+        .qr {
+            text-align: center;
+            width: 80%;
+            height: 70%;
+            padding: 30px;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 25px;
+        }
+        #qr-code {
+            width: 100%;
+            height: 65%;
+        }
+        .button-preNext {
+            width: 80%;
+            height: 40%;
+        }
+        .back-button,
+        .next-button {
+            width: 30%;
+            height: 20%;
+            white-space: nowrap;
         }
     }
 </style>
@@ -97,12 +193,16 @@
         setTimeout(function() {
             var successNotification = document.querySelector(".success-notification");
             successNotification.style.display = "none";
-        }, 8000);
-        setTimeout(function() {
-            var button = document.querySelector(".button");
+            var button = document.querySelector(".next-button");
             button.style.display = "block";
-        }, 9000);
+        }, 7000);
     });
+    function quayLai() {
+        history.back(); // Quay lại trang trước đó trong lịch sử duyệt
+    }
+    function nextPage() {
+        window.location.href = "view/ticketing/BookTickets/hienthongtin.php";
+    }
 </script>
 
 <div class="body-page">
@@ -116,7 +216,8 @@
         <span>&#10004;</span>
         <p style="color: #fff;">Thanh toán thành công!</p>
     </div>
-    <div class="button">
-        <button type="submit" class="btn btn-primary text-button" style="margin-top: 10px; overflow: hidden !important;">Hoàn tất</button>
+    <div class="button-preNext">
+        <button class="back-button" onclick="quayLai()">Quay lại</button>
+        <button class="next-button" style="display: none;" onclick="nextPage()">Hoàn tất</button>
     </div>
 </div>
