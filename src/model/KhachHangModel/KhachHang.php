@@ -28,11 +28,11 @@
                 }
             }
     
-            function edit($ID, $HoTen, $CCCD, $NgaySinh, $Email, $SDT){
+            function edit($ID, $HoTen, $CCCD, $NgaySinh){
                 try {
                     $db = new DB();
-                    $sql = "update $this->table set HoTen = ?, CCCD = ?, NgaySinh = ?, Email = ?, SDT = ? where ID_KhachHang = ?";
-                    $params = array($HoTen, $CCCD, $NgaySinh, $Email, $SDT, $ID);
+                    $sql = "update $this->table set HoTen = ?, CCCD = ?, NgaySinh = ? where ID_KhachHang = ?";
+                    $params = array($HoTen, $CCCD, $NgaySinh, $ID);
                     $db->execute($sql, $params);
                     return "done";
                     }

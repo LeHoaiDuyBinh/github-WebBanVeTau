@@ -9,12 +9,6 @@
                                     <form id="bookingForm" action="/?page=thongtindatcho&action=tracuuthongtin" method="POST">
                                             <label for="bookingCode">Mã đặt chỗ:</label>
                                             <input type="text" id="bookingCode" name="maDatCho" required><br>
-                                            <label for="email">Email:</label>
-                                            <input type="email" id="email" name="email" required><br>
-                                            <label for="phoneNumber">Số điện thoại:</label>
-                                            <input type="tel" id="phoneNumber" name="SDT" required><br>
-                                            <label for="cccd">Số CCCD/CMND:</label>
-                                            <input type="text" id="cccd" name="CCCD" required><br>
                                             <button type="submit" class="button-tra-cuu" id="bookingButton">TRA CỨU</button>
                                             <div class="quen-ma-dat-cho" id="forgotBookingCode">Quên mã đặt chỗ?</div>
                                     </form>

@@ -3,8 +3,6 @@
         private $ID_KH;
         private $HoTen_KH;
         private $CCCD_KH;
-        private $SDT_KH;
-        private $Email_KH;
         private $NgaySinh;
         private $MaChoNgoi;
         private $TienVe;
@@ -25,8 +23,6 @@
             $this->ID_KH = $row['ID_KhachHang'];
             $this->HoTen_KH = $row['HoTen'];
             $this->CCCD_KH = $row['CCCD'];
-            $this->SDT_KH = $row['SDT'];
-            $this->Email_KH = $row['Email'];
             $this->NgaySinh = $row['NgaySinh'];
             $this->MaChoNgoi = $row['MaChoNgoi'];
             $this->TienVe = $row['TienVe'];
@@ -67,28 +63,6 @@
         public function setCCCD_KH($CCCD_KH)
         {
                 $this->CCCD_KH = $CCCD_KH;
-        }
-
-        public function getSDT_KH()
-        {
-                return $this->SDT_KH;
-        }
-
-        public function setSDT_KH($SDT_KH)
-        {
-                $this->SDT_KH = $SDT_KH;
-
-        }
-
-        public function getEmail_KH()
-        {
-                return $this->Email_KH;
-        }
-
-        public function setEmail_KH($Email_KH)
-        {
-                $this->Email_KH = $Email_KH;
-
         }
 
         public function getNgaySinh()

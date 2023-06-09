@@ -16,8 +16,6 @@
       <th scope="col" width="150px" style="text-align: left !important;">Họ tên</th>
       <th scope="col" width="150px" style="text-align: left !important;">CCCD</th>
       <th scope="col" width="150px" style="text-align: left !important;">Ngày sinh</th>
-      <th scope="col" width="150px" style="text-align: left !important;">Email</th>
-      <th scope="col" width="150px" style="text-align: left !important;">SDT</th>
       <th scope="col" width="150px" style="text-align: left !important;">Mã vé</th>
       <th scope="col" width="150px" style="text-align: left !important;">Tiền vé</th>
       <th scope="col" width="220px" style="text-align: left !important;">Mã chỗ ngồi</th>
@@ -34,8 +32,6 @@
       <td data-label="name"><?php echo $each->getHoTen_KH(); ?></td>
       <td data-label="cccd"><?php echo $each->getCCCD_KH(); ?></td>
       <td data-label="birthday"><?php echo $each->getNgaySinh(); ?></td>
-      <td data-label="email"><?php echo $each->getEmail_KH(); ?></td>
-      <td data-label="sdt"><?php echo $each->getSDT_KH(); ?></td>
       <td data-label="ticketcode" value="<?php echo ($each->getMaVe() !== null) ? $each->getMaVe() : 0; ?>">
         <?php
         echo ($each->getMaVe() !== null) ? $each->getMaVe() : "Chưa thanh toán";
@@ -65,10 +61,6 @@
       <label for="birthday">Ngày sinh:</label>
       <input style="height: 47px; width:100%;" type="date" id="birthday" name="birthday" required>
       <br></br>
-      <label for="Email">Email:</label>
-      <input style="height: 47px;" type="email" id="Email" name="Email" required>
-      <label for="SDT">SDT:</label>
-      <input style="height: 47px;" pattern="^[0-9]\d*$" type="text" id="SDT" name="SDT" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Lưu</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class="btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
@@ -153,9 +145,7 @@ function filterTable(keyword) {
   const ID = modal.querySelector('#id');
   const HoTen = modal.querySelector('#name');
   const CCCD = modal.querySelector('#cccd');
-  const Email = modal.querySelector('#Email');
   const NgaySinh = modal.querySelector('#birthday');
-  const SDT = modal.querySelector('#SDT');
   const editBtns = document.getElementsByClassName('editBtn');
 
   function showLoadingSwal() {
@@ -183,8 +173,6 @@ for (let i = 0; i < editBtns.length; i++) {
     const HoTen_table = row.cells[2].textContent.trim();
     const CCCD_table = row.cells[3].textContent.trim();
     const NgaySinh_table = row.cells[4].textContent.trim();
-    const Email_table = row.cells[5].textContent.trim();
-    const SDT_table = row.cells[6].textContent.trim();
 
     // chuẩn hóa thời gian để đưa vào thẻ input
     var [ngay, gio] = NgaySinh_table.split(' ');
@@ -192,9 +180,7 @@ for (let i = 0; i < editBtns.length; i++) {
     ID.value = ID_table;
     HoTen.value = HoTen_table;
     CCCD.value = CCCD_table;
-    Email.value = Email_table;
     NgaySinh.value = ngay;
-    SDT.value = SDT_table;
 
     modal.style.display = "block";
   });

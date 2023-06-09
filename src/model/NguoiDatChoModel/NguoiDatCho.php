@@ -144,22 +144,6 @@
                     return "Lỗi";
                 }
             }
-            function checkThanhToan($maDatCho){
-                try{
-                    $db = new DB();
-                    $sql = "select * from ThanhToan where MaDatCho = ?";
-                    $params = array($maDatCho);
-                    $sth = $db->select($sql, $params);
-                    if($sth->rowCount() > 0)
-                        return "Đã thanh toán";
-                    else
-                        return "Chưa thanh toán";
-                   }
-                   catch (PDOException $e) {
-                    // return $e->getMessage();
-                    return "Lôi khi load khách hàng";
-                }
-            }
 
             function findKH($MaDatCho){
                 try{
@@ -171,9 +155,9 @@
                                 select tmp4.*, g1.TenGa as TenGaXuatPhat from ( 
                                     select tmp3.*, td.XuatPhat, td.DiemDen from ( 
                                         select tmp2.*, ct.MaTuyenDuong, ct.MaTau, ct.ThoiGianXuatPhat from ( 
-                                            select kh.*, tmp.MaDatCho from ( 
-                                                select ttdc.ID_NguoiDatCho, ttdc.MaDatCho from ThongTinDatCho as ttdc 
-                                                where ttdc.MaDatCho = 'DC001' ) as tmp, KhachHang as kh 
+                                            select kh.*, tmp.MaDatCho, tmp.TrangThai from ( 
+                                                select ttdc.ID_NguoiDatCho, ttdc.MaDatCho, ttdc.TrangThai from ThongTinDatCho as ttdc 
+                                                where ttdc.MaDatCho = ? ) as tmp, KhachHang as kh 
                                                 where tmp.ID_NguoiDatCho = kh.ID_NguoiDatCho) as tmp2, ChuyenTau as ct 
                                                 where tmp2.MaChuyenTau = ct.MaChuyenTau) as tmp3, TuyenDuong as td 
                                                 where tmp3.MaTuyenDuong = td.MaTuyenDuong) as tmp4, Ga as g1 
@@ -193,7 +177,14 @@
                     $obj->setMaToa($row['MaToa']);
                     $obj->setMaTau($row['MaTau']);
                     $obj->setTenLoaiToa($row['TenLoaiToa']);
-                    $obj->setThanhToan($this->checkThanhToan($row['MaDatCho']));
+                    $txt = '';
+                    if($row['TrangThai'] == 0)
+                        $txt = "Chưa thanh toán";
+                    elseif($row['TrangThai'] == 1)
+                        $txt = "Đã thanh toán";
+                    else
+                        $txt = "Đã hết hạn thanh toán";
+                    $obj->setThanhToan($txt);
                     $arr[] = $obj;
                  }
                  return $arr;
