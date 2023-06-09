@@ -11,7 +11,7 @@
     align-items: center;
 }
 
-.row {
+.row-1 {
     width: 100%;
     display: flex;
     align-items: center;
@@ -21,14 +21,13 @@
 }
 
 .title {
-    width: 50%;
-    height: 60px;
-    margin: 0 auto;
-    font-size: 50px;
+    height: 70px;
+    font-size: 40px;
     text-transform: uppercase;
     color: #01b3a7;
     text-align: center !important;
     margin-top: 10px !important;
+    margin-bottom: 20px;
     padding: 10px !important;
 }
 
@@ -171,20 +170,24 @@
 }
 
 .jfk {
+    width: 100px;
     position: absolute;
     top: 10px;
     left: 20px;
     font-family: Arial;
-    font-size: 38px;
+    font-size: 17px;
+    font-weight: bold;
     color: #222;
 }
 
 .sfo {
+    width: 100px;
     position: absolute;
     top: 10px;
-    left: 180px;
+    left: 200px;
     font-family: Arial;
-    font-size: 38px;
+    font-size: 17px;
+    font-weight: bold;
     color: #222;
 }
 
@@ -245,7 +248,7 @@
 .gate {
     position: absolute;
     top: 10px;
-    left: 280px;
+    left: 270px;
     font-family: Arial Narrow, Arial;
     font-weight: bold;
     font-size: 14px;
@@ -261,7 +264,7 @@
 .seat {
     position: absolute;
     top: 10px;
-    left: 350px;
+    left: 340px;
     font-family: Arial Narrow, Arial;
     font-weight: bold;
     font-size: 14px;
@@ -371,13 +374,17 @@
 }
 
 .jfkslip {
-    font-size: 30px;
+    width: 70px;
+    font-size: 12px;
+    font-weight: bold;
     top: 20px;
     left: 410px;
 }
 
 .sfoslip {
-    font-size: 30px;
+    width: 70px;
+    font-size: 12px;
+    font-weight: bold;
     top: 20px;
     left: 530px;
 }
@@ -392,7 +399,6 @@
 }
 
 @media (max-width: 992px) {
-
     /* res body */
     .body-page {
         margin-top: 50px !important;

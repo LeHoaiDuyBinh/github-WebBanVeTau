@@ -94,6 +94,7 @@
             }
             include_once './model/DatVeModel/Ve.php';
             $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
+            $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
             include 'view/ticketing/BookTickets/hienthongtin.php';                   
             //var_dump($arr);
         }
