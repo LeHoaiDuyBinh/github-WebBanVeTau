@@ -12,6 +12,7 @@ require_once 'controller/NguoiDatChoController.php';
 require_once 'controller/KhachHangController.php';
 require_once 'controller/UserController.php';
 require_once 'controller/ketquatimve.php';
+require_once 'controller/ThongTinDatChoController.php';
 $action = $_GET['action'] ?? 'index';
 $page = $_GET['page'] ?? 'base';
 $type = $_GET['type'] ?? '';
@@ -206,7 +207,15 @@ switch ($type) {
                     (new Controller)->quydinhchung();
                     break;
                 case 'thongtindatcho':
-                    (new Controller)->thongtindatcho();
+                    switch ($action) {
+                        case 'index':
+                            // mới sửa
+                            (new ThongTinDatChoController)->index();
+                            break;
+                        case 'tracuuthongtin':
+                            (new ThongTinDatChoController)->tracuuthongtin();
+                            break;
+                    }
                     break;
                 case 'ketquatimve':
                     (new KetQuaTimVe)->index();
@@ -223,6 +232,7 @@ switch ($type) {
                 case 'hienthongtin':
                     (new DatVeController)->hienthongtin();
                     break;
+                    
                 default:
                     (new Controller)->home();
                     break;
@@ -231,7 +241,7 @@ switch ($type) {
         } else {
             if ($action == 'login') {
                 (new AuthController)->login();
-            } else {
+            } elseif($action == 'logout') {
                 (new AuthController)->logout();
             }
         }

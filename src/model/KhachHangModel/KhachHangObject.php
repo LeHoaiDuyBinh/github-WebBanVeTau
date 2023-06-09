@@ -12,6 +12,13 @@
         private $MaChuyenTau;
         private $ID_NguoiDatCho;
         private $TenNguoiDatCho;
+        private $TG_XuatPhat;
+        private $GaDi;
+        private $GaDen;
+        private $MaTau;
+        private $MaToa;
+        private $TenLoaiToa;
+        private $ThanhToan;
 
         public function __construct($row)
         {
@@ -156,6 +163,86 @@
         {
                 $this->TenNguoiDatCho = $TenNguoiDatCho;
 
+        }
+
+        public function getTG_XuatPhat()
+        {
+                return $this->TG_XuatPhat;
+        }
+
+        public function setTG_XuatPhat($TG_XuatPhat)
+        {
+                $this->TG_XuatPhat = $TG_XuatPhat;
+
+        }
+
+        
+
+        public function getGaDi()
+        {
+                return $this->GaDi;
+        }
+        public function setGaDi($GaDi)
+        {
+                $this->GaDi = $GaDi;
+
+        }
+
+        
+        public function getGaDen()
+        {
+                return $this->GaDen;
+        }
+
+        public function setGaDen($GaDen)
+        {
+                $this->GaDen = $GaDen;
+
+        }
+
+        public function getMaTau()
+        {
+                return $this->MaTau;
+        }
+
+        public function setMaTau($MaTau)
+        {
+                $this->MaTau = $MaTau;
+
+        }
+
+        public function getMaToa()
+        {
+                return $this->MaToa;
+        }
+        public function setMaToa($MaToa)
+        {
+                $this->MaToa = $MaToa;
+
+        }
+
+
+        public function getTenLoaiToa()
+        {
+                return $this->TenLoaiToa;
+        }
+
+        public function setTenLoaiToa($TenLoaiToa)
+        {
+                $this->TenLoaiToa = $TenLoaiToa;
+
+        }
+
+
+        public function getThanhToan()
+        {
+                return $this->ThanhToan;
+        }
+
+
+        public function setThanhToan($ThanhToan)
+        {
+                $this->ThanhToan = $ThanhToan;
         }
     }
 ?>
