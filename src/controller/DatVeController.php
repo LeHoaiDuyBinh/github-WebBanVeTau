@@ -54,17 +54,22 @@
         }
         public function addInfo(){
             $_SESSION[session_id()."count"]=1;
-            if(count($_SESSION[session_id()]->thongTinNguoiDat)>0){
+            if($_SESSION[session_id()]->thongTinNguoiDat !=NULL){
                 $data=$_SESSION[session_id()]->thongTinNguoiDat;
                 $thongTinKhacHang=$_SESSION[session_id()]->nguoiNgoi;
                 include_once './model/DatVeModel/NguoiDatVe.php';
                 include_once './model/DatVeModel/KhachHang.php';
                 include_once './model/DatVeModel/ThongTinDatCho.php';
+                include_once './model/DatVeModel/ThanhToan.php';
+                include_once './model/DatVeModel/Ve.php';
 
-                (new NguoiDatVe)->insert(array($data->fullname,$data->idnumber,$data->phone,$data->email));
-                $arr = (new NguoiDatVe)->select($data->idnumber);
+                (new NguoiDatVe)->insert(array($data->HoTen,$data->CCCD,$data->SDT,$data->Email));
+                $arr = (new NguoiDatVe)->select($data->CCCD);
                 $ID_NguoiDatCho=$arr[0]->getID_NguoiDatCho();
-                (new KhachHang)->insert(array($thongTinKhacHang->HoTen, $thongTinKhacHang->CCCD, $thongTinKhacHang->NgaySinh, $thongTinKhacHang->MaChoNgoi, $thongTinKhacHang->TienVe, $thongTinKhacHang->MaChuyenTau,$ID_NguoiDatCho));
+                foreach($thongTinKhacHang as $each){
+                    (new KhachHang)->insert(array($each->HoTen, $each->CCCD, $each->NgaySinh, $each->MaChoNgoi, $each->TienVe, $each->MaChuyenTau,(int)$ID_NguoiDatCho));
+                }
+               
                 $sum=0;
                 foreach($thongTinKhacHang as $each){
                     $sum+=$each->TienVe;
@@ -77,20 +82,18 @@
                     foreach($thongTinKhacHang as $each){
                         $_SESSION[session_id()."maVe"]=(new Ve)->insert($each->MaChuyenTau,$each->MaChoNgoi);
                     }
-
                 }
                 
             }
 
         }
-        public function loadInfor(){           
-            if($_SESSION[session_id()."count"]==1){
+        public function loadInfor(){     
+            if($_SESSION[session_id()."count"]==0){
                 $this->addInfo();                   
             }
-            sleep(10);
             include_once './model/DatVeModel/Ve.php';
             $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
             include 'view/ticketing/BookTickets/hienthongtin.php';                   
-
+            //var_dump($arr);
         }
     }
