@@ -21,7 +21,7 @@ include_once "VeObject.php";
             try {
                 $placeholders = rtrim(str_repeat('?,', count($maVe)), ',');
                 $db = new DB();
-                $sql = "select MaVe,HoTen,Ve.MaChuyenTau,Ve.MaChoNgoi,MaTau,MaToa,ThoiGianXuatPhat from KhachHang,Ve,ChuyenTau,ChoNgoi where KhachHang.MaChuyenTau=Ve.MaChuyenTau and KhachHang.MaChoNgoi=Ve.MaChoNgoi and ChuyenTau.MaChuyenTau=Ve.MaChuyenTau and ChoNgoi.MaChoNgoi=Ve.MaChoNgoi and MaVe IN ($placeholders)";
+                $sql = "SELECT Ve.MaVe, KhachHang.HoTen, Ve.MaChuyenTau, Ve.MaChoNgoi, MaTau, MaToa, ThoiGianXuatPhat, GaXuatPhat.TenGa AS TenGaXuatPhat, GaDiemDen.TenGa AS TenGaDiemDen FROM KhachHang, Ve, ChuyenTau, ChoNgoi, TuyenDuong, Ga AS GaXuatPhat, Ga AS GaDiemDen WHERE KhachHang.MaChuyenTau = Ve.MaChuyenTau AND KhachHang.MaChoNgoi = Ve.MaChoNgoi AND ChuyenTau.MaChuyenTau = Ve.MaChuyenTau AND ChuyenTau.MaTuyenDuong = TuyenDuong.MaTuyenDuong AND ChoNgoi.MaChoNgoi = Ve.MaChoNgoi AND TuyenDuong.XuatPhat = GaXuatPhat.MaGa AND TuyenDuong.DiemDen = GaDiemDen.MaGa and MaVe IN ($placeholders)";
                 $sth = $db->select($sql, $maVe);
                 $arr = [];
                 while($row = $sth->fetch()) {

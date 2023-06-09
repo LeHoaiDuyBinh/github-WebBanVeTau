@@ -7,6 +7,8 @@
         private $MaTau;
         private $MaToa;
         private $ThoiGianXuatPhat;
+        private $TenGaXuatPhat;
+        private $TenGaDiemDen;
 
         public function __construct($row)
         {        
@@ -18,8 +20,26 @@
             $this->MaTau=$row['MaTau'];
             $this->MaToa=$row['MaToa'];
             $this->ThoiGianXuatPhat=$row['ThoiGianXuatPhat'];
+            $this->TenGaXuatPhat=$row['TenGaXuatPhat'];
+            $this->TenGaDiemDen=$row['TenGaDiemDen'];
 
 
+        }
+        public function setTenGaXuatPhat($TenGaXuatPhat)
+        {
+                return $this->TenGaXuatPhat = $TenGaXuatPhat;
+        }
+        public function getTenGaXuatPhat()
+        {
+                return $this->TenGaXuatPhat;
+        }
+        public function setTenGaDiemDen($TenGaDiemDen)
+        {
+                return $this->TenGaDiemDen = $TenGaDiemDen;
+        }
+        public function getTenGaDiemDen()
+        {
+                return $this->TenGaDiemDen;
         }
         public function setHoTen($HoTen)
         {
