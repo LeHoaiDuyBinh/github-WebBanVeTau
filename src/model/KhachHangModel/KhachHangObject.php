@@ -3,8 +3,6 @@
         private $ID_KH;
         private $HoTen_KH;
         private $CCCD_KH;
-        private $SDT_KH;
-        private $Email_KH;
         private $NgaySinh;
         private $MaChoNgoi;
         private $TienVe;
@@ -12,14 +10,19 @@
         private $MaChuyenTau;
         private $ID_NguoiDatCho;
         private $TenNguoiDatCho;
+        private $TG_XuatPhat;
+        private $GaDi;
+        private $GaDen;
+        private $MaTau;
+        private $MaToa;
+        private $TenLoaiToa;
+        private $ThanhToan;
 
         public function __construct($row)
         {
             $this->ID_KH = $row['ID_KhachHang'];
             $this->HoTen_KH = $row['HoTen'];
             $this->CCCD_KH = $row['CCCD'];
-            $this->SDT_KH = $row['SDT'];
-            $this->Email_KH = $row['Email'];
             $this->NgaySinh = $row['NgaySinh'];
             $this->MaChoNgoi = $row['MaChoNgoi'];
             $this->TienVe = $row['TienVe'];
@@ -60,28 +63,6 @@
         public function setCCCD_KH($CCCD_KH)
         {
                 $this->CCCD_KH = $CCCD_KH;
-        }
-
-        public function getSDT_KH()
-        {
-                return $this->SDT_KH;
-        }
-
-        public function setSDT_KH($SDT_KH)
-        {
-                $this->SDT_KH = $SDT_KH;
-
-        }
-
-        public function getEmail_KH()
-        {
-                return $this->Email_KH;
-        }
-
-        public function setEmail_KH($Email_KH)
-        {
-                $this->Email_KH = $Email_KH;
-
         }
 
         public function getNgaySinh()
@@ -156,6 +137,86 @@
         {
                 $this->TenNguoiDatCho = $TenNguoiDatCho;
 
+        }
+
+        public function getTG_XuatPhat()
+        {
+                return $this->TG_XuatPhat;
+        }
+
+        public function setTG_XuatPhat($TG_XuatPhat)
+        {
+                $this->TG_XuatPhat = $TG_XuatPhat;
+
+        }
+
+        
+
+        public function getGaDi()
+        {
+                return $this->GaDi;
+        }
+        public function setGaDi($GaDi)
+        {
+                $this->GaDi = $GaDi;
+
+        }
+
+        
+        public function getGaDen()
+        {
+                return $this->GaDen;
+        }
+
+        public function setGaDen($GaDen)
+        {
+                $this->GaDen = $GaDen;
+
+        }
+
+        public function getMaTau()
+        {
+                return $this->MaTau;
+        }
+
+        public function setMaTau($MaTau)
+        {
+                $this->MaTau = $MaTau;
+
+        }
+
+        public function getMaToa()
+        {
+                return $this->MaToa;
+        }
+        public function setMaToa($MaToa)
+        {
+                $this->MaToa = $MaToa;
+
+        }
+
+
+        public function getTenLoaiToa()
+        {
+                return $this->TenLoaiToa;
+        }
+
+        public function setTenLoaiToa($TenLoaiToa)
+        {
+                $this->TenLoaiToa = $TenLoaiToa;
+
+        }
+
+
+        public function getThanhToan()
+        {
+                return $this->ThanhToan;
+        }
+
+
+        public function setThanhToan($ThanhToan)
+        {
+                $this->ThanhToan = $ThanhToan;
         }
     }
 ?>

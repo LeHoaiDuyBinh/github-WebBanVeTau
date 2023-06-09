@@ -12,11 +12,9 @@
             $HoTen = $_POST['name'];
             $CCCD = $_POST['cccd'];
             $NgaySinh = $_POST['birthday'];
-            $Email = $_POST['Email'];
-            $SDT = $_POST['SDT'];
 
             include_once './model/KhachHangModel/KhachHang.php';
-            $check = (new KhachHang)->edit($ID, $HoTen, $CCCD, $NgaySinh, $Email, $SDT);
+            $check = (new KhachHang)->edit($ID, $HoTen, $CCCD, $NgaySinh);
             echo $check;
         }
 

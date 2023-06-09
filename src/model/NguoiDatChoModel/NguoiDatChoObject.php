@@ -12,6 +12,7 @@
         private $LoaiThanhToan;
         private $TrangThai;
         private $TrangThaitxt;
+        private $dsKH;
 
         public function __construct($row)
         {
@@ -154,6 +155,17 @@
         {
                 $this->TrangThaitxt = $TrangThaitxt;
 
+        }
+
+        public function setDsKH($dsKH)
+        {
+                $this->dsKH = $dsKH;
+
+        }
+
+        public function getDsKH()
+        {
+                return $this->dsKH;
         }
     }
 ?>

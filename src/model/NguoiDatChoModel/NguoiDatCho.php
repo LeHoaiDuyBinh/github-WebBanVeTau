@@ -1,5 +1,6 @@
 <?php
     include_once "./model/db.php";
+    include_once "./model/KhachHangModel/KhachHangObject.php";
     include_once "NguoiDatChoObject.php";
         class NguoiDatCho{
             private $table = "NguoiDatCho";
@@ -143,5 +144,89 @@
                     return "Lỗi";
                 }
             }
+
+            function findKH($MaDatCho){
+                try{
+                 $db = new DB();
+                 $sql = "select tmp8.*, lt.TenLoaiToa from (
+                    select tmp7.*, t.MaLoaiToa from (
+                        select tmp6.*, cn.MaToa from (
+                            select tmp5.*, g2.TenGa as TenGaDiemDen from ( 
+                                select tmp4.*, g1.TenGa as TenGaXuatPhat from ( 
+                                    select tmp3.*, td.XuatPhat, td.DiemDen from ( 
+                                        select tmp2.*, ct.MaTuyenDuong, ct.MaTau, ct.ThoiGianXuatPhat from ( 
+                                            select kh.*, tmp.MaDatCho, tmp.TrangThai from ( 
+                                                select ttdc.ID_NguoiDatCho, ttdc.MaDatCho, ttdc.TrangThai from ThongTinDatCho as ttdc 
+                                                where ttdc.MaDatCho = ? ) as tmp, KhachHang as kh 
+                                                where tmp.ID_NguoiDatCho = kh.ID_NguoiDatCho) as tmp2, ChuyenTau as ct 
+                                                where tmp2.MaChuyenTau = ct.MaChuyenTau) as tmp3, TuyenDuong as td 
+                                                where tmp3.MaTuyenDuong = td.MaTuyenDuong) as tmp4, Ga as g1 
+                                                where tmp4.XuatPhat = g1.MaGa) as tmp5, Ga as g2 
+                                                where tmp5.DiemDen = g2.MaGa) as tmp6, ChoNgoi as cn 
+                                                where tmp6.MaChoNgoi = cn.MaChoNgoi) as tmp7, Toa as t 
+                                                where t.MaToa = tmp7.MaToa) as tmp8, LoaiToa as lt 
+                                                where lt.MaLoaiToa = tmp8.MaLoaiToa";
+                 $params = array($MaDatCho);
+                 $sth = $db->select($sql, $params);
+                 $arr = [];
+                 while($row = $sth->fetch()) {
+                    $obj = new KhachHangObject($row);
+                    $obj->setTG_XuatPhat($row['ThoiGianXuatPhat']);
+                    $obj->setGaDi($row['TenGaXuatPhat']);
+                    $obj->setGaDen($row['TenGaDiemDen']);
+                    $obj->setMaToa($row['MaToa']);
+                    $obj->setMaTau($row['MaTau']);
+                    $obj->setTenLoaiToa($row['TenLoaiToa']);
+                    $txt = '';
+                    if($row['TrangThai'] == 0)
+                        $txt = "Chưa thanh toán";
+                    elseif($row['TrangThai'] == 1)
+                        $txt = "Đã thanh toán";
+                    else
+                        $txt = "Đã hết hạn thanh toán";
+                    $obj->setThanhToan($txt);
+                    $arr[] = $obj;
+                 }
+                 return $arr;
+                }
+                catch (PDOException $e) {
+                 // return $e->getMessage();
+                 return "Lôi khi load khách hàng";
+             }
+             }
+
+            function find($maDatCho){
+                try{
+                 $db = new DB();
+                 $sql = "select tmp.*, NguoiDatCho.HoTen, NguoiDatCho.CCCD, NguoiDatCho.SDT, NguoiDatCho.Email from (
+                    select * from ThongTinDatCho where MaDatCho = ?
+                    ) as tmp, NguoiDatCho 
+                    where tmp.ID_NguoiDatCho = NguoiDatCho.ID_NguoiDatCho";
+                 $params = array($maDatCho);
+                 $sth = $db->select($sql, $params);
+                 $arr = [];
+                 while($row = $sth->fetch()) {
+                        $obj = new NguoiDatChoObject($row);
+
+                        if($obj->getTrangThai() == 0)
+                            $obj->setTrangThaitxt("Chờ thanh toán");
+                        elseif($obj->getTrangThai() == 1)
+                            $obj->setTrangThaitxt("Đã thanh toán");
+                        elseif($obj->getTrangThai() == 2)
+                            $obj->setTrangThaitxt("Bị hủy");
+                        $arr[] = $obj;
+                 }
+                $arrKH = $this->findKH($arr[0]->getMaDatCho());
+                $arr[0]->setdsKH($arrKH);
+                if(count($arr) > 0)
+                    return $arr;
+                else
+                    return "none";
+                }
+                catch (PDOException $e) {
+                 // return $e->getMessage();
+                 return "Lôi khi find khách hàng";
+             }
+             }
         }
 ?>

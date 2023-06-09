@@ -21,9 +21,6 @@
         public function quydinhchung(){
             include 'view/ticketing/quydinhchung.php';
         }
-        public function thongtindatcho(){
-            include 'view/ticketing/thongtindatcho.php';
-        }
         public function menu_bar($page){
             include_once 'view/admin/menu_bar_admin.php';
         }
