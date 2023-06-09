@@ -201,7 +201,7 @@
         history.back(); // Quay lại trang trước đó trong lịch sử duyệt
     }
     function nextPage() {
-        window.location.href = "view/ticketing/BookTickets/hienthongtin.php";
+        window.location.href = "/?page=loadInfor";
     }
 </script>
 
