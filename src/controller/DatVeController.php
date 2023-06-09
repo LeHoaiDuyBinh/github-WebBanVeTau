@@ -37,6 +37,7 @@
                 if($HinhThuc==="QR"){
                     $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
                     include 'view/ticketing/BookTickets/qrcode.php';
+                    $_SESSION[session_id()."count"]=0;
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
                     //include
@@ -52,6 +53,7 @@
             }
         }
         public function addInfo(){
+            $_SESSION[session_id()."count"]=1;
             if(count($_SESSION[session_id()]->thongTinNguoiDat)>0){
                 $data=$_SESSION[session_id()]->thongTinNguoiDat;
                 $thongTinKhacHang=$_SESSION[session_id()]->nguoiNgoi;
@@ -81,8 +83,10 @@
             }
 
         }
-        public function loadInfor(){
-            $this->addInfo();                   
+        public function loadInfor(){           
+            if($_SESSION[session_id()."count"]==1){
+                $this->addInfo();                   
+            }
             sleep(10);
             include_once './model/DatVeModel/Ve.php';
             $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
