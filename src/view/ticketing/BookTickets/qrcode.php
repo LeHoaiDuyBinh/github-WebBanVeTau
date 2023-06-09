@@ -77,7 +77,7 @@
     @media (max-width: 992px) and (min-width: 699px) {
         .qr {
             text-align: center;
-            width: 50%;
+            width: 60%;
             height: 60%;
             padding: 30px;
         }
@@ -86,7 +86,7 @@
             height: 60%;
         }
         .button-preNext {
-            width: 80%;
+            width: 60%;
             height: 40%;
         }
         .back-button,
