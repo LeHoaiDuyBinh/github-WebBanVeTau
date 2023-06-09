@@ -6,7 +6,8 @@
                 <h1>Xác nhận thông tin đặt mua vé tàu</h1>
                 <div class="form-container">
                     <h2 class="fs-title">Thông tin người mua vé</h2>
-                    <?php var_dump($Ve); var_dump($thongTinNguoiDat) ?>
+                    <?php var_dump($Ve);
+                    var_dump($thongTinNguoiDat) ?>
                     <form>
                         <div class="form-row">
                             <label for="name">Họ và tên:</label>
@@ -28,7 +29,7 @@
                             <span><?php echo $thongTinNguoiDat->Email; ?></span>
                         </div>
 
-                        <div class="form-row">
+                        <div class="form-row thanhToan" data-thanh-toan="<?php echo $thongTinNguoiDat->thanhToan ?>">
                             <label for="thanhToan">Phương thức thanh toán:</label>
                             <span>
                                 <?php
@@ -91,11 +92,14 @@
                         </table>
 
                         <div class="button-preNext" style="margin-top: 20px; margin-bottom: 20px;">
-                            <button class="back-button" onclick="quayLai()">Quay lại</button>
-                            <button class="next-button" onclick="dongY()">Đồng ý mua vé</button>
+                            <button class="back-button" onclick="quayLai()" type="button">Quay lại</button>
+                            <button class="next-button" onclick="dongY(event)" type="submit">Đồng ý mua vé</button>
                         </div>
                 </div>
 
             </div>
         </div>
     </div>
+</div>
+<!--Script-->
+<script src="/view/javascript/xacnhan.js"></script>

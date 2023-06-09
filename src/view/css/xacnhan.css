@@ -1,15 +1,3 @@
-/* 
-h2 {
-  text-align: left;
-  color: #008e87;
-  font-size: 25px;
-}
-
-h1 {
-  color: #01b3a7;
-  margin-top: 10px;
-} */
-
 .form-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -42,16 +30,18 @@ th {
   justify-content: space-between;
 }
 
-.back-button,
-.next-button {
+.back-button {
   background-color: #01b3a7 !important;
   float: right;
-  width: 20% !important;
+  width: 15% !important;
   color: white;
   border-radius: 5px;
 }
 
-.back-button:hover,
-.next-button:hover {
-  background-color: #008e87;
+button[type="submit"] {
+  background-color: #01b3a7 !important;
+  float: right;
+  width: 15% !important;
+  color: white;
+  border-radius: 5px;
 }
