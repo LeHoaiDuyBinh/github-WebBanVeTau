@@ -35,8 +35,8 @@
             if(isset($_GET['HinhThuc'])){
                 $HinhThuc=$_GET['HinhThuc'];
                 if($HinhThuc==="MaQR"){
-                    $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png"
-                    //include
+                    $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
+                    include 'view/ticketing/BookTickets/qrcode.php';                   
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
                     //include
@@ -52,5 +52,11 @@
         }
         public function addInfo(){
             
+        }
+        public function hienthongtin() {
+            include 'view/ticketing/BookTickets/hienthongtin.php';
+        }
+        public function qrcode() {
+            include 'view/ticketing/BookTickets/qrcode.php';
         }
     }
