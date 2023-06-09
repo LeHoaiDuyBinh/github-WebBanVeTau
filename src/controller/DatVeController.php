@@ -7,10 +7,10 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$jsonData = file_get_contents('php://input');
                 $data = json_decode($jsonData);
-                $_SESSION['data']=$data;
+                $_SESSION[session_id().'thongtin']=$data;
 			}
-            $ChieuDi=$_SESSION['data']->chieuDi;
-            $ChieuVe=$_SESSION['data']->chieuVe;
+            $ChieuDi=$_SESSION[session_id().'thongtin']->chieuDi;
+            $ChieuVe=$_SESSION[session_id().'thongtin']->chieuVe;
             include_once './model/DatVeModel/DatVe.php';
             $arrDi = (new DatVe)->load($ChieuDi->maChuyenDi,$ChieuDi->maGheDi);
             if(count($ChieuVe) > 0){
@@ -24,11 +24,33 @@
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 				$jsonData = file_get_contents('php://input');
                 $data = json_decode($jsonData);
-                $_SESSION['data_xacnhan']=$data;
+                $_SESSION[session_id()]=$data;
 			}
-            $Ve=$_SESSION['data_xacnhan']->nguoiNgoi;
+            $Ve=$_SESSION[session_id()]->nguoiNgoi;
+            $thongTinNguoiDat=$_SESSION[session_id()]->thongTinNguoiDat;
             //var_dump($Ve);
-            $thongTinNguoiDat=$_SESSION['data_xacnhan']->thongTinNguoiDat;
             include 'view/ticketing/BookTickets/xacnhan.php';
+        }
+        public function thanhToan(){
+            if(isset($_GET['HinhThuc'])){
+                $HinhThuc=$_GET['HinhThuc'];
+                if($HinhThuc==="MaQR"){
+                    $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png"
+                    //include
+                }
+                elseif($HinhThuc==="ThanhToanSau"){
+                    //include
+                }
+                else{
+                    include 'view/403.html';
+                }
+            
+            }
+            if($_POST['DaThanhToan']=='True'){
+                
+            }
+        }
+        public function addInfo(){
+            
         }
     }
