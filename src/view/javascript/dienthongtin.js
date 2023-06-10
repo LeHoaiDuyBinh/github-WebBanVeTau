@@ -1,3 +1,19 @@
+function showLoadingSwal() {
+    Swal.fire({
+      title: 'Loading...',
+      text: 'Vui lòng chờ trong giây lát!',
+      timer: 7000,
+      showConfirmButton: false,
+      imageUrl: '/view/image/gif/loading.gif',
+      onBeforeOpen: function() {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+    }).then((result) => {
+      // Sau khi loading xong, điều hướng qua trang khác
+      window.location = "/?page=xacnhan";
+    });
+  }
 document.addEventListener("DOMContentLoaded", function () {
     //Tạo các form cho người ngồi
 
@@ -794,7 +810,6 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        window.location = "/?page=xacnhan";
     }
 }
 
