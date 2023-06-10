@@ -103,6 +103,7 @@
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
                 include 'view/ticketing/BookTickets/hienthongtin.php';
+                var_dump($arr);
 
             }
             else{
@@ -113,6 +114,6 @@
                 //var_dump($arr);
             }
 			session_unset();
-
+            session_destroy();
         }
     }
