@@ -1,6 +1,6 @@
 <?php
     include_once "./model/db.php";
-    include "MaObject.php";
+    include_once "MaObject.php";
     
         class Ma{
             function load($maChuyenTau){

@@ -1,7 +1,7 @@
 <?php
     include_once "./model/db.php";
-    include "ToaObject.php";
-    include "ChoNgoi.php";
+    include_once "ToaObject.php";
+    include_once "ChoNgoi.php";
         class Toa{
             private $table = "Toa";
             function load($maTau,$maChuyenTau,$ThoiGianXuatPhat){

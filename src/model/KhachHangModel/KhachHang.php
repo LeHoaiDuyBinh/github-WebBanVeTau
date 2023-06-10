@@ -1,7 +1,7 @@
 <?php
     include_once "./model/db.php";
     include_once "KhachHangObject.php";
-        class KhachHang{
+        class KhachHang_db{
             private $table = "KhachHang";
             function load(){
                 try {

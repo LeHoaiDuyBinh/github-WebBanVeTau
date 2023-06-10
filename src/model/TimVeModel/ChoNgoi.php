@@ -1,7 +1,7 @@
 <?php
     include_once "./model/db.php";
-    include "ChoNgoiObject.php";
-    include "Ma.php";
+    include_once "ChoNgoiObject.php";
+    include_once "Ma.php";
 
     
         class ChoNgoi{
