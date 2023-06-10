@@ -98,10 +98,11 @@
             }  
             $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
 
-            if($phuongThucThanhToan!="QR"){
+            if($phuongThucThanhToan !="QR"){
                 $maDatCho=$_SESSION[session_id()."maDatCho"];
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
+                include 'view/ticketing/BookTickets/hienthongtin.php';
             }
             else{
                 include_once './model/DatVeModel/Ve.php';

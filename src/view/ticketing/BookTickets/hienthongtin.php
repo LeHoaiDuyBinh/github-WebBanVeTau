@@ -82,9 +82,8 @@
 
 <!-- Chưa thanh toán -->
 <div class="body-page" style="align-items: stretch !important">
-    <? var_dump($arr) ?>
     <h1 class="title"><strong>GIAO DỊCH ĐANG CHỜ THANH TOÁN</strong></h1>
-    <h5 style="padding: 15px">Mã đặt chỗ: </h5>
+    <h5 style="padding: 15px">Mã đặt chỗ: <? echo $arr[0]->getMaDatCho() ?></h5>
     <div class="col-md-12 table-responsive list-ticket-deskhop" ng-show="bookingInfo.BookingInfos.length > 0">
         <h5 class="et-register-block ng-binding" style="margin-left:0px">Thông tin vé chờ thanh toán</h5>
         <table class="table table-bordered">
@@ -93,30 +92,32 @@
                     <th style="width: 15%; text-align: center">Họ tên</th>
                     <th style="width: 15%; text-align: center" class="ng-binding">Số CMND/ Hộ chiếu</th>
                     <th style="width: 15%; text-align: center" class="ng-binding">Loại chỗ</th>
-                    <th style="width: 25%; text-align: center" class="ng-binding">Thông tin vé</th>
+                    <th style="width: 27%; text-align: center" class="ng-binding">Thông tin vé</th>
                     <th style="width: 15%; text-align: center" class="ng-binding">Trạng thái</th>
-                    <th style="width: 15%; text-align: center" class="ng-binding">Thành tiền (VNĐ)</th>
+                    <th style="width: 13%; text-align: center" class="ng-binding">Thành tiền (VNĐ)</th>
                 </tr>
             </thead>
             <tbody ng-repeat="group in bookingGroup" class="ng-scope">
-                <tr ng-repeat="book in group" class="ng-scope">
-                    <td class="et-table-cell ng-binding">Vân Anh</td>
-                    <td class="et-table-cell ng-binding">272879232</td>
-                    <td class="et-table-cell et-text-md ng-binding">Ngồi mềm điều hòa</td>
-                    <td class="et-table-cell et-text-md">
-                        <div class="ng-binding">Chuyến: Ga đi - Ga đến</div>
-                        <div class="ng-binding">Mã tàu: SPT2</div>
-                        <div class="ng-binding">Thời gian khởi hành: 17/06/2023 06:10</div>
-                        <div class="ng-binding">Mã Toa: 1 - Mã chỗ: 25</div>
-                    </td>
-                    <td class="et-table-cell et-text-md ng-binding">Chờ thanh toán trả sau.</td>
-                    <td class="et-table-cell text-right ng-binding">33,000</td>
-                </tr>
+                <? $tong = 0; foreach ($arr as $each) : ?>
+                    <tr ng-repeat="book in group" class="ng-scope">
+                        <td class="et-table-cell ng-binding"><?echo $each->getHoTen()?></td>
+                        <td class="et-table-cell ng-binding"><?echo $each->getCCCD()?></td>
+                        <td class="et-table-cell et-text-md ng-binding"><?echo $each->getLoaiCho()?></td>
+                        <td class="et-table-cell et-text-md">
+                            <div class="ng-binding"><?echo $each->getTenGaXuatPhat() . " - " . $each->getTenGaDiemDen()?></div>
+                            <div class="ng-binding">Mã tàu: <?echo $each->getMaTau()?></div>
+                            <div class="ng-binding">Thời gian khởi hành: <?echo $each->getThoiGianXuatPhat()?></div>
+                            <div class="ng-binding">Mã Toa: <?echo $each->getMaToa()?> - Mã chỗ: <?echo $each->getMaChoNgoi()?></div>
+                        </td>
+                        <td class="et-table-cell et-text-md ng-binding">Chờ thanh toán trả sau.</td>
+                        <td class="et-table-cell text-right ng-binding"><?echo number_format($each->getTienVe()); $tong += $each->getTienVe()?></td>
+                    </tr>
+                <? endforeach; ?>
             </tbody>
             <tfoot>
                 <tr class="info">
                     <td colspan="5"><span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span></td>
-                    <td class="text-right"><strong class="ng-binding">63,000</strong></td>
+                    <td class="text-right"><strong class="ng-binding"><?echo number_format($tong)?></strong></td>
                 </tr>
             </tfoot>
         </table>
