@@ -109,10 +109,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             var lineBreak = document.createElement("br");
+            var divDoiTuong = document.createElement("div");
+            divDoiTuong.className = "divDoiTuong";
+            divDoiTuong.appendChild(doiTuongLabel);
+            divDoiTuong.appendChild(doiTuongSelect);
+
             form.appendChild(inputRowDiv);
             form.appendChild(lineBreak);
-            form.appendChild(doiTuongLabel);
-            form.appendChild(doiTuongSelect);
+            form.appendChild(divDoiTuong);
             form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
@@ -384,10 +388,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             var lineBreak = document.createElement("br");
+            var divDoiTuong = document.createElement("div");
+            divDoiTuong.className = "divDoiTuong";
+            divDoiTuong.appendChild(doiTuongLabel);
+            divDoiTuong.appendChild(doiTuongSelect);
+
             form.appendChild(inputRowDiv);
             form.appendChild(lineBreak);
-            form.appendChild(doiTuongLabel);
-            form.appendChild(doiTuongSelect);
+            form.appendChild(divDoiTuong);
             form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
