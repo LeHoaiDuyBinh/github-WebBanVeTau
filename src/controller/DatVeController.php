@@ -74,10 +74,13 @@
                 foreach($thongTinKhacHang as $each){
                     $sum+=$each->TienVe;
                 }
-                if($data->thanhToan=="traSau")
+                if($data->thanhToan=="traSau"){
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,0);
+                    $_SESSION[session_id()."maDatCho"]=$maDatCho;
+                }
                 elseif($data->thanhToan=="QR"){
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
+                    $_SESSION[session_id()."maDatCho"]=$maDatCho;
                     (new ThanhToan)->insert($maDatCho,$data->thanhToan);
                     $_SESSION[session_id()."maVe"]=[];
                     foreach($thongTinKhacHang as $each){
@@ -89,13 +92,23 @@
 
         }
         public function loadInfor(){     
-            if($_SESSION[session_id()."count"]==0){
-                $this->addInfo();                   
-            }
-            include_once './model/DatVeModel/Ve.php';
-            $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
             $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
-            include 'view/ticketing/BookTickets/hienthongtin.php';                   
-            //var_dump($arr);
+            if($phuongThucThanhToan=="!=QR"){
+                $maDatCho=$_SESSION[session_id()."maDatCho"];
+                include_once './model/DatVeModel/ThongTinDatCho.php';
+                $arr = (new ThongTinDatCho)->select($maDatCho);
+
+            }
+            else{
+                if($_SESSION[session_id()."count"]==0){
+                    $this->addInfo();                   
+                }
+                include_once './model/DatVeModel/Ve.php';
+                $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
+                $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
+                include 'view/ticketing/BookTickets/hienthongtin.php';                   
+                //var_dump($arr);
+            }
+            
         }
     }
