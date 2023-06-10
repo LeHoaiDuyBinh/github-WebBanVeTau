@@ -92,25 +92,24 @@
             }
 
         }
-        public function loadInfor(){     
+        public function loadInfor(){   
             if($_SESSION[session_id()."count"]==0){
                 $this->addInfo();                   
-            }
+            }  
             $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
 
-            if($phuongThucThanhToan!="QR"){
+            if($phuongThucThanhToan !="QR"){
                 $maDatCho=$_SESSION[session_id()."maDatCho"];
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
+                include 'view/ticketing/BookTickets/hienthongtin.php';
             }
             else{
-                
                 include_once './model/DatVeModel/Ve.php';
                 $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
                 $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
                 include 'view/ticketing/BookTickets/hienthongtin.php';                   
                 //var_dump($arr);
             }
-            
         }
     }

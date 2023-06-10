@@ -37,12 +37,12 @@
   </tbody>
 </table>
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);">
     <form id="ChuyenTauForm">
       <label for="MaChuyenTau">Mã chuyến tàu:</label>
-      <input type="text" id="MaChuyenTau" name="MaChuyenTau" required>
+      <input style= "border-radius: 4px !important;color: black" type="text" id="MaChuyenTau" name="MaChuyenTau" required>
       <label for="MaTuyenDuong">Mã tuyến:</label>
-      <select name="MaTuyenDuong" id="MaTuyenDuong" required  >
+      <select style="width: 100%; padding: 16px !important;color:black;" name="MaTuyenDuong" id="MaTuyenDuong" required >
       <option value=""></option>
       <?php foreach($arrTuyenDuong as $each): ?>
         <option value="<?php echo $each->getMaTuyenDuong(); ?>" data-xuat-phat="<?php echo $each->getXuatPhat(); ?>">
@@ -52,7 +52,7 @@
       </select>
       <label for="MaTau">Mã tàu:</label>
       <input type="text" id="MaTau_old" name="MaTau_old" hidden>
-      <select name="MaTau" id="MaTau" required>
+      <select style="width: 100%; padding: 16px !important;color:black;" name="MaTau" id="MaTau" required>
         <option value=""></option>
       <?php foreach($arrTau as $each): ?>
         <option value="<?php echo $each->getMaTau(); ?>" data-ga-hien-tai="<?php echo $each->getGaHienTai(); ?>">
@@ -61,9 +61,9 @@
       <?php endforeach; ?>
       </select>
       <label for="ThoiGianXuatPhat">Thời gian xuất phát:</label>
-      <input style="width: 99%; height: 41px; border-radius: 4px; border: 2px solid #ccc" type="datetime-local" id="ThoiGianXuatPhat" name="ThoiGianXuatPhat" required>
+      <input style="width: 100%; padding: 6px !important; border-radius: 4px !important;color:black; border: 2px solid #ccc" type="datetime-local" id="ThoiGianXuatPhat" name="ThoiGianXuatPhat" required>
       <label for="TrangThai">Trạng thái:</label>
-      <select name="TrangThai" id="TrangThai" required>
+      <select style="width: 100%; padding: 16px !important;color:black;" name="TrangThai" id="TrangThai" required>
         <option value=""></option>
         <option value="0">Sẵn sàng hoạt động</option>
         <!-- <option value="1">Đang gặp sự cố</option> -->
