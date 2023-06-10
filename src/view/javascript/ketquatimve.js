@@ -3,7 +3,7 @@ function showLoadingSwal() {
     Swal.fire({
       title: 'Loading...',
       text: 'Vui lòng chờ trong giây lát!',
-      timer: 5000,
+      timer: 6000,
       showConfirmButton: false,
       imageUrl: '/view/image/gif/loading.gif',
       onBeforeOpen: function() {
