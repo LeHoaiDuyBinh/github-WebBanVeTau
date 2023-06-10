@@ -32,18 +32,18 @@
   </tbody>
 </table>
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);">
     <form id = "LoaiToaForm">
       <label for="MaLoaiToa">Mã loại toa:</label>
-      <input type="text" id="MaLoaiToa" name="MaLoaiToa" required>
+      <input style="color: black" type="text" id="MaLoaiToa" name="MaLoaiToa" required>
       <label for="TenLoaiToa">Tên loại toa:</label>
-      <input type="text" id="TenLoaiToa" name="TenLoaiToa" required>
+      <input style="color: black" type="text" id="TenLoaiToa" name="TenLoaiToa" required>
       <label for="Gia">Giá:</label>
-      <input type="text" pattern="^[1-9]\d*$" id="Gia" name="Gia" required>
+      <input style="color: black" type="text" pattern="^[1-9]\d*$" id="Gia" name="Gia" required>
       <label for="SoChoNgoi">Số chổ ngồi:</label>
-      <input type="text" pattern="^[1-9]\d*$" id="SoChoNgoi" name="SoChoNgoi" required>
+      <input style="color: black" type="text" pattern="^[1-9]\d*$" id="SoChoNgoi" name="SoChoNgoi" required>
       <label for="MoTa">Mô tả:</label>
-      <input type="text" id="MoTa" name="MoTa" required>
+      <input style="color: black" type="text" id="MoTa" name="MoTa" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>

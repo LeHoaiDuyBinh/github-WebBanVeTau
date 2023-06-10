@@ -29,15 +29,15 @@
   </tbody>
 </table>
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content"  style="background-color:var(--accent-clr); color: var(--text);">
     <form id = "UserForm">
       <input type="text" id="ID" name="ID" hidden>
       <label for="Email">Email:</label>
-      <input type="email" id="Email" name="Email" required>
+      <input style="color: black; width: 100%; padding: 16px !important; margin-bottom: 10px;"type="email" id="Email" name="Email" required>
       <label for="MatKhau">Mật khẩu:</label>
-      <input type="text" id="MatKhau" name="MatKhau" required>
+      <input style="color: black;" type="text" id="MatKhau" name="MatKhau" required>
       <label for="ChucVu">Chức vụ:</label>
-      <select name="ChucVu" id="ChucVu">
+      <select style="color: black; width: 100%; padding: 16px !important; margin-bottom: 10px;" name="ChucVu" id="ChucVu">
         <option value="">
         </option>
         <option value="0">
