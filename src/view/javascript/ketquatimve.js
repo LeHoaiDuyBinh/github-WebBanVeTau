@@ -1,6 +1,6 @@
 // Xử lý sự kiện click vào tàu hover lên + ẩn đi chỗ ngồi và title toa khi bấm vào tàu khác
 function showLoadingSwal() {
-    return Swal.fire({
+    Swal.fire({
       title: 'Loading...',
       text: 'Vui lòng chờ trong giây lát!',
       timer: 5000,
@@ -10,8 +10,11 @@ function showLoadingSwal() {
         Swal.showLoading();
       },
       allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+    }).then((result) => {
+      // Sau khi loading xong, điều hướng qua trang khác
+      window.location = form.action;
     });
-}
+  }
 var maChuyenDi = null;
 var maChuyenVe = null;
 const trains = document.querySelectorAll('.et-train-block.train-oneway');
@@ -402,7 +405,6 @@ form.addEventListener('submit', function (event) {
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonString);
         showLoadingSwal();
-        window.location = form.action;
 
     }
     // nếu loại vé là khứ hồi
@@ -453,7 +455,6 @@ form.addEventListener('submit', function (event) {
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
             showLoadingSwal();
-            window.location = form.action;
         }
     }
 
