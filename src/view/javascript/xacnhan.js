@@ -6,5 +6,5 @@ function dongY(event){
         window.location = "http://localhost:8090/?page=thanhToan&HinhThuc=QR";
     }
    else
-    window.location = "http://localhost:8090/?page=thanhToan&HinhThuc=ThanhToanSau";
+    window.location = "http://localhost:8090/?page=loadInfor";
 }

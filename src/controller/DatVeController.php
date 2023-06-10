@@ -80,6 +80,7 @@
                 }
                 elseif($data->thanhToan=="QR"){
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
+
                     $_SESSION[session_id()."maDatCho"]=$maDatCho;
                     (new ThanhToan)->insert($maDatCho,$data->thanhToan);
                     $_SESSION[session_id()."maVe"]=[];
@@ -92,17 +93,20 @@
 
         }
         public function loadInfor(){     
+            if($_SESSION[session_id()."count"]==0){
+                $this->addInfo();                   
+            }
             $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
-            if($phuongThucThanhToan=="!=QR"){
+
+            if($phuongThucThanhToan!="QR"){
                 $maDatCho=$_SESSION[session_id()."maDatCho"];
+                var_dump($maDatCho);
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
-
+                var_dump($arr);
             }
             else{
-                if($_SESSION[session_id()."count"]==0){
-                    $this->addInfo();                   
-                }
+                
                 include_once './model/DatVeModel/Ve.php';
                 $arr = (new Ve)->select($_SESSION[session_id()."maVe"]);
                 $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
