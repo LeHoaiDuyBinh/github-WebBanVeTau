@@ -83,7 +83,6 @@
 <!-- Chưa thanh toán -->
 <div class="body-page" style="align-items: stretch !important">
     <h1 class="title"><strong>GIAO DỊCH ĐANG CHỜ THANH TOÁN</strong></h1>
-    <?var_dump($arr)?>
     <h5 style="padding: 15px">Mã đặt chỗ: <? echo $arr[0]->getMaDatCho() ?></h5>
     <div class="col-md-12 table-responsive list-ticket-deskhop" ng-show="bookingInfo.BookingInfos.length > 0">
         <h5 class="et-register-block ng-binding" style="margin-left:0px">Thông tin vé chờ thanh toán</h5>
