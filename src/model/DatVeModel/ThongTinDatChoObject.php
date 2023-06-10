@@ -1,5 +1,6 @@
 <?php
     class ThongTinDatChoObject{
+
         private $MaDatCho;
         private $CCCD;
         private $HoTen;
@@ -25,7 +26,6 @@
             $this->TenGaXuatPhat=$row['TenGaXuatPhat'];
             $this->TenGaDiemDen=$row['TenGaDiemDen'];
             $this->TienVe=$row['TienVe'];
-
 
         }
         public function setTienVe($TienVe)
