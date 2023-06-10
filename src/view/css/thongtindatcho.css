@@ -149,7 +149,7 @@ label {
 }
 .processing-transactions {
     font-size: 16px; /* Kích thước chữ gốc */
-    color: red;
+    color: black;
   }
   
   .smaller-text {
