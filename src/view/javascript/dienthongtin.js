@@ -97,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var cccdLabel = document.createElement("label");
             cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
-            cccdLabel.textContent = "Số CCCD/Hộ chiếu";
+            cccdLabel.textContent = "Số CCCD/Hộ chiếu/Số khai sinh";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var cccdLabel = document.createElement("label");
             cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
-            cccdLabel.textContent = "Số CCCD/Hộ chiếu";
+            cccdLabel.textContent = "Số CCCD/Hộ chiếu/Số khai sinh";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
