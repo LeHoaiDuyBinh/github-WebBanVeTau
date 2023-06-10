@@ -112,7 +112,7 @@
                 include 'view/ticketing/BookTickets/hienthongtin.php';                   
                 //var_dump($arr);
             }
-			session_unset();
+			//session_unset();
 
         }
     }

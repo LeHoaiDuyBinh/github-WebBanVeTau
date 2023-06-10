@@ -17,8 +17,8 @@
           </thead>
           <!-- add DB từ trang tìm vé-->
           <?php 
-          var_dump($arrDi);
-          var_dump($arrVe)?>
+          //var_dump($arrDi);
+          //var_dump($arrVe)?>
           <!-- DB chiều đi-->
           <?php foreach ($arrDi as $each) : ?>
             <div class="chieuDi" name="maChuyenTau" data-ma-chuyen-tau="<?php echo $each->getMaChuyenTau(); ?>"></div>

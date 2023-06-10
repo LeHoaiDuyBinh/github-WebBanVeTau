@@ -25,6 +25,8 @@
             if($ticket_type!="one-way"){
                 $arrVe= (new TimVe)->load($DiemDen,$xuatPhat,$ThoiDiemQuayVe);
             };
+            $_SESSION[session_id()."count"]=0;
+
             //var_dump($arrChuyen);
             //var_dump($arrVe);
             //echo $arrChuyen[0]->getMaChuyenTau;

@@ -31,7 +31,7 @@ include_once "VeObject.php";
                     return $arr;
                 }
             catch (PDOException $e) {
-                var_dump($e);
+                //var_dump($e);
                 return  $sql . "<br>" . $e->getMessage();
             }
         }
