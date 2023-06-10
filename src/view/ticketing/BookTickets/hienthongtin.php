@@ -78,57 +78,52 @@
             </div>
         </div>
     </div>
-<? }
+<? } ?>
 
-// Chưa thanh toán
-else { ?>
-    <div class="body-page" style="align-items: stretch !important">
-        <h1 class="title"><strong>GIAO DỊCH ĐANG CHỜ THANH TOÁN</strong></h1>
-        <h5 style="padding: 15px">Mã đặt chỗ: </h5>
-        <div class="col-md-12 table-responsive list-ticket-deskhop" ng-show="bookingInfo.BookingInfos.length > 0">
-            <h5 class="et-register-block ng-binding" style="margin-left:0px">Thông tin vé chờ thanh toán</h5>
-            <table class="table table-bordered">
-                <thead class="et-table-header">
-                    <tr>
-                        <th style="width: 15%; text-align: center">Họ tên</th>
-                        <th style="width: 8%; text-align: center" class="ng-binding">Số CMND/ Hộ chiếu</th>
-                        <th style="width: 8%; text-align: center" class="ng-binding">Đối tượng</th>
-                        <th style="width: 15%; text-align: center" class="ng-binding">Loại chỗ</th>
-                        <th style="width: 30%; text-align: center" class="ng-binding">Thông tin vé</th>
-                        <th style="width: 15%; text-align: center" class="ng-binding">Trạng thái</th>
-                        <th style="width: 9%; text-align: center" class="ng-binding">Thành tiền (VNĐ)</th>
-                    </tr>
-                </thead>
-                <tbody ng-repeat="group in bookingGroup" class="ng-scope">
-                    <tr ng-repeat="book in group" class="ng-scope">
-                        <td class="et-table-cell ng-binding">Vân Anh</td>
-                        <td class="et-table-cell ng-binding">272879232</td>
-                        <td class="et-table-cell">
-                            Người lớn
-                        </td>
-                        <td class="et-table-cell et-text-md ng-binding">Ngồi mềm điều hòa</td>
-                        <td class="et-table-cell et-text-md">
-                            <div class="ng-binding">Chuyến: Ga đi - Ga đến</div>
-                            <div class="ng-binding">Mã tàu: SPT2</div>
-                            <div class="ng-binding">Thời gian khởi hành: 17/06/2023 06:10</div>
-                            <div class="ng-binding">Mã Toa: 1 - Mã chỗ: 25</div>
-                        </td>
-                        <td class="et-table-cell et-text-md ng-binding">Chờ thanh toán trả sau.</td>
-                        <td class="et-table-cell text-right ng-binding">33,000</td>
-                    </tr>
-                </tbody>
-                <tfoot>
-                    <tr class="info">
-                        <td colspan="6"><span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span></td>
-                        <td class="text-right"><strong class="ng-binding">63,000</strong></td>
-                    </tr>
-                </tfoot>
-            </table>
-        </div>
-        <div class="colume2" style="align-items: flex-start">
-            <p>Vé của quý khách đã được tạm khóa. Quý khách vui lòng thanh toán trước 24 giờ kể từ lúc đặt vé thành công. Sau 24 giờ vé sẽ bị hủy,
-                 quý khách có nhu cầu đặt vé vui lòng quay về trang chủ để chọn và đặt vé.</p>
-            <i>Trân trọng cảm ơn!</i>
-        </div>
+<!-- Chưa thanh toán -->
+<div class="body-page" style="align-items: stretch !important">
+    <? var_dump($arr) ?>
+    <h1 class="title"><strong>GIAO DỊCH ĐANG CHỜ THANH TOÁN</strong></h1>
+    <h5 style="padding: 15px">Mã đặt chỗ: </h5>
+    <div class="col-md-12 table-responsive list-ticket-deskhop" ng-show="bookingInfo.BookingInfos.length > 0">
+        <h5 class="et-register-block ng-binding" style="margin-left:0px">Thông tin vé chờ thanh toán</h5>
+        <table class="table table-bordered">
+            <thead class="et-table-header">
+                <tr>
+                    <th style="width: 15%; text-align: center">Họ tên</th>
+                    <th style="width: 15%; text-align: center" class="ng-binding">Số CMND/ Hộ chiếu</th>
+                    <th style="width: 15%; text-align: center" class="ng-binding">Loại chỗ</th>
+                    <th style="width: 25%; text-align: center" class="ng-binding">Thông tin vé</th>
+                    <th style="width: 15%; text-align: center" class="ng-binding">Trạng thái</th>
+                    <th style="width: 15%; text-align: center" class="ng-binding">Thành tiền (VNĐ)</th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="group in bookingGroup" class="ng-scope">
+                <tr ng-repeat="book in group" class="ng-scope">
+                    <td class="et-table-cell ng-binding">Vân Anh</td>
+                    <td class="et-table-cell ng-binding">272879232</td>
+                    <td class="et-table-cell et-text-md ng-binding">Ngồi mềm điều hòa</td>
+                    <td class="et-table-cell et-text-md">
+                        <div class="ng-binding">Chuyến: Ga đi - Ga đến</div>
+                        <div class="ng-binding">Mã tàu: SPT2</div>
+                        <div class="ng-binding">Thời gian khởi hành: 17/06/2023 06:10</div>
+                        <div class="ng-binding">Mã Toa: 1 - Mã chỗ: 25</div>
+                    </td>
+                    <td class="et-table-cell et-text-md ng-binding">Chờ thanh toán trả sau.</td>
+                    <td class="et-table-cell text-right ng-binding">33,000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr class="info">
+                    <td colspan="5"><span class="pull-right"><strong class="ng-binding">Tổng tiền</strong></span></td>
+                    <td class="text-right"><strong class="ng-binding">63,000</strong></td>
+                </tr>
+            </tfoot>
+        </table>
     </div>
-<?  }?>
+    <div class="colume2" style="align-items: flex-start">
+        <p>Vé của quý khách đã được tạm khóa. Quý khách vui lòng thanh toán trước 24 giờ kể từ lúc đặt vé thành công. Sau 24 giờ vé sẽ bị hủy,
+            quý khách có nhu cầu đặt vé vui lòng quay về trang chủ để chọn và đặt vé.</p>
+        <i>Trân trọng cảm ơn!</i>
+    </div>
+</div>
