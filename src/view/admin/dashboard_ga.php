@@ -32,12 +32,12 @@
 </table>
 
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);">
     <form id="GaForm">
       <label for="code">Mã ga:</label>
-      <input type="text" id="code" name="MaGa" required>
+      <input style="color: black" type="text" id="code" name="MaGa" required>
       <label for="name">Tên ga:</label>
-      <input type="text" id="name" name="TenGa" required>
+      <input style="color: black" type="text" id="name" name="TenGa" required>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>
