@@ -102,6 +102,7 @@
                 $maDatCho=$_SESSION[session_id()."maDatCho"];
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
+                var_dump($arr);
             }
             else{
                 
