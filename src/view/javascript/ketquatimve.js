@@ -1,4 +1,17 @@
 // Xử lý sự kiện click vào tàu hover lên + ẩn đi chỗ ngồi và title toa khi bấm vào tàu khác
+function showLoadingSwal() {
+    return Swal.fire({
+      title: 'Loading...',
+      text: 'Vui lòng chờ trong giây lát!',
+      timer: 5000,
+      showConfirmButton: false,
+      imageUrl: '/view/image/gif/loading.gif',
+      onBeforeOpen: function() {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+    });
+}
 var maChuyenDi = null;
 var maChuyenVe = null;
 const trains = document.querySelectorAll('.et-train-block.train-oneway');
@@ -388,6 +401,7 @@ form.addEventListener('submit', function (event) {
         xhr.open("POST", form.action, true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonString);
+        showLoadingSwal();
         window.location = form.action;
 
     }
@@ -438,6 +452,7 @@ form.addEventListener('submit', function (event) {
             xhr.open("POST", form.action, true);
             xhr.setRequestHeader("Content-Type", "application/json");
             xhr.send(jsonString);
+            showLoadingSwal();
             window.location = form.action;
         }
     }

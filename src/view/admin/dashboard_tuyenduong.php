@@ -41,12 +41,12 @@
 </table>
 
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);">
     <form id=TuyenForm>
       <label for="MaTuyenDuong">Mã tuyến:</label>
-      <input type="text" id="MaTuyenDuong" name="MaTuyenDuong" required>
+      <input style="color: black" type="text" id="MaTuyenDuong" name="MaTuyenDuong" required>
       <label for="XuatPhat">Ga xuất phát:</label>
-      <select id="XuatPhat" name="XuatPhat" required>
+      <select style="color: black" id="XuatPhat" name="XuatPhat" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
           <?php if($each->getMaGa() != 'G000'): ?>
@@ -57,7 +57,7 @@
         <?php endforeach; ?>
       </select>
       <label for="DiemDen">Ga đến:</label>
-      <select id="DiemDen" name="DiemDen" required>
+      <select style="color: black" id="DiemDen" name="DiemDen" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
           <?php if($each->getMaGa() != 'G000'): ?>
@@ -67,10 +67,11 @@
           <?php endif; ?>
         <?php endforeach; ?>
       </select>
-      <label for="ThoiGianChay">Thời gian chạy:</label>
-      <input type="text" id="Gio" class="Gio" name="Gio" pattern="\d{2}" maxlength="2" required placeholder="HH">
+      <label for="ThoiGianChay" style="width: 100%">Thời gian chạy:</label>
+      <input style="color: black; width: 30%" type="text" id="Gio" class="Gio" name="Gio" pattern="\d{2}" maxlength="2" required placeholder="HH">
       :
-      <input type="text" id="Phut" class="Phut" name="Phut" pattern="\d{2}" maxlength="2" required placeholder="MM">
+      <input style="color: black; width: 30%" type="text" id="Phut" class="Phut" name="Phut" pattern="\d{2}" maxlength="2" required placeholder="MM">
+      <br></br>
       <button style="background-color: #4CAF50;color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px; margin-right: 10px;" type="submit" id="submitBtn">Thêm</button>
       <button style="color: white;padding: 14px 20px;margin: 8px 0;border: none;border-radius: 4px;cursor: pointer;font-size: 16px;" class= "btnCancel" type="button" id="cancelBtn">Hủy</button>
     </form>

@@ -8,7 +8,7 @@
       <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 20px; margin-left: 30px;" id="EditBtn">Sửa toa</button>
       <button style="background-color:var(--accent-clr); color: var(--text);; width: 150px; height: 40px; margin-bottom: 20px; margin-left: 30px;" id="RemoveBtn">Xóa toa</button>
       <form>
-        <select style="height: 40px; width: 250px; margin-left: 30px;" id="GaTau" name="GaTau">
+        <select style="height: 40px; width: 250px; background-color:var(--accent-clr); color: var(--text); display: none;  margin-left: 30px;" id="GaTau" name="GaTau">
         <option value="" disabled selected>Chọn ga muốn hiển thị</option>
           <option value="HaNoi">Thành phố Hà Nội</option>
           <option value="HaGiang">Tỉnh Hà Giang</option>
@@ -131,7 +131,7 @@
 
       <!-- Hiển thị chỗ ngồi trong toa  -->
   <div class="seatTrain">
-   <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+   <div class="col-xs-12 col-sm-12 col-md-12 text-center" style=" color: var(--text);">
       <h4 class="ng-binding"></h4>
    </div>
    
@@ -146,20 +146,20 @@
     <div class="row et-car-floor">
       <div class="et-col-1-18 et-car-floor-full-height" style="--bs-gutter-x: -0.5rem;">
          <div class="et-bed-way et-full-width"></div>
-         <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 3</div>
-         <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
-         <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+         <div class="et-bed-way et-full-width text-center small ng-binding" style=" color: var(--text);">Tầng 3</div>
+         <div class="et-bed-way et-full-width text-center small ng-binding" style=" color: var(--text);">Tầng 2</div>
+         <div class="et-bed-way et-full-width text-center small ng-binding" style=" color: var(--text);">Tầng 1</div>
       </div>
       <div class="et-col-8-9">
          <div class="et-bed-way et-full-width et-text-sm">
-            <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 1</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 2</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 3</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 4</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 5</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 6</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 7</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 8</div>
          </div>
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"seat="seatMap[4]">
             <div class="et-bed-left">
@@ -332,7 +332,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[46]">
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">47</span> 
                      </div>
@@ -344,7 +344,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[47]">
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">48</span> 
                      </div>
@@ -524,7 +524,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[44]">
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">45</span> 
                      </div>
@@ -536,7 +536,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[45]">
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">46</span> 
                      </div>
@@ -716,7 +716,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[42]">
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">43</span> 
                      </div>
@@ -728,7 +728,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope"  seat="seatMap[43]">
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" class="et-sit-no ng-scope">
                         <span class="ng-binding" data-khoang="1">44</span> 
                      </div>
@@ -1199,8 +1199,8 @@
             </div>
             <div class="et-car-nm-64-sit ng-isolate-scope" seat="seatMap[46]">
                <div class="et-car-seat-right et-seat-h-35">
-                  <div class="et-col-84 et-sit-sur-outer-invert">
-                     <div class="et-sit-sur-invert text-center et-sit-avaiable">
+                  <div class="et-col-84 et-sit-sur-outer-invert" >
+                     <div class="et-sit-sur-invert text-center et-sit-avaiable" >
                         <div data-popover="Giá: 561,000 VNĐ" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">47</span></div>
                      </div>
                   </div>
@@ -1280,7 +1280,7 @@
             </div>
             <div class="et-car-nm-64-sit ng-isolate-scope" seat="seatMap[45]">
                <div class="et-car-seat-right et-seat-h-35">
-                  <div class="et-col-84 et-sit-sur-outer-invert">
+                  <div class="et-col-84 et-sit-sur-outer-invert" style="background: white; border-radius:4px !important;">
                      <div class="et-sit-sur-invert text-center et-sit-avaiable">
                         <div data-popover="Giá: 561,000 VNĐ" data-popover-title="Chỗ trống" class="et-sit-no ng-scope"><span class="ng-binding" data-khoang="2">46</span></div>
                      </div>
@@ -1426,20 +1426,20 @@
       <div class="et-col-1-18 et-car-floor-full-height" style="--bs-gutter-x: -0.5rem;">
          <div class="et-bed-way et-full-width"></div>
          <div class="et-bed-way et-full-width"></div>
-         <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 2</div>
-         <div class="et-bed-way et-full-width text-center small ng-binding">Tầng 1</div>
+         <div class="et-bed-way et-full-width text-center small ng-binding" style=" color: var(--text);">Tầng 2</div>
+         <div class="et-bed-way et-full-width text-center small ng-binding" style=" color: var(--text);">Tầng 1</div>
       </div>
       <div class="et-col-8-9">
          <div class="et-bed-way et-full-width"></div>
          <div class="et-bed-way et-full-width et-text-sm">
-            <div class="et-col-1-8 text-center ng-binding">Khoang 1</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 2</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 3</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 4</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 5</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 6</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 7</div>
-            <div class="et-col-1-8 text-center ng-binding">Khoang 8</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 1</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 2</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 3</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 4</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 5</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 6</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 7</div>
+            <div class="et-col-1-8 text-center ng-binding" style=" color: var(--text);">Khoang 8</div>
          </div>
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[2]">
             <div class="et-bed-left">
@@ -1585,7 +1585,7 @@
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
                   <div class="et-bed text-center">
-                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">31</span></div>
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống" style="background: white; border-radius:4px !important;"><span class="ng-binding" data-khoang="3">31</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1594,8 +1594,8 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[31]">
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
-                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">32</span></div>
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
+                     <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3" >32</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
                </div>
@@ -1744,7 +1744,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[28]">
             <div class="et-bed-left ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">29</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
@@ -1754,7 +1754,7 @@
          <div class="et-col-1-16 et-seat-h-35 ng-isolate-scope" seat="seatMap[29]">
             <div class="et-bed-right ng-hide">
                <div class="et-bed-outer">
-                  <div class="et-bed text-center">
+                  <div class="et-bed text-center" style="background: white; border-radius:4px !important;">
                      <div data-popover="Chỗ trống" data-popover-title="Chỗ trống"><span class="ng-binding" data-khoang="3">30</span></div>
                   </div>
                   <div class="et-bed-illu"></div>
@@ -1769,13 +1769,13 @@
 </div>
     </table>
     <div id="myModal" class="modal" style="display: none;">
-    <div class="modal-content">
+    <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);"  >
     <form id="ToaForm">
-      <input type="text" id="ThuTuToa_old" name="ThuTuToa_old" required>
+      <input style="color: black;" type="text" id="ThuTuToa_old" name="ThuTuToa_old" required>
       <label for="MaToa">Mã toa:</label>
-      <input type="text" id="MaToa" name="MaToa" required>
+      <input style="color: black;" type="text" id="MaToa" name="MaToa" required>
       <label for="MaLoaiToa">Loại toa:</label>
-      <select name="MaLoaiToa" id="MaLoaiToa" required>
+      <select style="color: black; width: 100%; padding: 16px !important; background: white !important;"name="MaLoaiToa" id="MaLoaiToa" required>
          <option value=""></option>
          <?php foreach($arrLoaiToa as $each): ?>
          <option value="<?php echo $each->getMaLoaiToa(); ?>">
@@ -1784,8 +1784,8 @@
          <?php endforeach; ?>
       </select>
       <label for="MaTau">Mã Tàu:</label>
-      <input type="text" id="MaTau_old" name="MaTau_old" required>
-      <select name="MaTau" id="MaTau" required>
+      <input style="color: black; display:none;" type="text" id="MaTau_old" name="MaTau_old" required>
+      <select style="color: black; width: 100%; padding: 16px !important;" name="MaTau" id="MaTau" required>
          <option value=""></option>
          <?php foreach($arrTau as $each): ?>
          <option value="<?php echo $each->getMaTau(); ?>">

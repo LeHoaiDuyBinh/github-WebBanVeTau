@@ -1,51 +1,29 @@
-<table>
-  <tr>
-    <th>Tên</th>
-    <th>Email</th>
-    <th>Actions</th>
-  </tr>
-  <tr>
-    <td>Người 1</td>
-    <td>nguoi1@example.com</td>
-    <td><button onclick="showBookingList(1)">Xem danh sách</button></td>
-  </tr>
-  <tr>
-    <td>Người 2</td>
-    <td>nguoi2@example.com</td>
-    <td><button onclick="showBookingList(2)">Xem danh sách</button></td>
-  </tr>
-  <!-- Thêm các dòng khác của table -->
-</table>
-
-<div id="bookingListContainer"></div>
-
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://unpkg.com/sweetalert2@11.0.0/dist/sweetalert2.min.css">
+  <script src="https://unpkg.com/sweetalert2@11.0.0/dist/sweetalert2.min.js"></script>>
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+</html>
 <script>
-    function showBookingList(userId) {
-  // Gửi yêu cầu đến server để lấy danh sách người dùng đã đặt chỗ của userId
-  // Ví dụ: sử dụng AJAX để gửi yêu cầu và nhận dữ liệu từ server
-
-  // Sau khi nhận được dữ liệu từ server, xử lý và hiển thị danh sách
-  var bookingList = [
-    "Người A",
-    "Người B",
-    "Người C"
-    // Các người dùng khác đã đặt chỗ
-  ];
-
-  var bookingListContainer = document.getElementById("bookingListContainer");
-  bookingListContainer.innerHTML = "";
-
-  // Tạo danh sách để hiển thị danh sách người dùng đã đặt chỗ
-  var ul = document.createElement("ul");
-
-  for (var i = 0; i < bookingList.length; i++) {
-    var li = document.createElement("li");
-    li.textContent = bookingList[i];
-    ul.appendChild(li);
-  }
-
-  bookingListContainer.appendChild(ul);
+function showLoadingSwal() {
+  return Swal.fire({
+    title: 'Loading...',
+    text: 'Vui lòng chờ trong giây lát!',
+    timer: 5000,
+    showConfirmButton: false,
+    imageUrl: '/view/image/gif/loading.gif',
+    onBeforeOpen: function() {
+      Swal.showLoading();
+    },
+    allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+  });
 }
-
+showLoadingSwal();
 </script>

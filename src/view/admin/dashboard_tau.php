@@ -43,12 +43,12 @@
   </tbody>
 </table>
 <div id="myModal" class="modal" style="display: none;">
-  <div class="modal-content">
+  <div class="modal-content" style="background-color:var(--accent-clr); color: var(--text);">
     <form id ="TauForm">
       <label for="MaTau">Mã tàu:</label>
-      <input type="text" id="MaTau" name="MaTau" required>
+      <input style="border-radius: 4px !important; color: black;" type="text" id="MaTau" name="MaTau" required>
       <label for="GaHienTai">Ga hiện tại:</label>
-      <select id="GaHienTai" name="GaHienTai" required>
+      <select  style="width: 100%; padding: 15px !important; color: black;" id="GaHienTai" name="GaHienTai" required>
         <option value=""></option>
         <?php foreach($arrGa as $each): ?>
           <?php if($each->getMaGa() != 'G000'): ?>
@@ -60,7 +60,7 @@
       </select>
       <label for="TrangThai">Trạng thái:</label>
       <input type="text" id="TrangThai_old" name="TrangThai_old" hidden>
-      <select id="TrangThai" name="TrangThai" required>
+      <select  style="width: 100%; padding: 15px !important; color: black;" id="TrangThai" name="TrangThai" required>
         <option value=""></option>
         <option value="0">Đang hoạt động</option>
         <option value="1">Đang không hoạt động</option>
