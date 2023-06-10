@@ -40,7 +40,7 @@
       if($each->getTrangThai() == 1 || $each->getTrangThai() == 2)
        echo $each->getTrangThaitxt();
       else
-        echo '<button href="" id="addThanhToanBtn">Thanh toán</button>';
+        echo '<button href="" id="addThanhToanBtn">Thanh toán</button> style="background-color:var(--accent-clr); color: var(--text);">Thanh toán</button>';
         ?>
       </td>
       <td data-label="NgayThanhToan"><?php echo $each->getNgayThanhToan(); ?></td>
