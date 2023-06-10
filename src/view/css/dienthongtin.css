@@ -6,7 +6,8 @@
 .back-button {
   background-color: #01b3a7 !important;
   float: right;
-  width: 15% !important;
+  width: 45% !important;
+  padding: 0%;
   color: white;
   border-radius: 5px;
 }
@@ -14,7 +15,8 @@
 button[type="submit"] {
   background-color: #01b3a7 !important;
   float: right;
-  width: 15% !important;
+  width: 45% !important;
+  height: 20% !important;
   color: white;
   border-radius: 5px;
 }
@@ -78,3 +80,6 @@ select {
   
 }
 
+.divDoiTuong {
+  margin-top: 20px;
+}

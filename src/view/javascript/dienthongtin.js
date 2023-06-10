@@ -1,3 +1,19 @@
+function showLoadingSwal() {
+    Swal.fire({
+      title: 'Loading...',
+      text: 'Vui lòng chờ trong giây lát!',
+      timer: 6000,
+      showConfirmButton: false,
+      imageUrl: '/view/image/gif/loading.gif',
+      onBeforeOpen: function() {
+        Swal.showLoading();
+      },
+      allowOutsideClick: false // Không cho phép đóng khi click ra ngoài
+    }).then((result) => {
+      // Sau khi loading xong, điều hướng qua trang khác
+      window.location = "/?page=xacnhan";
+    });
+  }
 document.addEventListener("DOMContentLoaded", function () {
     //Tạo các form cho người ngồi
 
@@ -81,7 +97,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var cccdLabel = document.createElement("label");
             cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
-            cccdLabel.textContent = "Số CCCD/Hộ chiếu";
+            cccdLabel.textContent = "Số CCCD/Hộ chiếu/Số khai sinh";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
@@ -93,10 +109,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             var lineBreak = document.createElement("br");
+            var divDoiTuong = document.createElement("div");
+            divDoiTuong.className = "divDoiTuong";
+            divDoiTuong.appendChild(doiTuongLabel);
+            divDoiTuong.appendChild(doiTuongSelect);
+
             form.appendChild(inputRowDiv);
             form.appendChild(lineBreak);
-            form.appendChild(doiTuongLabel);
-            form.appendChild(doiTuongSelect);
+            form.appendChild(divDoiTuong);
             form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
@@ -356,7 +376,7 @@ document.addEventListener("DOMContentLoaded", function () {
             var cccdLabel = document.createElement("label");
             cccdLabel.setAttribute("for", "CCCD" + i); // Thêm biến đếm vào tên trường input CCCD
             cccdLabel.style.marginTop = "10px";
-            cccdLabel.textContent = "Số CCCD/Hộ chiếu";
+            cccdLabel.textContent = "Số CCCD/Hộ chiếu/Số khai sinh";
 
             var cccdInput = document.createElement("input");
             cccdInput.type = "text";
@@ -368,10 +388,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
             var lineBreak = document.createElement("br");
+            var divDoiTuong = document.createElement("div");
+            divDoiTuong.className = "divDoiTuong";
+            divDoiTuong.appendChild(doiTuongLabel);
+            divDoiTuong.appendChild(doiTuongSelect);
+
             form.appendChild(inputRowDiv);
             form.appendChild(lineBreak);
-            form.appendChild(doiTuongLabel);
-            form.appendChild(doiTuongSelect);
+            form.appendChild(divDoiTuong);
             form.appendChild(NgaySinhContainer);
             form.appendChild(cccdContainer);
 
@@ -794,7 +818,7 @@ function tiepTheo(event) {
         xhr.open("POST", "/?page=xacnhan", true);
         xhr.setRequestHeader("Content-Type", "application/json");
         xhr.send(jsonData);
-        window.location = "/?page=xacnhan";
+        showLoadingSwal();
     }
 }
 
