@@ -18,7 +18,7 @@
             }
             //var_dump($arrDi);
             //var_dump($arrVe);
-            include 'view/ticketing/BookTickets/dienthongtin.php';
+            include_once 'view/ticketing/BookTickets/dienthongtin.php';
         }
         public function xacnhan(){
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -29,14 +29,14 @@
             $Ve=$_SESSION[session_id()]->nguoiNgoi;
             $thongTinNguoiDat=$_SESSION[session_id()]->thongTinNguoiDat;
             //var_dump($Ve);
-            include 'view/ticketing/BookTickets/xacnhan.php';
+            include_once 'view/ticketing/BookTickets/xacnhan.php';
         }
         public function thanhToan(){
             if(isset($_GET['HinhThuc'])){
                 $HinhThuc=$_GET['HinhThuc'];
                 if($HinhThuc==="QR"){
                     $qr="https://quickchart.io/qr?text="."Thanh cong"."=000&light=fff&ecLevel=Q&format=png";
-                    include 'view/ticketing/BookTickets/qrcode.php';
+                    include_once 'view/ticketing/BookTickets/qrcode.php';
                     $_SESSION[session_id()."count"]=0;
                 }
                 elseif($HinhThuc==="ThanhToanSau"){
@@ -80,6 +80,7 @@
                 }
                 elseif($data->thanhToan=="QR"){
                     $maDatCho=(new ThongTinDatCho)->insert($ID_NguoiDatCho,$data->TienVe,1);
+
                     $_SESSION[session_id()."maDatCho"]=$maDatCho;
                     (new ThanhToan)->insert($maDatCho,$data->thanhToan);
                     $_SESSION[session_id()."maVe"]=[];
@@ -96,11 +97,11 @@
                 $this->addInfo();                   
             }  
             $phuongThucThanhToan=$_SESSION[session_id()]->thongTinNguoiDat->thanhToan;
-            if($phuongThucThanhToan=="!=QR"){
+
+            if($phuongThucThanhToan!="QR"){
                 $maDatCho=$_SESSION[session_id()."maDatCho"];
                 include_once './model/DatVeModel/ThongTinDatCho.php';
                 $arr = (new ThongTinDatCho)->select($maDatCho);
-
             }
             else{
                 include_once './model/DatVeModel/Ve.php';

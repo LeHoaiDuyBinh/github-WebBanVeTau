@@ -1,5 +1,6 @@
 <?php
     class KhachHangObject{
+        
         private $ID_KH;
         private $HoTen_KH;
         private $CCCD_KH;

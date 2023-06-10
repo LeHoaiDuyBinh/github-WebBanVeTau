@@ -1,10 +1,10 @@
 <?php
     class NguoiDatChoController{
         public function index(){
-            include './model/NguoiDatChoModel/NguoiDatCho.php';
+            include_once './model/NguoiDatChoModel/NguoiDatCho.php';
             $arrNguoiDatCho = (new NguoiDatCho)->load();
 
-            include './view/admin/dashboard_nguoidatcho.php';
+            include_once './view/admin/dashboard_nguoidatcho.php';
 		}
 
         public function createThanhToan(){
@@ -32,6 +32,11 @@
             $ID_NguoiDatCho = $_POST['ID_NguoiDatCho'];
             $check = (new NguoiDatCho)->remove($ID_NguoiDatCho);
             echo $check;
+        }
+
+        public function checkTTDC(){
+            include_once './model/NguoiDatChoModel/NguoiDatCho.php';
+            (new NguoiDatCho)->checkTG_TT();
         }
     }
 ?>

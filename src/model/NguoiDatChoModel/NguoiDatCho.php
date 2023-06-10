@@ -228,5 +228,17 @@
                  return "Lôi khi find khách hàng";
              }
              }
+
+             // KIỂM TRA QUÁ HẠN
+             function checkTG_TT(){
+                try {
+                    $db = new DB();
+                    $sql = "UPDATE ThongTinDatCho SET TrangThai = ? WHERE DATEDIFF(CURDATE(), NgayDatCho) > 2 AND TrangThai = 0";
+                    $db->execute($sql, array(2));
+                    }
+                catch (PDOException $e) {
+                    return  $sql . "<br>" . $e->getMessage();
+                }
+            }
         }
 ?>
